@@ -1,0 +1,113 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Segal spaces and presheaves}
+\label{ch:segal_spaces_and_presheaves}
+
+\section{Prerequisites}
+\label{sec:prerequisites}
+
+\subsection{Reedy model structure}
+\label{ssc:reedy_model_structure}
+
+\begin{definition}
+  A \defn{Reedy category} is a category $\category{R}$ equipped with the following data:
+  \begin{enumerate}
+    \item A wide subcategory\footnote{A subcategory is \emph{wide} if it contains all objects.} $\category{R}_{+}$;
+
+    \item A wide subcategory $\category{R}_{-}$; and
+
+    \item A function $d\colon \ob(\category{R}) \to \N$ called the \emph{degree};
+  \end{enumerate}
+  subject to the following constraints:
+  \begin{enumerate}
+    \item Every non-identity morphism in $\category{R}_{+}$ raises degree;
+
+    \item Every non-identity morphism in $\category{R}_{-}$ lowers degree; and
+
+    \item Every morphism $f$ in $\category{R}$ has a unique factorization $f = f_{+} \circ f_{-}$, with $f_{-} \in \category{R}_{-}$ and $f_{+} \in \category{R}_{+}$.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  The simplex category $\Delta$ is a Reedy category with $d([n]) = n$, and $\Delta_{+}$ and $\Delta_{-}$ the wide subcatetegories on injections and surjections respectively.
+\end{example}
+
+\begin{example}
+  \label{eg:opposite_reedy_structure}
+  The opposite of any Reedy category is again a Reedy category with the roles of $\category{R}_{+}$ and $\category{R}_{-}$ reversed. In particular, $\Delta\op$ is a Reedy category with $\Delta\op_{+}$ the wide subcategory on surjections and $\Delta\op_{-}$ the wide subcategory on injections.
+\end{example}
+
+\begin{definition}
+  Let $\category{R}$ be a Reedy category, and let $\category{C}$ be a model category. Let $X\colon \category{R} \to \category{C}$, and $r \in \category{R}$.
+
+  \begin{itemize}
+    \item The \defn{latching object} of $r$ is the object
+      \begin{equation*}
+        L_{r}X = \colim \left[ (\category{R}_{+} \downarrow r)' \to \category{R} \to \category{C} \right],
+      \end{equation*}
+      where the category $(\category{R}_{+} \downarrow r)'$ is the full subcategory of $(\category{R}_{+} \downarrow \category{R})$ containing all objects except the identity.
+
+    \item The \defn{matching object} of $r$ is the object
+      \begin{equation*}
+        M_{r}X = \lim \left[ (r \downarrow \category{R}_{-})' \to \category{R} \to \category{C} \right],
+      \end{equation*}
+      where the category $(r \downarrow \category{R}_{-})'$ is the full subcategory of $(r \downarrow \category{R}_{-})$ containing all objects except the identity.
+  \end{itemize}
+\end{definition}
+
+Note that because $X_{r}$ gives a cocone under $(\category{R}_{+} \downarrow r) \to \category{R} \to \category{C}$, we get a map $L_{r}X \to X_{r}$. Dually, we get a map $X_{r} \to M_{r}X$.
+
+\begin{example}
+  Take $\category{R} = \Delta\op$ with the Reedy structure defined in \hyperref[eg:opposite_reedy_structure]{Example~\ref*{eg:opposite_reedy_structure}}, and let $X$ be a simplicial set. The latching object $L_{n}X$ is the coequalizer of the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \displaystyle\coprod\limits_{\substack{f \in \text{Morph}(\Delta\op_{+} \downarrow [n])' \\ [n] \twoheadrightarrow [m] \overset{f}{\twoheadrightarrow} [m']}} X_{m}
+      \arrow[r, shift left]
+      \arrow[r, shift right]
+      & \displaystyle\coprod\limits_{([m], g) \in \ob(\Delta\op_{+} \downarrow [n])'} X_{m}.
+    \end{tikzcd}
+  \end{equation*}
+  Manipulating, one sees that this is the precisely the set of degenerate $n$-simplices.
+
+  Dually, the matching object $M_{n}X$ is the hom-set $\Hom_{\SSet}(\partial \Delta^{n}, X)$.
+\end{example}
+
+Note that $L_{n}$ and $M_{n}$ are both functors $[\category{R}^{> n}, \category{C}]$, where $\category{R}^{> n}$ is the full subcategory of $\category{R}$ on objects $r$ such that $d(r) > n$.
+
+\begin{theorem}
+  Let $\category{R}$ be a Reedy category and $\category{C}$ be a model category. Then there is a model structure on $[\category{R}, \category{C}]$ in which the 
+  \begin{enumerate}
+    \item The weak equivalences are object-wise weak equivalences,
+
+    \item The cofibrations are maps $X \to Y$ such that for all $r \in \category{R}$, the map
+      \begin{equation*}
+        L_{r}Y \amalg_{L_{r}X} X_{r} \to Y_{r}
+      \end{equation*}
+      is a cofibration in $\category{C}$.
+
+    \item The fibrations are maps $X \to Y$ such that for all $r \in \category{R}$, the map
+      \begin{equation*}
+        X_{r} \to M_{r}X \times_{M_{r}Y} Y_{r}
+      \end{equation*}
+      is a fibration in $\category{C}$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{example}
+  Take $\category{R} = \Delta\op$ and $\category{C} = \SSet^{\Kan}$. Then the Reedy model structure has the following classes of morphisms.
+  \begin{enumerate}
+    \item The weak equivalences are level-wise weak equivalences.
+
+    \item The cofibrations are level-wise monomorphisms.
+
+    \item The fibrations are maps $f\colon X \to Y$ such that the map
+      \begin{equation*}
+        \Fun(\Delta^{n}, Y) \to \Fun(\partial\Delta^{n}, Y) \times_{\Fun(\partial \Delta^{n}, X)} \Fun(\Delta^{n}, X)
+      \end{equation*}
+      is a Kan fibration.
+  \end{enumerate}
+\end{example}
+
+\end{document}

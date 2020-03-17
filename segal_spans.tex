@@ -1,0 +1,563 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{Basics of fibrations complete Segal spaces}
+
+\begin{itemize}
+  \item The inclusion of Kan complexes into quasicategories has right adjoint $(-)^{\simeq}$, which sends a simplicial set to the largest kan complex it contains.
+
+  \item There is a Quillen equivalence
+    \begin{equation*}
+      p_{1}^{*} : \Set_{\Delta}^{\mathrm{Joyal}} \longleftrightarrow \Set_{\Delta^{2}}^{\mathrm{CSS}} : i_{1}^{*},
+    \end{equation*}
+    where $i_{1}^{*}$ sends a complete Segal space to its zeroth row, and $p_{1}^{*}$ sends a quasicategory to the corresponding vertically constant bisimplicial set.
+\end{itemize}
+
+\subsection{Inner fibrations of complete segal spaces}
+\label{ssc:inner_fibrations_of_complete_segal_spaces}
+
+\begin{definition}
+  We say that a map $\category{A} \to \category{B}$ of complete Segal spaces is a \defn{inner fibration} if the following square is homotopy pullback in the Kan model structure.
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{A}_{2}
+      \arrow[r]
+      \arrow[d]
+      & \category{A}_{1} \times_{\category{A}_{0}} \category{A}_{1}
+      \arrow[d]
+      \\
+      \category{B}_{2}
+      \arrow[r]
+      & \category{B}_{1} \times_{\category{B}_{0}} \category{B}_{1}
+    \end{tikzcd}.
+  \end{equation*}
+\end{definition}
+
+\subsection{Cocartesian fibrations of complete segal spaces}
+\label{ssc:cocartesian_fibrations_of_complete_segal_spaces}
+
+\begin{definition}
+  Let $\pi\colon \category{A} \to \category{B}$ be a map of complete Segal spaces. We say that a morphism $f\colon x \to y$ in $\category{A}$ is \defn{$\pi$-cocartesian} if the following square is homotopy pullback in the Kan model structure.
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{A}_{2} \times_{\category{A}_{\{0, 1\}}} \{f\}
+      \arrow[r]
+      \arrow[d]
+      & \category{A}_{\{0,2\}} \times_{\category{A}_{\{0\}}} \{x\}
+      \arrow[d]
+      \\
+      \category{B}_{2} \times_{\category{B}_{\{0, 1\}}} \{\pi f\}
+      \arrow[r]
+      & \category{B}_{\{0, 2\}} \times_{\category{B}_{\{0\}}} \{\pi x\}
+    \end{tikzcd}
+  \end{equation*}
+\end{definition}
+
+\begin{definition}
+  A map $\category{A} \to \category{B}$ between complete Segal spaces is a \defn{cocartesian fibration} if it is an inner fibration and each morphism in
+\end{definition}
+
+%\begin{definition}
+%  Let $\pi\colon \category{A} \to \category{B}$ be a map of complete Segal spaces. Denote by $\LFib_{\category{B}}(\category{A})_{n}$ the full simplicial subset of $\category{A}_{n}$ on vertices of $\category{A}_{n}$ (i.e.\ $n$-simplices of $\category{A}$) all of whose edges are $\pi$-cocartesian.
+%\end{definition}
+%
+%\begin{fact}
+%  The spaces $\LFib_{\category{B}}(\category{A})_{n}$ form a Segal space.
+%\end{fact}
+%
+%\begin{definition}
+%  A map $\category{A} \to \category{B}$ of complete Segal spaces is a \defn{cocartesian fibration} if it is a Reedy fibration and the square
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      \LFib_{\category{D}}(\category{C})_{1}
+%      \arrow[r, "d_{1}"]
+%      \arrow[d]
+%      & \category{C}_{0}
+%      \arrow[d]
+%      \\
+%      \category{D}_{1}
+%      \arrow[r, "d_{1}"]
+%      & \category{D}_{0}
+%    \end{tikzcd}
+%  \end{equation*}
+%  is homotopy pullback in the Kan model structure.
+%\end{definition}
+
+\section{Segal spaces of spans}
+\label{sec:segal_spaces_of_spans}
+
+
+\subsection{Definitions}
+\label{ssc:definitions}
+
+\subsection{Inner fibrations}
+\label{ssc:inner_fibrations}
+
+\begin{theorem}
+  Let $\category{C}$ and $\category{D}$ be quasicategories with pullbacks, and let $\pi\colon \category{C} \to \category{D}$ be an inner fibration preserving pullbacks. Then $\Span(\category{C}) \to \Span(\category{D})$ is an inner fibration of complete Segal spaces.
+\end{theorem}
+\begin{proof}
+  We need to show that
+  \begin{equation*}
+    \begin{tikzcd}
+      \Span(\category{C})_{2}
+      \arrow[r]
+      \arrow[d]
+      & \Span(\category{C})_{1} \times_{\Span(\category{C})_{0}} \Span(\category{C})_{1}
+      \arrow[d]
+      \\
+      \Span(\category{D})_{2}
+      \arrow[r]
+      & \Span(\category{D})_{1} \times_{\Span(\category{D})_{0}} \Span(\category{D})_{1}
+    \end{tikzcd}
+  \end{equation*}
+  is a homotopy pullback square. This says precisely that we need to show that
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq}
+      \arrow[r]
+      \arrow[d]
+      & \Fun^{\Cart}(\asd(\Lambda^{2}_{1}), \category{C})^{\simeq}
+      \arrow[d]
+      \\
+      \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq}
+      \arrow[r]
+      & \Fun^{\Cart}(\asd(\Lambda^{2}_{1}), \category{D})^{\simeq}
+    \end{tikzcd}
+  \end{equation*}
+  is a homotopy pullback. Since everything is a Kan complex and the lower map is a Kan fibration
+\end{proof}
+
+\subsection{Cocartesian fibrations}
+\label{ssc:cocartesian_fibrations}
+
+We start with some notation.
+
+The main goal of this section is to prove the following theorem.
+
+\begin{theorem}
+  \label{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}
+  Let $\category{C}$ and $\category{D}$ be quasicategories admitting all pullbacks, and let $p\colon \category{C} \to \category{D}$ be a bicartesian fibration which preserves pullbacks. Further suppose that $p$ has the following property:
+
+  \begin{quote}
+    For any square
+    \begin{equation*}
+      \sigma =
+      \begin{tikzcd}
+        x
+        \arrow[r, "f"]
+        \arrow[d]
+        & y
+        \arrow[d]
+        \\
+        x'
+        \arrow[r, "f'", "\circ" marking]
+        & y'
+      \end{tikzcd}
+    \end{equation*}
+    in $\category{C}$ such that the morphism $f'$ is $p$-cocartesian and $p(\sigma)$ is pullback in $\category{D}$, the following are equivalent.
+    \begin{itemize}
+      \item The morphism $f$ is $p$-cocartesian.
+
+      \item The square $\sigma$ is pullback.
+    \end{itemize}
+  \end{quote}
+
+  Then the functor $\pi\colon \Span(\category{C}) \to \Span(\category{D})$ is a cocartesian fibration of Segal spaces, whose cocartesian morphisms are spans of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & y
+      \arrow[dl, "\circ" marking]
+      \arrow[dr, "\bullet" marking]
+      \\
+      x
+      && x'
+    \end{tikzcd}.
+  \end{equation*}
+\end{theorem}
+
+\begin{note}
+  Since the definition of $\Span(\category{C})$ is self-dual, the functor $\Span(\category{C}) \to \Span(\category{D})$ is also a cartesian fibration with cartesian morphisms of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & y
+      \arrow[dl, "\bullet" marking]
+      \arrow[dr, "\circ" marking]
+      \\
+      x
+      && x'
+    \end{tikzcd}.
+  \end{equation*}
+\end{note}
+
+We prove this in several steps. Since we will be working with bicartesian fibrations, it will be helpful to adapt some of the tools of marked simplicial sets to our purposes.
+
+\subsection{Bimarked simplicial sets}
+\label{ssc:bimarked_simplicial_sets}
+
+We will have to deal with bicartesian fibrations. For this reason, it will be helpful to define the notion of a bimarked simplicial set, which is a simplicial set with two markings, one of which controls the cocartesian structure and one of which controls the cartesian structure. This section essentially verifies that some key results about marked simplicial sets which can be found in \cite[Sec.\ 3.1]{highertopostheory} hold in the bimarked case. The only result we will make use of is \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}.
+
+\begin{definition}
+  A \defn{bimarked simplicial set} is a triple $(X, \mathcal{E}, \mathcal{E}')$, where $X$ is a simplicial set and $\mathcal{E}$ and $\mathcal{E}'$ are markings. We will often shorten this to $X^{(\mathcal{E}, \mathcal{E}')}$. A morphism of bimarked simplicial sets is a morphism of the underlying simplicial sets which preserves each class of markings separately. We will denote the category of bimarked simplicial sets by $\SSet^{++}$.
+\end{definition}
+
+\begin{example}
+  For any simplicial set $X$ we will denote
+  \begin{itemize}
+    \item The bimarked simplicial set where $\mathcal{E}$ and $\mathcal{E}'$ contain only the degenerate edges by $X^{( \flat, \flat )}$,
+
+    \item The bimarked simplicial set where $\mathcal{E}$ contains only the degenerate edges and $\mathcal{E}'$ contains every edge by $X^{( \flat, \sharp )}$,
+
+    \item The bimarked simplicial set where $\mathcal{E}$ contains every edge and $\mathcal{E}'$ contains only the degenerate edges by $X^{( \sharp, \flat )}$, and
+
+    \item The bimarked simplicial set where $\mathcal{E}$ and $\mathcal{E}'$ contain every edge by $X^{( \sharp, \sharp )}$.
+  \end{itemize}
+\end{example}
+
+\begin{example}
+  \label{eg:bicartesian_marking}
+  Let $p\colon \category{C} \to \category{D}$ be a bicartesian fibration. Denote by $\category{C}^{\natural}$ the bimarked simplicial set where
+  \begin{itemize}
+    \item The set $\mathcal{E}$ is the set of all $p$-cocartesian morphisms.
+
+    \item The set $\mathcal{E}'$ is the set of all $p$-cartesian morphisms, and
+  \end{itemize}
+
+  Then there is a morphism of bisimplicial sets $\category{C}^{\natural} \to \category{D}^{(\sharp, \sharp)}$.
+\end{example}
+
+The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and the category $\SSet$. We have the following obvious results.
+\begin{itemize}
+  \item There is a forgetful functor $u\colon \SSet^{++} \to \SSet$ which forgets both markings. This has left adjoint $\iota\colon X \mapsto (X, \flat, \flat)$. The functor $\iota$ is a full subcategory inclusion.
+
+  \item There is a forgetful functor $u_{1}\colon \SSet^{++} \to \SSet^{+}$, which forgets the second marking, sending $(X, \mathcal{E}, \mathcal{E}') \mapsto (X, \mathcal{E})$. This has a left adjoint $\iota_{1}$ given by the functor which sends $(X, \mathcal{E}) \mapsto (X, \mathcal{E}, \flat)$. The functor $\iota_{1}$ is a full subcategory inclusion; there is a bijection between maps between marked simplicial sets $(X, \mathcal{E}) \to (Y, \mathcal{E}')$ and maps $(X, \mathcal{E}, \flat) \to (Y, \mathcal{E}', \flat)$. The same is true of the functor $u_{2}$ which forgets the first marking and its left adjoint $\iota_{2}$.
+\end{itemize}
+
+\begin{definition}
+  The class of \defn{bimarked anodyne morphisms} is the saturated hull of the union of the following classes of morphisms.
+  \begin{enumerate}
+    \item[(1)] For each $0  < i < n$, the inner horn inclusions
+      \begin{equation*}
+        (\Lambda^{n}_{i})^{(\flat, \flat)} \to (\Delta^{n})^{(\flat, \flat)}.
+      \end{equation*}
+
+    \item[(2)] For every $n > 0$, the inclusion
+      \begin{equation*}
+        (\Lambda^{n}_{0})^{(\mathcal{L}, \flat)} \hookrightarrow (\Delta^{n})^{(\mathcal{L}, \flat)},
+      \end{equation*}
+      where $\mathcal{L}$ denotes the set of all degenerate edges of $\Delta^{n}$ together with the edge $\Delta^{\{0, 1\}}$.
+
+    \item[(2')] For every $n > 0$, the inclusion
+      \begin{equation*}
+        (\Lambda^{n}_{n})^{(\flat, \mathcal{R})} \hookrightarrow (\Delta^{n})^{(\flat, \mathcal{R})},
+      \end{equation*}
+      where $\mathcal{R}$ denotes the set of all degenerate edges of $\Delta^{n}$ together with the edge $\Delta^{\{n-1, n\}}$.
+
+    \item[(3)] The inclusion
+      \begin{equation*}
+        (\Lambda^{2}_{1})^{(\sharp, \flat)} \coprod_{(\Lambda^{2}_{1})^{(\flat, \flat)}} (\Delta^{2})^{(\flat, \flat)} \to (\Delta^{2})^{(\sharp, \flat)}.
+      \end{equation*}
+
+    \item[(3')] The inclusion
+      \begin{equation*}
+        (\Lambda^{2}_{1})^{(\flat, \sharp)} \coprod_{(\Lambda^{2}_{1})^{(\flat, \flat)}} (\Delta^{2})^{(\flat, \flat)} \to (\Delta^{2})^{(\flat, \sharp)}.
+      \end{equation*}
+
+    \item[(4)] For every Kan complex $K$, the map
+      \begin{equation*}
+        K^{(\flat, \flat)} \to K^{(\sharp, \flat)}.
+      \end{equation*}
+
+    \item[(4')] For every Kan complex $K$, the map
+      \begin{equation*}
+        K^{(\flat, \flat)} \to K^{(\flat, \sharp)}.
+      \end{equation*}
+  \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+  \label{prop:rlp_bimarked_anodyne}
+  A map $p\colon (X, \mathcal{E}_{X}, \mathcal{E}_{X}') \to (S, \mathcal{E}_{S}, \mathcal{E}_{S}')$ of bimarked simplicial sets has the right lifting property with respect to bimarked anodyne morphisms if and only if the following conditions are satisifed.
+  \begin{enumerate}
+    \item[(A)] The map $p$ is an inner fibration of simplicial sets.
+
+    \item[(B)] An edge $e$ of $X$ is $\mathcal{E}_{X}$-marked if and only if $p(e)$ is $\mathcal{E}_{S}$-marked and $e$ is $p$-cocartesian.
+
+    \item[(B')] An edge $e$ of $X$ is $\mathcal{E}'_{X}$-marked if and only if $p(e)$ is $\mathcal{E}'_{S}$-marked and $e$ is $p$-cartesian.
+
+    \item[(C)] For every object $y$ of $X$ and every $\mathcal{E}_{S}$-marked edge $\bar{e}\colon \bar{x} \to p(y)$ in $S$, there exists a $\mathcal{E}_{X}$ marked edge $e\colon x \to y$ of $X$ with $p(e) = \bar{e}$.
+
+    \item[(C')] For every object $y$ of $X$ and every $\mathcal{E}'_{S}$-marked edge $\bar{e}\colon \bar{x} \to p(y)$ in $S$, there exists a $\mathcal{E}'_{X}$ marked edge $e\colon x \to y$ of $X$ with $p(e) = \bar{e}$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  By \cite[Prop.\ 3.1.1.6]{highertopostheory}, (A), (B) and (C) are equivalent to (1), (2), and (3). By its dual, (A), (B') and (C') are equivalent to (1), (2'), and (3')
+\end{proof}
+
+Note that we have proven something slightly stronger:
+
+We would like to define cofibrations of bimarked simplicial sets to be maps of bimarked simplicial sets whose underlying map of simplicial sets is a monomorphism, and then show that the class of bimarked anodyne maps is stable under smash products with arbitrary cofibrations. Unfortunately, this turns out not to be quite true; the candidate class of cofibrations described above is generated by the following classes of maps.
+\begin{itemize}
+  \item[(I)] Boundary fillings $(\partial \Delta^{n})^{(\flat, \flat)} \to (\Delta^{n})^{(\flat, \flat)}$.
+
+  \item[(II)] Markings $(\Delta^{1})^{(\flat, \flat)} \to (\Delta^{1})^{(\sharp, \flat)}$.
+
+  \item[(III)] Markings $(\Delta^{1})^{(\flat, \flat)} \to (\Delta^{1})^{(\flat, \sharp)}$.
+\end{itemize}
+There is nothing that tells us, for example, that the smash product of a marked anodyne map of type $(2)$ with a cofibration of type (III) should be marked anodyne. Denoting arrows with the first marking using a $\bullet$ and the second using a $\circ$, this amounts, in the case $n = 0$, to the statement that the map
+\begin{equation*}
+  \begin{tikzcd}
+    \cdot
+    \arrow[r]
+    \arrow[d, "\bullet" marking]
+    \arrow[dr]
+    & \cdot
+    \arrow[d, "\bullet" marking]
+    \\
+    \cdot
+    \arrow[r, "\circ" marking]
+    & \cdot
+  \end{tikzcd}
+  \quad \longrightarrow \quad
+  \begin{tikzcd}
+    \cdot
+    \arrow[r, "\circ" marking]
+    \arrow[d, "\bullet" marking]
+    \arrow[dr]
+    & \cdot
+    \arrow[d, "\bullet" marking]
+    \\
+    \cdot
+    \arrow[r, "\circ" marking]
+    & \cdot
+  \end{tikzcd}
+\end{equation*}
+should be bimarked anodyne, which it isn't. However, we have the following weaker statement.
+
+\begin{lemma}
+  \label{lemma:smash_product_of_bimarked_anodyne_and_monic_is_bimarked_anodyne}
+  The class of bimarked anodyne maps in $\SSet^{++}$ is stable under smash products with flat monomorphisms, i.e.\ morphisms $A^{(\flat, \flat)} \to B^{(\flat, \flat)}$ such that the underlying morphism of simplicial sets $A \to B$ is a monomorphism. That is, if $f\colon X \to Y$ is bimarked anodyne and $A \to B$ is a monomorphism of simplicial sets, then
+  \begin{equation*}
+    (X \times B^{(\flat, \flat)}) \coprod_{X \times A^{(\flat, \flat)}} (Y \times A^{(\flat, \flat)}) \to Y \times B^{(\flat, \flat)}
+  \end{equation*}
+  is bimarked anodyne.
+\end{lemma}
+\begin{proof}
+  It suffices to show that for any flat boundary inclusion $(\partial \Delta^{n})^{(\flat, \flat)} \to (\Delta^{n})^{(\flat, \flat)}$ and any generating bimarked anodyne morphism $X \to Y$, the map
+  \begin{equation*}
+    (X \times (\Delta^{n})^{(\flat, \flat)}) \coprod_{X \times (\partial \Delta^{n})^{(\flat, \flat)}} (Y \times (\partial\Delta^{n})^{(\flat, \flat)}) \to Y \times (\Delta^{n})^{(\flat, \flat)}
+  \end{equation*}
+  is marked anodyne. If $X \to Y$ belongs to one of the classes (1), (2'), (3'), or (4'), then this is true by the arguments of \cite[Prop.\ 3.1.2.3]{highertopostheory}. If $X \to Y$ belongs to one of the classes (1), (2), (3), or (4), then it is true by the dual arguments.
+\end{proof}
+
+\begin{definition}
+  For any bimarked simplicial sets $X$, $Y$, define a simplicial set $\Map^{(\flat, \flat)}(X, Y)$ by the following universal property: for any simplicial set $Z$, there is a bijection
+  \begin{equation*}
+    \Hom_{\SSet}(Z, \Map^{(\flat, \flat)}(X, Y)) \cong \Hom_{\SSet^{++}}(Z^{(\flat, \flat)} \times X, Y).
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  \label{proposition:bimarked_anodyne_homotopy_pullback}
+  Let $p\colon \category{C} \to \category{D}$ be a bicartesian fibration of quasicategories, and denote by $\category{C}^{\natural} \to \category{D}^{(\sharp, \sharp)}$ the associated map of bimarked simplicial sets as in \hyperref[eg:bicartesian_marking]{Example~\ref*{eg:bicartesian_marking}}. Let $X \to Y$ be any bimarked anodyne map of simplicial sets. Then the square
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun^{(\flat, \flat)}(Y, \category{C}\nat)^{\simeq}
+      \arrow[r]
+      \arrow[d]
+      & \Fun^{(\flat, \flat)}(X, \category{C}\nat)^{\simeq}
+      \arrow[d]
+      \\
+      \Fun^{(\flat, \flat)}(Y, \category{D}^{(\sharp, \sharp)})^{\simeq}
+      \arrow[r]
+      & \Fun^{(\flat, \flat)}(X, \category{D}^{(\sharp, \sharp)})^{\simeq}
+    \end{tikzcd}
+  \end{equation*}
+  is a homotopy pullback in the Kan model structure.
+\end{proposition}
+\begin{proof}
+  First, we show that the right-hand map is a Kan fibration. In fact, the underlying map 
+  \begin{equation*}
+    \Fun^{(\flat, \flat)}(X, \category{C}^{\natural}) \to \Fun^{(\flat, \flat)}(X, \category{D}^{(\sharp, \sharp)})
+  \end{equation*}
+  is a trivial Kan fibration, since by \hyperref[lemma:smash_product_of_bimarked_anodyne_and_monic_is_bimarked_anodyne]{Lemma~\ref*{lemma:smash_product_of_bimarked_anodyne_and_monic_is_bimarked_anodyne}} together with \hyperref[prop:rlp_bimarked_anodyne]{Proposition~\ref*{prop:rlp_bimarked_anodyne}} we can solve the necessary lifting problems. This, together with the fact that each of the objects is a Kan complex, implies that in order to show that the above square is homotopy pullback it suffices to check that the map
+  \begin{equation*}
+    \Fun^{(\flat, \flat)}(Y, \category{C}\nat)^{\simeq} \to \Fun^{(\flat, \flat)}(X, \category{C}\nat)^{\simeq} \times_{\Fun^{(\flat, \flat)}(Y, \category{D}^{(\sharp, \sharp)})^{\simeq}} \Fun^{(\flat, \flat)}(X, \category{D}^{(\sharp, \sharp)})^{\simeq}
+  \end{equation*}
+  is a trivial Kan fibration. Since the functor $(-)^{\simeq}$ is a right adjoint it preserves limits, so it again suffices to show that the underlying map
+  \begin{equation*}
+    \Fun^{(\flat, \flat)}(Y, \category{C}\nat) \to \Fun^{(\flat, \flat)}(X, \category{C}\nat) \times_{\Fun^{(\flat, \flat)}(Y, \category{D}^{(\sharp, \sharp)})} \Fun^{(\flat, \flat)}(X, \category{D}^{(\sharp, \sharp)})
+  \end{equation*}
+  is a trivial fibration, which follows from \hyperref[lemma:smash_product_of_bimarked_anodyne_and_monic_is_bimarked_anodyne]{Lemma~\ref*{lemma:smash_product_of_bimarked_anodyne_and_monic_is_bimarked_anodyne}}.
+\end{proof}
+
+\subsection{Cartesian morphisms}
+\label{ssc:cartesian_morphisms}
+
+First, we show that we really have identified the cocartesian morphisms correctly.
+
+\begin{proposition}
+  \label{prop:form_of_cocartesian_morphisms_in_spans}
+  Let $\pi\colon \category{C} \to \category{D}$ be a bicartesian fibration of quasicategories which preserves pullbacks and satisfies the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}. Then morphisms of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & y
+      \arrow[dl, "\circ" marking]
+      \arrow[dr, "\bullet" marking]
+      \\
+      x
+      && x'
+    \end{tikzcd}
+  \end{equation*}
+  are $\pi$-cocartesian.
+\end{proposition}
+
+Let $\category{C} \to \category{D}$ be a bicartesian fibration, and let $X$ be a simplicial set with two distinguished markings $X_{\mathrm{cart}}$, $X_{\mathrm{cocart}} \subseteq X_{1}$. We will denote by $\Fun'(X, \category{C}) \subseteq \Fun(X, \category{C})$ the full subcategory on those functors which send each edge in $X_{\mathrm{cart}}$ to a cartesian edge of $\category{C}$, and each edge in $X_{\mathrm{cocart}}$ to a cocartesian edge of $\category{C}$. That is, $\Fun'(X, \category{C})$ is given by the fiber product
+\begin{equation*}
+  \Fun^{\flat}
+\end{equation*}
+
+Of course, the dual lemma implies that the same holds if $p$ is a cocartesian fibration and $\category{C}$ is given the dual marking.
+
+In order to show that morphisms $e\colon x \leftarrow y \rightarrow x'$ of the form given in \hyperref[prop:form_of_cocartesian_morphisms_in_spans]{Proposition~\ref*{prop:form_of_cocartesian_morphisms_in_spans}} really are cocartesian, we will have to show that the square
+\begin{equation*}
+  \begin{tikzcd}
+    \Span(\category{C})_{2} \times_{\Span(\category{C})_{\{0, 1\}}} \{e\}
+    \arrow[r]
+    \arrow[d]
+    & \Span(\category{C})_{\{0, 2\}} \times_{\Span(\category{C})_{\{0\}}} \{x\}
+    \arrow[d]
+    \\
+    \Span(\category{D})_{2} \times_{\Span(\category{D})_{\{0, 1\}}} \{\pi e\}
+    \arrow[r]
+    & \Span(\category{D})_{\{0, 2\}} \times_{\Span(\category{D})_{\{0\}}} \{\pi x\}
+  \end{tikzcd}
+\end{equation*}
+is homotopy pullback. Translating, we will have to show that the square
+\begin{equation*}
+  \begin{tikzcd}
+    \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+    \arrow[r]
+    \arrow[d]
+    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
+    \arrow[d]
+    \\
+    \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+    \arrow[r]
+    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
+  \end{tikzcd}
+\end{equation*}
+is homotopy pullback.
+
+Define a Kan complex $\category{K}$ to be the full subcategory of $\Fun(\asd(\Delta^{2}), \category{C})^{\simeq}$ on functors which send the morphisms in $\asd(\Delta^{2})$ to cartesian and cocartesian morphisms as marked.
+\begin{equation*}
+  \begin{tikzcd}
+    && \cdot
+    \\
+    & \cdot
+    \arrow[ur, "\bullet" marking]
+    \arrow[dl, "\circ" marking]
+    && \cdot
+    \arrow[ul]
+    \arrow[dr]
+    \\
+    \cdot
+    && \cdot
+    \arrow[ll]
+    \arrow[rr]
+    \arrow[uu]
+    \arrow[ur, "\bullet" marking]
+    \arrow[ul]
+    && \cdot
+  \end{tikzcd}
+\end{equation*}
+
+We now note that we can decompose the above square into two squares
+\begin{equation*}
+  \begin{tikzcd}
+    \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+    \arrow[r]
+    \arrow[d]
+    & \category{K} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+    \arrow[d]
+    \\
+    \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+    \arrow[r]
+    & \Fun(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+  \end{tikzcd}
+\end{equation*}
+and
+\begin{equation*}
+  \begin{tikzcd}
+    \category{K} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+    \arrow[r]
+    \arrow[d]
+    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
+    \arrow[d]
+    \\
+    \Fun(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+    \arrow[r]
+    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
+  \end{tikzcd}.
+\end{equation*}
+The first square is a pullback because the bottom morphism is a full subcategory inclusion of connected components, and the fiber over a connected component corresponding to Cartesian functors $\asd(\Delta^{2}) \to \category{D}$ is consists precisely of Cartesian functors $\asd(\Delta^{2}) \to \category{C}$ by the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}.
+
+Therefore, we need to show that the second square is pullback. For this it suffices to show separately that the squares
+\begin{equation*}
+  \begin{tikzcd}
+    \category{K}
+    \arrow[r]
+    \arrow[d]
+    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq}
+    \arrow[d]
+    \\
+    \Fun(\asd(\Delta^{2}), \category{D})^{\simeq}
+    \arrow[r]
+    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq}
+  \end{tikzcd}
+\end{equation*}
+and
+\begin{equation*}
+  \begin{tikzcd}
+    \category{L}
+    \arrow[r]
+    \arrow[d]
+    & \Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}
+    \arrow[d]
+    \\
+    \Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}
+    \arrow[r]
+    & \Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}
+  \end{tikzcd},
+\end{equation*}
+where $\category{L}$ is the Kan complex defined to be the full subcategory of $\Fun(\asd(\Delta^{\{0, 1\}}, \category{C}))^{\simeq}$ on functors which send the morphisms in $\asd(\Delta^{\{0, 1\}})$ to cartesian and cocartesian morphisms as marked.
+\begin{equation*}
+  \begin{tikzcd}
+    && \cdot
+    \\
+    & \cdot
+    \arrow[ur, "\bullet" marking]
+    \arrow[dl, "\circ" marking]
+    \\
+    \cdot
+  \end{tikzcd}
+\end{equation*}
+
+
+\begin{equation*}
+  \Map\left(
+  \begin{tikzcd}[row sep=tiny, column sep=tiny]
+    && \cdot
+    \\
+    & \cdot
+    \arrow[ur, "\bullet" marking]
+    \arrow[dl, "\circ" marking]
+    \\
+    \cdot
+  \end{tikzcd},
+  \category{C}
+  \right)
+\end{equation*}
+
+\end{document}

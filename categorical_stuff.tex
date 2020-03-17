@@ -1,0 +1,313 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Categorical stuff}
+\label{ch:categorical_stuff}
+
+\section{Kapranov-Voevodsky 2-vector spaces}
+\label{sec:kapranov_voevodsky_2_vector_spaces}
+
+In this section, we will denote by $\Vect$ the category $\catname{FinVect}_{\C}$ of finite-dimensional complex vector spaces.
+
+\begin{definition}[Kapranov-Voevodsky 2-vector space]
+  \label{def:kapranov_voevodsky_2_vector_space}
+  A \emph{$\C$-linear additive category} is a category $\category{V}$ enriched in $(\Vect, \otimes)$ with finite biproducts (including zero objects). We call such biproducts \emph{direct sums.}
+
+  An object $x \in \category{V}$ is said to be \emph{simple} if $\Hom(x, x) \cong \C$. An object is \emph{semisimple} if it can be written as a finite direct sum simple objects. We say that $\category{V}$ is \emph{semisimple} if all of its objects are semisimple.
+
+  A \defn{Kapranov-Voevodsky 2-vector space} is a semisimple $\C$-linear additive category. A morphism of 2-vector spaces is a functor such that the maps $\Hom(x, y) \to \Hom(Fx, Fy)$ are linear.
+\end{definition}
+
+Note that all 2-vector spaces are abelian, and all morphisms between 2-vector spaces are additive.
+
+\begin{example}
+  Consider the category
+\end{example}
+
+\section{Simplicial model categories}
+\label{sec:simplicial_model_categories}
+
+\begin{definition}
+  A \defn{monoidal model category} is a closed monoidal category $(\mathbf{C}, \otimes, \mathbf{1})$ together with a model structure such that the following hold.
+  \begin{enumerate}
+    \item For $i\colon A \to A'$, $j\colon B \to B'$ cofibrations, the $\otimes$-smash
+      \begin{equation*}
+        i \overset{\otimes}{\wedge} j\colon A' \otimes B \coprod_{A \otimes B} A \otimes B' \to A' \otimes B'
+      \end{equation*}
+      is a cofibration, and further is a trivial cofibration if either $i$ or $j$ is trivial.
+
+    \item $\otimes$ preserves small coproducts in each variable.
+
+    \item The monoidal unit $\mathbf{1}$ is cofibrant.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  The monoidal category $(\SSet, \otimes)$, together with the Kan model structure, is a monoidal model category.
+  \begin{enumerate}
+    \item This is
+
+    \item Basic category theory.
+
+    \item Everything is cofibrant.
+  \end{enumerate}
+\end{example}
+
+\begin{note}
+  By \cite[Lemma 67]{angus_higher_cats}, condition 1.\ above can equivalently be cast as follows.
+\end{note}
+
+\section{Joyal model structure}
+\label{sec:joyal_model_structure}
+
+\begin{definition}[Joyal model structure]
+  \label{def:joyal_model_structure}
+  There is a model structure on $\SSet$ with the following classes of morphisms.
+  \begin{itemize}
+    \item The cofibrations $\cof$ are monomorphisms, i.e.\ level-wise injections.
+
+    \item The weak equivalences $\W$ are \emph{weak categorical equivalences}, i.e.\ morphisms $u\colon A \to B$ of simplicial sets such that for all quasi-categories $X$ the induced map on internal homs
+      \begin{equation*}
+        u^{*}\colon X^{B} \to X^{A}
+      \end{equation*}
+      induces an isomorphism\dots
+
+    \item The fibrations $\fib$ are isofibrations, i.e.\ morphisms with the right lifting property with respect to inner horn inclusions and the morphism
+      \begin{equation*}
+        N\left(\{1\} \hookrightarrow [1]\right).
+      \end{equation*}
+  \end{itemize}
+\end{definition}
+
+\section{Limits and colimits}
+\label{sec:limits_and_colimits}
+
+\subsection{Cofinality}
+\label{ssc:cofinality}
+
+
+\section{Kan extensions}
+\label{sec:kan_extensions}
+
+
+\section{Segal spaces}
+\label{sec:segal_spaces}
+
+This comes from \cite{1409.0837}.
+
+We will denote the $\infty$-category of categories (i.e.\ the simplicial nerve $N_{D}(\Cat^{\D}_{\infty})$, where $\Cat^{\D}_{\infty}$ is the subcategory of $\SSet$ on quasicategories, enriched in quasicategories via mapping spaces) by $\ICat$.
+
+%\begin{definition}[Reedy model category]
+%  \label{def:reedy_model_category}
+%  The category of simplicial objects in $\SSet$ admits the following model structure, called the \defn{Reedy model structure.}
+%  \begin{itemize}
+%    \item Weak equivalences are degree-wise weak equivalences.
+%
+%    \item Fibrations
+%  \end{itemize}
+%\end{definition}
+
+\begin{definition}[category object]
+  \label{def:category_object}
+  Let $\category{C}$ be an $\infty$-category with finite limits. A \defn{category object} in $\category{C}$ is a simplicial object
+  \begin{equation*}
+    C_{\bullet}\colon \D\op \to \category{C}
+  \end{equation*}
+  such that the maps
+  \begin{equation}
+    \label{eq:segal_condition}
+    C_{n} \to C_{1} \times_{C_{0}} \cdots \times_{C_{0}} C_{1}
+  \end{equation}
+  are equivalences\footnote{That is, descend to isomorphisms in the homotopy category $\h \category{C}$.} for all $n$. We will denote the full subcategory of $\category{C}_{\D}$ on these objects by $\Cat(\category{C})$.
+\end{definition}
+
+The condition in \hyperref[eq:segal_condition]{Equation~\ref*{eq:segal_condition}} is known as the \emph{Segal condition.}
+
+\begin{example}
+  A category object in $N(\Set)$ is the same thing as (the nerve of) a category. For any ordinary category $\category{C}$, the homotopy category $\h N(\category{C}) \cong \category{C}$, so the maps in \hyperref[eq:segal_condition]{Equation~\ref*{eq:segal_condition}} are bijections; the Segal condition tells us that an $n$-simplex is completely determined by its spine.
+\end{example}
+
+\begin{definition}[segal space]
+  \label{def:segal_space}
+  A \defn{Segal space} is a category object in $\category{S}$, the $\infty$-category of spaces. The category of Segal spaces, denoted $\Seg(\S)$, is the full subcategory of simplicial objects in $\S$ satsifying the Segal condition.
+\end{definition}
+
+Here we think of a category as having a \emph{space,} rather than a \emph{set,} of objects, of morphisms, etc.
+
+\begin{example}
+  Any category, i.e.\ any category object in $\Set$, can be thought of as a segal space by applying the functor $\Set \hookrightarrow \S$. In this case, the spaces of higher morphisms are thought of as discrete sets of points.
+\end{example}
+
+Let $E^{n}$ be the contractible groupoid with $n+1$ objects and a unique morphism between each pair of objects. Since $E^{n}$ is a category (hence a category object in $\Set$), we can think of it as a Segal space using the functor $\Set \hookrightarrow \S$.
+
+\begin{definition}[classifying space of equivalences]
+  \label{def:classifying_space_of_equivalences}
+
+  Let $K$ be a Segal space. The \defn{classifying space of equivalences of $K$} is the simplicial set
+  \begin{equation*}
+    \iota K := \colim \iota_{\bullet} K,\qquad \iota_{n} K = \Map_{\Seg(\S)}(E^{n}, K).
+  \end{equation*}
+\end{definition}
+
+\begin{example}
+  Let $K$ be an ordinary category. The zero-simplices of $\iota K$ are all maps
+  \begin{equation*}
+    F\colon E^{n} \to K
+  \end{equation*}
+  for some $n \geq 0$. That is, they are clusters of $n$ isomorphic objects in $K$. The 1-simplices are maps
+  \begin{equation*}
+    E^{n} \times \D^{1} \to K,
+  \end{equation*}
+  i.e.\ pairs of clusters of isomorphic objects connected by a morphism.
+\end{example}
+
+\begin{definition}[fully faithful, essentially surjective]
+  \label{def:_fully_faithful_essentially_surjective}
+  We say that a morphism $f\colon X \to Y$ of Segal spaces is \defn{fully faithful and essentially surjective} if
+  \begin{enumerate}
+    \item The map $\iota X \to \iota Y$ is an equivalence of spaces
+
+    \item The diagram
+      \begin{equation*}
+        \begin{tikzcd}
+          X_{1}
+          \arrow[r]
+          \arrow[d]
+          & Y_{1}
+          \arrow[d]
+          \\
+          X_{0} \times X_{0}
+          \arrow[r]
+          & Y_{0} \times Y_{0}
+        \end{tikzcd}
+      \end{equation*}
+      is a pullback square.
+  \end{enumerate}
+\end{definition}
+
+\begin{example}
+  Let $F\colon \category{C} \to \category{D}$ be a functor between ordinary categories, taken to be Segal spaces via the embedding $\Set \hookrightarrow \S$.
+
+  The first condition tells us that
+
+  Since the nerve is a right adjoint, it preserves limits, so we can take the above pullback in $\Set$. In this form, the second condition is precisely that that $f$ is bijective on hom-sets; that is, providing a morphism in $X$ is the same as providing a morphism in $Y$ whose source and target are in $X$.
+\end{example}
+
+\begin{definition}[inert morphism]
+  \label{def:inert_morphism}
+  Let $\phi\colon [m] \to [n]$ be a morphism in $\D$. We say that $\phi$ is \defn{inert} if
+  \begin{equation*}
+    \phi(i) = \phi(0) + i \qquad \text{for all }i.
+  \end{equation*}
+
+  We denote the subcategory of $\D$ on inert morphisms by $\Dint$.
+\end{definition}
+
+Let $\Cell^{1}$ denote the full subcategory of $\Dint$, i.e.\ the category
+\begin{equation*}
+  \begin{tikzcd}[column sep=small]
+    {[0]}
+    \arrow[r, shift left]
+    \arrow[r, shift right]
+    & {[1]}
+  \end{tikzcd}.
+\end{equation*}
+
+Denote
+\begin{equation*}
+  \Cell^{1}_{/[n]} = \Cell^{1} \times_{\Dint} (\Dint)_{/[n]}.
+\end{equation*}
+
+The objects are inert morphisms from $[0]$ and $[1]$ to $[n]$, and the only non-identity morphisms come from commuting triangles
+\begin{equation*}
+  \begin{tikzcd}
+    {[0]}
+    \arrow[rr]
+    \arrow[dr]
+    && {[1]}
+    \arrow[dl]
+    \\
+    & {[n]}
+  \end{tikzcd}.
+\end{equation*}
+We can draw this category as follows.
+\begin{equation*}
+  \begin{tikzcd}
+    \{0\}
+    \arrow[dr]
+    && \{1\}
+    \arrow[dl]
+    \arrow[dr]
+    && \cdots
+    \arrow[dl]
+    \arrow[dr]
+    && \{n\}
+    \arrow[dl]
+    \\
+    & \{0, 1\}
+    && \{1, 2\}
+    && \{n-1,n\}
+  \end{tikzcd}
+\end{equation*}
+
+\begin{lemma}
+  Let $\category{C}$ be an $\infty$-category with finite limits. A simplicial object $X\colon \D\op \to \category{C}$ is a category object if and only if its restriction $\bar{X} = X_{\Dint\op}$ is the right Kan extension of its restriction to $\Cell^{1,\mathrm{op}}$.
+\end{lemma}
+\begin{proof}
+  We are taking the following Kan extension.
+  \begin{equation*}
+    \begin{tikzcd}
+      (\Cell^{1})\op
+      \arrow[rr, "X|_{(\Cell^{1})\op}"]
+      \arrow[dr, swap, "i"]
+      && \category{C}
+      \\
+      & \Dint\op
+      \arrow[ur, swap, "\bar{X}"]
+    \end{tikzcd}
+  \end{equation*}
+  By definition, $\bar{X}$ is a right Kan extension of its restriction if and only if for each object $[n] \in \Dint\op$, the natural map
+  \begin{equation*}
+    X_{n} \to \lim\left[(\Cell^{1}_{/[n]})\op \to (\Cell^{1})\op \to \mathcal{C}\right].
+  \end{equation*}
+
+  We are taking the limit over the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      & X_{1}
+      \arrow[dl]
+      \arrow[dr]
+      & & X_{1}
+      \arrow[dl]
+      \arrow[dr]
+      & & X_{1}
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      X_{0}
+      && X_{0}
+      && X_{0}
+      && X_{0}
+    \end{tikzcd},
+  \end{equation*}
+  which is precisely the fibered product in \hyperref[eq:segal_condition]{Equation~\ref*{eq:segal_condition}}.
+\end{proof}
+
+\section{Iterated Segal spaces}
+\label{sec:iterated_segal_spaces}
+
+\begin{definition}[\texorpdfstring{$n$}{n}-fold category object]
+  \label{def:n-fold_category_object}
+  An \defn{$n$-fold category object} in an $\infty$-category $\category{C}$ is a category object in the category of $(n-1)$-fold category objects in $\category{C}$. That is,
+  \begin{equation*}
+    \Cat^{n}(\category{C}) = \Cat(\Cat^{n-1}(\category{C})).
+  \end{equation*}
+  We will also refer to an $n$-fold category object as a \defn{$n$-uple Segal space}.
+\end{definition}
+
+\begin{example}
+  A $2$-uple Segal space
+\end{example}
+
+\end{document}

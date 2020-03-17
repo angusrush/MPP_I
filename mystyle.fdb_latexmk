@@ -1,0 +1,11 @@
+# Fdb version 3
+["pdflatex"] 1584108002 "mystyle.sty" "mystyle.pdf" "mystyle" 1584108002
+  "/etc/texmf/web2c/texmf.cnf" 1525090506 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
+  "/usr/share/texmf/web2c/texmf.cnf" 1520210507 32485 c64754543d8ac501bea6e75e209ea521 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1540281109 4127000 0b71d6b436264c4835bd4ac5dbd38cd5 ""
+  "mystyle.aux" 1584107994 8 a94a2480d3289e625eea47cd1b285758 ""
+  "mystyle.sty" 1584108002 4649 555864f058113464a6cac218c8fb7f54 ""
+  (generated)
+  "mystyle.pdf"
+  "mystyle.log"

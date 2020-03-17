@@ -1,0 +1,169 @@
+\ProvidesPackage{mystyle}
+
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+
+\usepackage[margin=1.2in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{amstext}
+\usepackage{array}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{mathrsfs}
+\usepackage{soul}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{biblatex}
+\usepackage[makeroom]{cancel}
+\usepackage{libertine}
+\usepackage[libertine]{newtxmath}
+\usepackage{anyfontsize}
+\usepackage{interval}
+\usepackage{bm}
+\usepackage{booktabs}
+\usepackage{eucal}
+\usepackage{setspace}
+\usepackage{mathdots}
+\usepackage{epigraph}
+\usepackage[bbgreekl]{mathbbol}
+
+\usetikzlibrary{decorations.markings}
+
+% Increase line spacing
+%\setstretch{1.1}
+\renewcommand{\baselinestretch}{1.1} 
+
+% Set up hyperref colors
+\hypersetup{colorlinks,
+  linkcolor={blue!50!black},
+  citecolor={blue!50!black},
+  urlcolor={blue!80!black}
+}
+
+% chktex-file 18
+% chktex-file 23
+% chktex-file 6
+
+% Set up interval package
+\intervalconfig{soft open fences}
+
+% load tikz-cd
+\usetikzlibrary{cd}
+
+% Makes indentation more note-ish
+\setlength{\parindent}{0em}
+\setlength{\parskip}{.5em}
+\setlength{\headheight}{14.0pt}
+
+%%% My commands
+% Fonts
+\newcommand{\category}[1]{\mathcal{#1}}
+\newcommand{\catname}[1]{\mathbf{#1}}
+% General
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\asd}{\mathrm{asd}}
+% Typesetting
+\newcommand{\defn}[1]{\emph{\textbf{#1}}}
+\newcommand{\abs}[1]{{| #1 |}}
+\newcommand{\tallabs}[1]{\left| #1 \right|}
+% Category theory
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Sing}{\mathbf{Sing}}
+\newcommand{\op}{^{\mathrm{op}}}
+\newcommand{\otm}{^{\otimes}}
+\newcommand{\rel}[1]{\quad(\mathrm{rel.\ }#1)}
+\newcommand{\W}{\mathsf{W}}
+\newcommand{\ob}{\mathrm{ob}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\coker}{\mathrm{coker}}
+\DeclareMathOperator*{\colim}{colim}
+\newcommand{\Fun}{\mathbf{Fun}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\Map}{\mathrm{Map}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Lan}{\mathrm{Lan}}
+\newcommand{\Ran}{\mathrm{Ran}}
+\newcommand{\Cart}{\mathrm{Cart}}
+% Model categories
+\newcommand{\fib}{\mathsf{Fib}}
+\newcommand{\cof}{\mathsf{Cof}}
+\newcommand{\llp}{{}_{\perp}}
+\newcommand{\rlp}{_{\perp}}
+% Category names
+\newcommand{\D}{\mathbb{\Delta}}
+\newcommand{\Sig}{\mathbb{\Sigma}}
+\newcommand{\Lam}{\mathbb{\Lambda}}
+\newcommand{\CGHaus}{\catname{CGHaus}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\pSet}{\catname{Set}_{*}}
+\renewcommand{\Top}{\catname{Top}}
+\newcommand{\Ab}{\catname{Ab}}
+\newcommand{\Vect}{\catname{Vect}}
+\newcommand{\Ch}{\catname{Ch}}
+\newcommand{\Rep}{\catname{Rep}}
+\newcommand{\h}{\mathrm{h}}
+\newcommand{\Rmod}{R\text{-}\catname{Mod}}
+\newcommand{\modR}{\catname{Mod}\text{-}R}
+\newcommand{\Pair}{\catname{Pair}}
+\newcommand{\Mod}{\catname{Mod}}
+\newcommand{\SSet}{\catname{Set}_{\D}}
+\newcommand{\Kan}{\catname{Kan}}
+\newcommand{\SCat}{\catname{Cat}_{\D}}
+\newcommand{\ICat}{\catname{Cat}_{\infty}}
+\newcommand{\Cat}{\catname{Cat}}
+\newcommand{\Seg}{\catname{Seg}}
+\newcommand{\CSS}{\catname{CSS}}
+\newcommand{\Corr}{\catname{Corr}}
+\newcommand{\Span}{\catname{Span}}
+\newcommand{\Bord}{\catname{Bord}}
+\newcommand{\Cell}{\catname{Cell}}
+\newcommand{\mhyp}{\text{-}}
+\newcommand{\simto}{\overset{\simeq}{\to}}
+\newcommand{\PD}{\mathsf{PD}}
+\newcommand{\Dint}{\D_{\mathrm{int}}}
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\SPAN}{\catname{SPAN}}
+\newcommand{\CSPAN}{\overline{\catname{SPAN}}}
+\newcommand{\Finp}{\mathcal{F}\mathrm{in}_{*}}
+\newcommand{\OS}{\mathcal{O}_{\S}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\RFib}{\catname{RFib}}
+\newcommand{\LFib}{\catname{LFib}}
+\newcommand{\shp}{^{\sharp}}
+\newcommand{\nat}{^{\natural}}
+\newcommand{\flt}{^{\flat}}
+
+% Second level of list uses empty bullets
+\renewcommand{\labelitemii}{$\circ$}
+
+% Declare theorem styles
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}[definition]{Example}
+\newtheorem{recurring_example}[definition]{Recurring Example}
+\newtheorem{counterexample}[definition]{Counterexample}
+\newtheorem{fact}[definition]{Fact}
+\newtheorem{joke}[definition]{Joke}
+\newtheorem{scheme}[definition]{Cockamamie Scheme}
+
+%\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{proposition}[definition]{Proposition}
+
+\theoremstyle{remark}
+\newtheorem{claim}[definition]{Claim}
+\newtheorem{recipe}[definition]{Recipe}
+\newtheorem{note}[definition]{Note}
+\newtheorem{notation}[definition]{Notation}

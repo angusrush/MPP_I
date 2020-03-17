@@ -1,0 +1,199 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Introduction}
+\label{ch:introduction}
+
+To do for next time (Monday, Jan.\ 17):
+\begin{enumerate}
+  \item Write up the proofs of the unclear sections of Barwick more clearly
+
+  \item Make precise the diagram
+    \begin{equation*}
+      \begin{tikzcd}
+        \Span(\Fun(\Delta^{1}, \category{C}))^{\otimes}
+        \arrow[rr]
+        \arrow[ddr]
+        \arrow[dr]
+        && \Span(\category{C})^{\otimes}
+        \arrow[ddl]
+        \arrow[dr]
+        \\
+        & \Span(\Fun(\Delta^{1}, \category{C})^{\otimes})
+        \arrow[ddr, crossing over]
+        \arrow[rr, crossing over]
+        && \Span(\category{C}^{\otimes})
+        \arrow[ddl]
+        \\
+        & \Finp
+        \arrow[dr]
+        \\
+        && \Span(\Finp)
+      \end{tikzcd}
+    \end{equation*}
+    where the bottom squares are pullback.
+
+  \item Think about phrasing this in terms of Segal spaces; who know, maybe it becomes trivial!
+\end{enumerate}
+
+\section{Description}
+\label{sec:description}
+
+\subsection{Categories of correspondences}
+\label{ssc:categories_of_correspondences}
+
+\begin{itemize}
+  \item $\category{C} \rightsquigarrow \Corr(\category{C}) = \Span(\category{C})$
+    \begin{equation*}
+      \begin{tikzcd}[column sep=small]
+        && y \times_{x'} y'
+        \arrow[dr]
+        \arrow[dl]
+        \\
+        & y
+        \arrow[dr]
+        \arrow[dl]
+        && y'
+        \arrow[dr]
+        \arrow[dl]
+        \\
+        x
+        && x'
+        && x''
+      \end{tikzcd}
+    \end{equation*}
+
+  \item $\category{C}^{\otimes} \rightsquigarrow \Corr(\category{C})^{\otimes}$ (monoidal structure)
+
+  \item $\category{C} \rightsquigarrow \Corr_{2}(\category{C})$, $\Corr_{n}(\category{C})^{\otimes}$ (where perhaps $\otimes$ is a symmetric monoidal $n$-category)
+
+    \begin{equation*}
+      \begin{tikzcd}
+        & y
+        \arrow[dl]
+        \arrow[dr]
+        \\
+        x
+        & z
+        \arrow[u]
+        \arrow[r]
+        \arrow[d]
+        \arrow[l]
+        & x'
+        \\
+        & y'
+        \arrow[ul]
+        \arrow[ur]
+      \end{tikzcd}
+    \end{equation*}
+
+    TFT: $M \mapsto X^{M}$
+    \begin{equation*}
+      \begin{tikzcd}
+        & M
+        \\
+        \partial^{+}M
+        \arrow[ur, hook]
+        && \partial^{-}M
+        \arrow[ul, hook]
+      \end{tikzcd}
+      \qquad\mapsto\qquad
+      \begin{tikzcd}
+        & X^{M}
+        \\
+        X^{\partial^{+}M}
+        \arrow[ur, hook]
+        && X^{\partial^{-}M}
+        \arrow[ul, hook]
+      \end{tikzcd}
+    \end{equation*}
+\end{itemize}
+
+Haugseng: Iterated Spans and Classical TFTs
+\begin{equation*}
+  \Bord_{n}^{\otimes} \rightarrow \Corr_{n}(\category{C})^{\otimes} \overset{?}{\dashrightarrow} \Vect^{\otimes}
+\end{equation*}
+
+\subsection{Transfer theories}
+\label{ssc:transfer_theories}
+
+Let $F\colon \category{C} \to \category{D}$, and let $x \in \category{C}$.
+\begin{equation*}
+  \begin{tikzcd}
+    & y
+    \arrow[dl, swap, "p"]
+    \arrow[dr, "q"]
+    \\
+    x
+    && x'
+  \end{tikzcd}
+\end{equation*}
+
+\section{Motivation for spans}
+\label{sec:motivation_for_spans}
+
+Let $X$ and $Y$ be sets, say representing the in and out states of some physical system. For example, imagine a photon sent out by some emitter, passing through a screen with holes, and then being detected. The set $X$ might be
+\begin{equation*}
+  \{\text{left hole}, \text{middle hole}, \text{right hole}\},
+\end{equation*}
+and the set $Y$ might be
+\begin{equation*}
+  \{\text{detected at $A$}, \text{detected at $B$}\}.
+\end{equation*}
+
+Consider a set $T$, equipped with maps $s\colon T \to X$ and $t\colon T \to Y$. 
+\begin{equation*}
+  \begin{tikzcd}
+    & T
+    \arrow[dl, swap, "s"]
+    \arrow[dr, "t"]
+    \\
+    X
+    && Y
+  \end{tikzcd}
+\end{equation*}
+We can think of $T$ as consisting of a set of ways of going from an element of $X$ to an element of $Y$; that is, (using the universal property for products) the fiber $T^{x}_{y} := (s, t)^{-1}(x, y)$ can be thought of as the set of ways of going from $x \in X$ to $y \in Y$. In our example, the fiber $T^{x}_{y}$ would correspond to the set of classical trajectories starting at hole $x$ and ending at detector $y$.
+
+Consider concatenating two such processes.
+\begin{equation*}
+  \begin{tikzcd}
+    & T
+    \arrow[dl, swap, "s"]
+    \arrow[dr, "t"]
+    && T'
+    \arrow[dl, swap, "s'"]
+    \arrow[dr, "t'"]
+    \\
+    X
+    && Y
+    && Z
+  \end{tikzcd}
+\end{equation*}
+Taking the pullback in $\Set$ gives us a set of ways of going from $X$ to $Z$.
+\begin{equation*}
+  \begin{tikzcd}
+    && S
+    \arrow[dl, swap, "\sigma"]
+    \arrow[dr, "\tau"]
+    \\
+    & T
+    \arrow[dl, swap, "s"]
+    \arrow[dr, "t"]
+    && T'
+    \arrow[dl, swap, "s'"]
+    \arrow[dr, "t'"]
+    \\
+    X
+    && Y
+    && Z
+  \end{tikzcd}
+\end{equation*}
+That is, the fibers $S^{x}_{z}$ consist of pairs $(t, t')$, where $t'$ is a process from $x$ to $y$ and $t'$ is a process from $y$ to $z$.
+
+For a set $X$, denote by $L(X)$ the free $\C$-vector space on $X$. Consider a span $T\colon X \to Y$ as before. We can assign to $T$ a linear map
+\begin{equation*}
+  L(T)\colon L(X) \to L(Y)
+\end{equation*}
+
+\end{document}

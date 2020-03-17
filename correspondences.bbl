@@ -1,0 +1,128 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.9 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{spectralmackeyfunctors1}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=c434412c58b9071abae96c4c759f6883}{%
+           family={Barwick},
+           familyi={B\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{c434412c58b9071abae96c4c759f6883}
+      \strng{fullhash}{c434412c58b9071abae96c4c759f6883}
+      \strng{bibnamehash}{c434412c58b9071abae96c4c759f6883}
+      \strng{authorbibnamehash}{c434412c58b9071abae96c4c759f6883}
+      \strng{authornamehash}{c434412c58b9071abae96c4c759f6883}
+      \strng{authorfullhash}{c434412c58b9071abae96c4c759f6883}
+      \field{sortinit}{B}
+      \field{sortinithash}{276475738cc058478c1677046f857703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Spectral Mackey functors and equivariant algebraic K-theory (I)}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb arXiv:1404.0108
+      \endverb
+    \endentry
+    \entry{spectralmackeyfunctors2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=e4ac5f1ad4b2a8a17b79b531c50fd25a}{%
+           family={C.\bibnamedelimi Barwick},
+           familyi={C\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={J.\bibnamedelimi Shah},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           suffix={S.\bibnamedelimi Glasman},
+           suffixi={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{e4ac5f1ad4b2a8a17b79b531c50fd25a}
+      \strng{fullhash}{e4ac5f1ad4b2a8a17b79b531c50fd25a}
+      \strng{bibnamehash}{e4ac5f1ad4b2a8a17b79b531c50fd25a}
+      \strng{authorbibnamehash}{e4ac5f1ad4b2a8a17b79b531c50fd25a}
+      \strng{authornamehash}{e4ac5f1ad4b2a8a17b79b531c50fd25a}
+      \strng{authorfullhash}{e4ac5f1ad4b2a8a17b79b531c50fd25a}
+      \field{sortinit}{C}
+      \field{sortinithash}{963e9d84a3da2344e8833203de5aed05}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Spectral Mackey functors and equivariant algebraic K-theory (II)}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb arXiv:1505.03098v2
+      \endverb
+    \endentry
+    \entry{1409.0837}{article}{}
+      \name{author}{1}{}{%
+        {{hash=107e2639faf72e0cd40f82bed0594bab}{%
+           family={Haugseng},
+           familyi={H\bibinitperiod},
+           given={Rune},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{107e2639faf72e0cd40f82bed0594bab}
+      \strng{fullhash}{107e2639faf72e0cd40f82bed0594bab}
+      \strng{bibnamehash}{107e2639faf72e0cd40f82bed0594bab}
+      \strng{authorbibnamehash}{107e2639faf72e0cd40f82bed0594bab}
+      \strng{authornamehash}{107e2639faf72e0cd40f82bed0594bab}
+      \strng{authorfullhash}{107e2639faf72e0cd40f82bed0594bab}
+      \field{sortinit}{H}
+      \field{sortinithash}{5f15a7bc777ad49ff15aa4d2831b1681}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Mathematische Zeitschrift 289(3) (2018), 1427-1488}
+      \field{title}{Iterated spans and classical topological field theories}
+      \field{year}{2014}
+      \verb{doi}
+      \verb 10.1007/s00209-017-2005-x
+      \endverb
+      \verb{eprint}
+      \verb arXiv:1409.0837
+      \endverb
+    \endentry
+    \entry{highertopostheory}{book}{}
+      \name{author}{1}{}{%
+        {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
+           family={Lurie},
+           familyi={L\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{fullhash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{bibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \field{sortinit}{L}
+      \field{sortinithash}{2c7981aaabc885868aba60f0c09ee20f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-691-14049-0}
+      \field{title}{Higher Topos Theory}
+      \field{year}{2009}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
