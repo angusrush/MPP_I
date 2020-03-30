@@ -55,7 +55,7 @@
 \end{definition}
 
 \begin{definition}
-  A map $\category{A} \to \category{B}$ between complete Segal spaces is a \defn{cocartesian fibration} if it is an inner fibration and each morphism in
+  A map $\category{A} \to \category{B}$ between complete Segal spaces is a \defn{cocartesian fibration} if it is an inner fibration and each morphism in $\category{B}$ has a cocartesian lift.
 \end{definition}
 
 %\begin{definition}
@@ -112,7 +112,7 @@
       & \Span(\category{D})_{1} \times_{\Span(\category{D})_{0}} \Span(\category{D})_{1}
     \end{tikzcd}
   \end{equation*}
-  is a homotopy pullback square. This says precisely that we need to show that
+  is a homotopy pullback square. This says that we need to show that
   \begin{equation*}
     \begin{tikzcd}
       \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq}
@@ -126,7 +126,14 @@
       & \Fun^{\Cart}(\asd(\Lambda^{2}_{1}), \category{D})^{\simeq}
     \end{tikzcd}
   \end{equation*}
-  is a homotopy pullback. Since everything is a Kan complex and the lower map is a Kan fibration
+  is a homotopy pullback. Since all the objects involved are Kan complexes and the lower map is a Kan fibration, it suffices to show that the induced map from $\Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq}$ into the fibered product is a weak equivalence. By
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun(\asd(\Delta^{2}), \category{C}) \to \Fun(\asd(\Lambda^{2}_{1}), \category{C}) \times_{\Fun(\asd(\Delta^{2}), \category{D})} \Fun(\asd(\Lambda^{2}_{1}), \category{D})
+    \end{tikzcd}
+  \end{equation*}
+  Since Cartesian simplices connected by an equivalence are preserved, the map
+  is
 \end{proof}
 
 \subsection{Cocartesian fibrations}
@@ -152,7 +159,7 @@ The main goal of this section is to prove the following theorem.
         \arrow[d]
         \\
         x'
-        \arrow[r, "f'", "\circ" marking]
+        \arrow[r, "f'", "\bullet" marking]
         & y'
       \end{tikzcd}
     \end{equation*}
@@ -191,12 +198,12 @@ The main goal of this section is to prove the following theorem.
   \end{equation*}
 \end{note}
 
-We prove this in several steps. Since we will be working with bicartesian fibrations, it will be helpful to adapt some of the tools of marked simplicial sets to our purposes.
+We prove \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}} in several steps. Since we will be working with bicartesian fibrations, it will be helpful to adapt some of the tools of marked simplicial sets to our purposes.
 
 \subsection{Bimarked simplicial sets}
 \label{ssc:bimarked_simplicial_sets}
 
-We will have to deal with bicartesian fibrations. For this reason, it will be helpful to define the notion of a bimarked simplicial set, which is a simplicial set with two markings, one of which controls the cocartesian structure and one of which controls the cartesian structure. This section essentially verifies that some key results about marked simplicial sets which can be found in \cite[Sec.\ 3.1]{highertopostheory} hold in the bimarked case. The only result we will make use of is \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}.
+Our proof of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}} will involve working with with bicartesian fibrations. For this reason, it will be helpful to have results about simplicial sets with two markings, one of which controls the cocartesian structure and one of which controls the cartesian structure. This section essentially verifies that some key results about marked simplicial sets which can be found in \cite[Sec.\ 3.1]{highertopostheory} hold in the bimarked case. The only result we will make use of is \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}.
 
 \begin{definition}
   A \defn{bimarked simplicial set} is a triple $(X, \mathcal{E}, \mathcal{E}')$, where $X$ is a simplicial set and $\mathcal{E}$ and $\mathcal{E}'$ are markings. We will often shorten this to $X^{(\mathcal{E}, \mathcal{E}')}$. A morphism of bimarked simplicial sets is a morphism of the underlying simplicial sets which preserves each class of markings separately. We will denote the category of bimarked simplicial sets by $\SSet^{++}$.
@@ -219,12 +226,12 @@ We will have to deal with bicartesian fibrations. For this reason, it will be he
   \label{eg:bicartesian_marking}
   Let $p\colon \category{C} \to \category{D}$ be a bicartesian fibration. Denote by $\category{C}^{\natural}$ the bimarked simplicial set where
   \begin{itemize}
-    \item The set $\mathcal{E}$ is the set of all $p$-cocartesian morphisms.
+    \item The set $\mathcal{E}$ is the set of all $p$-cocartesian morphisms, and
 
-    \item The set $\mathcal{E}'$ is the set of all $p$-cartesian morphisms, and
+    \item The set $\mathcal{E}'$ is the set of all $p$-cartesian morphisms.
   \end{itemize}
 
-  Then there is a morphism of bisimplicial sets $\category{C}^{\natural} \to \category{D}^{(\sharp, \sharp)}$.
+  In this way every bicartesian fibration gives a morphism of bimarked simplicial sets.
 \end{example}
 
 The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and the category $\SSet$. We have the following obvious results.
@@ -276,6 +283,85 @@ The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and t
   \end{enumerate}
 \end{definition}
 
+\begin{example}
+  \label{eg:bimarking_on_asd_delta1}
+  Define a marked structure $(\asd(\Delta^{1}), \mathcal{E}, \mathcal{E}') = \asd(\Delta^{1})^{\heartsuit}$ on $\asd(\Delta^{1})$, where the morphism $01 \to 11$ is $\mathcal{E}$-marked, and the morphism $01 \to 00$ is $\mathcal{E}'$-marked. Denoting $\mathcal{E}$-marked morphisms with a $\bullet$ and $\mathcal{E}'$-marked morphisms with a $\circ$, we can draw this as follows.
+  \begin{equation*}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, "\bullet" marking]
+      \arrow[dl, "\circ" marking]
+      \\
+      00
+    \end{tikzcd}
+  \end{equation*}
+
+  The inclusion $\Delta^{0} = \asd(\Delta^{\{0\}}) \hookrightarrow \asd(\Delta^{1})^{\heartsuit}$ is bimarked anodyne: we can factor it
+  \begin{equation*}
+    \Delta^{0} \hookrightarrow (\Delta^{1})^{(\flat, \sharp)} \hookrightarrow \asd(\Delta^{1})^{\heartsuit},
+  \end{equation*}
+  where the first inclusion is of the form (2') and the second is a pushout of a morphism of the form (2). We can draw this process as follows.
+  \begin{equation*}
+    \begin{tikzcd}
+      \ 
+      \\
+      \ 
+      \\
+      00
+    \end{tikzcd}
+    \qquad\hookrightarrow\qquad
+    \begin{tikzcd}
+      & \ 
+      \\
+      & 01
+      \arrow[dl, "\circ" marking]
+      \\
+      00
+    \end{tikzcd}
+    \qquad\hookrightarrow\qquad
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, "\bullet" marking]
+      \arrow[dl, "\circ" marking]
+      \\
+      00
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+\begin{example}
+  \label{eg:bimarking_on_asd_delta2}
+  Define a marked structure $\asd(\Delta^{2})^{\heartsuit}$ on $\asd(\Delta^{2})$, following the notation of \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}}, as follows.
+  \begin{equation*}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, "\bullet" marking]
+      \arrow[dl, "\circ" marking]
+      && 12
+      \arrow[ul]
+      \arrow[dr]
+      \\
+      00
+      && 02
+      \arrow[ll]
+      \arrow[rr]
+      \arrow[uu]
+      \arrow[ur, "\bullet" marking]
+      \arrow[ul]
+      && 22
+    \end{tikzcd}
+  \end{equation*}
+  Note that the bimarking of \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}} is the restriction of $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 1\}})$. Denote the restriction of the bimarking $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 2\}})$ by $\asd(\Delta^{\{0, 2\}})^{\heartsuit}$; this agrees with the $(\flat,\flat)$-marking.
+
+  The inclusion $\asd(\Delta^{\{0, 2\}})^{\heartsuit} \hookrightarrow \asd(\Delta^{2})^{\heartsuit}$ is marked anodyne. To see this, note that... factorization...
+\end{example}
+
 \begin{proposition}
   \label{prop:rlp_bimarked_anodyne}
   A map $p\colon (X, \mathcal{E}_{X}, \mathcal{E}_{X}') \to (S, \mathcal{E}_{S}, \mathcal{E}_{S}')$ of bimarked simplicial sets has the right lifting property with respect to bimarked anodyne morphisms if and only if the following conditions are satisifed.
@@ -294,8 +380,6 @@ The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and t
 \begin{proof}
   By \cite[Prop.\ 3.1.1.6]{highertopostheory}, (A), (B) and (C) are equivalent to (1), (2), and (3). By its dual, (A), (B') and (C') are equivalent to (1), (2'), and (3')
 \end{proof}
-
-Note that we have proven something slightly stronger:
 
 We would like to define cofibrations of bimarked simplicial sets to be maps of bimarked simplicial sets whose underlying map of simplicial sets is a monomorphism, and then show that the class of bimarked anodyne maps is stable under smash products with arbitrary cofibrations. Unfortunately, this turns out not to be quite true; the candidate class of cofibrations described above is generated by the following classes of maps.
 \begin{itemize}
@@ -377,7 +461,7 @@ should be bimarked anodyne, which it isn't. However, we have the following weake
   is a homotopy pullback in the Kan model structure.
 \end{proposition}
 \begin{proof}
-  First, we show that the right-hand map is a Kan fibration. In fact, the underlying map 
+  First, we show that the right-hand map is a Kan fibration. In fact, the underlying map
   \begin{equation*}
     \Fun^{(\flat, \flat)}(X, \category{C}^{\natural}) \to \Fun^{(\flat, \flat)}(X, \category{D}^{(\sharp, \sharp)})
   \end{equation*}
@@ -395,11 +479,27 @@ should be bimarked anodyne, which it isn't. However, we have the following weake
 \subsection{Cartesian morphisms}
 \label{ssc:cartesian_morphisms}
 
-First, we show that we really have identified the cocartesian morphisms correctly.
+In this section, we show that we really have identified the cocartesian morphisms correctly. We will first show that morphisms of the form
+\begin{equation}
+  \label{eq:form_of_p_cocartesian_morphisms}
+  \begin{tikzcd}
+    & y
+    \arrow[dl, "\circ" marking]
+    \arrow[dr, "\bullet" marking]
+    \\
+    x
+    && x'
+  \end{tikzcd}.
+\end{equation}
+are $p$-cocartesian.
 
 \begin{proposition}
   \label{prop:form_of_cocartesian_morphisms_in_spans}
-  Let $\pi\colon \category{C} \to \category{D}$ be a bicartesian fibration of quasicategories which preserves pullbacks and satisfies the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}. Then morphisms of the form
+  Let $\pi\colon \category{C} \to \category{D}$ be a bicartesian fibration of quasicategories which preserves pullbacks and satisfies the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}, and let
+  \begin{equation*}
+    p\colon \Span(\category{C}) \to \Span(\category{D})
+  \end{equation*}
+  be the corresponding map between complete Segal spaces of spans. If a morphism in $\Span(\category{C})$ is of the form
   \begin{equation*}
     \begin{tikzcd}
       & y
@@ -408,156 +508,128 @@ First, we show that we really have identified the cocartesian morphisms correctl
       \\
       x
       && x'
+    \end{tikzcd},
+  \end{equation*}
+  where the morphism marked with a $\circ$ is $\pi$-cartesian and the morphism marked with a $\bullet$ is $\pi$-cocartesian, then it is $p$-cocartesian.
+\end{proposition}
+\begin{proof}
+  In order to show that a morphism $e\colon x \leftarrow y \rightarrow x'$ of the form given in \hyperref[prop:form_of_cocartesian_morphisms_in_spans]{Proposition~\ref*{prop:form_of_cocartesian_morphisms_in_spans}} are cocartesian, we have to show that the square
+  \begin{equation*}
+    \begin{tikzcd}
+      \Span(\category{C})_{2} \times_{\Span(\category{C})_{\{0, 1\}}} \{e\}
+      \arrow[r]
+      \arrow[d]
+      & \Span(\category{C})_{\{0, 2\}} \times_{\Span(\category{C})_{\{0\}}} \{x\}
+      \arrow[d]
+      \\
+      \Span(\category{D})_{2} \times_{\Span(\category{D})_{\{0, 1\}}} \{\pi e\}
+      \arrow[r]
+      & \Span(\category{D})_{\{0, 2\}} \times_{\Span(\category{D})_{\{0\}}} \{\pi x\}
     \end{tikzcd}
   \end{equation*}
-  are $\pi$-cocartesian.
-\end{proposition}
+  is homotopy pullback. Expanding, we have to show that the square
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
+      \arrow[d]
+      \\
+      \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+      \arrow[r]
+      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
+    \end{tikzcd}
+  \end{equation*}
+  is homotopy pullback.
 
-Let $\category{C} \to \category{D}$ be a bicartesian fibration, and let $X$ be a simplicial set with two distinguished markings $X_{\mathrm{cart}}$, $X_{\mathrm{cocart}} \subseteq X_{1}$. We will denote by $\Fun'(X, \category{C}) \subseteq \Fun(X, \category{C})$ the full subcategory on those functors which send each edge in $X_{\mathrm{cart}}$ to a cartesian edge of $\category{C}$, and each edge in $X_{\mathrm{cocart}}$ to a cocartesian edge of $\category{C}$. That is, $\Fun'(X, \category{C})$ is given by the fiber product
-\begin{equation*}
-  \Fun^{\flat}
-\end{equation*}
+  Recall the bimarked structure $\asd(\Delta^{2})^{\heartsuit} = (\asd(\Delta^{2}), \mathcal{E}, \mathcal{E}')$ on $\asd(\Delta^{2})$ of \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}}, reproduced below, where the nondegenerate edges in $\mathcal{E}$ are distinguished with a $\bullet$, and the nondegenerate edges in $\mathcal{E}'$ are distinguished with a $\circ$.
+  \begin{equation*}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, "\bullet" marking]
+      \arrow[dl, "\circ" marking]
+      && 12
+      \arrow[ul]
+      \arrow[dr]
+      \\
+      00
+      && 02
+      \arrow[ll]
+      \arrow[rr]
+      \arrow[uu]
+      \arrow[ur, "\bullet" marking]
+      \arrow[ul]
+      && 22
+    \end{tikzcd}
+  \end{equation*}
+  Denote the induced bimarked structures on $\asd(\Delta^{\{0, 1\}})$, $\asd(\Delta^{\{0, 2\}})$, and $\asd(\Delta^{\{0\}})$ also with a heart. Except in the case of $\asd(\Delta^{\{0, 1\}})^{\heartsuit}$, these agree with the $(\flat, \flat)$-bimarked structure.
 
-Of course, the dual lemma implies that the same holds if $p$ is a cocartesian fibration and $\category{C}$ is given the dual marking.
+  We now note that we can decompose the above square into two squares
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny]
+      \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+      \arrow[r]
+      \arrow[d]
+      & \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural}) \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
+      \arrow[d]
+      \\
+      \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+      \arrow[r]
+      & \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}} \{\pi e\}
+    \end{tikzcd}
+  \end{equation*}
+  and
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny]
+      \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
+      \arrow[d]
+      \\
+      \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}} \{\pi e\}
+      \arrow[r]
+      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
+    \end{tikzcd}.
+  \end{equation*}
+  The first square is a homotopy pullback because the bottom morphism is a full subcategory inclusion of connected components, and the fiber over a connected component corresponding to Cartesian functors $\asd(\Delta^{2}) \to \category{D}$ is consists precisely of Cartesian functors $\asd(\Delta^{2}) \to \category{C}$ by the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}.
 
-In order to show that morphisms $e\colon x \leftarrow y \rightarrow x'$ of the form given in \hyperref[prop:form_of_cocartesian_morphisms_in_spans]{Proposition~\ref*{prop:form_of_cocartesian_morphisms_in_spans}} really are cocartesian, we will have to show that the square
-\begin{equation*}
-  \begin{tikzcd}
-    \Span(\category{C})_{2} \times_{\Span(\category{C})_{\{0, 1\}}} \{e\}
-    \arrow[r]
-    \arrow[d]
-    & \Span(\category{C})_{\{0, 2\}} \times_{\Span(\category{C})_{\{0\}}} \{x\}
-    \arrow[d]
-    \\
-    \Span(\category{D})_{2} \times_{\Span(\category{D})_{\{0, 1\}}} \{\pi e\}
-    \arrow[r]
-    & \Span(\category{D})_{\{0, 2\}} \times_{\Span(\category{D})_{\{0\}}} \{\pi x\}
-  \end{tikzcd}
-\end{equation*}
-is homotopy pullback. Translating, we will have to show that the square
-\begin{equation*}
-  \begin{tikzcd}
-    \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-    \arrow[r]
-    \arrow[d]
-    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
-    \arrow[d]
-    \\
-    \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-    \arrow[r]
-    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
-  \end{tikzcd}
-\end{equation*}
-is homotopy pullback.
+  Therefore, we need to show that the second square is homotopy pullback. For this it suffices to show separately that the squares
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq}
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq}
+      \arrow[d]
+      \\
+      \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}
+      \arrow[r]
+      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq}
+    \end{tikzcd}.
+  \end{equation*}
+  and
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}
+      \arrow[d]
+      \\
+      \Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}
+      \arrow[r]
+      & \Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}
+    \end{tikzcd}.
+  \end{equation*}
+  are homotopy pullback. But it is easy to see that these are of the form of the square in \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}; the first has $X \to Y = \asd(\Delta^{\{0, 2\}})^{\heartsuit} \to \asd(\Delta^{2})^{\heartsuit}$, which we saw in \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}} was bimarked anodyne, and the second has $X \to Y = \asd(\Delta^{\{0\}})^{\heartsuit} \to \asd(\Delta^{\{0, 1\}})^{\heartsuit}$, which we saw in \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}} was bimarked anodyne. Both are therefore homotopy pullback.
+\end{proof}
 
-Define a Kan complex $\category{K}$ to be the full subcategory of $\Fun(\asd(\Delta^{2}), \category{C})^{\simeq}$ on functors which send the morphisms in $\asd(\Delta^{2})$ to cartesian and cocartesian morphisms as marked.
-\begin{equation*}
-  \begin{tikzcd}
-    && \cdot
-    \\
-    & \cdot
-    \arrow[ur, "\bullet" marking]
-    \arrow[dl, "\circ" marking]
-    && \cdot
-    \arrow[ul]
-    \arrow[dr]
-    \\
-    \cdot
-    && \cdot
-    \arrow[ll]
-    \arrow[rr]
-    \arrow[uu]
-    \arrow[ur, "\bullet" marking]
-    \arrow[ul]
-    && \cdot
-  \end{tikzcd}
-\end{equation*}
+Thus we have shown that if a morphism has the form of \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, it is $p$-cocartesian. It remains to show the reverse implication. 
 
-We now note that we can decompose the above square into two squares
-\begin{equation*}
-  \begin{tikzcd}
-    \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-    \arrow[r]
-    \arrow[d]
-    & \category{K} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-    \arrow[d]
-    \\
-    \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-    \arrow[r]
-    & \Fun(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-  \end{tikzcd}
-\end{equation*}
-and
-\begin{equation*}
-  \begin{tikzcd}
-    \category{K} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-    \arrow[r]
-    \arrow[d]
-    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
-    \arrow[d]
-    \\
-    \Fun(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-    \arrow[r]
-    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
-  \end{tikzcd}.
-\end{equation*}
-The first square is a pullback because the bottom morphism is a full subcategory inclusion of connected components, and the fiber over a connected component corresponding to Cartesian functors $\asd(\Delta^{2}) \to \category{D}$ is consists precisely of Cartesian functors $\asd(\Delta^{2}) \to \category{C}$ by the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}.
-
-Therefore, we need to show that the second square is pullback. For this it suffices to show separately that the squares
-\begin{equation*}
-  \begin{tikzcd}
-    \category{K}
-    \arrow[r]
-    \arrow[d]
-    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq}
-    \arrow[d]
-    \\
-    \Fun(\asd(\Delta^{2}), \category{D})^{\simeq}
-    \arrow[r]
-    & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq}
-  \end{tikzcd}
-\end{equation*}
-and
-\begin{equation*}
-  \begin{tikzcd}
-    \category{L}
-    \arrow[r]
-    \arrow[d]
-    & \Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}
-    \arrow[d]
-    \\
-    \Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}
-    \arrow[r]
-    & \Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}
-  \end{tikzcd},
-\end{equation*}
-where $\category{L}$ is the Kan complex defined to be the full subcategory of $\Fun(\asd(\Delta^{\{0, 1\}}, \category{C}))^{\simeq}$ on functors which send the morphisms in $\asd(\Delta^{\{0, 1\}})$ to cartesian and cocartesian morphisms as marked.
-\begin{equation*}
-  \begin{tikzcd}
-    && \cdot
-    \\
-    & \cdot
-    \arrow[ur, "\bullet" marking]
-    \arrow[dl, "\circ" marking]
-    \\
-    \cdot
-  \end{tikzcd}
-\end{equation*}
-
-
-\begin{equation*}
-  \Map\left(
-  \begin{tikzcd}[row sep=tiny, column sep=tiny]
-    && \cdot
-    \\
-    & \cdot
-    \arrow[ur, "\bullet" marking]
-    \arrow[dl, "\circ" marking]
-    \\
-    \cdot
-  \end{tikzcd},
-  \category{C}
-  \right)
-\end{equation*}
+First note that since $\asd(\Delta^{0})^{\heartsuit} \to \asd(\Delta^{1})^{\heartsuit}$ is marked anodyne, every morphism has a lift of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, which we have just shown is $p$-cocartesian. Since any two $p$-cocartesian lifts are equivalent, any morphism which is a $p$-cocartesian lift is equivalent to such a morphism, and hence must be of that form.
 
 \end{document}
