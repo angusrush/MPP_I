@@ -203,7 +203,7 @@ We prove \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{T
 \subsection{Bimarked simplicial sets}
 \label{ssc:bimarked_simplicial_sets}
 
-Our proof of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}} will involve working with with bicartesian fibrations. For this reason, it will be helpful to have results about simplicial sets with two markings, one of which controls the cocartesian structure and one of which controls the cartesian structure. This section essentially verifies that some key results about marked simplicial sets which can be found in \cite[Sec.\ 3.1]{highertopostheory} hold in the bimarked case. The only result we will make use of is \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}.
+Our proof of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}} will involve working with with bicartesian fibrations. For this reason, it will be helpful to have results about simplicial sets with two markings, one of which controls the cocartesian structure and one of which controls the cartesian structure. This section essentially verifies that some key results about marked simplicial sets which can be found in \cite[Sec.\ 3.1]{highertopostheory} hold in the bimarked case. The only results we will make use of are \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}, \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}}, and \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}}.
 
 \begin{definition}
   A \defn{bimarked simplicial set} is a triple $(X, \mathcal{E}, \mathcal{E}')$, where $X$ is a simplicial set and $\mathcal{E}$ and $\mathcal{E}'$ are markings. We will often shorten this to $X^{(\mathcal{E}, \mathcal{E}')}$. A morphism of bimarked simplicial sets is a morphism of the underlying simplicial sets which preserves each class of markings separately. We will denote the category of bimarked simplicial sets by $\SSet^{++}$.
@@ -240,6 +240,8 @@ The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and t
 
   \item There is a forgetful functor $u_{1}\colon \SSet^{++} \to \SSet^{+}$, which forgets the second marking, sending $(X, \mathcal{E}, \mathcal{E}') \mapsto (X, \mathcal{E})$. This has a left adjoint $\iota_{1}$ given by the functor which sends $(X, \mathcal{E}) \mapsto (X, \mathcal{E}, \flat)$. The functor $\iota_{1}$ is a full subcategory inclusion; there is a bijection between maps between marked simplicial sets $(X, \mathcal{E}) \to (Y, \mathcal{E}')$ and maps $(X, \mathcal{E}, \flat) \to (Y, \mathcal{E}', \flat)$. The same is true of the functor $u_{2}$ which forgets the first marking and its left adjoint $\iota_{2}$.
 \end{itemize}
+
+Just as in the marked case, we will a set of bimarked anodyne morphisms, the morphisms with the left lifting property with respect to bicartesian fibrations.
 
 \begin{definition}
   The class of \defn{bimarked anodyne morphisms} is the saturated hull of the union of the following classes of morphisms.
@@ -285,7 +287,7 @@ The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and t
 
 \begin{example}
   \label{eg:bimarking_on_asd_delta1}
-  Define a marked structure $(\asd(\Delta^{1}), \mathcal{E}, \mathcal{E}') = \asd(\Delta^{1})^{\heartsuit}$ on $\asd(\Delta^{1})$, where the morphism $01 \to 11$ is $\mathcal{E}$-marked, and the morphism $01 \to 00$ is $\mathcal{E}'$-marked. Denoting $\mathcal{E}$-marked morphisms with a $\bullet$ and $\mathcal{E}'$-marked morphisms with a $\circ$, we can draw this as follows.
+  Define a bimarked structure $(\asd(\Delta^{1}), \mathcal{E}, \mathcal{E}') = \asd(\Delta^{1})^{\heartsuit}$ on $\asd(\Delta^{1})$, where the morphism $01 \to 11$ is $\mathcal{E}$-marked, and the morphism $01 \to 00$ is $\mathcal{E}'$-marked. Denoting $\mathcal{E}$-marked morphisms with a $\bullet$ and $\mathcal{E}'$-marked morphisms with a $\circ$, we can draw this as follows.
   \begin{equation*}
     \begin{tikzcd}
       && 11
@@ -298,9 +300,9 @@ The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and t
     \end{tikzcd}
   \end{equation*}
 
-  The inclusion $\Delta^{0} = \asd(\Delta^{\{0\}}) \hookrightarrow \asd(\Delta^{1})^{\heartsuit}$ is bimarked anodyne: we can factor it
+  The inclusion $\{00\} = \asd(\Delta^{\{0\}}) \hookrightarrow \asd(\Delta^{1})^{\heartsuit}$ is bimarked anodyne: we can factor it
   \begin{equation*}
-    \Delta^{0} \hookrightarrow (\Delta^{1})^{(\flat, \sharp)} \hookrightarrow \asd(\Delta^{1})^{\heartsuit},
+    \{00\} \hookrightarrow (\Delta^{1})^{(\flat, \sharp)} \hookrightarrow \asd(\Delta^{1})^{\heartsuit},
   \end{equation*}
   where the first inclusion is of the form (2') and the second is a pushout of a morphism of the form (2). We can draw this process as follows.
   \begin{equation*}
@@ -335,7 +337,7 @@ The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and t
 
 \begin{example}
   \label{eg:bimarking_on_asd_delta2}
-  Define a marked structure $\asd(\Delta^{2})^{\heartsuit}$ on $\asd(\Delta^{2})$, following the notation of \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}}, as follows.
+  Define a bimarked structure $\asd(\Delta^{2})^{\heartsuit}$ on $\asd(\Delta^{2})$, following the notation of \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}}, as follows.
   \begin{equation*}
     \begin{tikzcd}
       && 11
@@ -359,7 +361,7 @@ The category $\SSet^{++}$ is closely connected to the category $\SSet^{+}$ and t
   \end{equation*}
   Note that the bimarking of \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}} is the restriction of $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 1\}})$. Denote the restriction of the bimarking $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 2\}})$ by $\asd(\Delta^{\{0, 2\}})^{\heartsuit}$; this agrees with the $(\flat,\flat)$-marking.
 
-  The inclusion $\asd(\Delta^{\{0, 2\}})^{\heartsuit} \hookrightarrow \asd(\Delta^{2})^{\heartsuit}$ is marked anodyne. To see this, note that... factorization...
+  The inclusion $\asd(\Delta^{\{0, 2\}})^{\heartsuit} \hookrightarrow \asd(\Delta^{2})^{\heartsuit}$ is bimarked anodyne. To see this, note that... factorization...
 \end{example}
 
 \begin{proposition}
@@ -389,7 +391,7 @@ We would like to define cofibrations of bimarked simplicial sets to be maps of b
 
   \item[(III)] Markings $(\Delta^{1})^{(\flat, \flat)} \to (\Delta^{1})^{(\flat, \sharp)}$.
 \end{itemize}
-There is nothing that tells us, for example, that the smash product of a marked anodyne map of type $(2)$ with a cofibration of type (III) should be marked anodyne. Denoting arrows with the first marking using a $\bullet$ and the second using a $\circ$, this amounts, in the case $n = 0$, to the statement that the map
+There is nothing that tells us, for example, that the smash product of a bimarked anodyne map of type $(2)$ with a cofibration of type (III) should be bimarked anodyne. Denoting arrows with the first marking using a $\bullet$ and the second using a $\circ$, this amounts, in the case $n = 0$, to the statement that the map
 \begin{equation*}
   \begin{tikzcd}
     \cdot
@@ -432,7 +434,7 @@ should be bimarked anodyne, which it isn't. However, we have the following weake
   \begin{equation*}
     (X \times (\Delta^{n})^{(\flat, \flat)}) \coprod_{X \times (\partial \Delta^{n})^{(\flat, \flat)}} (Y \times (\partial\Delta^{n})^{(\flat, \flat)}) \to Y \times (\Delta^{n})^{(\flat, \flat)}
   \end{equation*}
-  is marked anodyne. If $X \to Y$ belongs to one of the classes (1), (2'), (3'), or (4'), then this is true by the arguments of \cite[Prop.\ 3.1.2.3]{highertopostheory}. If $X \to Y$ belongs to one of the classes (1), (2), (3), or (4), then it is true by the dual arguments.
+  is bimarked anodyne. If $X \to Y$ belongs to one of the classes (1), (2'), (3'), or (4'), then this is true by the arguments of \cite[Prop.\ 3.1.2.3]{highertopostheory}. If $X \to Y$ belongs to one of the classes (1), (2), (3), or (4), then it is true by the dual arguments.
 \end{proof}
 
 \begin{definition}
@@ -573,7 +575,7 @@ are $p$-cocartesian.
       \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
       \arrow[r]
       \arrow[d]
-      & \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural}) \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
+      & \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
       \arrow[d]
       \\
       \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
@@ -630,6 +632,6 @@ are $p$-cocartesian.
 
 Thus we have shown that if a morphism has the form of \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, it is $p$-cocartesian. It remains to show the reverse implication. 
 
-First note that since $\asd(\Delta^{0})^{\heartsuit} \to \asd(\Delta^{1})^{\heartsuit}$ is marked anodyne, every morphism has a lift of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, which we have just shown is $p$-cocartesian. Since any two $p$-cocartesian lifts are equivalent, any morphism which is a $p$-cocartesian lift is equivalent to such a morphism, and hence must be of that form.
+First note that since $\asd(\Delta^{0})^{\heartsuit} \to \asd(\Delta^{1})^{\heartsuit}$ is bimarked anodyne, every morphism has a lift of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, which we have just shown is $p$-cocartesian. Since any two $p$-cocartesian lifts are equivalent, any morphism which is a $p$-cocartesian lift is equivalent to such a morphism, and hence must be of that form.
 
 \end{document}
