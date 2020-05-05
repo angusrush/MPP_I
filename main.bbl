@@ -44,45 +44,6 @@
       \verb arXiv:1409.0837
       \endverb
     \endentry
-    \entry{Joyal2006}{article}{}
-      \name{author}{2}{}{%
-        {{hash=c280cc16ccf83bf8a6eb1be18decee9d}{%
-           family={Joyal},
-           familyi={J\bibinitperiod},
-           given={Andre},
-           giveni={A\bibinitperiod}}}%
-        {{hash=b52806ad188ef709135e996e45d93b28}{%
-           family={Tierney},
-           familyi={T\bibinitperiod},
-           given={Myles},
-           giveni={M\bibinitperiod}}}%
-      }
-      \strng{namehash}{b7f4b7ad405c01667044b926b8b89b06}
-      \strng{fullhash}{b7f4b7ad405c01667044b926b8b89b06}
-      \strng{bibnamehash}{b7f4b7ad405c01667044b926b8b89b06}
-      \strng{authorbibnamehash}{b7f4b7ad405c01667044b926b8b89b06}
-      \strng{authornamehash}{b7f4b7ad405c01667044b926b8b89b06}
-      \strng{authorfullhash}{b7f4b7ad405c01667044b926b8b89b06}
-      \field{sortinit}{J}
-      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{abstract}{We show that complete Segal spaces and Segal categories are Quillen equivalent to quasi-categories.}
-      \field{day}{31}
-      \field{eprintclass}{math.AT}
-      \field{eprinttype}{arXiv}
-      \field{month}{7}
-      \field{title}{Quasi-categories vs Segal spaces}
-      \field{year}{2006}
-      \field{dateera}{ce}
-      \verb{eprint}
-      \verb math/0607820v2
-      \endverb
-      \verb{file}
-      \verb :http\://arxiv.org/pdf/math/0607820v2:PDF
-      \endverb
-      \keyw{math.AT,55U35;18G30;18G55}
-    \endentry
     \entry{highertopostheory}{book}{}
       \name{author}{1}{}{%
         {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
