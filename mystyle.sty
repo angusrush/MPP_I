@@ -30,6 +30,7 @@
 \usepackage{mathdots}
 \usepackage{epigraph}
 \usepackage[bbgreekl]{mathbbol}
+\usepackage{mathtools}
 
 \usetikzlibrary{decorations.markings}
 
@@ -143,6 +144,11 @@
 \newcommand{\shp}{^{\sharp}}
 \newcommand{\nat}{^{\natural}}
 \newcommand{\flt}{^{\flat}}
+% Dirty typesetting hacks
+
+\newcommand{\lmarkedparen}{\mathrlap{(}\text{\textbf{-}}}
+\newcommand{\rmarkedparen}{\mathrlap{)}\text{\textbf{-}}}
+
 
 % Second level of list uses empty bullets
 \renewcommand{\labelitemii}{$\circ$}

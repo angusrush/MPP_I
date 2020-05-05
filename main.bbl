@@ -19,6 +19,31 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global}
+    \entry{qcats_vs_segal_spaces}{article}{}
+      \name{author}{1}{}{%
+        {{hash=b7a14f58d77a2411bb1ddad138a56cf5}{%
+           family={A.\bibnamedelimi Joyal},
+           familyi={A\bibinitperiod\bibinitdelim J\bibinitperiod},
+           given={M.\bibnamedelimi Tierney},
+           giveni={M\bibinitperiod\bibinitdelim T\bibinitperiod}}}%
+      }
+      \strng{namehash}{b7a14f58d77a2411bb1ddad138a56cf5}
+      \strng{fullhash}{b7a14f58d77a2411bb1ddad138a56cf5}
+      \strng{bibnamehash}{b7a14f58d77a2411bb1ddad138a56cf5}
+      \strng{authorbibnamehash}{b7a14f58d77a2411bb1ddad138a56cf5}
+      \strng{authornamehash}{b7a14f58d77a2411bb1ddad138a56cf5}
+      \strng{authorfullhash}{b7a14f58d77a2411bb1ddad138a56cf5}
+      \field{sortinit}{A}
+      \field{sortinithash}{a3dcedd53b04d1adfd5ac303ecd5e6fa}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Contemp.\ Math. 431 (2007), pp. 277--326}
+      \field{title}{Quasi-categories vs Segal spaces}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb arXiv:1409.0837
+      \endverb
+    \endentry
     \entry{Joyal2006}{article}{}
       \name{author}{2}{}{%
         {{hash=c280cc16ccf83bf8a6eb1be18decee9d}{%
