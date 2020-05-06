@@ -8,18 +8,20 @@
 \subsection{Marked bisimplicial sets}
 \label{ssc:marked_bisimplicial_sets}
 
-\begin{definition}
-  A \defn{marked bisimplicial set} $(X, \mathcal{E})$ is a bisimplicial set $X$ together with a distinguished subset $\mathcal{E} \subseteq (X_{1})_{0}$ containing all degenerate edges, i.e.\ all edges in the image of $s_{0}\colon (X_{0})_{0} \to (X_{1})_{0}$. Equivalently, a marked bisimplicial set is bisimplicial set $X$ together with a marking $\mathcal{E}$ on the simplicial set $i^{*}_{1}X$.
-\end{definition}
+\begin{note}
+  Toby: At the moment, I'm assuming all the notation from Joyal/Tierney. That means in particular the functor $-\square-$ and all related constructions. If this is going to be turned into something other people read, I'll of course add this.
+\end{note}
 
-The category of marked bisimplicial sets is finitely complete and cocomplete.
+\begin{definition}
+  A \defn{marked bisimplicial set} $(X, \mathcal{E})$ is a bisimplicial set $X$ together with a distinguished subset $\mathcal{E} \subseteq (X_{1})_{0}$ containing all degenerate edges, i.e.\ all edges in the image of $s_{0}\colon (X_{0})_{0} \to (X_{1})_{0}$. Equivalently, a marked bisimplicial set is bisimplicial set $X$ together with a marking $\mathcal{E}$ on the simplicial set $X / \Delta^{0}$.
+\end{definition}
 
 \begin{definition}
   For a marked simplicial set $A$ and an unmarked simplicial set $B$, define a marking on the bisimplicial set $A \square B$ as follows: a simplex $(a, b) \in A_{1} \times B_{0}$ is marked if and only if $a$ is marked.
 \end{definition}
 
 \begin{note}
-  Toby: At the moment, I am not notationally distinguishing between the marked and unmarked versions of the $\square$ and $-/-$ constructions. (The unmarked versions are from \cite{qcats_vs_segal_spaces}.) This requires that readers keep track for themselves when a (bi)simplicial set is or isn't marked. If you think this is confusing, I'll try and come up with some other notation.
+  Toby: At the moment, I am not notationally distinguishing between the marked and unmarked versions of the $\square$ and $-/-$ constructions. This requires that readers keep track for themselves when a (bi)simplicial set is or isn't marked. If you think this is confusing, I'll try and come up with some other notation.
 \end{note}
 
 For any marked simplicial set $A$, denote the underlying unmarked simplicial set by $\mathring{A}$. Similarly, for any marked bisimplicial set $X$, denote the underlying unmarked bisimplicial set by $\mathring{X}$.
@@ -426,12 +428,12 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
 %\end{lemma}
 
 \begin{note}
-  Toby: In the rest of this subsection, we have to assume that the cocartesian marking respects path components. I'm convinced that this isn't necessary (i.e.\ that the cocartesian marking always respects path components), but as discussed I'm sending this to you before spending too much time trying to prove it.
+  Toby: In the rest of this subsection, we have to assume that the cocartesian marking respects path components. I'm convinced that this isn't necessary (i.e.\ that the cocartesian marking always respects path components), but this doesn't matter in our case as it is trivially true for spans.
 \end{note}
 
 \begin{proposition}
   \label{prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian}
-  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and further assume that the natural marking on $Y$ respects path components. Let $e \in X_{10}$ be an $f$-cartesian morphism. Then $e$, viewed as a morphism in the quasicategory $X / \Delta^{0}$, is $f / \Delta^{0}$-cocartesian.
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and further assume that the cocartesian marking on $X$ respects path components. Let $e \in X_{10}$ be an $f$-cocartesian morphism. Then $e$, viewed as a morphism in the quasicategory $X / \Delta^{0}$, is $f / \Delta^{0}$-cocartesian.
 \end{proposition}
 \begin{proof}
   Let $u^{n}_{0}\colon (\Lambda^{n}_{0} \hookrightarrow \Delta^{n})^{\mathcal{L}}$ denote the $\mathcal{L}$-marked inclusion. First, let $n \geq 2$, and consider the set
@@ -449,11 +451,12 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
   \end{equation*}
   It is clear that this set has the right cancellation property. By \hyperref[prop:cartesian_marking_respects_path_components]{Proposition~\ref*{prop:cartesian_marking_respects_path_components}}, a map $u$ belonging to $S$ is automatically a Kan fibration, hence is a trivial Kan fibration. Thus, we can equivalently say that $u \in S$ if and only if $u$ has the left-lifting property with respect to all maps of the form $\langle X / v \rangle$, where $v$ is a cofibration of simplicial sets. Thus, $S$ is saturated.
 
-  The set $S$ contains all flat-marked inner anodyne morphisms because $f$ is a Reedy fibration. \hyperref[prop:only_lowest_lifting_condition_is_necessary]{Proposition~\ref*{prop:only_lowest_lifting_condition_is_necessary}} implies that $S$ contains all left spine inclusions $(L_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$. Thus, by \hyperref[lemma:saturated_hull_of_left_spine_inclusions]{Lemma~\ref*{lemma:saturated_hull_of_left_spine_inclusions}}, we are done.
+  The set $S$ contains all flat-marked inner anodyne morphisms because $f$ is a Reedy fibration. \hyperref[prop:only_lowest_lifting_condition_is_necessary]{Proposition~\ref*{prop:only_lowest_lifting_condition_is_necessary}} implies that $S$ contains all left spine inclusions $(L_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$. Thus, by \hyperref[lemma:saturated_hull_of_left_spine_inclusions]{Lemma~\ref*{lemma:saturated_hull_of_left_spine_inclusions}}, $S$ contains all $\mathcal{L}$-marked left horn inclusions.
 \end{proof}
 
 \begin{corollary}
-  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces such that the cocartesian marking on $x$ respects path components. Then the map
+  \label{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces such that the cocartesian marking on $X$ respects path components. Then the map
   \begin{equation*}
     f/\Delta^{0}\colon X/\Delta^{0} \to Y/\Delta^{0}
   \end{equation*}
@@ -467,7 +470,7 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
 \label{ssc:further_results}
 
 \begin{note}
-  Toby: The remainder of this section consists of half-typed stuff I have at best sketched proofs of. I think that I am quite close to a proof of \hyperref[thm:divide_by_marked_anodyne]{Theorem~\ref*{thm:divide_by_marked_anodyne}}.
+  Toby: The remainder of this section consists of half-typed stuff I have at best sketched proofs of. I think that I have most of proof of \hyperref[thm:divide_by_marked_anodyne]{Theorem~\ref*{thm:divide_by_marked_anodyne}}. What is mainly missing is a proof the cocartesian marking always respects path components.
 \end{note}
 
 \begin{lemma}
@@ -495,48 +498,12 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
   \label{thm:divide_by_marked_anodyne}
   Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and denote also by $f$ the morphism $f\colon X^{\natural} \to Y^{\sharp}$ as in \hyperref[def:cocoartesian_marking_on_complete_segal_spaces]{Definition~\ref*{def:cocoartesian_marking_on_complete_segal_spaces}}. Then for any marked anodyne morphism $u$, the map $\langle u \backslash f \rangle$ is a trivial fibration.
 \end{theorem}
-\begin{proof}
-  We check each class of morphisms in \cite{highertopostheory} separately. These are as follows.
-  \begin{enumerate}
-    \item
-
-    \item
-
-    \item The map
-      \begin{equation*}
-        (\Lambda^{2}_{1})^{\sharp} \amalg_{(\Lambda^{2}_{1})^{\flat}} (\Delta^{2})^{\flat} \to (\Delta^{2})^{\sharp}.
-      \end{equation*}
-  \end{enumerate}
-  Los geht's.
-  \begin{enumerate}
-    \item For any morphism $u^{n}_{k}\colon (\Lambda^{n}_{k})^{\flat} \hookrightarrow (\Delta^{n})^{\flat}$, where $0 < k < n$, the map $\langle u \backslash f \rangle$ is isomorphic to the map $\langle \mathring{u} \backslash \mathring{f} \rangle$, which is a trivial fibration since $\mathring{f}$ is a Reedy fibration.
-
-    \item 
-
-    \item We need to show equivalently that for any anodyne map $A \to A'$ we can find a dashed lift as below.
-      \begin{equation*}
-        \begin{tikzcd}
-          (\Lambda^{2}_{1})^{\sharp} \amalg_{(\Lambda^{2}_{1})^{\flat}} (\Delta^{2})^{\flat}
-          \arrow[r]
-          \arrow[d]
-          & X / A'
-          \arrow[d]
-          \\
-          (\Delta^{2})^{\sharp}
-          \arrow[r]
-          \arrow[ur, dashed]
-          & X / A \times_{Y / A} Y / A'
-        \end{tikzcd}
-      \end{equation*}
-      Since a lift of the underlying diagram of
-  \end{enumerate}
-\end{proof}
 
 \begin{corollary}
   Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. Then the corresponding map $f / \Delta^{0}$ between first rows is a cocartesian fibration of quasicategories.
 \end{corollary}
 \begin{proof}
-  Since $\langle u \backslash f \rangle$ is a trivial fibration, for any marked anodyne map $u\colon A \to A'$ we can solve the lifting problem
+  Since $\langle u \backslash f \rangle$ is a trivial fibration for any marked anodyne map $u\colon A \to A'$, we can solve the lifting problem
   \begin{equation*}
     \begin{tikzcd}
       \emptyset
@@ -573,10 +540,6 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
 \section{Complete Segal spaces of spans}
 \label{sec:complete_segal_spaces_of_spans}
 
-\begin{note}
-  Toby: Barwick's theorem is more general in the sense that he allows one to choose classes of maps that the forward- and backward-facing maps in the spans are allowed to belong to. I haven't though much about how much more difficult it would be to allow for this. This seems pretty important for a wide variety of reasons; for example, it would allow us to treat cases like $\category{C}^{\otimes} \to \Finp$.
-\end{note}
-
 The main goal of this section is to prove the following theorem.
 
 \begin{theorem}
@@ -607,7 +570,7 @@ The main goal of this section is to prove the following theorem.
     \end{itemize}
   \end{quote}
 
-  Then the functor $\pi\colon \Span(\category{C}) \to \Span(\category{D})$ is a cocartesian fibration of Segal spaces, whose cocartesian morphisms are spans of the form
+  Then the functor $\pi\colon \Span(\category{C}) \to \Span(\category{D})$ is a cocartesian fibration of Segal spaces, and if a morphism has the form
   \begin{equation*}
     \begin{tikzcd}
       & y
@@ -616,8 +579,9 @@ The main goal of this section is to prove the following theorem.
       \\
       x
       && x'
-    \end{tikzcd}.
+    \end{tikzcd},
   \end{equation*}
+  then it is $p$-cartesian.
 \end{theorem}
 
 \begin{note}
@@ -978,7 +942,7 @@ are $p$-cocartesian.
       \\
       \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
       \arrow[r]
-      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq}} \{\pi e\}
+      & \Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
     \end{tikzcd}
   \end{equation*}
   is homotopy pullback.
@@ -1005,7 +969,7 @@ are $p$-cocartesian.
       && 22
     \end{tikzcd}
   \end{equation*}
-  Denote the induced bimarked structures on $\asd(\Delta^{\{0, 1\}})$, $\asd(\Delta^{\{0, 2\}})$, and $\asd(\Delta^{\{0\}})$ also with a heart. Except in the case of $\asd(\Delta^{\{0, 1\}})^{\heartsuit}$, these agree with the $(\flat, \flat)$-bimarked structure.
+  Denote the induced bimarked structure on $\asd(\Lambda^{\{2, 1\}})$ also with a heart.
 
   We now note that we can decompose the above square into two squares
   \begin{equation*}
@@ -1027,50 +991,63 @@ are $p$-cocartesian.
       \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
       \arrow[r]
       \arrow[d]
-      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
+      & \Fun(\asd(\Lambda^{2}_{0}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
       \arrow[d]
       \\
       \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}} \{\pi e\}
       \arrow[r]
-      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
+      & \Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
     \end{tikzcd}.
   \end{equation*}
   The first square is a homotopy pullback because the bottom morphism is a full subcategory inclusion of connected components, and the fiber over a connected component corresponding to Cartesian functors $\asd(\Delta^{2}) \to \category{D}$ is consists precisely of Cartesian functors $\asd(\Delta^{2}) \to \category{C}$ by the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}.
 
-  Therefore, we need to show that the second square is homotopy pullback. For this it suffices to show separately that the squares
+  Therefore, we need to show that the second square is homotopy pullback. For this it suffices to show that the square
   \begin{equation*}
     \begin{tikzcd}
       \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq}
       \arrow[r]
       \arrow[d]
-      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq}
+      & \Fun(\asd(\Lambda^{2}_{0}), \category{C})^{\simeq}
       \arrow[d]
       \\
       \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}
       \arrow[r]
-      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq}
+      & \Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq}
     \end{tikzcd}.
   \end{equation*}
-  and
-  \begin{equation*}
-    \begin{tikzcd}
-      \Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}
-      \arrow[r]
-      \arrow[d]
-      & \Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}
-      \arrow[d]
-      \\
-      \Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}
-      \arrow[r]
-      & \Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}
-    \end{tikzcd}.
-  \end{equation*}
-  are homotopy pullback. But it is easy to see that these are of the form of the square in \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}; the first has $X \to Y = \asd(\Delta^{\{0, 2\}})^{\heartsuit} \to \asd(\Delta^{2})^{\heartsuit}$, which we saw in \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}} was bimarked anodyne, and the second has $X \to Y = \asd(\Delta^{\{0\}})^{\heartsuit} \to \asd(\Delta^{\{0, 1\}})^{\heartsuit}$, which we saw in \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}} was bimarked anodyne. Both are therefore homotopy pullback.
+  is homotopy pullback. But it is easy to see that this is of the form of the square in \hyperref[proposition:bimarked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:bimarked_anodyne_homotopy_pullback}}, with $X \to Y = \asd(\Delta^{\{0, 2\}})^{\heartsuit} \to \asd(\Delta^{2})^{\heartsuit}$, which we saw in \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}} was bimarked anodyne.
 \end{proof}
 
-Thus we have shown that if a morphism has the form of \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, it is $p$-cocartesian. It remains to show the reverse implication.
+\begin{theorem}
+  Let $\category{C}$ and $\category{D}$ be quasicategories with pullbacks, and let $\pi\colon \category{C} \to \category{D}$ be a bicartesian fibration which sends pullbacks to pullbacks. Then the map
+  \begin{equation*}
+    \Span(\category{C})/\Delta^{0} \to \Span(\category{D})/\Delta^{0}
+  \end{equation*}
+  is a cocartesian fibration (hence a bicartesian fibration) between quasicategories.
+\end{theorem}
+\begin{proof}
+  Take $\Span(\category{C})$ to have the cocartesian marking, which we have denoted by $\Span(C)^{\natural}$. In order to fulfill the requirements of \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}}, it suffices to show that this marking respects path components. But this is clear: a 1-simplex $g \to g'$ in $\Span(\category{C})^{\natural}_{1}$ looks as follows.
+  \begin{equation*}
+    \begin{tikzcd}
+      X
+      \arrow[d, "\simeq"]
+      & Y
+      \arrow[l, swap, "g_{0}"]
+      \arrow[r, "g_{1}"]
+      \arrow[d, "\simeq"]
+      & Z
+      \arrow[d, "\simeq"]
+      \\
+      X'
+      & Y'
+      \arrow[l, swap, "g'_{0}"]
+      \arrow[r, "g'_{1}"]
+      & Z'
+    \end{tikzcd}
+  \end{equation*}
+  Since equivalences are both cartesian and cocartesian, it is clear that $f$ is cocartesian if and only if $f'$ is cocartesian.
+\end{proof}
 
-First note that since $\asd(\Delta^{0})^{\heartsuit} \to \asd(\Delta^{1})^{\heartsuit}$ is bimarked anodyne, every morphism has a lift of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, which we have just shown is $p$-cocartesian. Since any two $p$-cocartesian lifts are equivalent, any morphism which is a $p$-cocartesian lift is equivalent to such a morphism, and hence must be of that form.
 
 \begin{appendix}
   \section{Background results}
