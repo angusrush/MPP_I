@@ -9,7 +9,7 @@
 \label{ssc:marked_bisimplicial_sets}
 
 \begin{definition}
-  A \defn{marked bisimplicial set} $(X, \mathcal{E})$ is a bisimplicial set $X$ together with a distinguished subset $\mathcal{E} \subseteq (X_{1})_{0}$ containing all degenerate edges, i.e.\ all edges in the image of $s_{0}\colon (X_{0})_{0} \to (X_{1})_{0}$. Equivalently, a marked bisimplicial set is bisimplicial set together with a marking $\mathcal{E}$ on the simplicial set $i^{*}_{1}X$.
+  A \defn{marked bisimplicial set} $(X, \mathcal{E})$ is a bisimplicial set $X$ together with a distinguished subset $\mathcal{E} \subseteq (X_{1})_{0}$ containing all degenerate edges, i.e.\ all edges in the image of $s_{0}\colon (X_{0})_{0} \to (X_{1})_{0}$. Equivalently, a marked bisimplicial set is bisimplicial set $X$ together with a marking $\mathcal{E}$ on the simplicial set $i^{*}_{1}X$.
 \end{definition}
 
 The category of marked bisimplicial sets is finitely complete and cocomplete.
@@ -97,9 +97,9 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
   For any marked simplicial set $A$ and marked bisimplicial set $X$, the simplicial set $A \backslash X$ is a Kan complex, and the inclusion $i\colon A \backslash X \hookrightarrow A^{\flat} \backslash X \cong \mathring{A} \backslash \mathring{X}$ is a full subcategory inclusion.
 \end{lemma}
 \begin{proof}
-  %We first that the map $i$ is a full subcategory inclusion. The $n$-simplices of $A \backslash X$ are maps of marked simplicial sets $\tilde{\sigma}\colon A \square \Delta^{n} \to X$. A map of underlying simplicial sets respects the markings if and only if for each $(a, i) \in A_{1} \times (\Delta^{n})_{0}$ with $a$ marked, $\tilde{\sigma}(a, i)$ is marked in $X$. This is equivalent to demanding that $\sigma|_{\Delta^{\{i\}}}$ belong to $A \backslash X$.
+  We first show that the map $i$ is a full subcategory inclusion. The $n$-simplices of $A \backslash X$ are maps of marked simplicial sets $\tilde{\sigma}\colon A \square \Delta^{n} \to X$. A map of underlying bisimplicial sets gives a map of marked bisimplicial sets if and only if it respects the markings, i.e.\ if and only if for each $(a, i) \in A_{1} \times (\Delta^{n})_{0}$ with $a$ marked, $\tilde{\sigma}(a, i)$ is marked in $X$. This is equivalent to demanding that $\sigma|_{\Delta^{\{i\}}}$ belong to $A \backslash X$.
 
-  It is clear from the definitions that $i$ is a full subcategory inclusion. To see that $A \backslash X$ is a Kan complex, we need to find dashed lifts below.
+  To show that $A \backslash X$ is a Kan complex, we need to find dashed lifts below.
   \begin{equation*}
     \begin{tikzcd}
       \Lambda^{n}_{k}
@@ -129,12 +129,12 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
 \end{proof}
 
 \begin{definition}
-  Let $X$ be a bisimplicial set, and let $\mathcal{E}$ be a marking on $X$. We will say that $\mathcal{E}$ is SOMETHING if it has the following property: for any map $\Delta^{1} \to X_{1}$ representing an edge $e \to e'$ between morphisms $e$ and $e'$, the morphism $e$ is marked if and only if the morphism $e'$ is marked.
+  Let $X$ be a bisimplicial set, and let $\mathcal{E}$ be a marking on $X$. We will say that $\mathcal{E}$ \defn{respects path components} if it has the following property: for any map $\Delta^{1} \to X_{1}$ representing an edge $e \to e'$ between morphisms $e$ and $e'$, the morphism $e$ is marked if and only if the morphism $e'$ is marked.
 \end{definition}
 
 \begin{proposition}
-  \label{prop:cartesian_marking_has_SOMETHING_property}
-  Let $f\colon X \to Y$ be a Reedy fibration between marked bisimplicial sets, each having the property SOMETHING, and let $u\colon A \to A'$ be a morphism of marked simplicial sets whose underlying morphism of unmarked simplicial spaces is a monomorphism. Then the map $\langle u \backslash f \rangle$ is a Kan fibration.
+  \label{prop:cartesian_marking_respects_path_components}
+  Let $f\colon X \to Y$ be a Reedy fibration between marked bisimplicial sets such that the marking on $X$ respects path components, and let $u\colon A \to A'$ be a morphism of marked simplicial sets whose underlying morphism of unmarked simplicial spaces is a monomorphism. Then the map $\langle u \backslash f \rangle$ is a Kan fibration.
 \end{proposition}
 \begin{proof}
   We need to show that for each $n \geq 0$ and $0 \leq k \leq n$ we can solve the lifting problem
@@ -188,7 +188,7 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
       & X / \Delta^{0} \times_{Y / \Delta^{0}} Y / \Delta^{1}
     \end{tikzcd}.
   \end{equation*}
-  Note that a lift always exists on the level of simplicial sets, so we only need to check that any such lift respects the marking on $X$, using the fact that the diagram commutes. In particular, the triangle
+  Note that a lift always exists on the level of simplicial sets, so we only need to check that any such lift respects the marking on $X$. To see this, consider the following triangle formed by some dashed lift.
   \begin{equation*}
     \begin{tikzcd}[row sep=small, column sep=large]
       & X / \Delta^{1}
@@ -201,7 +201,7 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
       & X / \Delta^{0}
     \end{tikzcd}
   \end{equation*}
-  must commute. Let $a \in A_{1}$ be a marked 1-simplex, and consider the diagram
+  Let $a \in A_{1}$ be a marked 1-simplex, and consider the diagram
   \begin{equation*}
     \begin{tikzcd}[row sep=small, column sep=large]
       \Delta^{1} \square \Delta^{0}
@@ -219,7 +219,7 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
       \arrow[ur, dashed, swap, "\ell"]
     \end{tikzcd},
   \end{equation*}
-  where the triangle on the right is the adjunct to the triangle above. In order to check that the dashed lift respects the marking on $X$, we have to show that for each $(a, b) \in (A \square \Delta^{1})_{10} = A_{1} \times \{0, 1\}$, $\ell(a, b)$ is marked in $X$. The commutativity of the triangle tells us this for $b = 0$. The map $\Delta^{1} \square \Delta^{1} \to X$ gives us a 1-simplex in $X_{1}$ connecting $\ell(a, 0)$ and $\ell(a, 1)$, which implies by property SOMETHING that $\ell(a, 1)$ is also marked.
+  where the triangle on the right is the adjunct to the triangle above. In order to check that the dashed lift respects the marking on $X$, we have to show that for each $(a, b) \in (A \square \Delta^{1})_{10} = A_{1} \times \{0, 1\}$, the morphism $\ell(a, b)$ is marked in $X$. The commutativity of the triangle guarantees this for $b = 0$. The map $\Delta^{1} \square \Delta^{1} \to X$ gives us a 1-simplex in $X_{1}$ connecting $\ell(a, 0)$ and $\ell(a, 1)$, which implies by that $\ell(a, 1)$ is also marked because each marking respects path components.
 
   The case $n = 1$, $k = 1$ is essentially identical.
 \end{proof}
@@ -245,82 +245,64 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
   is homotopy pullback.
 \end{definition}
 
-\begin{lemma}
-  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $e \in X_{1}$ be a homotopy equivalence. Then $e$ is $f$-cocartesian. In particular, all identity morphisms are $f$-cocartesian.
-\end{lemma}
-
-Since all degenerate morphisms are $f$-cocartesian, this allows us to define, for any Reedy fibration $f\colon X \to Y$ between complete segal spaces, a marking on $X$ such that precisely the $f$-cocartesian morphisms are marked.
-
-\begin{lemma}
-  \label{lemma:cocartesian_closed_under_composition}
-  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $\sigma \in X_{2}$ be a 2-simplex as follows.
-  \begin{equation*}
-    \begin{tikzcd}[column sep=small]
-      & y
-      \arrow[dr, "g"]
-      \\
-      x
-      \arrow[ur, "f"]
-      \arrow[rr, swap, "h"]
-      && z
-    \end{tikzcd}
-  \end{equation*}
-  Then if $f$ and $g$ are $f$-cocartesian, so is $h$.
-\end{lemma}
+\begin{example}
+  Identity morphisms are clearly $f$-cocartesian.
+\end{example}
 
 \begin{definition}
   For $n \geq 1$, define the following simplicial subsets of $\Delta^{n}$.
 
   \begin{itemize}
-    \item Denote by $I_{n}$ the \defn{spine} of $\Delta^{n}$, i.e.\ the space
+    \item For $n \geq 1$, denote by $I_{n}$ the \defn{spine} of $\Delta^{n}$, i.e.\ the simplicial subset
       \begin{equation*}
-        \Delta^{\{0, 1\}} \amalg_{\Delta^{\{1\}}} \Delta^{\{1, 2\}} \amalg_{\Delta^{\{2\}}} \cdots \amalg_{\Delta^{\{n-1\}}} \Delta^{\{n-1, n\}}.
+        \Delta^{\{0, 1\}} \amalg_{\Delta^{\{1\}}} \Delta^{\{1, 2\}} \amalg_{\Delta^{\{2\}}} \cdots \amalg_{\Delta^{\{n-1\}}} \Delta^{\{n-1, n\}} \subseteq \Delta^{n}.
       \end{equation*}
 
-    \item Denote by $\Sigma_{n}$ the space
+    \item For $n \geq 2$, denote by $L_{n}$ the simplicial subset
       \begin{equation*}
-        \Sigma_{n} = \Delta^{\{0, 1\}} \amalg_{\Delta^{\{0\}}} \Delta^{\{0, 2\}} \amalg_{\Delta^{\{2\}}} \overbrace{\Delta^{\{2, 3\}} \amalg_{\Delta^{\{3\}}}\cdots \amalg_{\Delta^{\{n-1\}}} \Delta^{\{n-1, n\}}}^{I_{\{2, \ldots, n\}}} .
+        L_{n} = \Delta^{\{0, 1\}} \amalg_{\Delta^{\{0\}}} \Delta^{\{0, 2\}} \amalg_{\Delta^{\{2\}}} \overbrace{\Delta^{\{2, 3\}} \amalg_{\Delta^{\{3\}}}\cdots \amalg_{\Delta^{\{n-1\}}} \Delta^{\{n-1, n\}}}^{I_{\{2, \ldots, n\}}} \subseteq \Delta^{n}.
       \end{equation*}
-      That is, $\Sigma_{n}$ is the union of $\Delta^{\{0, 1\}}$ with the spine of $d_{1}\Delta^{n}$. We will call $\Sigma_{n}$ the \defn{left spine} of $\Delta^{n}$.
+      That is, $L_{n}$ is the union of $\Delta^{\{0, 1\}}$ with the spine of $d_{1}\Delta^{n}$. We will call $L_{n}$ the \defn{left spine} of $\Delta^{n}$.
   \end{itemize}
 \end{definition}
 
-Note that $\Sigma_{2} \cong \Lambda^{2}_{0}$.
+Note that $L_{2} \cong \Lambda^{2}_{0}$.
 
-\begin{lemma}
-  For any $n \geq 2$, the map
-  \begin{equation*}
-    \Delta^{\{0, \ldots, n-1\}} \amalg_{\Delta^{\{n-1\}}} \Delta^{\{n-1, n\}} \hookrightarrow \Delta^{n}
-  \end{equation*}
-  is inner anodyne.
-\end{lemma}
-\begin{proof}
-  This map can be written as the starred smash product of $\emptyset \hookrightarrow \Delta^{n-2}$, which is an inclusion, and $\Delta^{\{0\}} \hookrightarrow \Delta^{1}$, which is left anodyne. The result follows from \cite[Lemma 2.1.2.3]{highertopostheory}.
-\end{proof}
+%\begin{lemma}
+%  For any $n \geq 2$, the map
+%  \begin{equation*}
+%    \Delta^{\{0, \ldots, n-1\}} \amalg_{\Delta^{\{n-1\}}} \Delta^{\{n-1, n\}} \hookrightarrow \Delta^{n}
+%  \end{equation*}
+%  is inner anodyne.
+%\end{lemma}
+%\begin{proof}
+%  This map can be written as the starred smash product of $\emptyset \hookrightarrow \Delta^{n-2}$, which is an inclusion, and $\Delta^{\{0\}} \hookrightarrow \Delta^{1}$, which is left anodyne. The result follows from \cite[Lemma 2.1.2.3]{highertopostheory}.
+%\end{proof}
 
 \begin{note}
   Toby: I don't know if the below proof is easy enough that it doesn't need to be expanded. I started typing out a more detailed proof, but the the notation became pretty terrible. This should probably be taken as another sign that better notation is needed.
 \end{note}
 
 \begin{proposition}
+  \label{prop:only_lowest_lifting_condition_is_necessary}
   Let $f\colon X \to Y$ be a Reedy fibration between Segal spaces, and let $e \in X_{10}$ be an $f$-cocartesian morphism. Then the square
   \begin{equation*}
     \begin{tikzcd}
       \Delta^{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
       \arrow[r]
       \arrow[d]
-      & \Sigma_{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
+      & L_{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
       \arrow[d]
       \\
       \Delta^{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
       \arrow[r]
-      & \Sigma_{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
+      & L_{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
     \end{tikzcd}
   \end{equation*}
   is homotopy pullback for all $n \geq 2$.
 \end{proposition}
 \begin{proof}
-  By induction. We have the base case $n = 2$ because $e$ is $f$-cocartesian. The higher cases follow from the Segal condition.
+  We have the base case $n = 2$ because $e$ is $f$-cocartesian. The higher cases follow from the Segal condition.
 
   % Assume the result is true for $n - 1$. Then the square
   % \begin{equation*}
@@ -328,17 +310,17 @@ Note that $\Sigma_{2} \cong \Lambda^{2}_{0}$.
   %     (\Delta^{n-1} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}) \times_{\Delta^{\{n-1\}} \backslash X} \Delta^{\{n-1, n\}} \backslash X
   %     \arrow[r]
   %     \arrow[d]
-  %     & \Sigma_{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
+  %     & L_{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
   %     \arrow[d]
   %     \\
   %     \Delta^{n-1} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
   %     \arrow[r]
-  %     & \Sigma_{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
+  %     & L_{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
   %   \end{tikzcd}
   % \end{equation*}
 \end{proof}
 
-For any simplicial subset $A \subseteq \Delta^{n}$, denote the marking where the only marked nondegenerate edge is $\Delta^{\{0, 1\}}$ by $A^{\mathcal{L}}$. For any simplicial set $A$, define a marked simplicial set $(\Delta^{1} \star A, \mathcal{L'})$ where the only nondegenerate simplex belonging to $\mathcal{L'}$ is $\Delta^{1}$.
+For any simplicial subset $A \subseteq \Delta^{n}$, denote the marking on $A$ where the only marked nondegenerate edge is $\Delta^{\{0, 1\}}$ by $A^{\mathcal{L}}$. If $A$ does not contain the edge $\Delta^{\{0, 1\}}$ then this agrees with the $\flat$-marking. For any simplicial set $A$, define a marked simplicial set $(\Delta^{1} \star A, \mathcal{L'})$ where the only nondegenerate simplex belonging to $\mathcal{L'}$ is $\Delta^{1}$.
 
 \begin{lemma}
   \label{lemma:starred_smash_with_mono}
@@ -348,7 +330,7 @@ For any simplicial subset $A \subseteq \Delta^{n}$, denote the marking where the
       (\Delta^{\{0\}} \star B)^{\flat} \coprod_{(\Delta^{\{0\}} \star A)^{\flat}} (\Delta^{1} \star A)^{\mathcal{L}'} \hookrightarrow (\Delta^{1} \star B)^{\mathcal{L}'}
     \end{tikzcd}
   \end{equation*}
-  is in the saturated hull of
+  is in the saturated hull of the morphisms
   \begin{equation*}
     (\Lambda^{k}_{0})^{\mathcal{L}} \hookrightarrow (\Delta^{k})^{\mathcal{L}},\qquad 2 \leq k \leq n+2.
   \end{equation*}
@@ -371,20 +353,20 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
   \begin{enumerate}
     \item Maps $(A)^{\flat} \hookrightarrow (B)^{\flat}$, where $A \to B$ is inner anodyne.
 
-    \item Left spine inclusions $(\Sigma_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$.
+    \item Left spine inclusions $(L_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$.
   \end{enumerate}
 
   Then $\mathcal{A}$ contains left horn inclusions $(\Lambda^{n}_{0})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$.
 \end{lemma}
 \begin{proof}
-  We have an isomorphism $(\Sigma_{2})^{\mathcal{L}} \cong (\Lambda^{2}_{1})^{\mathcal{L}}$, which belongs to $\mathcal{A}$ because saturated sets contain all isomorphisms.
+  We have an isomorphism $(L_{2})^{\mathcal{L}} \cong (\Lambda^{2}_{1})^{\mathcal{L}}$, which belongs to $\mathcal{A}$ because saturated sets contain all isomorphisms.
 
-  We proceed by induction. Suppose we have shown the result for $n - 1$ i.e.\ that all horn inclusions $(\Lambda^{k}_{0})^{\mathcal{L}} \hookrightarrow (\Delta^{k})^{\mathcal{L}}$ belong to $\mathcal{A}$ for $2 \leq k \leq n-1$. From now on on we will suppress the marking $(-)^{\mathcal{L}}$, since it is clear where it belongs.
+  We proceed by induction. Suppose we have shown the result for $n - 1$ i.e.\ that all horn inclusions $(\Lambda^{k}_{0})^{\mathcal{L}} \hookrightarrow (\Delta^{k})^{\mathcal{L}}$ belong to $\mathcal{A}$ for $2 \leq k \leq n-1$.  From now on on we will suppress the marking $(-)^{\mathcal{L}}$. All simplicial subsets of $\Delta^{n}$ below will have $\Delta^{\{0, 1\}}$ marked if they contain it.
 
   Consider the factorization
   \begin{equation*}
     \begin{tikzcd}
-      \Sigma_{n}
+      L_{n}
       \arrow[r, "u_{n}"]
       \arrow[rr, bend right, swap, "v_{n} \circ u_{n}"]
       & \Lambda^{n}_{0}
@@ -392,41 +374,41 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
       & \Delta^{n}
     \end{tikzcd}.
   \end{equation*}
-  The morphism $v_{n} \circ u_{n}$ belongs to $\mathcal{A}$ by assumption, so in order to show that $u_{n}$ belongs to $\mathcal{A}$, it suffices by right cancellation to show that $v_{n}$ belongs to $\mathcal{A}$. Consider the factorization
+  The morphism $v_{n} \circ u_{n}$ belongs to $\mathcal{A}$ by assumption, so in order to show that $v_{n}$ belongs to $\mathcal{A}$, it suffices by right cancellation to show that $u_{n}$ belongs to $\mathcal{A}$. Consider the factorization
   \begin{equation*}
     \begin{tikzcd}
-      \Sigma_{n}
+      L_{n}
       \arrow[r, "w'_{n}"]
-      & \Sigma_{n} \cup d_{1} \Delta^{n}
+      & L_{n} \cup d_{1} \Delta^{n}
       \arrow[r, "w_{n}"]
       & \Lambda^{n}_{0}.
     \end{tikzcd}
   \end{equation*}
-  The map $w'_{n}$ is a pushout along $I_{n-1} \hookrightarrow \Delta^{n-1}$, and hence is inner anodyne. Hence, we need only show that $w_{n}$ belongs to $\mathcal{A}$. Let 
+  The map $w'_{n}$ is a pushout along a spine inclusion, and hence is inner anodyne. Hence, we need only show that $w_{n}$ belongs to $\mathcal{A}$. Let
   \begin{equation*}
     Q = d_{2} \Delta^{n} \cup \cdots \cup d_{n} \Delta^{n},
   \end{equation*}
   and consider the following pushout diagram.
   \begin{equation*}
     \begin{tikzcd}
-      (\Sigma_{n} \cup d_{1}\Delta^{n}) \cap Q
-      \arrow[r]
-      \arrow[d]
+      (L_{n} \cup d_{1}\Delta^{n}) \cap Q
+      \arrow[r, hook]
+      \arrow[d, hook]
       & Q
-      \arrow[d]
+      \arrow[d, hook]
       \\
-      \Sigma_{n} \cup d_{1} \Delta^{n}
-      \arrow[r]
-      & \Sigma_{n} \cup d_{1}\Delta^{n} \cup Q
+      L_{n} \cup d_{1} \Delta^{n}
+      \arrow[r, hook]
+      & L_{n} \cup d_{1}\Delta^{n} \cup Q
     \end{tikzcd}.
   \end{equation*}
-  Since $\Sigma_{n} \cup d_{1} \Delta^{n} \cup Q \cong \Lambda^{n}_{0}$, the bottom map is $w_{n}$, so it suffices to show that the top map belongs to $\mathcal{A}$. But this is isomorphic to
+  Since $L_{n} \cup d_{1} \Delta^{n} \cup Q \cong \Lambda^{n}_{0}$, the bottom map is $w_{n}$, so it suffices to show that the top map belongs to $\mathcal{A}$. But this is isomorphic to
   \begin{equation*}
     \begin{tikzcd}
-      \Delta^{\{0, 1\}} \star \emptyset \coprod_{\Delta^{\{0\}} \star \emptyset} \Delta^{\{0\}} \star \partial \Delta^{\{2, 3, \ldots, n\}} \hookrightarrow \Delta^{\{0, 1\}} \star \partial \Delta^{\{2, 3, \ldots, n\}}.
+      (\Delta^{\{0, 1\}} \star \emptyset) \coprod_{(\Delta^{\{0\}} \star \emptyset)} (\Delta^{\{0\}} \star \partial \Delta^{\{2, 3, \ldots, n\}}) \hookrightarrow \Delta^{\{0, 1\}} \star \partial \Delta^{\{2, 3, \ldots, n\}}.
     \end{tikzcd}
   \end{equation*}
-  The set $\partial \Delta^{\{2, \ldots, n\}}$ is $(n-3)$-skeletal, so this map belongs to $\mathcal{A}$ by \hyperref[lemma:starred_smash_with_mono]{Lemma~\ref*{lemma:starred_smash_with_mono}}.
+  The simplicial set $\partial \Delta^{\{2, \ldots, n\}}$ is $(n-3)$-skeletal, so this map belongs to $\mathcal{A}$ by \hyperref[lemma:starred_smash_with_mono]{Lemma~\ref*{lemma:starred_smash_with_mono}}.
 \end{proof}
 
 \begin{definition}
@@ -439,11 +421,78 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
   Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. We define a marking on $X$ such that a morphism is marked if and only if it is $f$-cocartesian. We will denote the corresponding marked simplicial by set $X^{\natural}$. We can view the map $f$ as a map of marked bisimplicial sets $f\colon X^{\natural} \to Y^{\sharp}$.
 \end{definition}
 
+%\begin{lemma}
+%  The marking $X^{\natural}$ has the property SOMETHING.
+%\end{lemma}
+
+\begin{note}
+  Toby: In the rest of this subsection, we have to assume that the cocartesian marking respects path components. I'm convinced that this isn't necessary (i.e.\ that the cocartesian marking always respects path components), but as discussed I'm sending this to you before spending too much time trying to prove it.
+\end{note}
+
+\begin{proposition}
+  \label{prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian}
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and further assume that the natural marking on $Y$ respects path components. Let $e \in X_{10}$ be an $f$-cartesian morphism. Then $e$, viewed as a morphism in the quasicategory $X / \Delta^{0}$, is $f / \Delta^{0}$-cocartesian.
+\end{proposition}
+\begin{proof}
+  Let $u^{n}_{0}\colon (\Lambda^{n}_{0} \hookrightarrow \Delta^{n})^{\mathcal{L}}$ denote the $\mathcal{L}$-marked inclusion. First, let $n \geq 2$, and consider the set
+  \begin{equation*}
+    S =
+    \left\{
+      \substack{
+        u\colon A \to \text{ B morphism of} \\
+        \text{marked simplicial sets} \\
+        \text{such that $\mathring{u}$ is mono}
+      }
+      \ \bigg| \ 
+      \langle u \backslash f \rangle \text{ weak homotopy equivalence}
+    \right\}.
+  \end{equation*}
+  It is clear that this set has the right cancellation property. By \hyperref[prop:cartesian_marking_respects_path_components]{Proposition~\ref*{prop:cartesian_marking_respects_path_components}}, a map $u$ belonging to $S$ is automatically a Kan fibration, hence is a trivial Kan fibration. Thus, we can equivalently say that $u \in S$ if and only if $u$ has the left-lifting property with respect to all maps of the form $\langle X / v \rangle$, where $v$ is a cofibration of simplicial sets. Thus, $S$ is saturated.
+
+  The set $S$ contains all flat-marked inner anodyne morphisms because $f$ is a Reedy fibration. \hyperref[prop:only_lowest_lifting_condition_is_necessary]{Proposition~\ref*{prop:only_lowest_lifting_condition_is_necessary}} implies that $S$ contains all left spine inclusions $(L_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$. Thus, by \hyperref[lemma:saturated_hull_of_left_spine_inclusions]{Lemma~\ref*{lemma:saturated_hull_of_left_spine_inclusions}}, we are done.
+\end{proof}
+
+\begin{corollary}
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces such that the cocartesian marking on $x$ respects path components. Then the map
+  \begin{equation*}
+    f/\Delta^{0}\colon X/\Delta^{0} \to Y/\Delta^{0}
+  \end{equation*}
+  is a cocartesian fibration of quasicategories.
+\end{corollary}
+\begin{proof}
+  By \cite{qcats_vs_segal_spaces}, the map $f/\Delta^{0}$ is an isofibration between quasicategories, and hence is certainly an inner fibration. By assumption, every morphism in $Y$ has a $f$-cartesian lift. By\hyperref[prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian]{Proposition~\ref*{prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian}}, these lifts are also $f / \Delta^{0}$-cocartesian.
+\end{proof}
+
+\subsection{Further results}
+\label{ssc:further_results}
+
+\begin{note}
+  Toby: The remainder of this section consists of half-typed stuff I have at best sketched proofs of. I think that I am quite close to a proof of \hyperref[thm:divide_by_marked_anodyne]{Theorem~\ref*{thm:divide_by_marked_anodyne}}.
+\end{note}
+
 \begin{lemma}
-  The marking $X^{\natural}$ has the property SOMETHING.
+  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $e \in X_{1}$ be a homotopy equivalence. Then $e$ is $f$-cocartesian. In particular, all identity morphisms are $f$-cocartesian.
+\end{lemma}
+
+\begin{lemma}
+  \label{lemma:cocartesian_closed_under_composition}
+  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $\sigma \in X_{2}$ be a 2-simplex as follows.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=small]
+      & y
+      \arrow[dr, "g"]
+      \\
+      x
+      \arrow[ur, "f"]
+      \arrow[rr, swap, "h"]
+      && z
+    \end{tikzcd}
+  \end{equation*}
+  Then if $f$ and $g$ are $f$-cocartesian, so is $h$.
 \end{lemma}
 
 \begin{theorem}
+  \label{thm:divide_by_marked_anodyne}
   Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and denote also by $f$ the morphism $f\colon X^{\natural} \to Y^{\sharp}$ as in \hyperref[def:cocoartesian_marking_on_complete_segal_spaces]{Definition~\ref*{def:cocoartesian_marking_on_complete_segal_spaces}}. Then for any marked anodyne morphism $u$, the map $\langle u \backslash f \rangle$ is a trivial fibration.
 \end{theorem}
 \begin{proof}
@@ -462,37 +511,24 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
   \begin{enumerate}
     \item For any morphism $u^{n}_{k}\colon (\Lambda^{n}_{k})^{\flat} \hookrightarrow (\Delta^{n})^{\flat}$, where $0 < k < n$, the map $\langle u \backslash f \rangle$ is isomorphic to the map $\langle \mathring{u} \backslash \mathring{f} \rangle$, which is a trivial fibration since $\mathring{f}$ is a Reedy fibration.
 
-    \item Let $u^{n}_{0}\colon (\Lambda^{n}_{0})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$ denote the inclusion. First, let $n \geq 2$, and consider the set
+    \item 
+
+    \item We need to show equivalently that for any anodyne map $A \to A'$ we can find a dashed lift as below.
       \begin{equation*}
-        S = \left\{\left.\substack{
-          u\colon A \to \text{ B morphism of} \\
-          \text{marked simplicial sets} \\
-          \text{such that $\mathring{u}$ is mono}
-        }
-        \ \right| \
-        \langle u \backslash f \rangle \text{ weak homotopy equivalence}
-      \right\}.
-    \end{equation*}
-    It is clear that this set has the right cancellation property. By \hyperref[prop:cartesian_marking_has_SOMETHING_property]{Proposition~\ref*{prop:cartesian_marking_has_SOMETHING_property}}, a map $u$ belonging to $S$ is automatically a Kan fibration, hence is a trivial Kan fibration. Thus, we can equivalently say that $u \in S$ if and only if $u$ has the left-lifting property with respect to all maps of the form $\langle X / v \rangle$, where $v$ is a cofibration of simplicial sets. Thus, $S$ is saturated.
-
-    The set $S$ contains all flat-marked inner anodyne morphisms because $f$ is a Reedy fibration. We have already shown that $S$ contains all left spine inclusions $(\Sigma_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$. Thus, by \hyperref[lemma:saturated_hull_of_left_spine_inclusions]{Lemma~\ref*{lemma:saturated_hull_of_left_spine_inclusions}}, we are done.
-
-  \item We need to show equivalently that for any anodyne map $A \to A'$ we can find a dashed lift as below.
-    \begin{equation*}
-      \begin{tikzcd}
-        (\Lambda^{2}_{1})^{\sharp} \amalg_{(\Lambda^{2}_{1})^{\flat}} (\Delta^{2})^{\flat}
-        \arrow[r]
-        \arrow[d]
-        & X / A'
-        \arrow[d]
-        \\
-        (\Delta^{2})^{\sharp}
-        \arrow[r]
-        \arrow[ur, dashed]
-        & X / A \times_{Y / A} Y / A'
-      \end{tikzcd}
-    \end{equation*}
-    Since a lift of the underlying diagram of
+        \begin{tikzcd}
+          (\Lambda^{2}_{1})^{\sharp} \amalg_{(\Lambda^{2}_{1})^{\flat}} (\Delta^{2})^{\flat}
+          \arrow[r]
+          \arrow[d]
+          & X / A'
+          \arrow[d]
+          \\
+          (\Delta^{2})^{\sharp}
+          \arrow[r]
+          \arrow[ur, dashed]
+          & X / A \times_{Y / A} Y / A'
+        \end{tikzcd}
+      \end{equation*}
+      Since a lift of the underlying diagram of
   \end{enumerate}
 \end{proof}
 
@@ -537,55 +573,9 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
 \section{Complete Segal spaces of spans}
 \label{sec:complete_segal_spaces_of_spans}
 
-%\subsection{Inner fibrations}
-%\label{ssc:inner_fibrations}
-%
-%\begin{theorem}
-%  Let $\category{C}$ and $\category{D}$ be quasicategories with pullbacks, and let $\pi\colon \category{C} \to \category{D}$ be an inner fibration preserving pullbacks. Then $\Span(\category{C}) \to \Span(\category{D})$ is an inner fibration of complete Segal spaces.
-%\end{theorem}
-%\begin{proof}
-%  We need to show that
-%  \begin{equation*}
-%    \begin{tikzcd}
-%      \Span(\category{C})_{2}
-%      \arrow[r]
-%      \arrow[d]
-%      & \Span(\category{C})_{1} \times_{\Span(\category{C})_{0}} \Span(\category{C})_{1}
-%      \arrow[d]
-%      \\
-%      \Span(\category{D})_{2}
-%      \arrow[r]
-%      & \Span(\category{D})_{1} \times_{\Span(\category{D})_{0}} \Span(\category{D})_{1}
-%    \end{tikzcd}
-%  \end{equation*}
-%  is a homotopy pullback square. This says that we need to show that
-%  \begin{equation*}
-%    \begin{tikzcd}
-%      \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq}
-%      \arrow[r]
-%      \arrow[d]
-%      & \Fun^{\Cart}(\asd(\Lambda^{2}_{1}), \category{C})^{\simeq}
-%      \arrow[d]
-%      \\
-%      \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq}
-%      \arrow[r]
-%      & \Fun^{\Cart}(\asd(\Lambda^{2}_{1}), \category{D})^{\simeq}
-%    \end{tikzcd}
-%  \end{equation*}
-%  is a homotopy pullback. Since all the objects involved are Kan complexes and the lower map is a Kan fibration, it suffices to show that the induced map from $\Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq}$ into the fibered product is a weak equivalence. By
-%  \begin{equation*}
-%    \begin{tikzcd}
-%      \Fun(\asd(\Delta^{2}), \category{C}) \to \Fun(\asd(\Lambda^{2}_{1}), \category{C}) \times_{\Fun(\asd(\Delta^{2}), \category{D})} \Fun(\asd(\Lambda^{2}_{1}), \category{D})
-%    \end{tikzcd}
-%  \end{equation*}
-%  Since Cartesian simplices connected by an equivalence are preserved, the map
-%  is
-%\end{proof}
-
-\subsection{Cocartesian fibrations}
-\label{ssc:cocartesian_fibrations}
-
-We start with some notation.
+\begin{note}
+  Toby: Barwick's theorem is more general in the sense that he allows one to choose classes of maps that the forward- and backward-facing maps in the spans are allowed to belong to. I haven't though much about how much more difficult it would be to allow for this. This seems pretty important for a wide variety of reasons; for example, it would allow us to treat cases like $\category{C}^{\otimes} \to \Finp$.
+\end{note}
 
 The main goal of this section is to prove the following theorem.
 
@@ -961,32 +951,34 @@ are $p$-cocartesian.
   where the morphism marked with a $\circ$ is $\pi$-cartesian and the morphism marked with a $\bullet$ is $\pi$-cocartesian, then it is $p$-cocartesian.
 \end{proposition}
 \begin{proof}
-  In order to show that a morphism $e\colon x \leftarrow y \rightarrow x'$ of the form given in \hyperref[prop:form_of_cocartesian_morphisms_in_spans]{Proposition~\ref*{prop:form_of_cocartesian_morphisms_in_spans}} are cocartesian, we have to show that the square
-  \begin{equation*}
-    \begin{tikzcd}
-      \Span(\category{C})_{2} \times_{\Span(\category{C})_{\{0, 1\}}} \{e\}
-      \arrow[r]
-      \arrow[d]
-      & \Span(\category{C})_{\{0, 2\}} \times_{\Span(\category{C})_{\{0\}}} \{x\}
-      \arrow[d]
-      \\
-      \Span(\category{D})_{2} \times_{\Span(\category{D})_{\{0, 1\}}} \{\pi e\}
-      \arrow[r]
-      & \Span(\category{D})_{\{0, 2\}} \times_{\Span(\category{D})_{\{0\}}} \{\pi x\}
-    \end{tikzcd}
-  \end{equation*}
-  is homotopy pullback. Expanding, we have to show that the square
+  In order to show that a morphism $e\colon x \leftarrow y \rightarrow x'$ of the form given in \hyperref[prop:form_of_cocartesian_morphisms_in_spans]{Proposition~\ref*{prop:form_of_cocartesian_morphisms_in_spans}} are cocartesian, we have to show that 
+  %the square
+  %\begin{equation*}
+  %  \begin{tikzcd}
+  %    \Span(\category{C})_{2} \times_{\Span(\category{C})_{\{0, 1\}}} \{e\}
+  %    \arrow[r]
+  %    \arrow[d]
+  %    & \Span(\category{C})_{\{0, 2\}} \times_{\Span(\category{C})_{\{0\}}} \{x\}
+  %    \arrow[d]
+  %    \\
+  %    \Span(\category{D})_{2} \times_{\Span(\category{D})_{\{0, 1\}}} \{\pi e\}
+  %    \arrow[r]
+  %    & \Span(\category{D})_{\{0, 2\}} \times_{\Span(\category{D})_{\{0\}}} \{\pi x\}
+  %  \end{tikzcd}
+  %\end{equation*}
+  %is homotopy pullback. Expanding, we have to show that 
+  the square
   \begin{equation*}
     \begin{tikzcd}
       \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
       \arrow[r]
       \arrow[d]
-      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{C})^{\simeq}} \{x\}
+      & \Fun(\asd(\Lambda^{2}_{0}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
       \arrow[d]
       \\
       \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
       \arrow[r]
-      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0\}}), \category{D})^{\simeq}} \{\pi x\}
+      & \Fun(\asd(\Delta^{\{0, 2\}}), \category{D})^{\simeq} \times_{\Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq}} \{\pi e\}
     \end{tikzcd}
   \end{equation*}
   is homotopy pullback.
