@@ -1,0 +1,1960 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\chapter{Categories of spans}
+\label{ch:categories_of_spans}
+
+This is a rephrasing of \cite{1409.0837}.
+
+\section{Motivation}
+
+Given an $\infty$-category $\category{C}$, we would like to create an $\infty$-category whose objects are spans in $\category{C}$. That is, we would like to create a category whose objects are the objects of $\category{C}$, whose morphisms are spans in $\category{C}$, and whose higher simplices parametrize compositions of spans.
+\begin{equation*}
+  \left\{
+    \begin{tikzcd}
+      x
+    \end{tikzcd}
+  \right\}
+  \begin{tikzcd}
+    \
+    \arrow[r]
+    & \
+    \arrow[l, shift left=2]
+    \arrow[l, shift right=2]
+  \end{tikzcd}
+  \left\{
+    \begin{tikzcd}[row sep=tiny, column sep=tiny]
+      & y
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      x
+      && x'
+    \end{tikzcd}
+  \right\}
+  \begin{tikzcd}
+    \
+    \arrow[r, shift right=2]
+    \arrow[r, shift left=2]
+    & \
+    \arrow[l, shift left=0]
+    \arrow[l, shift left=4]
+    \arrow[l, shift right=4]
+  \end{tikzcd}
+  \left\{
+    \begin{tikzcd}[row sep=tiny, column sep=tiny]
+      && z
+      \arrow[dd, phantom, near start, "\vee" label]
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & y
+      \arrow[dr]
+      \arrow[dl]
+      && y'
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      x
+      && x'
+      && x''
+    \end{tikzcd}
+  \right\}
+  \quad \cdots
+\end{equation*}
+
+Our first job is to formulate this in rigorous, combinatorial language.
+
+\begin{definition}
+  Define a functor $T\colon \D \to \D$ sending
+  \begin{equation*}
+    [n] \mapsto [n] \oplus [n]\op = \{0, \ldots, n, \bar{n}, \ldots, \bar{0}\}.
+  \end{equation*}
+  We can pull any simplicial set $K\colon \Delta\op \to \Set$ back by $T$, giving a simplicial set $T^{*}K$ with $n$-simplices
+  \begin{equation*}
+    (T^{*}K)_{n} = K([n] \oplus [n]\op).
+  \end{equation*}
+\end{definition}
+
+\begin{example}
+  With $K = \Delta^{1}$, we have
+  \begin{equation*}
+    (T^{*}\Delta^{1})_{0} = \{\phi\colon \{0, \bar{0}\} \mapsto \{0, 1\} \mid \phi \text{ weakly monotone}\} = \{00, 01, 11\}
+  \end{equation*}
+  and
+  \begin{equation*}
+    (T^{*}\Delta^{1})_{1} = \{0000, 0001, 0011, 0111, 1111\}.
+  \end{equation*}
+  The map $d_{0}$ acts by pulling back by $T\partial_{0}$, which is given by the diagram
+  \begin{equation*}
+    \begin{tikzcd}[row sep=small, column sep=small]
+      & 0
+      \\
+      0
+      \arrow[ur, mapsto]
+      & 1
+      \\
+      \bar{0}
+      \arrow[dr, mapsto]
+      & \bar{1}
+      \\
+      & \bar{0}
+    \end{tikzcd}.
+  \end{equation*}
+
+  That is, the source of an edge $abcd$ is $ad$, and the target is $bc$. We can draw $T^{*}\Delta^{1}$ as follows.
+  \begin{equation*}
+    \begin{tikzcd}
+      00
+      & 01
+      \arrow[l, swap, "0001"]
+      \arrow[r, "0111"]
+      & 11
+    \end{tikzcd}
+  \end{equation*}
+
+  Similarly, we can draw $T^{*}\Delta^{2}$ as follows.
+  \begin{equation*}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur]
+      \arrow[dl]
+      && 12
+      \arrow[ul]
+      \arrow[dr]
+      \\
+      00
+      && 02
+      \arrow[ll]
+      \arrow[rr]
+      \arrow[uu]
+      \arrow[ur]
+      \arrow[ul]
+      && 22
+    \end{tikzcd}
+  \end{equation*}
+
+  We would like the span $00 \leftarrow 02 \rightarrow 22$ to correspond to the composition of the spans $00 \leftarrow 01 \rightarrow 11$ and $11 \leftarrow 12 \rightarrow 22$, but it is not immediately clear how to impose this condition in a general way. We turn instead to a different model.
+\end{example}
+
+\begin{definition}
+  \label{def:poset_for_asd}
+  Denote by $\Sig^{n}$ the poset with objects $(i, j)$, with $0 \leq i \leq j \leq n$, with
+  \begin{equation*}
+    (i, j) \leq (i', j') \iff i \leq i \quad \text{and} \quad j' \leq j.
+  \end{equation*}
+\end{definition}
+
+Since any map of totally ordered sets $\phi\colon [m] \to [n]$ induces a functor
+\begin{equation*}
+  \Sig^{m} \to \Sig^{n}, (i, j) \mapsto (\phi(i), \phi(j)),
+\end{equation*}
+the categories $\Sig^{n}$ form a simplicial object $\Sig^{\bullet}\colon \D \to \Cat$.
+
+Similarly, let $\Lam^{n}$ be the full subcategory of $\Sig^{n}$ on objects of the form
+\begin{equation*}
+  (i, j)\colon j - i \leq 1.
+\end{equation*}
+%We do \emph{not} get a functor $\Lam^{\bullet}\colon \D \to \Cat$, but we get a functor $\Lam^{\bullet}\colon \Dint \to \Cat$, and a functor
+
+There is an obvious inclusion $i\colon \Lam^{\bullet} \hookrightarrow \Sig^{\bullet}$.
+
+\begin{example}
+  We can draw $\Sig^{2}$ as follows. The subcategory $\Lam^{2} \hookrightarrow \Sig^{2}$ is in blue.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=small, row sep=small]
+      && 02
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & \color{blue}{01}
+      \arrow[dl, blue]
+      \arrow[dr, blue]
+      && \color{blue}{12}
+      \arrow[dl, blue]
+      \arrow[dr, blue]
+      \\
+      \color{blue}{00}
+      && \color{blue}{11}
+      && \color{blue}{22}
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+As simplicial sets, $N(\Sig^{n}) \cong T^{*} \Delta^{n}$. The $k$-simplices of $\Sig^{n}$ are maps $[k] \mapsto \Sig^{n}$, i.e.\ strings $(i_{0}, j_{0}) \leq \cdots \leq (i_{k}, j_{k})$. This is a collection of integers such that
+\begin{equation*}
+  0 \leq i_{k} \leq \cdots \leq i_{0} \leq j_{0} \leq \cdots \leq j_{k} \leq n.
+\end{equation*}
+Providing such a string is equivalent to providing a map $[k]\op \oplus [k] \to [n]$.
+
+\begin{definition}[Cartesian]
+  \label{def:cartesian}
+  Let $\category{C}$ be an $\infty$-category with finite limits. A functor $f\colon \Sig^{n} \to \category{C}$ is \defn{Cartesian} if it is a right Kan extension of its restriction to $\Lam^{n}$.
+\end{definition}
+
+For any $\infty$-category $\category{C}$, we might try to procede by defining a simplicial set
+\begin{equation*}
+  \Hom^{\Cart}(\Sig^{\bullet}, \category{C})\colon \D\op \to \Set,
+\end{equation*}
+whose $n$-simplices are Cartesian diagrams $\Sig^{n} \to \category{C}$. However, it is not at all clear how to show that this is an infinity category. It turns out to be profitable to change models; we will be able to show that the functor
+\begin{equation*}
+  \Fun^{\Cart}(\Sig^{\bullet}, \category{C})^{\simeq};\qquad \D\op \to \S
+\end{equation*}
+is a complete Segal space.
+
+For any $\infty$-category $\category{C}$, we define a simplicial object
+\begin{equation}
+  \label{eq:first_approximation}
+  \Fun(\Sig^{\bullet}, \Cat_{\infty})\colon \D\op \to \Cat_{\infty}.
+\end{equation}
+
+Applying the relative nerve to \hyperref[eq:first_approximation]{Equation~\ref*{eq:first_approximation}} gives a coCartesian fibration
+\begin{equation*}
+  \pi\colon \CSPAN^{+} \to \D\op.
+\end{equation*}
+The $\infty$-category $\CSPAN^{+}$ has
+\begin{itemize}
+  \item $0$-simplices given by functors $\alpha\colon \Sig^{m} \to \category{C}$.
+
+  \item $1$-simplices given by pairs $(\phi, \eta)$, where $\phi\colon [n] \to [m]$ and $\eta$ is a $1$-simplex
+    \begin{equation*}
+      \begin{tikzcd}
+        \phi^{*}\alpha
+        \arrow[r, "\eta"]
+        & \beta
+      \end{tikzcd}
+    \end{equation*}
+    in $\Fun(\Sig^{n}, \category{C})$.
+
+  \item \dots
+\end{itemize}
+
+\begin{definition}
+  We define $\SPAN^{+}$ to be the full subcategory of $\CSPAN^{+}$ on Cartesian functors.
+\end{definition}
+
+\begin{lemma}
+  Let $\alpha\colon \Sig^{m} \to \category{C}$ be a Cartesian functor. Then for any $\phi\colon [n] \to [m]$, the functor $\phi^{*}\alpha$ given by the composition
+  \begin{equation*}
+    \begin{tikzcd}
+      \Sig^{n}
+      \arrow[r, "\phi"]
+      & \Sig^{m}
+      \arrow[r, "\alpha"]
+      & \category{C}
+    \end{tikzcd}
+  \end{equation*}
+  is Cartesian.
+\end{lemma}
+
+\begin{corollary}
+  The restriction
+  \begin{equation*}
+    \pi'\colon \SPAN^{+} \to \D\op
+  \end{equation*}
+  is a coCartesian fibration.
+\end{corollary}
+\begin{proof}
+  We need to show that we can have a sufficient supply of $\pi'$-coCartesian morphisms. A morphism $f$ in $\CSPAN^{+}$ is $\pi$-coCartesian if and only if every horn $\Lambda^{n}_{i}$ with $\Delta^{\{0, 1\}} = f$ has a filler. Because $\SPAN^{+} \hookrightarrow \CSPAN^{+}$ is a full subcategory inclusion, any
+\end{proof}
+
+\begin{definition}[category of spans]
+  \label{def:category_of_spans}
+  Let $\category{C}$ be an $\infty$-category with finite limits. We define a category
+  \begin{equation*}
+    \Span(\category{C})
+  \end{equation*}
+  by
+\end{definition}
+
+%\begin{proposition}
+%  Let $\mathcal{C}$ be an ordinary category with finite limits. The folarlowing are equivalent.
+%  \begin{enumerate}
+%    \item The functor $F\colon \Sig^{n} \to \mathcal{C}$ is the left Kan exension of its restriction to $\Lam^{n}$.
+%
+%    \item Each square appearing in the image of $F$ is a pullback square.
+%  \end{enumerate}
+%\end{proposition}
+%\begin{proof}
+%  Induction. The base case, with $n = 1$, is trivial. We prove the case $2 \Rightarrow 3$. The general case will hopefully be clear.
+%\end{proof}
+
+\section{Monoidal structures}
+\label{sec:monoidal_structures}
+
+\subsection{1-categories of spans}
+\label{ssc:1_categories_of_spans}
+
+Let $\category{C}^{\otimes}$ be a symmetric monoidal infinity category, which we model by a commutative monoid in $\ICat$, i.e.\ a functor
+\begin{equation*}
+  \category{C}^{\otimes}\colon N(\Finp) \to \ICat
+\end{equation*}
+such that
+\begin{equation*}
+  \begin{tikzcd}
+    \category{C}^{\otimes}_{\langle n \rangle}
+    \arrow[r, "\prod_{i} \rho_{i}"]
+    & (\category{C}^{\otimes}_{\langle 1 \rangle})^{n}
+  \end{tikzcd}
+\end{equation*}
+is an equivalence for all $n$. Further suppose that
+\begin{enumerate}
+  \item Each $\infty$-category $\category{C}^{\otimes}_{\langle n \rangle}$ admits finite limits; and
+
+  \item For each morphism $\rho\colon \langle m \rangle \to \langle n \rangle$ in $\Finp$, the functor $\rho_{*}\colon \category{C}^{\otimes}_{\langle m \rangle} \to \category{C}^{\otimes}_{\langle n \rangle}$ preserves finite limits.
+\end{enumerate}
+
+\begin{definition}
+  We will call such a symmetric monoidal $\infty$-category \defn{pullback-compatible}.
+\end{definition}
+
+\begin{note}
+  By presenting a symmetric monoidal $\infty$-category as a Cartesian fibration admitting relative finite limits, these conditions are satisfied automatically by \cite[Prop. 4.3.1.10]{highertopostheory}. For example, for any $\infty$-category $\category{C}$ with finite limits, the construction $\category{C}_{\times}$ in \cite{spectralmackeyfunctors2} yields such a Cartesian fibration.
+\end{note}
+
+\begin{definition}
+  Define a functor $F\colon \D\op \times \Finp \to \Kan$ (where we are viewing $\D\op \times \Finp$ as a discrete simplicially enriched category) by
+  \begin{equation*}
+    F([m], \langle n \rangle) = \Span(\category{C}^{\otimes}_{\langle n \rangle})_{m} = \Fun^{\Cart}(\Sig^{m}, \category{C}^{\otimes}_{\langle n \rangle})^{\simeq}.
+  \end{equation*}
+
+  Taking the homotopy coherent nerve gives a functor $N(\D\op \times \Finp) \to \S$. This is the adjunct to a functor
+  \begin{equation*}
+    G\colon N(\Finp) \to \Fun(N(\D\op), \S);\qquad \langle n \rangle \mapsto \Span(\category{C}^{\otimes}_{\langle n \rangle}).
+  \end{equation*}
+\end{definition}
+
+One might worry that this construction is not well-defined. At the moment, it's seeming like one is smarter than the author.
+
+\begin{lemma}
+  The functor $F$ is well-defined.
+\end{lemma}
+\begin{proof}
+  The functor $F$ is well-defined in the first slot by \cite[Prop. 5.9]{1409.0837}, and well-defined in the second because if $f\colon \Sig^{n} \to \category{C}^{\otimes}_{\langle m \rangle}$ is Cartesian then so is $\rho_{*} \circ f$. To see this, we need to show that
+  \begin{equation*}
+    \begin{tikzcd}
+      (\rho_{*} \circ f)(i, j) \simeq \lim\left[ \Lam^{m}_{/(i, j)} \to \Lam^{m} \overset{f}{\to} \category{C}^{\otimes}_{\langle m \rangle} \overset{\rho_{*}}{\to} \category{C}^{\otimes}_{\langle n \rangle} \right].
+    \end{tikzcd}
+  \end{equation*}
+  But $\rho_{*}$ preserves limits, so this is equivalently
+  \begin{equation*}
+    \begin{tikzcd}
+      \lim\left[ \Lam^{m}_{/(i, j)} \to \Lam^{m} \overset{f}{\to} \category{C}^{\otimes}_{\langle m \rangle} \right] \overset{\rho_{*}}{\to} \category{C}^{\otimes}_{\langle n \rangle}
+    \end{tikzcd}
+  \end{equation*}
+  which is the same as $(\rho_{*} \circ f)(i,j)$ because $f$ is Cartesian.
+\end{proof}
+
+\begin{proposition}
+  The functor $G$ takes its values in $\CSS$, the $\infty$-category of complete Segal spaces.
+\end{proposition}
+\begin{proof}
+  This is \cite[Prop. 8.1]{1409.0837}
+\end{proof}
+
+\begin{note}
+  I'm not sure what the best way of writing this next proposition is. It sort of feels like I'm missing the point here.
+\end{note}
+
+\begin{proposition}
+  The functor $G$ is a commutative monoid in complete Segal spaces, i.e.\ for each $n \geq 0$, the maps $\rho_{i}$ give an equivalence
+  \begin{equation*}
+    G(\langle n \rangle) \simeq G(\langle 1 \rangle)^{n}.
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  Limits in functor categories are computed pointwise. Therefore, it suffices to check this claim for fixed $[m]$.
+  We have equivalences
+  \begin{align*}
+    G(\langle n \rangle)_{m} &\simeq \Fun^{\Cart}(\Sig^{m}, \category{C}^{\otimes}_{\langle n \rangle})^{\simeq} \\
+    &\simeq \Fun^{\Cart}(\Sig^{m}, (\category{C}^{\otimes}_{\langle 1 \rangle})^{n})^{\simeq} \\
+    &\simeq \left(\Fun^{\Cart}(\Sig^{m}, \category{C}^{\otimes}_{\langle 1 \rangle})^{n}\right)^{\simeq} \\
+    &\simeq \left(\Fun^{\Cart}(\Sig^{m}, \category{C}^{\otimes}_{\langle 1 \rangle})^{\simeq}\right)^{n} \\
+    &\simeq G(\langle 1 \rangle)_{m}^{n}
+  \end{align*}
+
+  The second equivalence holds because $\category{C}^{\otimes}$ is a monoid, the third holds because the hom functor commutes with limits, and the fourth holds because $(-)^{\simeq}$ is a right adjoint and hence preserves limits.
+\end{proof}
+
+I suspect that it will be more useful to cast everything in fibration-y language than commutative monoid in $\CSS$ language. However, we stop at this point to remark that our construction almost reproduces Toby's construction.
+
+Using the equivalence $\CSS \to \ICat$ coming from forgetting higher simplices, we get a functor
+\begin{equation*}
+  \Finp \to \CSS \to \ICat;\qquad \langle n \rangle \mapsto \Hom^{\Cart}(\Sig^{\bullet}, C^{\otimes}_{\langle n \rangle}),
+\end{equation*}
+where $\Hom^{\Cart}$ denotes the set of Cartesian functors. Using the relative nerve we can unstraighten this to a Cartesian fibration
+\begin{equation*}
+  \chi \to \Finp\op.
+\end{equation*}
+The $k$-simplices of this are pairs of an $n$-simplex in $N(\Finp\op)$ and an $n$-simplex $F$ in $\Span(\category{C}^{\otimes}_{\langle n_{1} \rangle})$
+\begin{equation*}
+  \left(\langle n_{0} \rangle \overset{\phi_{1}}{\leftarrow} \langle n_{1} \rangle \overset{\phi_{2}}{\leftarrow} \cdots \overset{\phi_{k}}{\leftarrow} \langle n_{k} \rangle,\quad F\colon \Sig^{n} \to \category{C}^{\otimes}_{\langle n_{0} \rangle}\right),
+\end{equation*}
+where $F$ is a Cartesian functor of the form
+\begin{equation*}
+  \begin{tikzcd}[row sep=small, column sep=tiny]
+    &&&& \
+    \arrow[dl, dotted]
+    \\
+    &&& \delta_{1}
+    \arrow[dl]
+    \arrow[dr]
+    && \
+    \arrow[dl, dotted]
+    \\
+    && \gamma_{1}
+    \arrow[dl]
+    \arrow[dr]
+    && \phi_{1}\gamma_{2}
+    \arrow[dl]
+    \arrow[dr]
+    && \
+    \arrow[dl, dotted]
+    \\
+    & \beta_{1}
+    \arrow[dl]
+    \arrow[dr]
+    && \phi_{1}\beta_{2}
+    \arrow[dl]
+    \arrow[dr]
+    && \phi_{1}\phi_{2}\beta_{3}
+    \arrow[dl]
+    \arrow[dr]
+    && \
+    \arrow[dl, dotted]
+    \\
+    \alpha_{1}
+    && \phi_{1}\alpha_{2}
+    && \phi_{1}\phi_{2} \alpha_{3}
+    && \phi_{1}\phi_{2}\phi_{3} \alpha_{4}
+    && \
+  \end{tikzcd}
+\end{equation*}
+and $\alpha_{i}$, $\beta_{i}$, etc.\ are in $\category{C}^{\otimes}_{\langle n_{i} \rangle}$. This is tantalizingly close to Toby's construction, the difference being that in my construction the tensor products are taken before we take spans.
+
+\subsection{Higher categories of spans}
+\label{ssc:higher_categories_of_spans}
+
+Let $\category{C}^{\otimes}\colon \Finp \to \ICat$ be a pullback-compatible symmetric monoidal $\infty$-category. We can again define a functor
+\begin{equation*}
+  (\D\op)^{k} \times \Finp \to \S;\qquad ([m_{1}], \ldots, [m_{k}], \langle n \rangle) \mapsto \Fun^{\Cart}(\Sig^{m_{1}, \ldots, m_{k}}, \category{C}^{\otimes}_{\langle n \rangle})
+\end{equation*}
+
+This is well-defined in the first slot by the reasoning in \cite[Cor. 5.12]{1409.0837}, and in the second by exactly the same reasoning as above.
+
+\section{Push/pull and the Grothendieck construction}
+\label{sec:push_pull_and_the_grothendieck_construction}
+
+Let $X$ be a space. The category of presheaves over $X$ is the $\infty$-category $\Fun(X\op,  \S)$. However, by the Grothendieck construction, the $\infty$-category of functors $X\op \to \S$ is equivalent to the $\infty$-category of spaces over $X$. We therefore make the following definition.
+
+\begin{definition}[category of presheaves]
+  \label{def:category_of_presheaves}
+  Let $X$ be a space. The \defn{category of presheaves} on $X$ is the category $\P(X)$, given by the pullback
+  \begin{equation*}
+    \begin{tikzcd}
+      \P(X)
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\Delta^{1}, \S)
+      \arrow[d, "\ev_{1}"]
+      \\
+      \Delta^{0}
+      \arrow[r, "X"]
+      & \S
+    \end{tikzcd}
+  \end{equation*}
+\end{definition}
+
+Note: fix ops.
+
+Fix once and for all $f\colon \Delta^{1} \to \S$ be a map of spaces $f\colon X \to Y$. This gives us a functor of $\infty$-categories
+\begin{equation*}
+  f^{*}\colon \P(X) \to \P(Y)
+\end{equation*}
+between categories of presheaves via pullback. We can view this as a map $(\Delta^{1})\op \to \ICat$. The Grothendieck construction again tells us that this can be thought of as a Cartesian fibration $p\colon \category{M} \to \Delta^{1}$.
+
+\begin{definition}
+  Define a morphism of simplicial sets $p\colon \category{M} \to \Delta^{1}$ by the following pullback.
+  \begin{equation*}
+    \begin{tikzcd}
+      \category{M}
+      \arrow[r]
+      \arrow[d, swap, "p"]
+      & \Fun(\Delta^{1}, \S)
+      \arrow[d, "\ev_{1}"]
+      \\
+      \Delta^{1}
+      \arrow[r, "f"]
+      & \S
+    \end{tikzcd}.
+  \end{equation*}
+\end{definition}
+
+\begin{proposition}
+  We have:
+  \begin{enumerate}
+    \item The map $p$ is a Cartesian fibration, and the $p$-Cartesian morphisms in $\category{M}$ are pullback squares in $\S$.
+
+    \item The map $p$ is a coCartesian fibration, and the $p$-coCartesian morphisms in $\category{M}$ are squares
+      \begin{equation*}
+        \begin{tikzcd}
+          K
+          \arrow[r, "b"]
+          \arrow[d]
+          & S
+          \arrow[d]
+          \\
+          A
+          \arrow[r, "a"]
+          & A'
+        \end{tikzcd},
+      \end{equation*}
+      in $\S$, where $a = \id_{X}$, $f$, or $\id_{Y}$, and $b$ is an equivalence.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  This is wrong!!!!
+  \begin{enumerate}
+    \item This follows from \cite[Lem.\ 6.1.1.1]{highertopostheory}, which shows that
+      \begin{equation*}
+        \Fun(\Delta^{1}, \S) \to \S
+      \end{equation*}
+      is a Cartesian fibration whose Cartesian morphisms are pullback squares
+      \begin{equation*}
+        \begin{tikzcd}
+          X'
+          \arrow[r, "f'"]
+          \arrow[d, swap]
+          & Y'
+          \arrow[d, "g"]
+          \\
+          X
+          \arrow[r, "f"]
+          & Y
+        \end{tikzcd}
+      \end{equation*}
+      in $\S$. Here, we expand \cite[Lem.\ 6.1.1.1]{highertopostheory}, because the proof is fucky.
+
+      Denote $\Fun(\Delta^{1}, \S) = \mathcal{O}_{\S}$. We will call an injective map $[k] \to \mathcal{P}$, for $\mathcal{P}$ a poset, a \emph{string of length $k$} in $\mathcal{P}$.
+
+      For every simplicial set $K$, let $K^{+}$ be the full simplicial subset of $(K \star \{x\} \star \{y\}) \times \Delta^{1}$ spanned by all of the vertices except $(x, 0)$. Two examples, which we will use later on, $(\Delta^{n})^{+}$ and $(\partial \Delta^{n})^{+}$, are as follows.
+      \begin{itemize}
+        \item The $k$-simplices of $(\Delta^{n})^{+}$ are in bijective correspondence with those maps of posets
+          \begin{equation*}
+            [k] \to ([n] \oplus \{x\} \oplus \{y\}) \times [1]
+          \end{equation*}
+          which never hit $(x, 0)$. The nondegenerate $k$-simplices, as usual, correspond to the \emph{injective} maps of posets which never hit $(x, 0)$, i.e.\ strings of length $k$ not containing $(x, 0)$.
+
+        \item For $n \geq 1$, the nondegenerate $k$-simplices of $(\partial \Delta^{n})^{+}$ are in bijective correspondence with strings
+          \begin{equation*}
+            [k] \to ([n] \oplus \{x\} \oplus \{y\}) \times [1]
+          \end{equation*}
+          which never hit $(x, 0)$, and contain neither
+          \begin{equation}
+            \label{eq:strings_to_avoid}
+            (0, 0) \to (1, 0) \to \cdots \to (n, 0) \qquad\text{nor}\qquad (0, 1) \to \cdots \to (n, 1)
+          \end{equation}
+          as contiguous substrings.
+
+          For $n = 0$, $(\partial \Delta^{n})^{+} \cong \emptyset^{+} \cong \Lambda^{2}_{2}$.
+      \end{itemize}
+
+      Note that $(\partial \Delta^{n})_{k} \cong (\Delta^{n})_{k}$ for $k < n$, because no string of length less than $n$ contain either of the strings in \hyperref[eq:strings_to_avoid]{Equation~\ref*{eq:strings_to_avoid}} as substrings.
+
+      Define a simplicial set $\category{C}$ by setting
+      \begin{equation*}
+        \Fun(K, \category{C}) = \{m\colon K^{+} \to \category{C} \mid m|_{(\{x\} \star \{y\}) \times \{1\}} = f,\ m|_{\{y\} \times \Delta^{1}} = g \}.
+      \end{equation*}
+
+      The square of inclusions
+      \begin{equation*}
+        \begin{tikzcd}
+          (\Delta^{n} \star \{y\}) \times \{1\}
+          \arrow[r, hook]
+          \arrow[d, hook]
+          & (\Delta^{n} \star \{y\}) \times \Delta^{1}
+          \arrow[d, hook]
+          \\
+          (\Delta^{n} \star \{x\} \star \{y\}) \times \{1\}
+          \arrow[r, hook]
+          & (\Delta^{n})^{+}
+        \end{tikzcd}
+      \end{equation*}
+      gives a commuting square
+      \begin{equation*}
+        \begin{tikzcd}
+          \category{C}
+          \arrow[r]
+          \arrow[d]
+          & (\mathcal{O}_{\S})_{/g}
+          \arrow[d]
+          \\
+          \S_{/f}
+          \arrow[r]
+          & \S_{/Y}
+        \end{tikzcd}
+      \end{equation*}
+
+      This in turn gives us a map
+      \begin{equation*}
+        q\colon \category{C} \to (\mathcal{O}_{\S})_{/g} \times_{\S_{/Y}} \S_{/f}.
+      \end{equation*}
+      We claim that $q$ is a trivial fibration. To check this, we show that for any $n \geq 0$ we can always find a lift $\ell$ as below.
+      \begin{equation*}
+        \begin{tikzcd}
+          \partial \Delta^{n}
+          \arrow[r, "a"]
+          \arrow[d, hook]
+          & \category{C}
+          \arrow[d, "q"]
+          \\
+          \Delta^{n}
+          \arrow[r, swap, "b"]
+          \arrow[ur, dashed, "\ell"]
+          & (\mathcal{O}_{\S})_{/g} \times_{\S_{/Y}} \S_{/f}
+        \end{tikzcd}
+      \end{equation*}
+      The case $n = 0$ is somewhat special since $\partial \Delta^{n} = \emptyset$, but as none of the simplices of $(\Delta^{0})^{+}$ have dimension greater than three one can find a solution simply by drawing pictures. From now on, we fix $n \geq 1$.
+
+      We can read the solid diagram as equivalently specifying a map
+      \begin{equation*}
+        \tilde{a}\colon (\partial \Delta^{n})^{+} \to \S
+      \end{equation*}
+      and a map
+      \begin{equation*}
+        \tilde{b}\colon (\Delta^{n} \star \{x\} \star \{y\}) \times \{1\} \coprod_{(\Delta^{n} \star \{y\}) \times \{1\}} (\Delta^{n} \star \{y\}) \times \Delta^{1} \equiv K_{n} \to \S
+      \end{equation*}
+      which are compatible on their overlap
+      \begin{equation*}
+        (\partial \Delta^{n})^{+} \cap K_{n} \subset (\Delta^{n})^{+}.
+      \end{equation*}
+      and which map $(\{x\} \star \{y\}) \times \{1\}$ to $f$ and $\{y\} \times \Delta^{1}$ to $g$.
+
+      We would like to produce from this data a filler
+      \begin{equation*}
+        \tilde{\ell}\colon (\Delta^{n})^{+} \to \S.
+      \end{equation*}
+
+      Let us first see which nondegenerate simplices we are missing.
+      \begin{itemize}
+        \item The simplicial set $(\Delta^{n})^{+}$ does not contain any nondegenerate simplices of dimension $n+4$ or higher.
+
+        \item There are two nondegenerate $(n+3)$-simplices in $(\Delta^{n})^{+}$ missing from $(\partial \Delta^{n})^{+}$:
+          \begin{equation*}
+            \sigma = \quad
+            \begin{tikzcd}[row sep=small, column sep=small]
+              {(0, 0)}
+              \arrow[d]
+              \\
+              {(0, 1)}
+              \arrow[r]
+              & {(1, 1)}
+              \arrow[r]
+              & \cdots
+              \arrow[r]
+              & {(n, 1)}
+              \arrow[r]
+              & {(x, 1)}
+              \arrow[r]
+              & {(y, 1)}
+            \end{tikzcd}
+          \end{equation*}
+          and
+          \begin{equation*}
+            \tau = \quad
+            \begin{tikzcd}[row sep=small, column sep=small]
+              {(0, 0)}
+              \arrow[r]
+              & {(1, 0)}
+              \arrow[r]
+              & \cdots
+              \arrow[r]
+              & {(n, 0)}
+              \arrow[d]
+              \\
+              &&& {(n, 1)}
+              \arrow[r]
+              & {(x, 1)}
+              \arrow[r]
+              & {(y, 1)}
+            \end{tikzcd}.
+          \end{equation*}
+          One finds that $\sigma$ is contained in $K_{n}$, but $\tau$ is not.
+
+        \item Apart from the faces of $\sigma$ and $\tau$, there is only one nondegenerate $(n+2)$-simplex in $(\Delta^{n})^{+}$ not contained in $(\partial \Delta^{n})^{+}$:
+          \begin{equation*}
+            \chi = \quad
+            \begin{tikzcd}[row sep=small, column sep=small]
+              {(0, 0)}
+              \arrow[r]
+              & {(1, 0)}
+              \arrow[r]
+              & \cdots
+              \arrow[r]
+              & {(n, 0)}
+              \arrow[rr, bend left]
+              && {(y, 0)}
+              \arrow[d]
+              \\
+              &&&&& {(y, 1)}
+            \end{tikzcd}
+          \end{equation*}
+          However, $\chi$ is contained in $K_{n}$.
+
+        \item There are no nondegenerate simplices of $(\Delta^{n})^{+}$ of dimension $n+1$ or lower missing from both $(\partial \Delta^{n})^{+}$ and $K_{n}$.
+      \end{itemize}
+      Therefore, the only data we have to fill in is the simplex $\tau \to \S$.
+      \begin{itemize}
+        \item The faces $d_{0}\tau$, $d_{1}\tau$, \dots, $d_{n}\tau$ are all contained in $(\partial \Delta^{n})^{+}$.
+
+        \item The face $d_{n+1}\tau$ is missing from both $(\partial \Delta^{n})^{+}$ and $K_{n}$.
+
+        \item The face $d_{n+2}\tau$ is contained in $K_{n}$.
+
+        \item The face $d_{n+3}\tau$ is contained in $K_{n}$.
+      \end{itemize}
+
+      Thus, in order to find our lift $\ell$ we need only fill $\Lambda^{n+3}_{n+1} \hookrightarrow \Delta^{n+3}$, which we can do because $\S$ is an $\infty$-category.
+
+    \item This follows from the dual to \cite[Cor.\ 2.4.7.12]{highertopostheory} with $f = \id_{\S}$.
+  \end{enumerate}
+\end{proof}
+
+\subsection{Barwick is Kafka for simplicial sets}
+\label{ssc:barwick_is_kafka_for_simplicial_sets}
+
+\begin{lemma}
+  \label{lemma:find_lift_internal_smash}
+  Let $\category{C}$ be an $\infty$-category, and consider a solid diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \Delta^{n} \star \Delta^{1}
+      \arrow[d, hook, swap, "{\id \star \{1, 2\}}"]
+      \arrow[r]
+      & \category{C}
+      \\
+      \Delta^{n} \star \Delta^{2}
+      \arrow[ur, dashed]
+    \end{tikzcd}
+  \end{equation*}
+  such that $\Delta^{\{1,2\}} \hookrightarrow \Delta^{2}$ is mapped to an equivalence. Then for any $n \geq 0$, we can find a dashed lift.
+\end{lemma}
+\begin{proof}
+  Induction. Call the images of the vertices of $\Delta^{2}$ $x$, $y$, and $z$.
+
+  For $n = 0$, we need to fill the following diagram.
+  \begin{equation*}
+    \begin{tikzcd}
+      PLACEHOLDER
+    \end{tikzcd}
+  \end{equation*}
+  First, fill $0 \to x \to y$. This is $\Lambda^{2}_{2} \hookrightarrow \Delta^{2}$ with $\Delta^{\{1, 2\}}$ an equivalence. Then fill $0 \to x \to y \to z$, which is $\Lambda^{3}_{2} \hookrightarrow \Delta^{3}$.
+
+  TBC
+\end{proof}
+
+\begin{lemma}
+  \label{lemma:pullback_along_equivalence_condition}
+  Let $\category{C}$ be an infinity category, and let $\sigma$ be the below square in $\category{C}$ with $f$ an equivalence.
+  \begin{equation*}
+    \begin{tikzcd}
+      x
+      \arrow[r, "f'"]
+      \arrow[d]
+      & y
+      \arrow[d]
+      \\
+      y'
+      \arrow[r, "f"]
+      & z
+    \end{tikzcd}
+  \end{equation*}
+  Then $\sigma$ is a pullback square if and only if $f'$ is an equivalence.
+\end{lemma}
+\begin{proof}
+  First, suppose that $f'$ is an equivalence. We need to show that $\category{C}_{/\sigma} \hookrightarrow \category{C}_{\sigma|\lambda^{2}_{2}}$ is a trivial fibration.
+
+  Denote by $K$ the simplicial subset of $\Delta^{1} \times \Delta^{1}$ given by the nerve of the poset
+  \begin{equation*}
+    \begin{tikzcd}
+      0
+      \arrow[dr]
+      \arrow[r]
+      & 1
+      \arrow[d]
+      \\
+      1'
+      \arrow[r]
+      & 2
+    \end{tikzcd}.
+  \end{equation*}
+  We first show that
+  \begin{equation*}
+    \category{C}_{/\sigma|K} \to \category{C}_{/\sigma|\Lambda^{2}_{2}}
+  \end{equation*}
+  is a trivial fibration. It is sufficient to be able to solve lifting problems
+  \begin{equation*}
+    \begin{tikzcd}
+      \partial
+    \end{tikzcd}
+  \end{equation*}
+
+  First, suppose that $\sigma$ is pullback. Consider the following $\Lambda^{2}_{2}$ horn associated to $\sigma$.
+  \begin{equation*}
+    \begin{tikzcd}
+      & y'
+      \arrow[d, "g"]
+      \\
+      x
+      \arrow[r, "f"]
+      & x'
+    \end{tikzcd}
+  \end{equation*}
+  Let $f^{-1}$ be any homotopy inverse to $f$, and pick a composite $f^{-1} \circ g$. By our previous work, the square
+  \begin{equation*}
+    \tau =
+    \begin{tikzcd}
+      y
+      \arrow[r, "\id"]
+      \arrow[d, swap, "f^{-1} \circ g"]
+      & y
+      \arrow[d, "g"]
+      \\
+      x'
+      \arrow[r, "f"]
+      & x
+    \end{tikzcd}
+  \end{equation*}
+  is a pullback square in $\category{C}$. Any other pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      y \times_{x} x'
+      \arrow[r, "f'"]
+      \arrow[d]
+      & y
+      \arrow[d]
+      \\
+      x'
+      \arrow[r]
+      & x
+    \end{tikzcd}
+  \end{equation*}
+  factors through $\tau$ via an equivalence $g$, giving us in particular a $2$-simplex
+  \begin{equation*}
+    \begin{tikzcd}
+      & x' \times_{x} y
+      \arrow[dr, "g"]
+      \arrow[dl, swap, "f'"]
+      \\
+      y
+      \arrow[rr, "\id"]
+      && y
+    \end{tikzcd}.
+  \end{equation*}
+  But by 2/3, this means that $f'$ is an equivalence.
+
+\end{proof}
+
+\begin{lemma}
+  Denote $\Fun(\Delta^{1}, \S)$ by $\OS$. The bicartesian fibration $p = \ev_{1}\colon \OS \to \S$ satisfies the following conditions, which are conditions 12.2.1 and 12.2.2 of Barwick, with all morphisms ingressive and egressive.
+  \begin{enumerate}
+    \item For any morphism $g\colon X \to Y$ in $\S$ and any object $K \to X$ in $\OS$, there exists a morphism
+      \begin{equation*}
+        \begin{tikzcd}
+          K
+          \arrow[r]
+          \arrow[d]
+          & S
+          \arrow[d]
+          \\
+          X
+          \arrow[r]
+          & Y
+        \end{tikzcd}
+      \end{equation*}
+      in $\OS$ covering $f$ which is $p$-coCartesian.
+
+    \item Suppose $\sigma$ is a commutative square in $\OS$, corresponding to a commutative cube $\Sigma$ in $\S$
+      \begin{equation*}
+        \begin{tikzcd}
+          K'
+          \arrow[rr, "F'"]
+          \arrow[dr]
+          \arrow[dd]
+          && S'
+          \arrow[dr]
+          \arrow[dd]
+          \\
+          & K
+          \arrow[rr, crossing over, near start, equals, "F"]
+          && S
+          \arrow[dd]
+          \\
+          X'
+          \arrow[rr, near start, "f'"]
+          \arrow[dr]
+          && Y'
+          \arrow[dr]
+          \\
+          & X
+          \arrow[rr, "f"]
+          \arrow[from=uu, crossing over]
+          && Y
+        \end{tikzcd}
+      \end{equation*}
+      such that the bottom face of $\Sigma$ is a pullback and $F$ is an equivalence. Then the back face of $\Sigma$ is $p$-coCartesian if and only if $\sigma$ is a pullback in $\OS$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}
+    \item The map $p$ is a bicartesian fibration.
+
+    \item The square $\sigma$ is a pullback square in $\OS$ if and only if both the top and bottom faces of $\Sigma$ are pullbacks. The bottom face of $\Sigma$ is pullback by assumption, and by \hyperref[lemma:pullback_along_equivalence_condition]{Lemma~\ref*{lemma:pullback_along_equivalence_condition}} the top face of $\Sigma$ is a pullback if and only if $F'$ is an equivalence. But $F'$ is an equivalence if and only if the back face of $\Sigma$ is $p$-coCartesian.
+  \end{enumerate}
+\end{proof}
+
+\subsection{Lifting things we need to lift}
+\label{ssc:lifting_things_we_need_to_lift}
+
+Everything in this section is in \cite{spectralmackeyfunctors1}.
+
+\begin{notation}
+  We will distinguish integers expressed in binary notation with a subscript `2'. For example, $5 = 101_{2}$. We will often refer to the $i$th digit of a number $N$ expressed in binary as $d_{i}$; in this notation,
+  \begin{equation*}
+    N = (d_{1}\ldots d_{n})_{2}.
+  \end{equation*}
+\end{notation}
+
+We are trying to find lifts of the following form. The maps $f$, $g$, and $\ell$ should be Segal.
+\begin{equation*}
+  \begin{tikzcd}
+    \asd(\Lambda^{n}_{k})
+    \arrow[r, "f"]
+    \arrow[d, hook]
+    & \OS
+    \arrow[d]
+    \\
+    \asd(\Delta^{n})
+    \arrow[r, "g"]
+    \arrow[ur, dashed, "\ell"]
+    & \S
+  \end{tikzcd}
+\end{equation*}
+
+For the entirety of this section, fix $n \geq 2$.
+
+As we have seen in \hyperref[def:poset_for_asd]{Definition~\ref*{def:poset_for_asd}}, we can think of $\asd(\Delta^{n})$ as the nerve of the opposite of the poset of subintervals of $[n]$, which we have denoted $(I_{n})\op$. The poset $(I_{n})\op$ has objects $ab$, with $0 \leq a \leq b \leq n$, and $ab \leq a'b'$ if $a \leq a' \leq b' \leq b$.
+
+\begin{example}
+  The subdivision of the $5$-simplex, $\asd(\Delta^{5})$, is the nerve of the poset $(I_{5})\op$, which can be drawn as follows.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&&&& 05
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      &&&& 04
+      \arrow[dl]
+      \arrow[dr]
+      && 15
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      &&& 03
+      \arrow[dl]
+      \arrow[dr]
+      && 14
+      \arrow[dl]
+      \arrow[dr]
+      && 25
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      && 02
+      \arrow[dl]
+      \arrow[dr]
+      && 13
+      \arrow[dl]
+      \arrow[dr]
+      && 24
+      \arrow[dl]
+      \arrow[dr]
+      && 35
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & 01
+      \arrow[dl]
+      \arrow[dr]
+      && 12
+      \arrow[dl]
+      \arrow[dr]
+      && 23
+      \arrow[dl]
+      \arrow[dr]
+      && 34
+      \arrow[dl]
+      \arrow[dr]
+      && 45
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      00
+      && 11
+      && 22
+      && 33
+      && 44
+      && 55
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+The nondegenerate $n$-simplices in $\asd(\Delta^{n})$ are injective maps $[n] \to (I_{n})\op$, which we can think of as walks of length $n$ starting at $0n$ and ending at $ll$ for some $0 \leq l \leq n$. These are in one-to-one correspondence with binary strings of length $n$, where the $0$ or $1$ in position $i$ (read from left to right) corresponds to whether one goes left or right at the $i$th row.
+
+\begin{example}
+  The nondegenerate $5$-simplices of $\asd(\Delta^{5})$ corresponding to $N = 00001_{2}$ and $N = 10110_{2}$ are below, in red and blue respectively.
+  \begin{equation}
+    \label{eq:examples_of_nondegenerate_simplices}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&&&& \color{purple}{05}
+      \arrow[dl, color=red]
+      \arrow[dr, color=blue]
+      \\
+      &&&& \color{red}{04}
+      \arrow[dl, color=red]
+      \arrow[dr]
+      && \color{blue}{15}
+      \arrow[dl, color=blue]
+      \arrow[dr]
+      \\
+      &&& \color{red}{03}
+      \arrow[dl, red]
+      \arrow[dr]
+      && \color{blue}{14}
+      \arrow[dl]
+      \arrow[dr, color=blue]
+      && 25
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      && \color{red}{02}
+      \arrow[dl, red]
+      \arrow[dr]
+      && 13
+      \arrow[dl]
+      \arrow[dr]
+      && \color{blue}{24}
+      \arrow[dl]
+      \arrow[dr, color=blue]
+      && 35
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & \color{red}{01}
+      \arrow[dl]
+      \arrow[dr, color=red]
+      && 12
+      \arrow[dl]
+      \arrow[dr]
+      && 23
+      \arrow[dl]
+      \arrow[dr]
+      && \color{blue}{34}
+      \arrow[dl, color=blue]
+      \arrow[dr]
+      && 45
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      00
+      && \color{red}{11}
+      && 22
+      && \color{blue}{33}
+      && 44
+      && 55
+    \end{tikzcd}
+  \end{equation}
+\end{example}
+
+Binary strings of length $n$ in turn correspond to numbers $N$ with $0 \leq N < 2^{n}$. We will make frequent use of the bijection between numbers $0 \leq N < 2^{n}$ and nondegenerate simplices of $\asd(\Delta^{n})$. It will be helpful to have a notation for this bijection.
+
+\begin{notation}
+  For any $0 \leq N < 2^{n}$, denote by $\sigma(N)$ the nodegenerate $n$-simplex of $\asd(\Delta^{n})$ corresponding to $N$. We will denote the $i$th binary digit of $N$, read left-to-right, by $d_{i}$; that is, $N = (d_{1}d_{2}\ldots d_{n})_{2}$.
+\end{notation}
+
+\begin{example}
+  The red and blue simplices in \hyperref[eq:examples_of_nondegenerate_simplices]{Diagram~\ref*{eq:examples_of_nondegenerate_simplices}} are $\sigma(00001_{2})$ and $\sigma(10110_{2})$ respectively.
+\end{example}
+
+To sum up, we may specify a nondegenerate $n$-simplex in $\asd(\Delta^{n})$ by providing any one of the following equivalent data.
+\begin{itemize}
+  \item A walk of length $n$ on the poset $(I_{n})\op$ of the form
+    \begin{equation*}
+      0n \to \cdots \to a_{i}b_{i} \to \cdots \to ll,\qquad 0 \leq l \leq n.
+    \end{equation*}
+
+  \item A binary string $(d_{1}\ldots d_{n})_{2}$ of length $n$.
+
+  \item An integer $N$ with $0 \leq N < 2^{n}$.
+\end{itemize}
+
+Armed with this information, our plan of attack is as follows: starting with $\asd(\Lambda^{n}_{k})$, we will construct a filtration
+\begin{equation}
+  \label{eq:filtration_for_asd}
+  \asd(\Lambda^{n}_{k}) \subset \asd(\Lambda^{n}_{k}) \cup \sigma(0) \subset \cdots \subset \asd(\Lambda^{n}_{k}) \cup \bigcup_{0 \leq N < 2^{n}} \sigma(N) = \asd(\Delta^{n}).
+\end{equation}
+
+It will be helpful to have a name for the $N$th step of this filtration.
+
+\begin{definition}
+  Let $n \geq 1$, and $0 \leq k < n$. Define
+  \begin{equation*}
+    P_{0}(k) = \asd(\Lambda^{n}_{k}),\qquad P_{N}(k) = \sigma(N) \cup P_{N-1}(k),\quad 0 \leq N < 2^{n}.
+  \end{equation*}
+  That is,
+  \begin{equation}
+    \label{eq:nth_step_of_filtration}
+    P_{N}(k) = \asd(\Lambda^{n}_{_{k}}) \cup \bigcup_{0 \leq N' < N} \sigma(N').
+  \end{equation}
+\end{definition}
+
+We first need to figure out what each of these inclusions in \hyperref[eq:filtration_for_asd]{Equation~\ref*{eq:filtration_for_asd}} looks like. More precisely, we must compute the intersections $\sigma(N) \cap P_{N}(k)$, $0 \leq N \leq 2^{k}-1$.
+
+From \hyperref[eq:nth_step_of_filtration]{Equation~\ref*{eq:nth_step_of_filtration}} and the fact that $\Lambda^{n}_{k} = \bigcup_{j \neq k} d_{j} \Delta^{n}$, we have
+\begin{equation}
+  \label{eq:intersection_parts_a_and_b}
+  \sigma(N) \cap P_{N}(k) = \overbrace{\left( \bigcup_{0 \leq K < N} \sigma(N) \cap \sigma(K) \right)}^{(a)} \cup \overbrace{\left( \bigcup_{j \neq k} \sigma(N) \cap \asd(d_{j} \Delta^{n}) \right)}^{(b)}.
+\end{equation}
+
+
+
+We can understand $(a)$ and $(b)$ individually. First, let's tackle $(a)$. We need some terminology.
+
+\begin{definition}
+  Fix an integer $N$ with $0 \leq N < 2^{n}$, with $N$ expressed in binary notation as $N = (d_{1} \ldots d_{n})_{2}$. A \defn{jut} of $\sigma(N)$ is an integer $1 \leq j \leq n$ such that one of the following conditions is satisfied:
+  \begin{itemize}
+    \item For $1 \leq j < n$, $j$ is a jut of $\sigma(N)$ if $d_{j} = 1$ and $d_{j + 1} = 0$.
+
+    \item For $j = n$, $n$ is a jut of $\sigma(N)$ if $d_{n} = 1$.
+  \end{itemize}
+
+  The set of all juts of $\sigma(N)$ is denoted $Z(N)$. By definition, $Z(N) \subset \{1, \ldots, n\}$.
+\end{definition}
+
+\begin{note}
+  \label{note:juts_in_binary}
+  The juts of $\sigma(N)$ are the places where the walk corresponding to $N$ is going right, and then either heads left or ends. In terms of the binary representation $N = (d_{1} \ldots d_{n})_{2}$, an integer $j < n$ is a jut of $\sigma(N)$ every time the string `$10$' appears at the $j$th position, i.e.\ if $d_{j}d_{j+1} = 10$. There is a jut at $n$ every time the last digit of $N$ is a 1.
+\end{note}
+
+\begin{example}
+  The juts of the simplex $\sigma(01011_{2}) \subset \asd(\Delta^{5})$ are $2$ and $5$, marked in red below.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      && 05
+      \arrow[dl]
+      \\
+      & 04
+      \arrow[dr]
+      \\
+      && \color{red}{14}
+      \arrow[dl]
+      \\
+      & 13
+      \arrow[dl]
+      \\
+      12
+      \arrow[dr]
+      \\
+      & \color{red}{22}
+    \end{tikzcd}
+  \end{equation*}
+  Thus, $Z(01011_{2}) = \{2, 5\}$.
+\end{example}
+
+Knowledge of the juts of $\sigma(N)$ allows us to calculate $(a)$.
+
+\begin{lemma}
+  \label{lemma:expression_for_a_in_terms_of_juts}
+  The expression $(a)$ in \hyperref[eq:intersection_parts_a_and_b]{Equation~\ref*{eq:intersection_parts_a_and_b}} can be written
+  \begin{equation*}
+    \bigcup_{0 \leq N' < N} \sigma(N) \cap \sigma(N') = \bigcup_{j \in Z(N)} d_{j} \sigma(N),
+  \end{equation*}
+  where $Z(N) \subset \{1, \ldots, n\}$ is the set of juts of $\sigma(N)$.
+\end{lemma}
+\begin{proof}
+  For any jut $j \in Z(N)$, define a number $N^{j} = (d'_{1}\ldots d'_{n})_{2}$ as follows.
+  \begin{itemize}
+    \item If $j < n$, define $d'_{i}$ to be
+      \begin{equation*}
+        d'_{i} =
+        \begin{cases}
+          d_{i}, &i \neq j, j+1 \\
+          0, &i = j \\
+          1, &i = j+1
+        \end{cases}.
+      \end{equation*}
+
+
+    \item If $j = n$, define $d'_{i}$ to be
+      \begin{equation*}
+        d'_{i} =
+        \begin{cases}
+          d_{i}, & i \neq n \\
+          0, & i = n
+        \end{cases}.
+      \end{equation*}
+  \end{itemize}
+  The walk corresponding to $\sigma(N^{j})$ agrees with the walk corresponding to $\sigma(N)$, except at the $j$th position, where it goes left instead of right.
+
+  For $N = 01011_{2}$, $\sigma(N)$ is the solid walk below, $\sigma(N^{2})$ is the dashed walk, and $\sigma(N^{5})$ is the dotted walk.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&& 05
+      \arrow[dl]
+      \\
+      && 04
+      \arrow[dr]
+      \arrow[dl, dashed]
+      \\
+      & 03
+      \arrow[dr, dashed]
+      && 14
+      \arrow[dl]
+      \\
+      & & 13
+      \arrow[dl]
+      \\
+      & 12
+      \arrow[dr]
+      \arrow[dl, dotted]
+      \\
+      11
+      && 22
+    \end{tikzcd}
+  \end{equation*}
+
+  Consider the poset of simplicial subsets of $\sigma(N)$ of the form
+  \begin{equation*}
+    \sigma(N) \cap \sigma(K), \qquad 0 \leq K < N.
+  \end{equation*}
+
+  The maximal elements of this poset are intersections $ \sigma(N) \cap \sigma(N^{j})$, where $j \in Z(N)$. Because $\sigma(N)$ and $\sigma(N^{j})$ agree except at the $j$th vertex, the intersection $\sigma(N) \cap \sigma(N^{j})$ is given by $d_{j} \sigma(N)$.
+
+  Thus, we find that
+  \begin{equation*}
+    \bigcup_{0 \leq N' < N} \sigma(N) \cap \sigma(N') = \bigcup_{j \in Z(N)} d_{j} \sigma(N).
+  \end{equation*}
+\end{proof}
+
+Now we turn our attention to $(b)$. First, we should understand $\asd(\Lambda^{n}_{k}) = \bigcup_{j \neq k} \asd(d_{j} \Delta^{n})$. To do this we must understand $\asd(d_{j} \Delta^{n})$. This is the nerve of the full subcategory of $(I_{n})\op$ on objects $ab$ where $a \neq j$ and $b \neq j$.
+
+We will also pay attention to the full subcategory of $(I_{n})\op$ on objects containing $j$s.
+
+\begin{definition}
+  Denote the full subcategory of $(I_{n})\op$ on objects $ab$, where either $a = j$ or $b = j$, by $V^{n}_{j}$.
+\end{definition}
+
+\begin{example}
+  The subdivision $\asd(d_{2} \Delta^{5})$ is the nerve of the black diagram below. The category $V^{5}_{2}$ is pictured gray.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&&&& 05
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      &&&& 04
+      \arrow[dl]
+      \arrow[dr]
+      && 15
+      \arrow[dl]
+      \\
+      &&& 03
+      \arrow[ddll, bend right, crossing over]
+      \arrow[dr]
+      && 14
+      \arrow[dl]
+      && \color{gray}{25}
+      \arrow[dl, gray]
+      \\
+      && \color{gray}{02}
+      \arrow[dr, gray]
+      && 13
+      \arrow[ddll, bend right, crossing over]
+      && \color{gray}{24}
+      \arrow[dl, gray]
+      && 35
+      \arrow[dl]
+      \arrow[from=uull, bend left, crossing over]
+      \arrow[dr]
+      \\
+      & 01
+      \arrow[dl]
+      \arrow[dr]
+      && \color{gray}{12}
+      \arrow[dr, gray]
+      && \color{gray}{23}
+      \arrow[dl, gray]
+      && 34
+      \arrow[from=uull, bend left, crossing over]
+      \arrow[dl]
+      \arrow[dr]
+      && 45
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      00
+      && 11
+      && \color{gray}{22}
+      \arrow[from=ur, gray]
+      && 33
+      \arrow[from=uull, bend left, crossing over]
+      && 44
+      && 55
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+The $i$th face of any simplex $\sigma(N)$ corresponds to the walk on $(I_{n})\op$ which skips the $i$th position of the walk corresponding to $\sigma(N)$. That is, if $\sigma(N)$ corresponds to the walk
+\begin{equation*}
+  a_{0}b_{0} \to \cdots \to a_{n} b_{n},
+\end{equation*}
+then $d_{i} \sigma(N)$ corresponds to the walk
+\begin{equation*}
+  a_{0}b_{0} \to \cdots \to a_{i-1}b_{i-1} \to a_{i+1}b_{i+1} \to \cdots \to a_{n}b_{n}.
+\end{equation*}
+Thus, the $i$th face of $\sigma(N)$ is contained in $\asd(d_{j} \Delta^{n})$ if and only if
+\begin{itemize}
+  \item $a_{i} = j$ or $b_{i} = j$ (or both); and 
+
+  \item $a_{i'} \neq j$ and $b_{i'} \neq j$ for $i' \neq i$.
+\end{itemize}
+
+\begin{example}
+  The simplex $d_{3} \sigma(10110_{2})$ is contained in $\asd(d_{2} \Delta^{n})$.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&&&& \color{red}{05}
+      \arrow[dl]
+      \arrow[dr, color=red]
+      \\
+      &&&& 04
+      \arrow[dl]
+      \arrow[dr]
+      && \color{red}{15}
+      \arrow[ddrr, crossing over, bend left]
+      \arrow[dl, color=red]
+      \\
+      &&& 03
+      \arrow[ddll, crossing over, bend right]
+      \arrow[dr]
+      && \color{red}{14}
+      \arrow[dl]
+      \arrow[ddrr, crossing over, bend left, color=red]
+      \arrow[dr, dotted, red]
+      && \
+      \\
+      && \
+      && 13
+      \arrow[ddll, crossing over, bend right]
+      \arrow[ddrr, crossing over, bend left]
+      && \color{red}{24}
+      \arrow[dr, dotted, red]
+      && 35
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & 01
+      \arrow[dl]
+      \arrow[dr]
+      && \
+      && \
+      && \color{red}{34}
+      \arrow[dl, color=red]
+      \arrow[dr]
+      && 45
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      00
+      && 11
+      && \
+      && \color{red}{33}
+      && 44
+      && 55
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+The faces of $\sigma(N)$ contained in $\asd(d_{j} \Delta^{n})$ correspond to \emph{crossings of $\sigma(N)$ at $j$:} places at which $\sigma(N)$ intersects $V^{n}_{j}$ exactly once.
+
+\begin{example}
+  The simplex $\sigma(10110_{2})$, in red, has a crossing at 2. The simplex $\sigma(00010_{2})$, in blue, does not. The subcategory $V^{5}_{2} \subset (I_{5})\op$ is in bold.
+
+  \tikzset{LA/.style = {line width=#1, -{Straight Barb[length=3pt]}},
+    LA/.default=1.5pt
+  }
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&&&& \color{purple}{05}
+      \arrow[dl, blue]
+      \arrow[dr, red]
+      \\
+      &&&& \color{blue}{04}
+      \arrow[dl, blue]
+      \arrow[dr]
+      && \color{red}{15}
+      \arrow[dl, red]
+      \arrow[dr]
+      \\
+      &&& \color{blue}{03}
+      \arrow[dl, blue]
+      \arrow[dr]
+      && \color{red}{14}
+      \arrow[dl]
+      \arrow[dr, red]
+      && \mathbf{25}
+      \arrow[dl, LA]
+      \arrow[dr]
+      \\
+      && \color{blue}{\mathbf{02}}
+      \arrow[dl]
+      \arrow[dr, blue, LA]
+      && 13
+      \arrow[dl]
+      \arrow[dr]
+      && \color{red}{\mathbf{24}}
+      \arrow[dl, LA]
+      \arrow[dr, red]
+      && 35
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & 01
+      \arrow[dl]
+      \arrow[dr]
+      && \color{blue}{\mathbf{12}}
+      \arrow[dl, blue]
+      \arrow[dr, LA]
+      && \mathbf{23}
+      \arrow[dl, LA]
+      \arrow[dr]
+      && \color{red}{34}
+      \arrow[dl, red]
+      \arrow[dr]
+      && 45
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      00
+      && \color{blue}{11}
+      && \mathbf{22}
+      && \color{red}{33}
+      && 44
+      && 55
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+\begin{definition}
+  Let $0 \leq j < n$, and fix some $0 \leq N < 2^{n}$. Let the binary representation of $N$ be $(d_{1}\ldots d_{n})_{2}$, and the walk corresponding to $\sigma(N)$ be
+  \begin{equation*}
+    a_{0}b_{0} \to a_{1}b_{1} \to \cdots \to a_{n}b_{n}.
+  \end{equation*}
+  An integer $0 \leq i \leq n - 1$ is said to be a \defn{crossing of $\sigma(N)$ at $j$} if one of the following holds:
+  \begin{itemize}
+    \item For $j = 0$, $i$ is a crossing at $j$ if $d_{1} = 1$.
+
+    \item For $0 < j < n$, $i$ is a crossing at $j$ if $d_{i} = d_{i+1} = 0$ and $b_{i} = j$, or if $d_{i} = d_{i+1} = 1$ and $a_{i} = j$.
+  \end{itemize}
+\end{definition}
+
+We have already essentially shown the following.
+
+\begin{lemma}
+  \label{lemma:faces_intersecting_faces_are_crossings_at}
+  Let $0 \leq j < n$, and let $0 \leq N < 2^{n}$. The simplex $\sigma(N)$ has a face in common with $\asd(d_{j}\Delta^{n})$ if and only if $\sigma(N)$ has a crossing at $j$.
+\end{lemma}
+
+We can now understand the faces of $\sigma(N)$ contained in $\bigcup_{j \neq k} \sigma(N) \cap \asd(d_{j}\Delta^{n})$ as corresponding to \emph{crossings of $\sigma(N)$ away from $k$;} that is, crossings at some $j \neq k$. This amounts to the following.
+
+\begin{definition}
+  Let $0 \leq k \leq n$, and let $0 \leq N < 2^{n}$, with binary representation $(d_{1}\ldots d_{n})_{2}$ and walk
+  \begin{equation*}
+    a_{0}b_{0} \to \cdots \to a_{n}b_{n}.
+  \end{equation*}
+  An integer $0 < i < n$ is said to be a \defn{crossing of $\sigma(N)$ away from $k$} if any of the following conditions are satisfied.
+  \begin{itemize}
+    \item Either $d_{i} = d_{i + 1} = 1$ and $a_{i} \neq k$; or
+
+    \item $d_{i} = d_{i+1} = 0$ and $b_{i} \neq k$.
+  \end{itemize}
+
+  The integer $i = 0$ is said to be a \defn{crossing of $\sigma(N)$ away from $k$} if either of the following conditions are satisfied.
+  \begin{itemize}
+    \item $d_{1} = 0$; or
+
+    \item $d_{1} = 1$ and $k \neq 0$.
+  \end{itemize}
+
+  We will denote the set of crossings of $\sigma(N)$ away from $k$ by $X(N, k)$. By definition, $X(N, k) \subset \{0, \ldots, n-1\}$.
+\end{definition}
+
+\begin{example}
+  Let $N = 10110_{2}$, and consider the simplex $\sigma(N)$.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&&&& \color{red}{05}
+      \arrow[dl]
+      \arrow[dr, red]
+      \\
+      &&&& 04
+      \arrow[dl]
+      \arrow[dr]
+      && \color{red}{15}
+      \arrow[dl, red]
+      \arrow[dr]
+      \\
+      &&& 03
+      \arrow[dl]
+      \arrow[dr]
+      && \color{red}{14}
+      \arrow[dl]
+      \arrow[dr, red]
+      && 25
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      && 02
+      \arrow[dl]
+      \arrow[dr]
+      && 13
+      \arrow[dl]
+      \arrow[dr]
+      && \color{red}{24}
+      \arrow[dl]
+      \arrow[dr, red]
+      && 35
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & 01
+      \arrow[dl]
+      \arrow[dr]
+      && 12
+      \arrow[dl]
+      \arrow[dr]
+      && 23
+      \arrow[dl]
+      \arrow[dr]
+      && \color{red}{34}
+      \arrow[dl, red]
+      \arrow[dr]
+      && 45
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      00
+      && 11
+      && 22
+      && \color{red}{33}
+      && 44
+      && 55
+    \end{tikzcd}
+  \end{equation*}
+
+  The 0th vertex of the simplex $\sigma(N)$ is a crossing at 0, and the 3rd vertex is a crossing at 2. None of the other vertices are crossings. Therefore:
+  \begin{itemize}
+    \item $X(10110_{2}, 0) = \{3\}$,
+
+    \item $X(10110_{2}, 1) = \{0, 3\}$,
+
+    \item $X(10110_{2}, 2) = \{0\}$,
+
+    \item $X(10110_{2}, 3) = \{0, 3\}$, and
+
+    \item $X(10110_{2}, 4) = \{0, 3\}$.
+  \end{itemize}
+\end{example}
+
+We are now ready to understand the intersection $\sigma(N) \cap P_{N}(k)$.
+
+\begin{proposition}
+  \label{prop:intersection_as_union_of_faces}
+  Let $0 \leq k < N$, and let $0 \leq N < 2^{n}$. The intersection $\sigma(N) \cap P_{N}(k)$ is given by the union of faces
+  \begin{equation*}
+    \bigcup_{i \in Z(N) \cup X(N, k)} d_{i}\sigma(N).
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  Denote the walk corresponding to $N$ by
+  \begin{equation*}
+    a_{0}b_{0} \to \cdots \to a_{n}b_{n}.
+  \end{equation*}
+
+  Recall from \hyperref[eq:intersection_parts_a_and_b]{Equation~\ref*{eq:intersection_parts_a_and_b}} the decomposition $\sigma(N) \cap P_{N}(k) = (a) \cup (b)$. We have seen in \hyperref[lemma:expression_for_a_in_terms_of_juts]{Lemma~\ref*{lemma:expression_for_a_in_terms_of_juts}} that $(a)$ is given by $\bigcup_{i \in Z(n)} d_{i} \sigma(N)$, and in \hyperref[lemma:faces_intersecting_faces_are_crossings_at]{Lemma~\ref*{lemma:faces_intersecting_faces_are_crossings_at}} that the faces of $\sigma(N)$ contained in $(b)$ are of the form $d_{i}\sigma(N)$, where $i \in X(N, k)$. Therefore, we will be done if we can show that $(b)$ contains only faces, apart from lower-dimensional simplices which are also contained in $(a)$. More explicitly, we need to show that any subsimplex of $\sigma(N)$ of codimension $2$ or greater which
+  \begin{itemize}
+    \item is contained in $(b)$, and
+
+    \item is not contained in a higher-dimesional subsimplex of $\sigma(N)$ which is contained in $(b)$,
+  \end{itemize}
+  must be contained in $(a)$.
+
+  For any subsimplex $\tau$ of $\sigma(N)$ meeting the conditions above, there must exist a $j \neq k$ such that $\sigma(N)$ intersects $V^{n}_{j}$ more than once; the subsimplex $\tau$ then has as its vertices the vertices $s$ of $\sigma(N)$ such that $a_{s} \neq j$ and $b_{s} \neq j$. If $\tau$ has dimension $m$, then $\sigma(N)$ and $V^{n}_{j}$ must intersect exactly $m$ times. If a walk on $(I_{n})\op$ leaves $V^{n}_{j}$ it cannot come back, so for any simplex which intersects $V^{n}_{j}$ in $m < 1$ places, the intersections are contiguous; that is, there exists some $i$ such that for each $i'$ with $i \leq i' < i + m$, either $a_{i'} = j$ or $b_{i'} = j$. It is easy to convince oneself that in this situation either $i$ or $i + m$ must be a jut of $\sigma(N)$.\footnote{Apart from the trivial case of $\sigma(0)$'s intersection with $V^{n}_{0}$.} Without loss of generality, suppose $i$ is a jut of $\sigma(N)$. Then $\tau \subset \sigma(N^{i}) \cap \sigma(N)$, which is contained in $(a)$.
+\end{proof}
+
+\begin{notation}
+  Let $T$ be a finite totally ordered set, and let $S \subset T$ be a proper subset. Define
+  \begin{equation*}
+    \Lambda^{T}_{S} = \bigcup_{i \notin S} d_{i} \Delta^{n}.
+  \end{equation*}
+\end{notation}
+
+Take $T = [n]$. We will write $\Lambda^{n}_{S}$ instead of $\Lambda^{[n]}_{S}$. Interpreting $S \subset T$ as a set of vertices of $\Delta^{n}$, $\Lambda^{n}_{S}$ is the union of all faces of $\Delta^{n}$ which contain every vertex in $S$. This is because $d_{i}\Delta^{n}$ contains $S$ if and only if $S \subseteq [n] \smallsetminus \{i\}$, which in turn is true if and only if $i \notin S$.
+
+
+\begin{example}
+  For $T = [m]$ and $S = \{i\}$ a singleton, $\Lambda^{T}_{S} = \Lambda^{m}_{i}$, the $i$th horn of $\Delta^{n}$.
+\end{example}
+
+\begin{definition}
+  Fix some $0 \leq k < n$, and let $0 \leq N < 2^{n}$. The \defn{exceptional vertices} of $\sigma(N)$ are the subset
+  \begin{equation*}
+    E(N, k) = [m] \smallsetminus (Z(N) \cup X(N, k)).
+  \end{equation*}
+\end{definition}
+
+To put it another way, a vertex of $\sigma(N)$ is exceptional if it is neither a jut nor a crossing away from $k$. In our new notation, \hyperref[prop:intersection_as_union_of_faces]{Proposition~\ref*{prop:intersection_as_union_of_faces}} tells us that $\sigma(N) \cap P_{N}(k) = \Lambda^{n}_{E(N, k)}$.
+
+We are computing the intersections $\sigma(N) \cap P_{N}(k)$ in the hope that we can show that $P_{N}(k) \hookrightarrow P_{N+1}(k)$ is inner anodyne. We now have some idea when this might be so. We have a pushout square
+\begin{equation*}
+  \begin{tikzcd}
+    \Lambda^{n}_{E(N, k)}
+    \arrow[r, hook]
+    \arrow[d, hook]
+    & \Delta^{n}
+    \arrow[d, hook]
+    \\
+    P_{N}(k)
+    \arrow[r, hook]
+    & P_{N+1}(k)
+  \end{tikzcd}.
+\end{equation*}
+If $\Lambda^{n}_{E(N, k)} \hookrightarrow \Delta^{n}$ is inner anodyne, then $P_{N}(k) \hookrightarrow P_{N+1}(k)$ will be as well. Our next goal will be to establish a sufficient condition for $\Lambda^{n}_{E(N, k)} \hookrightarrow \Delta^{n}$ to be inner anodyne.
+
+\begin{lemma}
+  \label{lemma:sufficient_condition_for_inner_anodyne}
+  Let $T$ be a finite, totally ordered set, and $S \subset T$ a nonempty proper subset. A sufficient condition for $\Lambda^{T}_{S} \hookrightarrow \Delta^{T}$ to be inner anodyne as follows:
+  \begin{itemize}
+    \item[$(*)$]\label{item:condition_for_inner_anodyne} There exist elements $a < s < b$ in $T$ with $s \in S$ and $a$, $b \notin S$.
+  \end{itemize}
+\end{lemma}
+
+It will be useful to denote the elements of $S$ by $\star$, and the elements of $T \smallsetminus S$ by $\circ$. We can then draw the inclusion $S \subset T$ as a word on the letters $\star$ and $\circ$. Then \hyperref[lemma:sufficient_condition_for_inner_anodyne]{Lemma~\ref*{lemma:sufficient_condition_for_inner_anodyne}} tells us that $\Lambda^{T}_{S} \hookrightarrow \Delta^{T}$ is inner anodyne if our drawing of $S \subset T$ is of the form
+\begin{equation*}
+  \cdots \circ \cdots \star \cdots \circ \cdots.
+\end{equation*}
+
+\begin{example}
+  With $T = [4]$ and $S = \{0, 2\}$, we can draw $S \subset T$ as
+  \begin{equation*}
+    \star \circ \star \circ \circ.
+  \end{equation*}
+  \hyperref[lemma:sufficient_condition_for_inner_anodyne]{Lemma~\ref*{lemma:sufficient_condition_for_inner_anodyne}} guarantees us that the inclusion $\Lambda^{4}_{\{0, 2\}} \hookrightarrow \Delta^{4}$ is inner anodyne.
+\end{example}
+
+\begin{definition}
+  We will call a simplex $\sigma(N)$ \defn{exceptional} if $E(N, k) \subset [n]$ does not satisfy \hyperref[item:condition_for_inner_anodyne]{Condition~$(*)$}.
+\end{definition}
+
+In Barwick's words, exceptional simplices are indeed exceptional. Any exceptional simplex cannot have more than one jut, since between any two juts there is a vertex which is neither a jut nor a crossing away from $k$.
+\begin{equation*}
+  \begin{tikzcd}[column sep=tiny, row sep=small]
+    & \ddots
+    \arrow[dr]
+    \\
+    && \circ
+    \arrow[dl]
+    \\
+    & \iddots
+    \arrow[dl]
+    \\
+    \star
+    \arrow[dr]
+    \\
+    & \ddots
+    \arrow[dr]
+    \\
+    && \circ
+    \arrow[dl]
+    \\
+    & \iddots
+  \end{tikzcd}
+\end{equation*}
+As follows easily from \hyperref[note:juts_in_binary]{Note~\ref*{note:juts_in_binary}}, the only $N$ such that $\sigma(N)$ contains at most one jut are of the form
+\begin{itemize}
+  \item $N_{r} = \overbrace{1\cdots 1}^{r}\overbrace{0\cdots 0}^{n-r}$, for $0 \leq r \leq n$; or
+
+  \item $N'_{r} = \overbrace{0\cdots 0}^{r}\overbrace{1\cdots 1}^{n-r}$, for $0 < r < n$.
+\end{itemize}
+
+In fact, we can easily see that all of the simplices $\sigma(N'_{r})$ are not exceptional, since for any $k$ and $r$, 0 is a crossing away from $k$ of $\sigma(N'_{r})$, $n$ is a jut, and $r$ is an exceptional vertex. This situation is pictured in \hyperref[eg:primed_numbers_not_exceptional]{Example~\ref*{eg:primed_numbers_not_exceptional}}.
+
+\begin{example}
+  \label{eg:primed_numbers_not_exceptional}
+  For $n = 5$, $\sigma(N'_{3})$ is pictured below. Exceptional vertices are marked with a `$\star$' and juts and crossings away from $k$ are marked with a `$\circ$'. The vertices marked `$?$' could be either exceptional or crossings away from $k$ depending on $k$. However, the information we have is already enough to tell us that $\sigma(N'_{3})$ is not exceptional.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&& \circ
+      \arrow[dl]
+      \\
+      && ?
+      \arrow[dl]
+      \\
+      & ?
+      \arrow[dl]
+      \\
+      \star
+      \arrow[dr]
+      \\
+      & ?
+      \arrow[dr]
+      \\
+      && \circ
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+\begin{lemma}
+  For $k = 0$, each simplex $\sigma(N_{r})$ is exceptional, and we have
+  \begin{itemize}
+    \item $E(0, N_{0}) = \{n\}$;
+
+    \item $E(0, N_{r}) = \{0, n\}$, for $0 \leq r \leq n$; and
+
+    \item $E(0, N_{n}) = \{0\}$.
+  \end{itemize}
+  For $0 < k < n$, the simplices $N_{k-1}$ and $N_{k}$ are exceptional, and we have
+  \begin{itemize}
+    \item $E(k, N_{k-1}) = \{n-1, n\}$; and
+
+    \item $E(k, N_{k}) = \{n\}$.
+  \end{itemize}
+\end{lemma}
+
+We do not prove this statement explicitly, but the example below should make clear why it is true.
+
+\begin{example}
+  Let $n = 5$ and $k = 0$. The simplices $\sigma(N_{0})$, $\sigma(N_{2})$, and $\sigma(N_{5})$ are pictured below.
+  \begin{equation*}
+    \sigma(N_{0}) =
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      \star
+      \arrow[dr]
+      \\
+      & \circ
+      \arrow[dr]
+      \\
+      && \circ
+      \arrow[dr]
+      \\
+      &&& \circ 
+      \arrow[dr]
+      \\
+      &&&& \circ
+      \arrow[dr]
+      \\
+      &&&&& \circ
+    \end{tikzcd}
+    \qquad \sigma(N_{2}) =
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      & \star
+      \arrow[dr]
+      \\
+      && \circ
+      \arrow[dr]
+      \\
+      &&& \circ
+      \arrow[dl]
+      \\
+      && \circ 
+      \arrow[dl]
+      \\
+      & \circ
+      \arrow[dl]
+      \\
+      \star
+    \end{tikzcd}
+  \end{equation*}
+  \begin{equation*}
+    \sigma(N_{n}) =
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&&&& \circ
+      \arrow[dl]
+      \\
+      &&&& \circ
+      \arrow[dl]
+      \\
+      &&& \circ
+      \arrow[dl]
+      \\
+      && \circ 
+      \arrow[dl]
+      \\
+      & \circ
+      \arrow[dl]
+      \\
+      \star
+    \end{tikzcd}
+  \end{equation*}
+
+  For $k = 3$, $\sigma(N_{1})$, $\sigma(N_{2})$, $\sigma(N_{3})$, and $\sigma(N_{4})$ are pictured below.
+  \begin{equation*}
+    \sigma(N_{1}) = 
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      &&& \circ
+      \arrow[dr]
+      \\
+      &&&& \circ
+      \arrow[dl]
+      \\
+      &&& \circ
+      \arrow[dl]
+      \\
+      && \star 
+      \arrow[dl]
+      \\
+      & \circ
+      \arrow[dl]
+      \\
+      \star
+    \end{tikzcd}
+    \qquad \sigma(N_{2}) =
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      & \circ
+      \arrow[dr]
+      \\
+      && \circ
+      \arrow[dr]
+      \\
+      &&& \circ
+      \arrow[dl]
+      \\
+      && \circ 
+      \arrow[dl]
+      \\
+      & \star
+      \arrow[dl]
+      \\
+      \star
+    \end{tikzcd}
+  \end{equation*}
+  \begin{equation*}
+    \sigma(N_{3}) = 
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      \circ
+      \arrow[dr]
+      \\
+      & \circ
+      \arrow[dr]
+      \\
+      && \circ
+      \arrow[dr]
+      \\
+      &&& \circ 
+      \arrow[dl]
+      \\
+      && \circ
+      \arrow[dl]
+      \\
+      & \star
+    \end{tikzcd}
+    \qquad \sigma(N_{4}) =
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      \circ
+      \arrow[dr]
+      \\
+      & \circ
+      \arrow[dr]
+      \\
+      && \circ
+      \arrow[dr]
+      \\
+      &&& \star 
+      \arrow[dr]
+      \\
+      &&&& \circ
+      \arrow[dl]
+      \\
+      &&& \star
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+Recall our goal: we are trying to find Segal lifts $\ell$ as below, where $f$ and $g$ are Segal.
+\begin{equation}
+  \label{eq:lifting_problem_for_spans}
+  \begin{tikzcd}
+    \asd(\Lambda^{n}_{k})
+    \arrow[r, "f"]
+    \arrow[d, hook]
+    & \OS
+    \arrow[d]
+    \\
+    \asd(\Delta^{n})
+    \arrow[r, "g"]
+    \arrow[ur, dashed, "\ell"]
+    & \S
+  \end{tikzcd}
+\end{equation}
+
+It turns out that we needn't worry ourselves that a lift might not be Segal; in most situations, any lift we can construct will be Segal automatically. Morally, this is because we are taking a limit over a very simple category, and demanding that $\asd(\Delta^{n}) \to \category{C}$ be Segal is equivalent to demanding that each square
+
+\begin{lemma}
+  Let $n \geq 3$, $k \neq 0$, and let $\ell$ be any lift as in \hyperref[eq:lifting_problem_for_spans]{Diagram~\ref*{eq:lifting_problem_for_spans}}. Then $\ell$ is automatically Segal.
+\end{lemma}
+\begin{proof}
+  A lift $\ell\colon \asd(\Delta^{n}) \to \OS$ is Segal if and only if the image of each of the squares
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      & ij
+      \arrow[dr]
+      \arrow[dl]
+      \\
+      i(j-1)
+      \arrow[dr]
+      && (i+1)j
+      \arrow[dl]
+      \\
+      & (i+1)(j-1)
+    \end{tikzcd}
+  \end{equation*}
+  is pullback, for $0 \leq i < n$, $0 < j \leq n$. 
+
+  The image of each square of the above form except the top square ($i = 0$, $j = n$) is contained in at least one of $\asd(d_{0}\Delta^{n})$ and $\asd(d_{n}\Delta^{n})$, and is hence pullback by assumption. Thus, we need only verify that either the top square is already in some $\asd(d_{j} \Delta^{n})$, and hence is pullback by assumption, or that any way of filling the top square is guaranteed to be pullback. We have fixed some $k$, so either $k \neq 1$ or $k \neq n-1$. If $k \neq n-1$, then the outer square of
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      && 0n
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & 0(n-1)
+      \arrow[dl]
+      \arrow[dr]
+      && 1n
+      \arrow[dl]
+      \\
+      0(n-1)
+      \arrow[dr ]
+      && 1(n-1)
+      \arrow[dl]
+      \\
+      & 1(n-2)
+    \end{tikzcd}
+  \end{equation*}
+  is contained in $\asd(d_{n-1} \Delta^{n}) \subset \asd(\Lambda^{n}_{k})$, and is hence pullback, and the lower-left square is contained in $\asd(d_{n}(\Delta^{n})) \subset \asd(\Lambda^{n}_{k})$, and hence is also pullback. Thus, the pasting lemma implies that any way of filling in the top square will be pullback. Similar reasoning works in the case $k \neq 1$.
+\end{proof}
+
+\end{document}

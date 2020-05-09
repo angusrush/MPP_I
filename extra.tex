@@ -1,0 +1,76 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\subsection{Further results}
+\label{ssc:further_results}
+
+\begin{note}
+  Toby: The remainder of this section consists of half-typed stuff I have at best sketched proofs of. I think that I have most of proof of \hyperref[thm:divide_by_marked_anodyne]{Theorem~\ref*{thm:divide_by_marked_anodyne}}. What is mainly missing is a proof the cocartesian marking always respects path components.
+\end{note}
+
+\begin{lemma}
+  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $e \in X_{1}$ be a homotopy equivalence. Then $e$ is $f$-cocartesian. In particular, all identity morphisms are $f$-cocartesian.
+\end{lemma}
+
+\begin{lemma}
+  \label{lemma:cocartesian_closed_under_composition}
+  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $\sigma \in X_{2}$ be a 2-simplex as follows.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=small]
+      & y
+      \arrow[dr, "g"]
+      \\
+      x
+      \arrow[ur, "f"]
+      \arrow[rr, swap, "h"]
+      && z
+    \end{tikzcd}
+  \end{equation*}
+  Then if $f$ and $g$ are $f$-cocartesian, so is $h$.
+\end{lemma}
+
+\begin{theorem}
+  \label{thm:divide_by_marked_anodyne}
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and denote also by $f$ the morphism $f\colon X^{\natural} \to Y^{\sharp}$ as in \hyperref[def:cocoartesian_marking_on_complete_segal_spaces]{Definition~\ref*{def:cocoartesian_marking_on_complete_segal_spaces}}. Then for any marked anodyne morphism $u$, the map $\langle u \backslash f \rangle$ is a trivial fibration.
+\end{theorem}
+
+\begin{corollary}
+  Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. Then the corresponding map $f / \Delta^{0}$ between first rows is a cocartesian fibration of quasicategories.
+\end{corollary}
+\begin{proof}
+  Since $\langle u \backslash f \rangle$ is a trivial fibration for any marked anodyne map $u\colon A \to A'$, we can solve the lifting problem
+  \begin{equation*}
+    \begin{tikzcd}
+      \emptyset
+      \arrow[r]
+      \arrow[d]
+      & A' \backslash X^{\natural}
+      \arrow[d]
+      \\
+      \Delta^{0}
+      \arrow[r]
+      \arrow[ur, dashed]
+      & A \backslash X^{\natural} \times_{A' \backslash Y^{\sharp}} A' \backslash Y^{\sharp}
+    \end{tikzcd}.
+  \end{equation*}
+
+  This is equivalent to the lifting problem
+  \begin{equation*}
+    \begin{tikzcd}
+      A
+      \arrow[r]
+      \arrow[d]
+      & X^{\natural} / \Delta^{0}
+      \arrow[d]
+      \\
+      A'
+      \arrow[r]
+      \arrow[ur, dashed]
+      & Y^{\sharp} / \Delta^{0}
+    \end{tikzcd}.
+  \end{equation*}
+  Thus, the map $f / \Delta^{0}$ has the right lifting property with respect to all marked anodyne morphisms and every morphism in $Y / \Delta^{0}$ is marked, which implies that the map $f / \Delta^{0}$ is a cocartesian fibration.
+\end{proof}
+
+\end{document}

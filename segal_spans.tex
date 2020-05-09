@@ -20,11 +20,16 @@
   For a marked simplicial set $A$ and an unmarked simplicial set $B$, define a marking on the bisimplicial set $A \square B$ as follows: a simplex $(a, b) \in A_{1} \times B_{0}$ is marked if and only if $a$ is marked.
 \end{definition}
 
-\begin{note}
-  Toby: At the moment, I am not notationally distinguishing between the marked and unmarked versions of the $\square$ and $-/-$ constructions. This requires that readers keep track for themselves when a (bi)simplicial set is or isn't marked. If you think this is confusing, I'll try and come up with some other notation.
-\end{note}
+This construction gives us a functor
+\begin{equation*}
+  - \square -  \colon \SSet^{+} \times \SSet \to \SSSet^{+}.
+\end{equation*}
 
-For any marked simplicial set $A$, denote the underlying unmarked simplicial set by $\mathring{A}$. Similarly, for any marked bisimplicial set $X$, denote the underlying unmarked bisimplicial set by $\mathring{X}$.
+Our first order of business is to generalize the results of \cite{qcats_vs_segal_spaces} (summarized in \hyperref[sss:the_box_functor]{Section~\ref*{sss:the_box_functor}}) to the marked case. We will first show that the above functor is divisible on the left and on the right.
+
+\begin{notation}
+  For any marked simplicial set $A$, denote the underlying unmarked simplicial set by $\mathring{A}$. Similarly, for any marked bisimplicial set $X$, denote the underlying unmarked bisimplicial set by $\mathring{X}$.
+\end{notation}
 
 \begin{definition}
   Let $A$ denote a marked simplicial set, $B$ an unmarked simplicial set, and $X$ a marked bisimplicial set.
@@ -37,6 +42,25 @@ For any marked simplicial set $A$, denote the underlying unmarked simplicial set
     \item Define a marked simplicial set $X / B$ as follows. The underlying simplicial set is the same as $\mathring{X} / \mathring{B}$, and a 1-simplex $\Delta^{1} \to X / B$ is marked if and only if the corresponding map $\Delta^{1} \square B \to X$ of unmarked bisimplicial sets comes from a map of marked bisimplicial sets $(\Delta^{1})^{\sharp} \square B \to X$.
   \end{itemize}
 \end{definition}
+
+\begin{example}
+  For any unmarked simplicial set $A$ and marked bisimplicial set $X$, there is an isomorphism
+  \begin{equation*}
+    A^{\flat} \backslash X \cong A \backslash \mathring{X}.
+  \end{equation*}
+  Similarly, for any unmarked bisimplicial set $Y$ and marked simplicial set $B$, there is an isomorphism
+  \begin{equation*}
+    B \backslash X^{\sharp} \cong \mathring{B} \backslash X.
+  \end{equation*}
+\end{example}
+
+\begin{example}
+  For any marked bisimplicial set $X$, the marked simplicial set $X / \Delta^{0}$ is the first row of $X$, together with the obvious marking. In particular, for any quasicategory $\category{C}$ with a marking $\mathcal{E}$, the bisimplicial set $\Gamma(\category{C})$ defined level-wise by
+  \begin{equation*}
+    \Gamma(\category{C})_{n} = \Map(\Delta^{n}, \category{C})^{\simeq}
+  \end{equation*}
+  is a complete Segal space, and the marking on $\category{C}$ gives a marking on $\Gamma(\category{C})$ in the obvious way. Then the first row $\Gamma(\category{C}) / \Delta^{0}$ is isomorphic $\category{C}$ as a marked simplicial set.
+\end{example}
 
 \begin{proposition}
   We have the following adjunctions.
@@ -54,13 +78,7 @@ For any marked simplicial set $A$, denote the underlying unmarked simplicial set
   \end{enumerate}
 \end{proposition}
 \begin{proof}
-  In the first case, we know that the bijection
-  \begin{equation*}
-    \Hom_{\SSSet^{+}}(A \square \Delta^{n}, X) \cong \Hom_{\SSet}(\Delta^{n}, A \backslash X)
-  \end{equation*}
-  holds for each $n$, and both sides preserve colimits.
 
-  In the second case, we
 \end{proof}
 
 This shows that the marked version of $\square$ is, in the language of \cite{qcats_vs_segal_spaces}, \emph{divisible on the left and on the right.} This implies that $A \backslash X$ is a functor of both $A$ and $X$, and that $X / B$ is a functor of both $X$ and $B$. This in turn implies that there is a bijection between maps
@@ -136,7 +154,7 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
 
 \begin{proposition}
   \label{prop:cartesian_marking_respects_path_components}
-  Let $f\colon X \to Y$ be a Reedy fibration between marked bisimplicial sets such that the marking on $X$ respects path components, and let $u\colon A \to A'$ be a morphism of marked simplicial sets whose underlying morphism of unmarked simplicial spaces is a monomorphism. Then the map $\langle u \backslash f \rangle$ is a Kan fibration.
+  Let $f\colon X \to Y$ be a Reedy fibration between marked bisimplicial sets such that the marking on $X$ respects path components, and let $u\colon A \to A'$ be a morphism of marked simplicial sets whose underlying morphism of unmarked simplicial sets is a monomorphism. Then the map $\langle u \backslash f \rangle$ is a Kan fibration.
 \end{proposition}
 \begin{proof}
   We need to show that for each $n \geq 0$ and $0 \leq k \leq n$ we can solve the lifting problem
@@ -151,7 +169,7 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
       \Delta^{n}
       \arrow[r]
       \arrow[ur, dashed]
-      & A \backslash X \times_{A' \backslash Y} A' \backslash X
+      & A \backslash X \times_{A' \backslash Y} A' \backslash Y
     \end{tikzcd}.
   \end{equation*}
   First assume that $n \geq 2$. We can augment the above square as follows.
@@ -168,7 +186,7 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
       \\
       \Delta^{n}
       \arrow[r]
-      & A \backslash X \times_{A' \backslash Y} A' \backslash X
+      & A \backslash X \times_{A' \backslash Y} A' \backslash Y
       \arrow[r]
       & A^{\flat} \backslash X \times_{(A')^{\flat} \backslash Y} (A')^{\flat} \backslash X
     \end{tikzcd}.
@@ -464,77 +482,6 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
 \end{corollary}
 \begin{proof}
   By \cite{qcats_vs_segal_spaces}, the map $f/\Delta^{0}$ is an isofibration between quasicategories, and hence is certainly an inner fibration. By assumption, every morphism in $Y$ has a $f$-cartesian lift. By\hyperref[prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian]{Proposition~\ref*{prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian}}, these lifts are also $f / \Delta^{0}$-cocartesian.
-\end{proof}
-
-\subsection{Further results}
-\label{ssc:further_results}
-
-\begin{note}
-  Toby: The remainder of this section consists of half-typed stuff I have at best sketched proofs of. I think that I have most of proof of \hyperref[thm:divide_by_marked_anodyne]{Theorem~\ref*{thm:divide_by_marked_anodyne}}. What is mainly missing is a proof the cocartesian marking always respects path components.
-\end{note}
-
-\begin{lemma}
-  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $e \in X_{1}$ be a homotopy equivalence. Then $e$ is $f$-cocartesian. In particular, all identity morphisms are $f$-cocartesian.
-\end{lemma}
-
-\begin{lemma}
-  \label{lemma:cocartesian_closed_under_composition}
-  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces, and let $\sigma \in X_{2}$ be a 2-simplex as follows.
-  \begin{equation*}
-    \begin{tikzcd}[column sep=small]
-      & y
-      \arrow[dr, "g"]
-      \\
-      x
-      \arrow[ur, "f"]
-      \arrow[rr, swap, "h"]
-      && z
-    \end{tikzcd}
-  \end{equation*}
-  Then if $f$ and $g$ are $f$-cocartesian, so is $h$.
-\end{lemma}
-
-\begin{theorem}
-  \label{thm:divide_by_marked_anodyne}
-  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and denote also by $f$ the morphism $f\colon X^{\natural} \to Y^{\sharp}$ as in \hyperref[def:cocoartesian_marking_on_complete_segal_spaces]{Definition~\ref*{def:cocoartesian_marking_on_complete_segal_spaces}}. Then for any marked anodyne morphism $u$, the map $\langle u \backslash f \rangle$ is a trivial fibration.
-\end{theorem}
-
-\begin{corollary}
-  Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. Then the corresponding map $f / \Delta^{0}$ between first rows is a cocartesian fibration of quasicategories.
-\end{corollary}
-\begin{proof}
-  Since $\langle u \backslash f \rangle$ is a trivial fibration for any marked anodyne map $u\colon A \to A'$, we can solve the lifting problem
-  \begin{equation*}
-    \begin{tikzcd}
-      \emptyset
-      \arrow[r]
-      \arrow[d]
-      & A' \backslash X^{\natural}
-      \arrow[d]
-      \\
-      \Delta^{0}
-      \arrow[r]
-      \arrow[ur, dashed]
-      & A \backslash X^{\natural} \times_{A' \backslash Y^{\sharp}} A' \backslash Y^{\sharp}
-    \end{tikzcd}.
-  \end{equation*}
-
-  This is equivalent to the lifting problem
-  \begin{equation*}
-    \begin{tikzcd}
-      A
-      \arrow[r]
-      \arrow[d]
-      & X^{\natural} / \Delta^{0}
-      \arrow[d]
-      \\
-      A'
-      \arrow[r]
-      \arrow[ur, dashed]
-      & Y^{\sharp} / \Delta^{0}
-    \end{tikzcd}.
-  \end{equation*}
-  Thus, the map $f / \Delta^{0}$ has the right lifting property with respect to all marked anodyne morphisms and every morphism in $Y / \Delta^{0}$ is marked, which implies that the map $f / \Delta^{0}$ is a cocartesian fibration.
 \end{proof}
 
 \section{Complete Segal spaces of spans}
@@ -1055,6 +1002,125 @@ are $p$-cocartesian.
 
   \subsection{Results from J+T}
   \label{ssc:results_from_j_t}
+
+  \subsubsection{Bisimplicial sets}
+  \label{sss:bisimplicial_sets}
+
+  We will denote the simplex category by $\D$, and the category of functors $\D\op \to \Set$ by $\SSet$. This is the category of \emph{simplicial sets.}
+
+  The category $\SSet$ carries two model structures of which we will make frequent use:
+  \begin{itemize}
+    \item The \emph{Kan} model structure, which has the following description.
+      \begin{itemize}
+        \item The fibrations are the Kan fibrations. 
+
+        \item The cofibrations are the monomorphisms. 
+
+        \item The weak equivalences are weak homotopy equivalences.
+      \end{itemize}
+
+    \item The \emph{Joyal} model structure. We will not give a complete description, referring the reader to \cite[Sec.\ 2.2.5]{highertopostheory}. We will make use of the following properties. 
+      \begin{itemize}
+        \item The cofibrations are monomorphisms.
+
+        \item The fibrant objects are quasicategories, and the fibrations between fibrant objects are isofibrations, i.e.\ inner fibrations with lifts of equivalences (cf \cite[Cor.\ 2.6.5]{highertopostheory}).
+      \end{itemize}
+  \end{itemize}
+
+  The category $\D\op$ has a Reedy structure, which gives us, together with the Kan model structure, a model structure on the category $\Fun(\D\op, \SSet)$ with the following properties.
+  \begin{itemize}
+    \item The cofibrations are monomorphisms.
+
+    \item The weak equivalences are level-wise weak homotopy equivalences.
+
+    \item We will call the fibrations \emph{Reedy fibrations,} and will come to them in a moment.
+  \end{itemize}
+
+  \subsubsection{The box functor}
+  \label{sss:the_box_functor}
+
+  In this section, we recall some key results from \cite{qcats_vs_segal_spaces}. We refer readers there for more information.
+
+  Let $\odot\colon \mathcal{E}_{2} \times \category{E}_{2} \to \category{E}_{3}$ be a functor. Following \cite{qcats_vs_segal_spaces}, we will say that $\odot$ is \emph{divisible on the left} if for each $A \in \category{E}_{1}$, the functor $A \odot -$ admits a right adjoint $A \backslash -$, and \emph{divisible on the right} if for for each $B \in \category{E}_{2}$, the functor $- \odot B$ admits a right adjoint $- / B$. In the second case, we get a functor of two variables
+  \begin{equation*}
+    - / -\colon \category{E}_{3} \times \category{E}_{2}\op \to \category{E}_{1};
+  \end{equation*}
+  the first case is similar. Thus, there is a bijection between maps
+  \begin{equation*}
+    A \square B \to X,\qquad A \to X / B,\qquad B \to A \backslash X,
+  \end{equation*}
+  implying that the functors $X / -$ and $- \backslash X$ are mutually right adjoint.
+
+  If both $\category{E}_{1}$ and $\category{E}_{2}$ are finitely complete and $\category{E}_{3}$ is finitely cocomplete, then from a map $u\colon A \to B$ in $\category{E}_{1}$ and a map $f\colon X \to Y$ in $\category{E}_{3}$, we get a map
+  \begin{equation*}
+    X / B 
+  \end{equation*}
+
+  \begin{definition}
+    Define a functor $- \square -\colon \SSet \times \SSet \to \SSSet$ by the formula
+    \begin{equation*}
+      (X, Y) \mapsto X \square Y,\qquad (X \square Y)_{mn} = X_{m} \times Y_{n}.
+    \end{equation*}
+    We will call this functor the \defn{box functor.}
+  \end{definition}
+
+  We provide a partial proof of the following result because we will need to refer to it later.
+  \begin{proposition}
+    The box functor is \emph{divisible on the left and on the right.} This means that for each simplicial set $A$, there are adjunctions
+    \begin{equation*}
+      A \square -\colon \SSet \leftrightarrow \SSSet : A \backslash -,
+    \end{equation*}
+    where an $n$-simplex of the simplicial set $A \backslash X$ is a map $A \square \Delta^{n} \to X$.
+
+    There is a similar adjunction
+    \begin{equation*}
+      - \square A\colon \SSet \leftrightarrow \SSSet : - \backslash A.
+    \end{equation*}
+  \end{proposition}
+  \begin{proof}
+    We prove the first; the second is identical. We do this by explicitly exhibiting a bijection
+    \begin{equation*}
+      \begin{tikzcd}
+        \Hom_{\SSSet}(A \square B, X) \cong \Hom_{\SSet}(B, A \backslash X).
+      \end{tikzcd}
+    \end{equation*}
+
+    Define a map
+    \begin{equation*}
+      \Phi\colon \Hom_{\SSSet}(A \square B, X) \to \Hom_{\SSet}(B, A \backslash X)
+    \end{equation*}
+    by sending a map $f\colon A \square B \to X$ to the map $\tilde{f}\colon B \to A \backslash X$ which sends an $n$-simplex $b \in B_{n}$ to the composition
+    \begin{equation*}
+      \begin{tikzcd}
+        A \square \Delta^{n}
+        \arrow[r, "{(\id, b)}"]
+        & A \square B
+        \arrow[r, "f"]
+        & X
+      \end{tikzcd}.
+    \end{equation*}
+
+    Now define a map $\ev\colon A \square (A \backslash X) \to X$ level-wise as follows: we take $(a, \sigma) \in A_{m} \times (A \backslash X)_{n}$ to
+    \begin{equation*}
+      \sigma_{mn}(a, \id_{\Delta^{n}}) \in X_{mn}.
+    \end{equation*}
+    Then define a map 
+    \begin{equation*}
+      \Psi\colon \Hom_{\SSet}(B, A \backslash X) \to \Hom_{\SSSet}(A \square B, X) 
+    \end{equation*}
+    sending a map $g\colon B \to A \backslash X$ to the composition
+    \begin{equation*}
+      \begin{tikzcd}
+        A \square B
+        \arrow[r, "{(\id, g)}"]
+        & A \square (A \backslash X)
+        \arrow[r, "\ev"]
+        & X
+      \end{tikzcd}.
+    \end{equation*}
+
+    The maps $\Phi$ and $\Psi$ are mutually inverse, and provide the necessary bijection.
+  \end{proof}
 
   \subsection{Results about equivalences}
   \label{ssc:results_about_equivalences}
