@@ -6,9 +6,11 @@ To do:
 \begin{itemize}
   \item Fix the following bits of notation
     \begin{itemize}
-      \item For $X$ a bisimplicial set, figure out what to do about $X_{n}$. Should it be called $X_{n, \bullet}$, or $X_{n}$, or $\Delta^{n} \backslash X$, or something else? $\ast$
+      \item For $X$ a bisimplicial set, figure out what to do about $X_{n}$. Should it be called $X_{n, \bullet}$, or $X_{n}$, or $\Delta^{n} \backslash X$, or something else?
 
       \item Marked simplicial sets: should a generic marked/doubly-marked simplicial set carry some notation (e.g.\ $X^{\dagger}$) to show that it carries some generic marking, rather than inventing some notation (like $\mathring{X}$) for underlying unmarked simplicial set?
+
+      \item Should probably change notation from $f\colon X \to Y$ to $p\colon X \to Y$ to keep $f$ available for generic morphisms.
 
       \item Should I notationally distinguish the marked and unmarked J+T constructions?
     \end{itemize}
@@ -318,13 +320,13 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
       & X / \Delta^{0}
     \end{tikzcd}
   \end{equation*}
-  Let $a \in A_{1}$ be a marked 1-simplex, and consider the diagram
+  Let $a \in A'_{1}$ be a marked 1-simplex, and consider the diagram
   \begin{equation*}
     \begin{tikzcd}[row sep=small, column sep=large]
       \Delta^{1} \square \Delta^{0}
       \arrow[r, "{(a, \id)}"]
       \arrow[dd]
-      & A \square \Delta^{0}
+      & A' \square \Delta^{0}
       \arrow[dd]
       \arrow[dr]
       \\
@@ -332,14 +334,63 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
       \\
       \Delta^{1} \square \Delta^{1}
       \arrow[r, "{(a, \id)}"]
-      & A \square \Delta^{1}
+      & A' \square \Delta^{1}
       \arrow[ur, dashed, swap, "\ell"]
     \end{tikzcd},
   \end{equation*}
-  where the triangle on the right is the adjunct to the triangle above. In order to check that the dashed lift respects the marking on $X$, we have to show that for each $(a, b) \in (A \square \Delta^{1})_{10} = A_{1} \times \{0, 1\}$, the morphism $\ell(a, b)$ is marked in $X$. The commutativity of the triangle guarantees this for $b = 0$. The map $\Delta^{1} \square \Delta^{1} \to X$ gives us a 1-simplex in $X_{1}$ connecting $\ell(a, 0)$ and $\ell(a, 1)$, which implies by that $\ell(a, 1)$ is also marked because each marking respects path components.
+  where the triangle on the right is the adjunct to the triangle above. In order to check that the dashed lift respects the marking on $X$, we have to show that for each $(a, b) \in (A' \square \Delta^{1})_{10} = A'_{1} \times \{0, 1\}$, the morphism $\ell(a, b)$ is marked in $X$. The commutativity of the triangle guarantees this for $b = 0$. The map $\Delta^{1} \square \Delta^{1} \to X$ gives us a 1-simplex in $X_{1}$ connecting $\ell(a, 0)$ and $\ell(a, 1)$, which implies by that $\ell(a, 1)$ is also marked because each marking respects path components.
 
   The case $n = 1$, $k = 1$ is essentially identical.
 \end{proof}
+
+\subsection{Simplicial technology}
+\label{ssc:simplicial_technology}
+
+In the next section, we will need to work in several different cases with simplicial subsets $A \subseteq \Delta^{n}$ with certain conditions placed on the edge is $\Delta^{\{0, 1\}}$. In this section we prove some technical results in this direction. The results in this section are mainly lemmas whose job is to lighten the notational load in later proofs.
+
+\begin{notation}
+  Let $X$ be an unmarked bisimplicial set, and let $e \in X_{10}$. For any simplicial subset $A \subseteq \Delta^{n}$ such that $\Delta^{\{0, 1\}} \subseteq A$, we will use the notation
+  \begin{equation*}
+    (A \backslash X)^{e} = A \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}.
+  \end{equation*}
+\end{notation}
+
+The $m$-simplices of the simplicial set $(A \backslash X)^{e}$ are maps $A \square \Delta^{m} \to X$ such that the pullback
+\begin{equation*}
+  \begin{tikzcd}
+    \Delta^{\{0, 1\}} \square \Delta^{m} 
+    \arrow[r]
+    & A \square \Delta^{m} 
+    \arrow[r]
+    & X
+  \end{tikzcd}
+\end{equation*}
+factors through the map $\Delta^{\{0, 1\}} \square \Delta^{0} \to X$ corresponding to the element $e \in X_{10}$ under the Yoneda embedding.
+
+\begin{definition}
+  For any simplicial subset $A \subseteq \Delta^{n}$, denote the marking on $A$ where the only marked nondegenerate edge is $\Delta^{\{0, 1\}}$ by $\mathcal{L}$, and the corresponding marked simplicial set by $A^{\mathcal{L}}$. If $A$ does not contain the edge $\Delta^{\{0, 1\}}$ then this agrees with the $\flat$-marking.
+\end{definition}
+
+Let $X$ be a marked bisimplicial set and $A \subseteq \Delta^{n}$. Let $e \in X_{10}$. Define
+\begin{equation*}
+  (a^{\mathcal{l}} \backslash x)^{e} = A^{\mathcal{L}} \backslash X \times_{(\Delta^{\{0, 1\}})^{\sharp} \backslash X} \{e\}.
+\end{equation*}
+
+\begin{lemma}
+  Let $A \subseteq \Delta^{n}$ be a simplicial subset, and let $X$ be a marked bisimplicial set. Then there is an isomorphism
+  \begin{equation*}
+    (A \backslash X)^{e} \simeq (\mathring{A} \backslash X)^{e}.
+  \end{equation*}
+\end{lemma}
+
+\begin{lemma}
+  The square
+  \begin{equation*}
+    \begin{tikzcd}
+      ((\Delta^{n})^{\mathcal{L}} \backslash X)^{e}
+    \end{tikzcd}
+  \end{equation*}
+\end{lemma}
 
 \subsection{Cocartesian morphisms}
 \label{ssc:cocartesian_morphisms}
@@ -348,15 +399,15 @@ Thus, the functors $- \backslash X$ and $X / -$ are mutually right adjoint. Sinc
   Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces. A morphism $e \in X_{10}$ is \defn{$f$-cocartesian} if the square
   \begin{equation*}
     \begin{tikzcd}
-      \Delta^{2} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
+      (\Delta^{2} \backslash X)^{e}
       \arrow[r]
       \arrow[d]
-      & \Lambda^{2}_{0} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
+      & (\Lambda^{2}_{0} \backslash X)^{e}
       \arrow[d]
       \\
-      \Delta^{2} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
+      (\Delta^{2} \backslash Y)^{f(e)}
       \arrow[r]
-      & \Lambda^{2}_{0} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
+      & (\Lambda^{2}_{0} \backslash Y)^{f(e)}
     \end{tikzcd}
   \end{equation*}
   is homotopy pullback.
@@ -396,48 +447,57 @@ Note that $L_{2} \cong \Lambda^{2}_{0}$.
 %  This map can be written as the starred smash product of $\emptyset \hookrightarrow \Delta^{n-2}$, which is an inclusion, and $\Delta^{\{0\}} \hookrightarrow \Delta^{1}$, which is left anodyne. The result follows from \cite[Lemma 2.1.2.3]{highertopostheory}.
 %\end{proof}
 
-\begin{note}
-  Toby: I don't know if the below proof is easy enough that it doesn't need to be expanded. I started typing out a more detailed proof, but the the notation became pretty terrible. This should probably be taken as another sign that better notation is needed.
-\end{note}
-
 \begin{proposition}
   \label{prop:only_lowest_lifting_condition_is_necessary}
   Let $f\colon X \to Y$ be a Reedy fibration between Segal spaces, and let $e \in X_{10}$ be an $f$-cocartesian morphism. Then the square
   \begin{equation*}
     \begin{tikzcd}
-      \Delta^{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
+      (\Delta^{n} \backslash X)^{e}
       \arrow[r]
       \arrow[d]
-      & L_{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
+      & (L_{n} \backslash X)^{e}
       \arrow[d]
       \\
-      \Delta^{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
+      (\Delta^{n} \backslash Y)^{f(e)}
       \arrow[r]
-      & L_{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
+      & (L_{n} \backslash Y)^{f(e)}
     \end{tikzcd}
   \end{equation*}
   is homotopy pullback for all $n \geq 2$.
 \end{proposition}
 \begin{proof}
-  We have the base case $n = 2$ because $e$ is $f$-cocartesian. The higher cases follow from the Segal condition.
-
-  % Assume the result is true for $n - 1$. Then the square
-  % \begin{equation*}
-  %   \begin{tikzcd}
-  %     (\Delta^{n-1} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}) \times_{\Delta^{\{n-1\}} \backslash X} \Delta^{\{n-1, n\}} \backslash X
-  %     \arrow[r]
-  %     \arrow[d]
-  %     & L_{n} \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}
-  %     \arrow[d]
-  %     \\
-  %     \Delta^{n-1} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
-  %     \arrow[r]
-  %     & L_{n} \backslash Y \times_{\Delta^{\{0, 1\}} \backslash Y} \{fe\}
-  %   \end{tikzcd}
-  % \end{equation*}
+  We have the case $n = 2$ because $e$ is $f$-cocartesian. Assume the result is true up to $n - 1$. Then the square
+  \begin{equation*}
+    \begin{tikzcd}
+      (\Delta^{n-1} \backslash X)^{e} \times_{\Delta^{\{n-1\}} \backslash X} \Delta^{\{n-1, n\}} \backslash X
+      \arrow[r]
+      \arrow[d]
+      & (L_{n-1} \backslash X)^{e} \times_{\Delta^{\{n-1\}} \backslash X} \Delta^{\{n-1, n\}} \backslash X
+      \arrow[d]
+      \\
+      (\Delta^{n-1} \backslash Y)^{f(e)} \times_{\Delta^{\{n-1\}} \backslash Y} \Delta^{\{n-1, n\}} \backslash Y
+      \arrow[r]
+      & (L_{n-1} \backslash Y)^{f(e)} \times_{\Delta^{\{n-1\}} \backslash Y} \Delta^{\{n-1, n\}} \backslash Y
+    \end{tikzcd}
+  \end{equation*}
+  is homotopy pullback since each component is homotopy pullback. But this square is isomorphic to
+  \begin{equation*}
+    \begin{tikzcd}
+      (\Delta^{n} \backslash X)^{e}
+      \arrow[r]
+      \arrow[d]
+      & (L_{n} \backslash X)^{e}
+      \arrow[d]
+      \\
+      (\Delta^{n} \backslash Y)^{f(e)}
+      \arrow[r]
+      & (L_{n} \backslash Y)^{f(e)}
+    \end{tikzcd}:
+  \end{equation*}
+  The right-hand isomorphisms come from the Segal condition, and the left-hand isomorphisms come from the definition of $L_{n}$.
 \end{proof}
 
-For any simplicial subset $A \subseteq \Delta^{n}$, denote the marking on $A$ where the only marked nondegenerate edge is $\Delta^{\{0, 1\}}$ by $A^{\mathcal{L}}$. If $A$ does not contain the edge $\Delta^{\{0, 1\}}$ then this agrees with the $\flat$-marking. For any simplicial set $A$, define a marked simplicial set $(\Delta^{1} \star A, \mathcal{L'})$ where the only nondegenerate simplex belonging to $\mathcal{L'}$ is $\Delta^{1}$.
+ For any simplicial set $A$, define a marked simplicial set $(\Delta^{1} \star A, \mathcal{L'})$ where the only nondegenerate simplex belonging to $\mathcal{L'}$ is $\Delta^{1}$.
 
 \begin{lemma}
   \label{lemma:starred_smash_with_mono}
@@ -538,16 +598,32 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
   Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. We define a marking on $X$ such that a morphism is marked if and only if it is $f$-cocartesian. We will denote the corresponding marked bisimplicial by set $X^{\natural}$. We can view the map $f$ as a map of marked bisimplicial sets $f\colon X^{\natural} \to Y^{\sharp}$.
 \end{definition}
 
-\begin{note}
-  Toby: In the rest of this subsection, we have to assume that the cocartesian marking respects path components. I'm convinced that this isn't necessary (i.e.\ that the cocartesian marking always respects path components), but this doesn't matter in our case as it is trivially true for spans.
-\end{note}
-
 \begin{lemma}
-  Let $f\colon X \to Y$ be a Reedy fibration between bisimplicial sets, and let $e \in X_{10}$ be an edge. Then
+  Let $f\colon X \to Y$ be a Reedy fibration between bisimplicial sets, and let $e \in X_{10}$ be an edge. Then the map
   \begin{equation*}
-    A 
+    (\Delta^{n} \backslash X)^{e} \to (\Delta^{n} \backslash Y)^{f(e)} \times_{(\Lambda^{n}_{0})^{f(e)}\backslash Y} (\Lambda^{n}_{0} \backslash X)^{e}
   \end{equation*}
+  is a Kan fibration.
 \end{lemma}
+\begin{proof}
+  We have a (strict) pullback square
+  \begin{equation*}
+    \begin{tikzcd}
+      (\Delta^{n} \backslash X)^{e} 
+      \arrow[r]
+      \arrow[d]
+      & \Delta^{n} \backslash X 
+      \arrow[d]
+      \\
+      (\Delta^{n} \backslash Y)^{f(e)} \times_{(\Lambda^{n}_{0}\backslash Y)^{f(e)}} (\Lambda^{n}_{0} \backslash X)^{e}
+      \arrow[r]
+      & \Delta^{n} \backslash Y \times_{\Lambda^{n}_{0}\backslash Y} \Lambda^{n}_{0} \backslash X
+    \end{tikzcd},
+  \end{equation*}
+  and the map on the right is a Kan fibration because $f$ is a Reedy fibration.
+\end{proof}
+
+
 
 \begin{proposition}
   \label{prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian}
@@ -571,11 +647,12 @@ We will say a collection of morphisms $\mathcal{A} \subset \mathrm{Mor}(\SSet^{+
 
   The set $S$ contains all flat-marked inner anodyne morphisms because $f$ is a Reedy fibration. \hyperref[prop:only_lowest_lifting_condition_is_necessary]{Proposition~\ref*{prop:only_lowest_lifting_condition_is_necessary}} implies that $S$ contains all left spine inclusions $(L_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$. Thus, by \hyperref[lemma:saturated_hull_of_left_spine_inclusions]{Lemma~\ref*{lemma:saturated_hull_of_left_spine_inclusions}}, $S$ contains all $\mathcal{L}$-marked left horn inclusions.
 
+  We
 \end{proof}
 
 \begin{corollary}
   \label{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}
-  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces such that the cocartesian marking on $X$ respects path components. Then the map
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces with the following property: for each map $\Delta^{1} \to X_{1}$ representing an edge $e \to e'$ between two morphisms $e$ and $e'$, $e$ is $f$-cocartesian if and only if $e'$ is $f$-cocartesian. This is equivalent to demanding that the cocartesian marking on $X$ respects path components. Then the map
   \begin{equation*}
     f/\Delta^{0}\colon X/\Delta^{0} \to Y/\Delta^{0}
   \end{equation*}
@@ -1069,35 +1146,35 @@ are $p$-cocartesian.
 \begin{theorem}
   Let $\category{C}$ and $\category{D}$ be quasicategories with pullbacks, and let $\pi\colon \category{C} \to \category{D}$ be a bicartesian fibration which sends pullbacks to pullbacks. Then the map
   \begin{equation*}
-    \Span(\category{C})/\Delta^{0} \to \Span(\category{D})/\Delta^{0}
+    p\colon \Span(\category{C})/\Delta^{0} \to \Span(\category{D})/\Delta^{0}
   \end{equation*}
   is a cocartesian fibration (hence a bicartesian fibration) between quasicategories.
 \end{theorem}
 \begin{proof}
-  Take $\Span(\category{C})$ to have the cocartesian marking, which we have denoted by $\Span(C)^{\natural}$. In order to fulfill the requirements of \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}}, it suffices to show that this marking respects path components. But this is clear: a 1-simplex $g \to g'$ in $\Span(\category{C})^{\natural}_{1}$ between morphisms
+  In order to fulfill the requirements of \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}}, it suffices to show that for any 1-simplex $g \to g'$ in $\Span(\category{C})_{1}$ between morphisms
   \begin{equation*}
-    g\colon X \leftarrow Y \to Z \qquad\text{and}\qquad g'\colon X' \leftarrow Y' \to Z'
+    g\colon x \leftarrow y \to z \qquad\text{and}\qquad g'\colon x' \leftarrow y' \to z',
   \end{equation*}
-  looks as follows.
+  the morphism $g$ is $p$-cocartesian if and only if the morphism $g'$ is $p$-cocartesian. Such a 1-simplex looks as follows.
   \begin{equation*}
     \begin{tikzcd}
-      X
+      x
       \arrow[d, "\simeq"]
-      & Y
+      & y
       \arrow[l, swap, "g_{0}"]
       \arrow[r, "g_{1}"]
       \arrow[d, "\simeq"]
-      & Z
+      & z
       \arrow[d, "\simeq"]
       \\
-      X'
-      & Y'
+      x'
+      & y'
       \arrow[l, swap, "g'_{0}"]
       \arrow[r, "g'_{1}"]
-      & Z'
+      & z'
     \end{tikzcd}
   \end{equation*}
-  Since equivalences are both cartesian and cocartesian, it is clear that $g$ is cocartesian if and only if $g'$ is cocartesian.
+  Since equivalences are both cartesian and cocartesian, the morphism $g_{0}$ is $\pi$-cocartesian if and only if the morphism $g_{0}'$ is $\pi$-cocartesian, and that the morphism $g_{1}$ is $\pi$-cartesian if and only if the morphism $g_{1}'$ is $\pi$-cartesian. Thus, $g$ is cocartesian if and only if $g'$ is cocartesian.
 \end{proof}
 
 
