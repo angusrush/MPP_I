@@ -3,11 +3,11 @@
 \newcommand\hmmax{0}
 \newcommand\bmmax{0}
 
-\usepackage[margin=1.2in]{geometry}
+%\usepackage[margin=1.2in]{geometry}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
-\usepackage{fancyhdr}
+%\usepackage{fancyhdr}
 \usepackage{amstext}
 \usepackage{array}
 \usepackage{amsthm}
@@ -19,8 +19,8 @@
 \usepackage{enumitem}
 \usepackage{biblatex}
 \usepackage[makeroom]{cancel}
-\usepackage{libertine}
-\usepackage[libertine]{newtxmath}
+%\usepackage{libertine}
+%\usepackage[libertine]{newtxmath}
 \usepackage{anyfontsize}
 \usepackage{interval}
 \usepackage{bm}
@@ -29,7 +29,7 @@
 \usepackage{setspace}
 \usepackage{mathdots}
 \usepackage{epigraph}
-\usepackage[bbgreekl]{mathbbol}
+%\usepackage[bbgreekl]{mathbbol}
 \usepackage{mathtools}
 
 \usetikzlibrary{decorations.markings}
@@ -102,13 +102,13 @@
 \newcommand{\llp}{{}_{\perp}}
 \newcommand{\rlp}{_{\perp}}
 % Category names
-\newcommand{\D}{\mathbb{\Delta}}
-\newcommand{\Sig}{\mathbb{\Sigma}}
-\newcommand{\Lam}{\mathbb{\Lambda}}
+\newcommand{\D}{\Delta}
+\newcommand{\Sig}{\Sigma}
+\newcommand{\Lam}{\Lambda}
 \newcommand{\CGHaus}{\catname{CGHaus}}
 \newcommand{\Set}{\catname{Set}}
 \newcommand{\pSet}{\catname{Set}_{*}}
-\renewcommand{\Top}{\catname{Top}}
+%\renewcommand{\Top}{\catname{Top}}
 \newcommand{\Ab}{\catname{Ab}}
 \newcommand{\Vect}{\catname{Vect}}
 \newcommand{\Ch}{\catname{Ch}}
@@ -127,7 +127,8 @@
 \newcommand{\Seg}{\catname{Seg}}
 \newcommand{\CSS}{\catname{CSS}}
 \newcommand{\Corr}{\catname{Corr}}
-\newcommand{\Span}{\catname{Span}}
+\newcommand{\Span}{\mathrm{Span}}
+\newcommand{\SPAN}{\catname{Span}}
 \newcommand{\Bord}{\catname{Bord}}
 \newcommand{\Cell}{\catname{Cell}}
 \newcommand{\mhyp}{\text{-}}
@@ -135,7 +136,6 @@
 \newcommand{\PD}{\mathsf{PD}}
 \newcommand{\Dint}{\D_{\mathrm{int}}}
 \renewcommand{\S}{\mathcal{S}}
-\newcommand{\SPAN}{\catname{SPAN}}
 \newcommand{\CSPAN}{\overline{\catname{SPAN}}}
 \newcommand{\Finp}{\mathcal{F}\mathrm{in}_{*}}
 \newcommand{\OS}{\mathcal{O}_{\S}}
@@ -166,6 +166,7 @@
 
 %\theoremstyle{plain}
 \newtheorem{theorem}[definition]{Theorem}
+\newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
 \newtheorem{proposition}[definition]{Proposition}

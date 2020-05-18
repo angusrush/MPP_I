@@ -44,6 +44,30 @@
       \verb arXiv:1409.0837
       \endverb
     \endentry
+    \entry{spectralmackeyfunctors1}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=5a69a25c19b869f4a198377a48671213}{%
+           family={Barwick},
+           familyi={B\bibinitperiod},
+           given={C.},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{fullhash}{5a69a25c19b869f4a198377a48671213}
+      \strng{bibnamehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{authorbibnamehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{authornamehash}{5a69a25c19b869f4a198377a48671213}
+      \strng{authorfullhash}{5a69a25c19b869f4a198377a48671213}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Spectral Mackey functors and equivariant algebraic K-theory (I)}
+      \field{year}{2014}
+      \verb{eprint}
+      \verb arXiv:1404.0108
+      \endverb
+    \endentry
     \entry{highertopostheory}{book}{}
       \name{author}{1}{}{%
         {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
@@ -68,6 +92,38 @@
       \field{isbn}{978-0-691-14049-0}
       \field{title}{Higher Topos Theory}
       \field{year}{2009}
+    \endentry
+    \entry{rasekhcartesianfibrations}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ef7be26de40244df94c067d8acda98cb}{%
+           family={{Rasekh}},
+           familyi={R\bibinitperiod},
+           given={Nima},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{fullhash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{bibnamehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{authorbibnamehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{authornamehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{authorfullhash}{ef7be26de40244df94c067d8acda98cb}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eid}{arXiv:1711.03670}
+      \field{eprintclass}{math.CT}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv e-prints}
+      \field{month}{11}
+      \field{title}{{Cartesian Fibrations and Representability}}
+      \field{year}{2017}
+      \field{pages}{arXiv:1711.03670}
+      \range{pages}{-1}
+      \verb{eprint}
+      \verb 1711.03670
+      \endverb
+      \keyw{Mathematics - Category Theory,Mathematics - Algebraic Topology}
     \endentry
   \enddatalist
 \endrefsection
