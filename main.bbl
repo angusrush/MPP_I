@@ -68,6 +68,38 @@
       \verb arXiv:1404.0108
       \endverb
     \endentry
+    \entry{2016arXiv160500706B}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ca66c7395b1ca0f2eed3a694a9a5f7ee}{%
+           family={{Boavida de Brito}},
+           familyi={B\bibinitperiod},
+           given={Pedro},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{ca66c7395b1ca0f2eed3a694a9a5f7ee}
+      \strng{fullhash}{ca66c7395b1ca0f2eed3a694a9a5f7ee}
+      \strng{bibnamehash}{ca66c7395b1ca0f2eed3a694a9a5f7ee}
+      \strng{authorbibnamehash}{ca66c7395b1ca0f2eed3a694a9a5f7ee}
+      \strng{authornamehash}{ca66c7395b1ca0f2eed3a694a9a5f7ee}
+      \strng{authorfullhash}{ca66c7395b1ca0f2eed3a694a9a5f7ee}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eid}{arXiv:1605.00706}
+      \field{eprintclass}{math.AT}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv e-prints}
+      \field{month}{5}
+      \field{title}{{Segal objects and the Grothendieck construction}}
+      \field{year}{2016}
+      \field{pages}{arXiv:1605.00706}
+      \range{pages}{-1}
+      \verb{eprint}
+      \verb 1605.00706
+      \endverb
+      \keyw{Mathematics - Algebraic Topology}
+    \endentry
     \entry{highertopostheory}{book}{}
       \name{author}{1}{}{%
         {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
@@ -124,6 +156,32 @@
       \verb 1711.03670
       \endverb
       \keyw{Mathematics - Category Theory,Mathematics - Algebraic Topology}
+    \endentry
+    \entry{rezk2001model}{article}{}
+      \name{author}{1}{}{%
+        {{hash=71cc51e3c0ac090026d1e96750933ae0}{%
+           family={Rezk},
+           familyi={R\bibinitperiod},
+           given={Charles},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{71cc51e3c0ac090026d1e96750933ae0}
+      \strng{fullhash}{71cc51e3c0ac090026d1e96750933ae0}
+      \strng{bibnamehash}{71cc51e3c0ac090026d1e96750933ae0}
+      \strng{authorbibnamehash}{71cc51e3c0ac090026d1e96750933ae0}
+      \strng{authornamehash}{71cc51e3c0ac090026d1e96750933ae0}
+      \strng{authorfullhash}{71cc51e3c0ac090026d1e96750933ae0}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transactions of the American Mathematical Society}
+      \field{number}{3}
+      \field{title}{A model for the homotopy theory of homotopy theory}
+      \field{volume}{353}
+      \field{year}{2001}
+      \field{pages}{973\bibrangedash 1007}
+      \range{pages}{35}
     \endentry
   \enddatalist
 \endrefsection

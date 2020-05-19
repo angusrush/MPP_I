@@ -13,13 +13,18 @@ The aim of this work is to prove the following theorem.
 
 This is a special case of a theorem of Barwick \cite{spectralmackeyfunctors1}. There, Barwick proves a stronger result, which treats the weaker case of inner fibrations separately, and allows conditions on the legs of the spans. Barwick's proof is explicit, constructing horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
 
-Our proof is more homotopy-theoretic in character, relying on the fact that for any quasi-category $\category{C}$ with pullbacks, the infinity-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. We define a notion of cocartesian fibration between complete Segal spaces, and show that under mild assumptions, any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data available in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling is more manageable.
+Our proof is more homotopy-theoretic in character, relying on the fact that for any quasi-category $\category{C}$ with pullbacks, the infinity-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. In our proof, we define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data available in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
 
-Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first (to our knowledge) written down by Rasekh in \cite{rasekhcartesianfibrations}. There, Rasekh defines a model structure whose fibrant objects model cocartesian fibrations between Segal spaces. In defining this model structure, it is necessary to control the which morphisms one wants to be cocartesian, and Rasekh solves this problem by adding an extra simplicial dimension; the model structure for cocartesian fibrations defined there is thus a model structure on slice categories of trisimplicial sets.
+Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first written down by De Brito in \cite{2016arXiv160500706B}, and expanded by Rasekh in \cite{rasekhcartesianfibrations}. There, Rasekh defines a model structure whose fibrant objects model cocartesian fibrations between Segal spaces. In defining this model structure, it is necessary to distinguish certain morphisms, and Rasekh solves this problem by adding an extra simplicial dimension; the model structure for cocartesian fibrations defined there is thus a model structure on slice categories of trisimplicial sets.
 
 In this work we restrict our attention to cocartesian fibrations between complete Segal spaces. This allows us to approach the problem of controlling cocartesian morphisms differently, by introducing a marking. This method is much closer to that used to work with cocartesian fibrations in \cite{highertopostheory}, and has the advantage that the many of the results proved there can be leveraged in explicit calculations. In particular, we provide a definition of a cocartesian fibration between complete Segal spaces to which Rasekh's definition reduces in the case that both the domain and codomain are complete Segal spaces.
 
-This work consists of two sections. In \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, after a review of some material in \cite{qcats_vs_segal_spaces}, most notably the box functor $- \square -$ and its adjoints, we define marked analogs of these, and show that analogous results hold. We then define, given a Reedy fibration $f\colon X \to Y$ between complete Segal spaces, a condition for
+This work consists of two sections. \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, we explore cocartesian fibrations between Segal spaces. After a review in \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}} of some material in \cite{qcats_vs_segal_spaces}, most notably the box functor $- \square -$ and its adjoints, we define marked bisimplicial sets in \hyperref[ssc:marked_bisimplicial_sets]{Section~\ref*{ssc:marked_bisimplicial_sets}}. We then define a marked version of the box functor, and show that some results analogous to the unmarked case hold. In \hyperref[ssc:simplicial_technology]{Section~\ref*{ssc:simplicial_technology}}, we prove some technical lemmas about simplicial sets with certain restrictions on individual morphisms. The main result is a lemma which allows us to translate a condition on marked bisimplicial sets for a `pointwise condition' involving unmarked bisimplicial sets.
+
+In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts (plus a technical condition on the cartesian morphisms, which is likely to be unnecessary). We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
+
+In \hyperref[sec:complete_segal_spaces_of_spans]{Section~\ref*{sec:complete_segal_spaces_of_spans}}, we prove the main theorem. After a brief review of the quasicategory and complete Segal space models for $\infty$-categories of spans in \hyperref[ssc:a_review_of_infinity_categories_of_spans]{Section~\ref*{ssc:a_review_of_infinity_categories_of_spans}}, in \hyperref[ssc:doubly-marked_simplicial_sets]{Section~\ref*{ssc:doubly-marked_simplicial_sets}} we introduce doubly-marked simplicial sets in order to prove a technical lemma about bicartesian fibrations. This allows us, in \hyperref[ssc:cartesian_morphisms]{Section~\ref*{ssc:cartesian_morphisms}}, to show the existence of cocartesian morphisms. In \hyperref[ssc:main_theorem]{Section~\ref*{ssc:main_theorem}} we prove the main result.
+
 
 \section{Cocartesian fibrations between complete Segal spaces}
 \label{sec:cocartesian_fibrations_between_complete_segal_spaces}
@@ -156,9 +161,7 @@ We provide a partial proof of the following result because we will need to refer
   \end{equation*}
 \end{proof}
 
-The functors $-\backslash X$ and $X / -$ give us access, respectively, to the categorical and the spatial directions in $X$.
-
-The simplicial set $\Delta^{m} \backslash X$ is the $m$th column of $X$. If $X$ is a Segal space, this is the space of $m$-simplices of $X$, which we have agreed to call $X_{m}$. The simplicial set $X / \Delta^{n}$ is the $n$th row of $X$. In particular $X / \Delta^{0}$ is the zeroth row of $X$. In \cite{qcats_vs_segal_spaces}, it is shown that if $f\colon X \to Y$ is a Reedy fibration between complete Segal spaces, then $f / \Delta^{0}\colon X / \Delta^{0} \to Y / \Delta^{0}$ is an inner fibration between quasicategories.
+The simplicial set $\Delta^{m} \backslash X$ is the $m$th column of $X$. If $X$ is a Segal space, this is the space of $m$-simplices of $X$, which we have agreed to call $X_{m}$. The simplicial set $X / \Delta^{n}$ is the $n$th row of $X$. In particular $X / \Delta^{0}$ is the zeroth row of $X$ (which, annoyingly, is usually called the \emph{first row} of $X$). In \cite{qcats_vs_segal_spaces}, it is shown that if $f\colon X \to Y$ is a Reedy fibration between complete Segal spaces, then $f / \Delta^{0}\colon X / \Delta^{0} \to Y / \Delta^{0}$ is an inner fibration between quasicategories.
 
 \hyperref[prop:bijection_exhibiting_box_divisibility]{Proposition~\ref*{prop:bijection_exhibiting_box_divisibility}}, together with the fact that $\SSet$ $\SSSet$ are finitely complete and cocomplete, implies all of the results of \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}} apply to the box functor. In the notation found there, we can give a compact formulation of the definition of a Reedy fibration which we will use repeatedly.
 
@@ -356,7 +359,7 @@ We will call an inclusion $B_{0} \hookrightarrow B$ of unmarked simplicial sets 
 \begin{proof}
   We first show that the map $i$ is a full inclusion. The $n$-simplices of $A \backslash X$ are maps of marked simplicial sets $\tilde{\sigma}\colon A \square \Delta^{n} \to X$. A map of underlying bisimplicial sets gives a map of marked bisimplicial sets if and only if it respects the markings, i.e.\ if and only if for each $(a, i) \in A_{1} \times (\Delta^{n})_{0}$ with $a$ marked, $\tilde{\sigma}(a, i)$ is marked in $X$. This is equivalent to demanding that $\sigma|_{\Delta^{\{i\}}}$ belong to $A \backslash X$.
 
-  To show that $A \backslash X$ is a Kan complex, we need to find dashed lifts below.
+  To show that $A \backslash X$ is a Kan complex, we need to find dashed lifts
   \begin{equation*}
     \begin{tikzcd}
       \Lambda^{n}_{k}
@@ -386,6 +389,7 @@ We will call an inclusion $B_{0} \hookrightarrow B$ of unmarked simplicial sets 
 \end{proof}
 
 \begin{definition}
+  \label{def:respects_path_components}
   Let $(X, \mathcal{E})$ be a marked bisimplicial set. We will say that $\mathcal{E}$ \defn{respects path components} if it has the following property: for any map $\Delta^{1} \to X_{1}$ representing an edge $e \to e'$ between morphisms $e$ and $e'$, the morphism $e$ is marked if and only if the morphism $e'$ is marked.
 \end{definition}
 
@@ -499,18 +503,19 @@ We will call an inclusion $B_{0} \hookrightarrow B$ of unmarked simplicial sets 
 \subsection{Simplicial technology}
 \label{ssc:simplicial_technology}
 
-In the next section, we will need to work in several different cases with simplicial subsets $A \subseteq \Delta^{n}$ with certain conditions placed on the edge is $\Delta^{\{0, 1\}}$. In this section we prove some technical results in this direction. The results in this section are mainly lemmas whose job is to lighten the notational load in later proofs.
+In the next section, we will need to work in several different cases with simplicial subsets $A \subseteq \Delta^{n}$ with certain conditions placed on the edge is $\Delta^{\{0, 1\}}$. In this section we prove some technical results in this direction. The main result in this section is \hyperref[lemma:check_marked_trivial_fibration_pointwise]{Lemma~\ref*{lemma:check_marked_trivial_fibration_pointwise}}.
 
 For the remainder of this section, fix $n \geq 2$.
 
 \begin{notation}
+  \label{notation:pullback_of_diagrams}
   Let $X$ be an unmarked bisimplicial set, and let $e \in X_{10}$. For any simplicial subset $A \subseteq \Delta^{n}$ such that $\Delta^{\{0, 1\}} \subseteq A$, we will use the notation
   \begin{equation*}
     (A \backslash X)^{e} = A \backslash X \times_{\Delta^{\{0, 1\}} \backslash X} \{e\}.
   \end{equation*}
 \end{notation}
 
-The $m$-simplices of the simplicial set $(A \backslash X)^{e}$ are maps $A \square \Delta^{m} \to X$ such that the pullback
+The simplicial set $(A \backslash X)^{e}$ should be thought of as the space of $A$-shaped diagrams in $X$ with the edge $\Delta^{\{0, 1\}}$ fixed. The $m$-simplices of the simplicial set $(A \backslash X)^{e}$ are maps $A \square \Delta^{m} \to X$ such that the pullback
 \begin{equation*}
   \begin{tikzcd}
     \Delta^{\{0, 1\}} \square \Delta^{m}
@@ -522,7 +527,7 @@ The $m$-simplices of the simplicial set $(A \backslash X)^{e}$ are maps $A \squa
 \end{equation*}
 factors through the map $\Delta^{\{0, 1\}} \square \Delta^{0} \to X$ corresponding to the element $e \in X_{10}$ under the Yoneda embedding.
 
-It is easy to see the following.
+Comparing simplices level-wise, it is easy to see the following.
 \begin{lemma}
   \label{lemma:unmarked_pullback}
   The square
@@ -546,61 +551,64 @@ It is easy to see the following.
   For any simplicial subset $A \subseteq \Delta^{n}$ containing $\Delta^{\{0, 1\}}$, denote the marking on $A$ where the only marked nondegenerate edge is $\Delta^{\{0, 1\}}$ by $\mathcal{L}$, and the corresponding marked simplicial set by $A^{\mathcal{L}}$.
 \end{definition}
 
-\begin{notation}
-  Let $X$ be a marked bisimplicial set and $A \subseteq \Delta^{n}$ such that $\Delta^{\{0, 1\}} \subseteq A$. Let $e \in X_{10}$ be a marked edge. Define
-  \begin{equation*}
-    (A^{\mathcal{L}} \backslash X)^{e} = A^{\mathcal{L}} \backslash X \times_{(\Delta^{\{0, 1\}})^{\sharp} \backslash X} \{e\}.
-  \end{equation*}
-\end{notation}
+%We introduce a marked version of \hyperref[notation:pullback_of_diagrams]{Notation~\ref*{notation:pullback_of_diagrams}}.
+%
+%\begin{notation}
+%  Let $X$ be a marked bisimplicial set and $A \subseteq \Delta^{n}$ such that $\Delta^{\{0, 1\}} \subseteq A$. Let $e \in X_{10}$ be a marked edge. Define
+%  \begin{equation*}
+%    (A^{\mathcal{L}} \backslash X)^{e} = A^{\mathcal{L}} \backslash X \times_{(\Delta^{\{0, 1\}})^{\sharp} \backslash X} \{e\}.
+%  \end{equation*}
+%\end{notation}
+%
+%Let us compare this to the unmarked construction. Since every map of marked simplicial sets is in particular a map of the underlying unmarked simplicial sets, the $m$-simplices of the simplicial set $(A^{\mathcal{L}} \backslash X)^{e}$ can be thought of as maps of unmarked simplicial sets $\alpha\colon A \square \Delta^{m} \to \mathring{X}$ with the following properties.
+%\begin{itemize}
+%  \item The pullback $\Delta^{\{0, 1\}} \square \Delta^{m} \to \mathring{X}$ descends to a map of marked simplicial sets
+%    \begin{equation*}
+%      (\Delta^{1})^{\sharp} \square \Delta^{m} \to X.
+%    \end{equation*}
+%    This guarantees us that $\alpha$ is a map of marked simplicial sets.
+%
+%
+%  \item There exists a factorization
+%    \begin{equation*}
+%      \begin{tikzcd}
+%        \Delta^{\{0, 1\}} \square \Delta^{m}
+%        \arrow[r]
+%        \arrow[dr]
+%        & A \square \Delta^{m}
+%        \arrow[r]
+%        & X
+%        \\
+%        & \Delta^{\{0, 1\}} \square \Delta^{0}
+%        \arrow[ur, swap, "\{e\}"]
+%      \end{tikzcd}
+%    \end{equation*}
+%\end{itemize}
+%The first of these conditions simply tells us that the edge $e$ is marked, and the second condition is the same as the unmarked case. We have shown the following.
+%
+%\begin{lemma}
+%  \label{lemma:marked_vs_unmarked_with_first_morph_fixed}
+%  Let $A \subseteq \Delta^{n}$ be a simplicial subset containing $\Delta^{\{0, 1\}}$, and let $X$ be a marked bisimplicial set. Let $e \in X_{10}$ be a marked edge. There is an isomorphism
+%  \begin{equation*}
+%    (A^{\mathcal{L}} \backslash X)^{e} \cong (A \backslash \mathring{X})^{e}.
+%  \end{equation*}
+%\end{lemma}
+%
+%Thus, the marked and unmarked constructions above actually agree. We introduce because it will be notationally helpful to have both around.
 
-Let us compare this to the unmarked construction above. Since every map of marked simplicial sets is in particular a map of the underlying unmarked simplicial sets, the $m$-simplices of the simplicial set $(A^{\mathcal{L}} \backslash X)^{e}$ can be thought of as maps of unmarked simplicial sets $\alpha\colon A \square \Delta^{m} \to \mathring{X}$ with the following properties.
-\begin{itemize}
-  \item The pullback $\Delta^{\{0, 1\}} \square \Delta^{m} \to \mathring{X}$ descends to a map of marked simplicial sets
-    \begin{equation*}
-      (\Delta^{1})^{\sharp} \square \Delta^{m} \to X.
-    \end{equation*}
-    This guarantees us that $\alpha$ is a map of marked simplicial sets.
-
-
-  \item There exists a factorization
-    \begin{equation*}
-      \begin{tikzcd}
-        \Delta^{\{0, 1\}} \square \Delta^{m}
-        \arrow[r]
-        \arrow[dr]
-        & A \square \Delta^{m}
-        \arrow[r]
-        & X
-        \\
-        & \Delta^{\{0, 1\}} \square \Delta^{0}
-        \arrow[ur, swap, "\{e\}"]
-      \end{tikzcd}
-    \end{equation*}
-\end{itemize}
-The first of these conditions simply tells us that the edge $e$ is marked, and the second condition is the same as the unmarked case. We have shown the following.
-
-\begin{lemma}
-  \label{lemma:marked_vs_unmarked_with_first_morph_fixed}
-  Let $A \subseteq \Delta^{n}$ be a simplicial subset containing $\Delta^{\{0, 1\}}$, and let $X$ be a marked bisimplicial set. Let $e \in X_{10}$ be a marked edge. There is an isomorphism
-  \begin{equation*}
-    (A^{\mathcal{L}} \backslash X)^{e} \cong (A \backslash \mathring{X})^{e}.
-  \end{equation*}
-\end{lemma}
-
-Comparing simplices, the following result is also easy to see.
-
+Again, comparing simplices level-wise shows the following.
 \begin{lemma}
   \label{lemma:marked_pullback}
   Let $f\colon X \to Y$ be a map of marked bisimplicial sets, and let $A \subseteq \Delta^{n}$ be a simplicial subset with $\Delta^{\{0, 1\}} \subseteq A$, $n \geq 2$. Then for any marked edge $e \in X_{10}$, the square
   \begin{equation*}
     \begin{tikzcd}
-      ((\Delta^{n})^{\mathcal{L}} \backslash X)^{e}
+      (\Delta^{n} \backslash X)^{e}
       \arrow[r]
       \arrow[d]
       & (\Delta^{n})^{\mathcal{L}} \backslash X
       \arrow[d]
       \\
-      ((\Delta^{n})^{\mathcal{L}} \backslash Y)^{f(e)} \times_{(A^{\mathcal{L}}\backslash Y)^{f(e)}} (A^{\mathcal{L}} \backslash X)^{e}
+      (\Delta^{n} \backslash Y)^{f(e)} \times_{(A\backslash Y)^{f(e)}} (A \backslash X)^{e}
       \arrow[r]
       & (\Delta^{n})^{\mathcal{L}} \backslash Y \times_{A^{\mathcal{L}}\backslash Y} A^{\mathcal{L}} \backslash X
     \end{tikzcd}
@@ -608,7 +616,7 @@ Comparing simplices, the following result is also easy to see.
   is a (strict) pullback.
 \end{lemma}
 
-\begin{proposition}
+\begin{lemma}
   \label{lemma:check_marked_trivial_fibration_pointwise}
   Let $f\colon X \to Y$ be a Reedy fibration between marked bisimplicial sets, and let $i\colon A \subseteq \Delta^{n}$ be a simplicial subset containing $\Delta^{\{0, 1\}}$. The following are equivalent:
   \begin{enumerate}
@@ -624,9 +632,9 @@ Comparing simplices, the following result is also easy to see.
       \end{equation*}
       is a trivial fibration.
   \end{enumerate}
-\end{proposition}
+\end{lemma}
 \begin{proof}
-  Suppose the first holds. Then \hyperref[lemma:marked_pullback]{Lemma~\ref*{lemma:marked_pullback}} and \hyperref[lemma:marked_vs_unmarked_with_first_morph_fixed]{Lemma~\ref*{lemma:marked_vs_unmarked_with_first_morph_fixed}} together imply the second.
+  Suppose the first holds. Then \hyperref[lemma:marked_pullback]{Lemma~\ref*{lemma:marked_pullback}} implies the second.
 
   Next, suppose that the second holds. By \hyperref[prop:cartesian_marking_respects_path_components]{Proposition~\ref*{prop:cartesian_marking_respects_path_components}}, the map $\langle i^{\mathcal{L}} \backslash f \rangle$ is a Kan fibration, so it is a trivial Kan fibration if and only if its fibers are contractible. Consider any map
   \begin{equation*}
@@ -661,14 +669,42 @@ Comparing simplices, the following result is also easy to see.
       & (\Delta^{n})^{\mathcal{L}} \backslash Y \times_{A^{\mathcal{L}} \backslash Y} A^{\mathcal{L}} \backslash X
     \end{tikzcd}
   \end{equation*}
-  The right-hand square is a pullback by \hyperref[lemma:marked_pullback]{Lemma~\ref*{lemma:marked_pullback}} and \hyperref[lemma:marked_vs_unmarked_with_first_morph_fixed]{Lemma~\ref*{lemma:marked_vs_unmarked_with_first_morph_fixed}}. Since by assumption $p_{e}$ is a trivial fibration, $F$ is contractible. But by the pasting lemma, $F$ is the fiber of $\langle i^{\mathcal{L}} \backslash f \rangle$ over $\gamma$. Thus, the fibers of $\langle i^{\mathcal{L}} \backslash f \rangle$ are contractible, so $\langle i^{\mathcal{L}} \backslash f \rangle$ is a trivial Kan fibration.
+  The right-hand square is a pullback by \hyperref[lemma:marked_pullback]{Lemma~\ref*{lemma:marked_pullback}}. Since by assumption $p_{e}$ is a trivial fibration, $F$ is contractible. But by the pasting lemma, $F$ is the fiber of $\langle i^{\mathcal{L}} \backslash f \rangle$ over $\gamma$. Thus, the fibers of $\langle i^{\mathcal{L}} \backslash f \rangle$ are contractible, so $\langle i^{\mathcal{L}} \backslash f \rangle$ is a trivial Kan fibration.
 \end{proof}
 
 
-\subsection{Cocartesian morphisms}
-\label{ssc:cocartesian_morphisms}
+\subsection{Cocartesian fibrations}
+\label{ssc:cocartesian_fibrations}
+
+Let $\pi\colon \category{C} \to \category{D}$ be an inner fibration between quasicategories. A morphism $e \in \category{C}_{1}$ is $\pi$-cocartesian if and only if, for all $n \geq 2$, a dashed lift in the below diagram exists.
+\begin{equation*}
+  \begin{tikzcd}
+    \Delta^{\{0, 1\}}
+    \arrow[d, hook]
+    \arrow[dr, "e"]
+    \\
+    \Lambda^{n}_{0}
+    \arrow[r]
+    \arrow[d, hook]
+    & \category{C}
+    \arrow[d, "\pi"]
+    \\
+    \Delta^{n}
+    \arrow[r]
+    \arrow[ur, dashed]
+    & \category{D}
+  \end{tikzcd}
+\end{equation*}
+We would like to find an analogous definition for a $p$-cocartesian morphism where $p\colon C \to D$ is a Reedy fibration between complete Segal spaces. Our definition should have the property that if a morphism in $C_{10}$ is $p$-cocartesian in the sense of complete Segal spaces, then it is $p / \Delta^{0}$-cocartesian in the sense of quasicategories.
+
+To this end, we replace $\pi$ in the above diagram by $p / \Delta^{0}$. Passing to the adjoint lifting problem, we see that the existence of the above lift is equivalent to demanding that the map
+\begin{equation}
+  p_{e}\colon (\Delta^{n} \backslash C)^{e} \to (\Lambda^{n}_{0} \backslash C)^{e} \times_{(\Lambda^{n}_{0} \backslash D)^{p(e)}} (\Delta^{n} \backslash D)^{p(e)}
+\end{equation}
+be surjective on vertices. One natural avenue of generalization of the concept of a cocartesian morphism to complete Segal spaces would be to upgrade the condition of surjectivity on vertices to an analogous, homotopy-invariant condition which implies it. One such condition is that $p_{e}$ be a trivial fibration. Indeed, this is the defintion we will use. However, this turns out to be equivalent to demand something superficially weaker.
 
 \begin{definition}
+  \label{def:cocartesian_morphism}
   Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces. A morphism $e \in X_{10}$ is \defn{$f$-cocartesian} if the square
   \begin{equation*}
     \begin{tikzcd}
@@ -687,20 +723,31 @@ Comparing simplices, the following result is also easy to see.
 \end{definition}
 
 \begin{example}
-  Identity morphisms are clearly $f$-cocartesian.
+  Identity morphisms are $f$-cocartesian. This is because the horizontal morphisms in \hyperref[def:cocartesian_morphism]{Definition~\ref*{def:cocartesian_morphism}} are equivalences. More generally, by \cite[Lemma\ 11.6]{rezk2001model}, homotopy equivalences are $f$-cocartesian.
 \end{example}
 
 \begin{definition}
   \label{def:cocartesian_fibration_between_complete_segal_spaces}
-  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces. We will say that $f$ is a \defn{cocartesian fibration} if each morphism in $Y$ has an $f$-cocartesian lift in $X$. More explicitly, $f$ is a cocartesian fibration if it is a Reedy fibration with the following property: for each edge $e\colon y \to y'$ in $Y$ and each vertex $x \in X$ such that $f(x) = y$, there exists an $f$-cocartesian morphism $\tilde{e}\colon x \to x'$ such that $f(\tilde{e}) = e$.
+  Let $f\colon X \to Y$ be a Reedy fibration between complete Segal spaces. We will say that $f$ is a \defn{cocartesian fibration} if the following two conditions are satisfied. 
+  \begin{itemize}
+    \item Each morphism in $Y$ has an $f$-cocartesian lift in $X$. More explicitly, we demand that for each edge $e\colon y \to y'$ in $Y$ and each vertex $x \in X$ such that $f(x) = y$, there exists an $f$-cocartesian morphism $\tilde{e}\colon x \to x'$ such that $f(\tilde{e}) = e$.
+
+    \item The collection of $f$-cocartesian morphisms \emph{respect path components} in the following sense: for any map $\Delta^{1} \to X_{1}$ representing a 1-simplex $e \to e'$ between morphisms $e$ and $e'$, the morphism $e$ is $f$-cocartesian if and only if the morphism $e'$ is $f$-cocartesian.
+  \end{itemize}
 \end{definition}
+
+\begin{note}
+  The evidence is overwhelming that the second condition is redundant in the sense that cocartesian morphisms in complete Segal spaces automatically have this property. Specifically, it should be implied by the completeness of $X$.
+\end{note}
 
 \begin{definition}
   \label{def:cocoartesian_marking_on_complete_segal_spaces}
   Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. We define a marking on $X$ such that a morphism is marked if and only if it is $f$-cocartesian. We will denote the corresponding marked bisimplicial by set $X^{\natural}$. We can view the map $f$ as a map of marked bisimplicial sets $f^{\natural}\colon X^{\natural} \to Y^{\sharp}$.
 \end{definition}
 
+Note that the cocartesian marking $X^{\natural}$ on $X$ automatically respects path components in the sense of \hyperref[def:respects_path_components]{Definition~\ref*{def:respects_path_components}}.
 
+Our next order of business is to show that the our definition of cocartesian morphisms in terms of lifting with respect to $\Lambda^{2}_{0} \hookrightarrow \Delta^{2}$ implies
 
 \begin{definition}
   Define the following simplicial subsets of $\Delta^{n}$.
@@ -764,7 +811,7 @@ Note that $L_{2} \cong \Lambda^{2}_{0}$.
       & (L_{n-1} \backslash Y)^{f(e)} \times_{\Delta^{\{n-1\}} \backslash Y} \Delta^{\{n-1, n\}} \backslash Y
     \end{tikzcd}
   \end{equation*}
-  is homotopy pullback since each component is homotopy pullback. But this square is isomorphic to
+  is homotopy pullback since each component is homotopy pullback. But this square is equivalent to
   \begin{equation*}
     \begin{tikzcd}
       (\Delta^{n} \backslash X)^{e}
@@ -778,14 +825,14 @@ Note that $L_{2} \cong \Lambda^{2}_{0}$.
       & (L_{n} \backslash Y)^{f(e)}
     \end{tikzcd}:
   \end{equation*}
-  The left-hand isomorphisms come from the Segal condition, and the right-hand isomorphisms come from the definition of $L_{n}$.
+  The left-hand equivalences come from the Segal condition, and the right-hand equivalences come from the definition of $L_{n}$.
 \end{proof}
 
 \begin{corollary}
   \label{cor:marked_left_spine_gives_triv_fib}
   Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. Then for all $n \geq 2$, the map
   \begin{equation*}
-    (\Delta^{n})^{\mathcal{L}} \backslash X\nat \to (L_{n}^{\mathcal{L}} \backslash X\nat) \times_{(\Delta^{n})^{\mathcal{L}} \backslash Y\shp} L_{n}^{\mathcal{L}} \backslash Y\shp
+    (\Delta^{n})^{\mathcal{L}} \backslash X\nat \to L_{n}^{\mathcal{L}} \backslash X\nat \times_{(\Delta^{n})^{\mathcal{L}} \backslash Y\shp} L_{n}^{\mathcal{L}} \backslash Y\shp
   \end{equation*}
   is a trivial Kan fibration.
 \end{corollary}
@@ -796,6 +843,8 @@ Note that $L_{2} \cong \Lambda^{2}_{0}$.
   \end{equation*}
   is a weak equivalence by \hyperref[prop:only_lowest_lifting_condition_is_necessary]{Proposition~\ref*{prop:only_lowest_lifting_condition_is_necessary}}, and it is a Kan fibration by \hyperref[lemma:unmarked_pullback]{Lemma~\ref*{lemma:unmarked_pullback}}. The result follows from \hyperref[lemma:check_marked_trivial_fibration_pointwise]{Lemma~\ref*{lemma:check_marked_trivial_fibration_pointwise}}.
 \end{proof}
+
+Our next step is to show that \hyperref[cor:marked_left_spine_gives_triv_fib]{Corollary~\ref*{cor:marked_left_spine_gives_triv_fib}} implies that $\langle h^{n} \backslash f^{\natural} \rangle$ is a trivial fibration for all $n$, where $h^{n} = (\Lambda^{n}_{0})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$. Our proof roughly follows \cite{qcats_vs_segal_spaces}, where Joyal and Tierney show that for a bisimplicial set $X$, the Segal condition implies that $h^{n}_{k} \backslash X$ is a trivial fibration for all $0 < k < n$, where $h^{n}_{k} = \Lambda^{n}_{k} \hookrightarrow \Delta^{n}$.
 
 For any simplicial set $A$, define a marked simplicial set $(\Delta^{1} \star A, \mathcal{L'})$ where the only nondegenerate simplex belonging to $\mathcal{L}'$ is $\Delta^{1}$. This is a slight generalization of the $\mathcal{L}$-marking.
 
@@ -892,17 +941,6 @@ For any simplicial set $A$, define a marked simplicial set $(\Delta^{1} \star A,
   The simplicial set $\partial \Delta^{\{2, \ldots, n\}}$ is $(n-3)$-skeletal, so this map belongs to $\mathcal{A}$ by \hyperref[lemma:starred_smash_with_mono]{Lemma~\ref*{lemma:starred_smash_with_mono}}.
 \end{proof}
 
-Let $f\colon X \to Y$ be a cocartesian fibration of Segal spaces, and denote the corresponding marked map by
-\begin{equation*}
-  f\nat\colon X\nat \to Y\shp.
-\end{equation*}
-Clearly, the following statements are equivalent.
-\begin{itemize}
-  \item The cocartesian marking on $X$ respect path components.
-
-  \item A morphism $e \in X_{10}$ is $f$-cocartesian if and only if each morphism in its the path component in $X_{1}$ is $f$-cocartesian. In this case, we will say that the cocartesian morphisms respect path components.\footnote{It seems overwhelmingly likely that the property that cocartesian morphisms respect path components is a consequence of completeness. In the following results, one should keep in mind that the assumption that the cocartesian morphisms respect path components is probably redundant.}
-\end{itemize}
-
 For each $n \geq 2$, denote by $h^{n}$ the $\mathcal{L}$-marked inclusion
 \begin{equation*}
   h^{n}\colon (\Lambda^{n}_{0})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}.
@@ -910,11 +948,7 @@ For each $n \geq 2$, denote by $h^{n}$ the $\mathcal{L}$-marked inclusion
 
 \begin{proposition}
   \label{prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian}
-  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and further assume that the cocartesian morphisms respect path components. Denote the map corresponding to $f$ on marked simplicial sets by
-  \begin{equation*}
-    f^{\natural}\colon X^{\natural} \to Y^{\sharp}.
-  \end{equation*}
-  Let $e \in X_{10}$ be an $f$-cocartesian morphism. Then for all $n \geq 2$, the map
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces, and let $e \in X_{10}$ be an $f$-cocartesian morphism. Then for all $n \geq 2$, the map
   \begin{equation*}
     \langle h^{n} \backslash f^{\natural} \rangle\colon (\Delta^{n})^{\mathcal{L}} \backslash X^{\natural} \to (\Lambda^{n}_{0})^{\mathcal{L}} \backslash X^{\natural} \times_{(\Lambda^{n}_{0})^{\mathcal{L}} \backslash Y^{\sharp}} (\Delta^{n})^{\mathcal{L}} \backslash Y^{\sharp}
   \end{equation*}
@@ -934,16 +968,34 @@ For each $n \geq 2$, denote by $h^{n}$ the $\mathcal{L}$-marked inclusion
       \langle u \backslash f\nat \rangle \text{ weak homotopy equivalence}
     \right\}.
   \end{equation*}
-  It is clear that this set has the right cancellation property (\hyperref[def:right_cancellation_property]{Definition~\ref*{def:right_cancellation_property}}). By \hyperref[prop:cartesian_marking_respects_path_components]{Proposition~\ref*{prop:cartesian_marking_respects_path_components}}, a map $u$ belonging to $S$ is automatically a Kan fibration, hence is a trivial Kan fibration. Thus, we can equivalently say that $u \in S$ if and only if $u$ has the left-lifting property with respect to all maps of the form $\langle X / v \rangle$, where $v$ is a cofibration of simplicial sets. Thus, $S$ is saturated.
+  It is clear that this set has the right cancellation property (\hyperref[def:right_cancellation_property]{Definition~\ref*{def:right_cancellation_property}}).
+
+  The set of morphisms of marked simplicial sets whose underlying morphisms are monic clearly has the right-cancellation property. To show that $S$ does, let $u\colon A \to B$ and $v\colon B \to C$ be such morphisms and consider the following diagram.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=large]
+      C \backslash X
+      \arrow[r, "\langle vu \backslash f^{\natural} \rangle"]
+      \arrow[d, swap, "\langle v \backslash f^{\natural} \rangle"]
+      & A \backslash X \times_{A \backslash Y} C \backslash Y
+      \\
+      B \backslash X \times_{B \backslash Y} C \backslash Y  
+      \arrow[r, "\langle u \backslash f^{\natural} \rangle \times_{\id} \id"]
+      & \left( A \backslash X \times_{A \backslash Y} B \backslash Y \right) \times_{B \backslash Y} C \backslash Y
+      \arrow[u, swap, "\simeq"]
+    \end{tikzcd}
+  \end{equation*}
+  If $\langle u \backslash f^{\natural} \rangle$ is a weak equivalence, then the bottom morphism is a weak equivalence. The right-hand morphism is a weak equivalence because it is an isomorphism, so of $\langle vu \backslash f^{\natural} \rangle$ is a weak equivalence, then the $\langle v \backslash f^{\natural} \rangle$ is a weak equivalence by $2 / 3$.
+
+  By \hyperref[prop:cartesian_marking_respects_path_components]{Proposition~\ref*{prop:cartesian_marking_respects_path_components}}, a map $u$ belonging to $S$ is automatically a Kan fibration, hence is a trivial Kan fibration. Thus, we can equivalently say that $u \in S$ if and only if $u$ has the left-lifting property with respect to all maps of the form $\langle X / v \rangle$, where $v$ is a cofibration of simplicial sets. Thus, $S$ is saturated.
 
   The set $S$ contains all flat-marked inner anodyne morphisms because $f$ is a Reedy fibration. \hyperref[cor:marked_left_spine_gives_triv_fib]{Corollary~\ref*{cor:marked_left_spine_gives_triv_fib}} tells us that $S$ contains all left spine inclusions $(L_{n})^{\mathcal{L}} \hookrightarrow (\Delta^{n})^{\mathcal{L}}$, $n \geq 2$. Thus, by \hyperref[lemma:saturated_hull_of_left_spine_inclusions]{Lemma~\ref*{lemma:saturated_hull_of_left_spine_inclusions}}, $S$ contains all $\mathcal{L}$-marked left horn inclusions.
 \end{proof}
 
 \begin{corollary}
   \label{cor:pointwise_left_horn_condition}
-  Let $f\colon X \to Y$ be a cocartesian fibration between complete segal spaces such that the cocartesian morphisms respect path components. Then for each cocartesian edge $e \in X_{10}$, the map
+  Let $f\colon X \to Y$ be a cocartesian fibration between complete segal spaces. Then for each cocartesian edge $e \in X_{10}$, the map
   \begin{equation*}
-    (\Delta^{n} \backslash X)^{e} \to (\Lambda^{n}_{0} \backslash X)^{e} \times_{(\Lambda^{n}_{0} \ Y)^{f(e)}} (\Delta^{n} \backslash Y)^{f(e)}
+    (\Delta^{n} \backslash X)^{e} \to (\Lambda^{n}_{0} \backslash X)^{e} \times_{(\Lambda^{n}_{0} \backslash Y)^{f(e)}} (\Delta^{n} \backslash Y)^{f(e)}
   \end{equation*}
   is a trivial fibration.
 \end{corollary}
@@ -951,11 +1003,9 @@ For each $n \geq 2$, denote by $h^{n}$ the $\mathcal{L}$-marked inclusion
   \hyperref[lemma:check_marked_trivial_fibration_pointwise]{Lemma~\ref*{lemma:check_marked_trivial_fibration_pointwise}}.
 \end{proof}
 
-Then $e$, viewed as a morphism in the quasicategory $X / \Delta^{0}$, is $f / \Delta^{0}$-cocartesian.
-
 \begin{corollary}
   \label{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}
-  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces such that the cocartesian edges respect path components. Then the map
+  Let $f\colon X \to Y$ be a cocartesian fibration of complete Segal spaces. Then the map
   \begin{equation*}
     f/\Delta^{0}\colon X/\Delta^{0} \to Y/\Delta^{0}
   \end{equation*}
@@ -964,7 +1014,7 @@ Then $e$, viewed as a morphism in the quasicategory $X / \Delta^{0}$, is $f / \D
 \begin{proof}
   By \hyperref[thm:inner_fibration_between_quasicategories]{Theorem~\ref*{thm:inner_fibration_between_quasicategories}}, the map $f/\Delta^{0}$ is an inner fibration between quasicategories. By assumption, every morphism in $Y$ has a $f$-cocartesian lift. Therefore, we need only show that these lifts are also $f / \Delta^{0}$-cocartesian.
 
-  Let $e X_{10}$ be such a lift. Then by \hyperref[cor:pointwise_left_horn_condition]{Corollary~\ref*{cor:pointwise_left_horn_condition}}, for all $n \geq 2$ the map
+  Let $e \in X_{10}$ be such a lift. Then by \hyperref[cor:pointwise_left_horn_condition]{Corollary~\ref*{cor:pointwise_left_horn_condition}}, for all $n \geq 2$ the map
   \begin{equation*}
     (\Delta^{n} \backslash X)^{e} \to (\Lambda^{n}_{0} \backslash X)^{e} \times_{(\Lambda^{n}_{0} \backslash Y)^{f(e)}} (\Delta^{n} \backslash Y)^{f(e)}
   \end{equation*}
@@ -996,7 +1046,7 @@ Then $e$, viewed as a morphism in the quasicategory $X / \Delta^{0}$, is $f / \D
 \subsection{A review of \texorpdfstring{$\infty$}{infinity}-categories of spans}
 \label{ssc:a_review_of_infinity_categories_of_spans}
 
-We give here a lightning review of $\infty$-categories of spans. For a more detailed account, the reader is referred to \cite[Sec.\ 3]{spectralmackeyfunctors1}. Note that here the infinity-category of spans in $\category{C}$ is called the \emph{effective Burnside category} of $\category{C}$.
+We give here a lightning review of $\infty$-categories of spans in order to fix notation. For a more detailed account, the reader is referred to \cite[Sec.\ 3]{spectralmackeyfunctors1}. Note that there the $\infty$-category of spans in $\category{C}$ is called the \emph{effective Burnside category} of $\category{C}$.
 
 Recall that if $\category{C}$ is a quasicategory admitting pullbacks, the complete Segal space of spans in $\category{C}$ is defined level-wise by the formula
 \begin{equation*}
@@ -1065,6 +1115,7 @@ The main goal of this section is to prove the following theorem.
       && x'
     \end{tikzcd}.
   \end{equation*}
+  This means that it is a bicartesian fibration.
 \end{note}
 
 We prove \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}} in several steps. Since we will be working with bicartesian fibrations, it will be helpful to adapt some of the tools of marked simplicial sets to our purposes.
@@ -1072,7 +1123,7 @@ We prove \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{T
 \subsection{Doubly-marked simplicial sets}
 \label{ssc:doubly-marked_simplicial_sets}
 
-Our proof of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}} will involve working with with bicartesian fibrations. For this reason, it will be helpful to have results about simplicial sets with two markings, one of which controls the cocartesian structure and one of which controls the cartesian structure. We will call such simplicial sets \emph{doubly-marked;} the traditional terminology for this is \emph{bimarked,} but we wish to avoid the potential confusion between the similar terms \emph{marked bisimplicial set} and \emph{bimarked simplicial set.} This section consists mainly of verifications that some key results about marked simplicial sets which can be found in \cite[Sec.\ 3.1]{highertopostheory} hold in the doubly-marked case. The only results we will make use of are \hyperref[proposition:doubly-marked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:doubly-marked_anodyne_homotopy_pullback}}, \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}}, and \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}}.
+Our proof of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}} will involve working with with bicartesian fibrations. For this reason, it will be helpful to have results about simplicial sets with two markings, one of which controls the cocartesian structure and one of which controls the cartesian structure. We will call such simplicial sets \emph{doubly-marked;} the traditional terminology for this is \emph{bimarked,} but we wish to avoid the potential confusion between the similar terms \emph{marked bisimplicial set} and \emph{bimarked simplicial set.} This section consists mainly of verifications that some key results about marked simplicial sets which can be found in \cite[Sec.\ 3.1]{highertopostheory} hold in the doubly-marked case. The only results we will make use of are \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}} and \hyperref[proposition:doubly-marked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:doubly-marked_anodyne_homotopy_pullback}}.
 
 \begin{definition}
   A \defn{doubly-marked simplicial set} is a triple $(X, \mathcal{E}, \mathcal{E}')$, where $X$ is a simplicial set and $\mathcal{E}$ and $\mathcal{E}'$ are markings. We will often shorten this to $X^{(\mathcal{E}, \mathcal{E}')}$. A morphism of doubly-marked simplicial sets is a morphism of the underlying simplicial sets which preserves each class of markings separately. We will denote the category of doubly-marked simplicial sets by $\SSet^{++}$.
@@ -1110,9 +1161,10 @@ Our proof of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibratio
 %  \item There is a forgetful functor $u_{1}\colon \SSet^{++} \to \SSet^{+}$, which forgets the second marking, sending $(X, \mathcal{E}, \mathcal{E}') \mapsto (X, \mathcal{E})$. This has a left adjoint $\iota_{1}$ given by the functor which sends $(X, \mathcal{E}) \mapsto (X, \mathcal{E}, \flat)$. The functor $\iota_{1}$ is a full subcategory inclusion; there is a bijection between maps between marked simplicial sets $(X, \mathcal{E}) \to (Y, \mathcal{E}')$ and maps $(X, \mathcal{E}, \flat) \to (Y, \mathcal{E}', \flat)$. The same is true of the functor $u_{2}$ which forgets the first marking and its left adjoint $\iota_{2}$.
 %\end{itemize}
 
-Just as in the marked case, we will a set of doubly-marked anodyne morphisms, which will turn out to be the morphisms with the left lifting property with respect to bicartesian fibrations. Intuitively, the set of doubly-marked anodyne morphisms is generated by the union of the generators of
+Just as in the marked case, we will a set of doubly-marked anodyne morphisms, which will turn out to be the morphisms with the left lifting property with respect to bicartesian fibrations.
 
 \begin{definition}
+  \label{def:doubly_marked_anodyne_morphisms}
   The class of \defn{doubly-marked anodyne morphisms} is the saturated hull of the union of the following classes of morphisms.
   \begin{enumerate}
     \item[(1)] For each $0  < i < n$, the inner horn inclusions
@@ -1228,9 +1280,120 @@ Just as in the marked case, we will a set of doubly-marked anodyne morphisms, wh
       && 22
     \end{tikzcd}
   \end{equation*}
-  Note that the bimarking of \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}} is the restriction of $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 1\}})$. Denote the restriction of the bimarking $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 2\}})$ by $\asd(\Delta^{\{0, 2\}})^{\heartsuit}$; this agrees with the $(\flat,\flat)$-marking.
+  Note that the bimarking of \hyperref[eg:bimarking_on_asd_delta1]{Example~\ref*{eg:bimarking_on_asd_delta1}} is the restriction of $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 1\}})$. %Denote the restriction of the bimarking $\asd(\Delta^{2})^{\heartsuit}$ to $\asd(\Delta^{\{0, 2\}})$ by $\asd(\Delta^{\{0, 2\}})^{\heartsuit}$; this agrees with the $(\flat,\flat)$-marking.
 
-  The inclusion $\asd(\Lambda^{2}_{0})^{\heartsuit} \hookrightarrow \asd(\Delta^{2})^{\heartsuit}$ is doubly-marked anodyne. To see this, note the following factorization.
+  The inclusion $\asd(\Lambda^{2}_{0})^{\heartsuit} \hookrightarrow \asd(\Delta^{2})^{\heartsuit}$ is doubly-marked anodyne. To see this, note the factorization in \hyperref[fig:factorization]{Figure~\ref*{fig:factorization}}.
+
+  \begin{sidewaysfigure}[p]
+    \begin{equation*}
+      \begin{tikzcd}
+        && 11
+        \\
+        & 01
+        \arrow[ur, "\bullet" marking]
+        \arrow[dl, "\circ" marking]
+        \\
+        00
+        && 02
+        \arrow[ll]
+        \arrow[rr]
+        && 22
+      \end{tikzcd}
+      \overset{i_{1}}{\longrightarrow}
+      \begin{tikzcd}
+        && 11
+        \\
+        & 01
+        \arrow[ur, "\bullet" marking]
+        \arrow[dl, "\circ" marking]
+        \\
+        00
+        && 02
+        \arrow[ll]
+        \arrow[rr]
+        \arrow[ul]
+        && 22
+      \end{tikzcd}
+      \overset{i_{2}}{\longrightarrow}
+      \begin{tikzcd}
+        && 11
+        \\
+        & 01
+        \arrow[ur, "\bullet" marking]
+        \arrow[dl, "\circ" marking]
+        \\
+        00
+        && 02
+        \arrow[ll]
+        \arrow[rr]
+        \arrow[uu]
+        \arrow[ul]
+        && 22
+      \end{tikzcd}
+    \end{equation*}
+    \vspace{2cm}
+    \begin{equation*}
+      \overset{i_{3}}{\longrightarrow}
+      \begin{tikzcd}
+        && 11
+        \\
+        & 01
+        \arrow[ur, "\bullet" marking]
+        \arrow[dl, "\circ" marking]
+        && 02
+        \\
+        00
+        && 02
+        \arrow[ur, "\bullet" marking]
+        \arrow[ll]
+        \arrow[rr]
+        \arrow[uu]
+        \arrow[ul]
+        && 22
+      \end{tikzcd}
+      \overset{i_{4}}{\longrightarrow}
+      \begin{tikzcd}
+        && 11
+        \\
+        & 01
+        \arrow[ur, "\bullet" marking]
+        \arrow[dl, "\circ" marking]
+        && 02
+        \arrow[ul]
+        \\
+        00
+        && 02
+        \arrow[ur, "\bullet" marking]
+        \arrow[ll]
+        \arrow[rr]
+        \arrow[uu]
+        \arrow[ul]
+        && 22
+      \end{tikzcd}
+      \overset{i_{5}}{\longrightarrow}
+      \begin{tikzcd}
+        && 11
+        \\
+        & 01
+        \arrow[ur, "\bullet" marking]
+        \arrow[dl, "\circ" marking]
+        && 02
+        \arrow[ul]
+        \arrow[dr]
+        \\
+        00
+        && 02
+        \arrow[ur, "\bullet" marking]
+        \arrow[ll]
+        \arrow[rr]
+        \arrow[uu]
+        \arrow[ul]
+        && 22
+      \end{tikzcd}
+    \end{equation*}
+    \caption{A factorization of the inclusion $\asd(\Lambda^{2}_{0})^{\heartsuit} \hookrightarrow \asd(\Delta^{2})^{\heartsuit}$, where each inclusion is a pushout along a morphism belonging to one of the classes in \hyperref[def:doubly_marked_anodyne_morphisms]{Definition~\ref*{def:doubly_marked_anodyne_morphisms}}.}
+    \label{fig:factorization}
+  \end{sidewaysfigure}
 \end{example}
 
 \begin{proposition}
@@ -1350,19 +1513,7 @@ Just as in the marked case, we will a set of doubly-marked anodyne morphisms, wh
 \subsection{Cartesian morphisms}
 \label{ssc:cartesian_morphisms}
 
-In this section, we show that we really have identified the cocartesian morphisms correctly. We will first show that morphisms of the form
-\begin{equation}
-  \label{eq:form_of_p_cocartesian_morphisms}
-  \begin{tikzcd}
-    & y
-    \arrow[dl, "\circ" marking]
-    \arrow[dr, "\bullet" marking]
-    \\
-    x
-    && x'
-  \end{tikzcd}.
-\end{equation}
-are $p$-cocartesian.
+In this section, we show that we really have identified the cocartesian morphisms correctly. 
 
 \begin{proposition}
   \label{prop:form_of_cocartesian_morphisms_in_spans}
@@ -1372,6 +1523,7 @@ are $p$-cocartesian.
   \end{equation*}
   be the corresponding map between complete Segal spaces of spans. If a morphism in $\SPAN(\category{C})$ is of the form
   \begin{equation*}
+    \label{eq:form_of_p_cocartesian_morphisms}
     \begin{tikzcd}
       & y
       \arrow[dl, "\circ" marking]
@@ -1402,17 +1554,19 @@ are $p$-cocartesian.
   %is homotopy pullback. Expanding, we have to show that
   the square
   \begin{equation*}
-    \begin{tikzcd}
-      \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-      \arrow[r]
-      \arrow[d]
-      & \Fun(\asd(\Lambda^{2}_{0}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-      \arrow[d]
-      \\
-      \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-      \arrow[r]
-      & \Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-    \end{tikzcd}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&]
+        \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+        \arrow[r]
+        \arrow[d]
+        \& \Fun(\asd(\Lambda^{2}_{0}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+        \arrow[d]
+        \\
+        \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+        \arrow[r]
+        \& \Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+      \end{tikzcd}
+    }
   \end{equation*}
   is homotopy pullback.
 
@@ -1442,31 +1596,35 @@ are $p$-cocartesian.
 
   We now note that we can decompose the above square into two squares
   \begin{equation*}
-    \begin{tikzcd}[column sep=tiny]
-      \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-      \arrow[r]
-      \arrow[d]
-      & \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
-      \arrow[d]
-      \\
-      \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-      \arrow[r]
-      & \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}} \{\pi e\}
-    \end{tikzcd}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+        \Fun^{\Cart}(\asd(\Delta^{2}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+        \arrow[r]
+        \arrow[d]
+        \& \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
+        \arrow[d]
+        \\
+        \Fun^{\Cart}(\asd(\Delta^{2}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+        \arrow[r]
+        \& \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}} \{\pi e\}
+      \end{tikzcd}
+    }
   \end{equation*}
   and
   \begin{equation*}
-    \begin{tikzcd}[column sep=tiny]
-      \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
-      \arrow[r]
-      \arrow[d]
-      & \Fun(\asd(\Lambda^{2}_{0}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
-      \arrow[d]
-      \\
-      \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}} \{\pi e\}
-      \arrow[r]
-      & \Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
-    \end{tikzcd}.
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+        \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{C}^{\natural})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{C}^{\natural})^{\simeq}} \{e\}
+        \arrow[r]
+        \arrow[d]
+        \& \Fun(\asd(\Lambda^{2}_{0}), \category{C})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{C})^{\simeq}} \{e\}
+        \arrow[d]
+        \\
+        \Fun^{(\flat, \flat)}(\asd(\Delta^{2})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq} \times_{\Fun^{(\flat, \flat)}(\asd(\Delta^{\{0, 1\}})^{\heartsuit}, \category{D}^{(\sharp, \sharp)})^{\simeq}} \{\pi e\}
+        \arrow[r]
+        \& \Fun(\asd(\Lambda^{2}_{0}), \category{D})^{\simeq} \times_{\Fun(\asd(\Delta^{\{0, 1\}}), \category{D})^{\simeq}} \{\pi e\}
+      \end{tikzcd}.
+    }
   \end{equation*}
   The first square is a homotopy pullback because the bottom morphism is a full inclusion of connected components, and the fiber over a connected component corresponding to Cartesian functors $\asd(\Delta^{2}) \to \category{D}$ is consists precisely of Cartesian functors $\asd(\Delta^{2}) \to \category{C}$ by the condition of \hyperref[thm:span_of_bicartesian_fibration_is_bicartesian_fibration]{Theorem~\ref*{thm:span_of_bicartesian_fibration_is_bicartesian_fibration}}. Therefore, we need to show that the second square is homotopy pullback. For this it suffices to show that the square
   \begin{equation*}
@@ -1485,6 +1643,11 @@ are $p$-cocartesian.
   is homotopy pullback. But that this is of the form of the square in \hyperref[proposition:doubly-marked_anodyne_homotopy_pullback]{Proposition~\ref*{proposition:doubly-marked_anodyne_homotopy_pullback}}, with $X \to Y = \asd(\Lambda^{2}_{0})^{\heartsuit} \to \asd(\Delta^{2})^{\heartsuit}$, which we saw in \hyperref[eg:bimarking_on_asd_delta2]{Example~\ref*{eg:bimarking_on_asd_delta2}} was doubly-marked anodyne.
 \end{proof}
 
+\subsection{Main theorem}
+\label{ssc:main_theorem}
+
+We are now ready to prove the following result.
+
 \begin{theorem}
   Let $\category{C}$ and $\category{D}$ be quasicategories with pullbacks, and let $\pi\colon \category{C} \to \category{D}$ be a bicartesian fibration which sends pullbacks to pullbacks. Then the map
   \begin{equation*}
@@ -1493,7 +1656,25 @@ are $p$-cocartesian.
   is a cocartesian fibration (hence a bicartesian fibration) between quasicategories.
 \end{theorem}
 \begin{proof}
-  In order to show that $p$ fulfill the requirements of \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}}, it suffices to show that for any 1-simplex $g \to g'$ in $\Span(\category{C})_{1}$ between morphisms
+  First, we show that $\SPAN(\category{C}) \to \SPAN(\category{D})$ is a cocartesian fibration between complete Segal spaces. First, we show that it is a Reedy fibration. This follows from the existence of the commuting square
+  \begin{equation*}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+        \Delta^{n} \backslash \SPAN(\category{C})
+        \arrow[r, hook]
+        \arrow[d]
+        \& \Map(\asd(\Delta^{n}), \category{C})^{\simeq} 
+        \arrow[d]
+        \\
+        \partial \Delta^{n} \backslash \SPAN(\category{C}) \times_{\partial \Delta^{n} \backslash \SPAN(\category{D})} \Delta^{n} \backslash \SPAN(\category{D})
+        \arrow[r, hook]
+        \& \Map(\asd(\partial \Delta^{n}), \category{C})^{\simeq} \times_{\Map(\asd(\partial \Delta^{n}), \category{D})^{\simeq}} \Map(\asd(\Delta^{n}), \category{D})^{\simeq}
+      \end{tikzcd},
+    }
+  \end{equation*}
+  where the horizontal maps are inclusions of connected components, and the right-hand map is a Kan fibration by \cite[Prop.\ 3.1.2.3]{highertopostheory}.
+
+  The existence of $\pi$-cocartesian lifts follows from the existence of $p$-cartesian and $p$-cocartesian lifts. In order to show that $\pi$ is a cocartesian fibration, it therefore suffices to show that the $\pi$-cocartesian morphisms in $\SPAN(\category{C})$ respect path components, i.e.\ that for any 1-simplex $g \to g'$ in $\SPAN(\category{C})_{1}$ between morphisms
   \begin{equation*}
     g\colon x \leftarrow y \to z \qquad\text{and}\qquad g'\colon x' \leftarrow y' \to z',
   \end{equation*}
@@ -1517,43 +1698,47 @@ are $p$-cocartesian.
     \end{tikzcd}
   \end{equation*}
   Since equivalences are both cartesian and cocartesian, the morphism $g_{0}$ is $\pi$-cocartesian if and only if the morphism $g_{0}'$ is $\pi$-cocartesian, and that the morphism $g_{1}$ is $\pi$-cartesian if and only if the morphism $g_{1}'$ is $\pi$-cartesian. Thus, $g$ is cocartesian if and only if $g'$ is cocartesian.
+
+  This shows that $\pi$ is a cocartesian fibration of complete Segal spaces. Thus \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}} implies the result.
 \end{proof}
+
+The importance of the result
 
 \appendix
 
 \section{Appendix}
 
-\subsection{Bisimplicial sets}
-\label{sss:bisimplicial_sets}
-
-The category $\SSet$ carries two model structures of which we will make frequent use:
-\begin{itemize}
-  \item The \emph{Kan} model structure, which has the following description.
-    \begin{itemize}
-      \item The fibrations are the Kan fibrations.
-
-      \item The cofibrations are the monomorphisms.
-
-      \item The weak equivalences are weak homotopy equivalences.
-    \end{itemize}
-
-  \item The \emph{Joyal} model structure. We will not give a complete description, referring the reader to \cite[Sec.\ 2.2.5]{highertopostheory}. We will make use of the following properties.
-    \begin{itemize}
-      \item The cofibrations are monomorphisms.
-
-      \item The fibrant objects are quasicategories, and the fibrations between fibrant objects are isofibrations, i.e.\ inner fibrations with lifts of equivalences (cf \cite[Cor.\ 2.6.5]{highertopostheory}).
-    \end{itemize}
-\end{itemize}
-
-The category $\D\op$ has a Reedy structure, which gives us, together with the Kan model structure, a model structure on the category $\Fun(\D\op, \SSet)$ with the following properties.
-\begin{itemize}
-  \item The cofibrations are monomorphisms.
-
-  \item The weak equivalences are level-wise weak homotopy equivalences.
-
-  \item The fibrations are \emph{Reedy fibrations} (\hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}}).
-\end{itemize}
-
+%\subsection{Bisimplicial sets}
+%\label{sss:bisimplicial_sets}
+%
+%The category $\SSet$ carries two model structures of which we will make frequent use:
+%\begin{itemize}
+%  \item The \emph{Kan} model structure, which has the following description.
+%    \begin{itemize}
+%      \item The fibrations are the Kan fibrations.
+%
+%      \item The cofibrations are the monomorphisms.
+%
+%      \item The weak equivalences are weak homotopy equivalences.
+%    \end{itemize}
+%
+%  \item The \emph{Joyal} model structure. We will not give a complete description, referring the reader to \cite[Sec.\ 2.2.5]{highertopostheory}. We will make use of the following properties.
+%    \begin{itemize}
+%      \item The cofibrations are monomorphisms.
+%
+%      \item The fibrant objects are quasicategories, and the fibrations between fibrant objects are isofibrations, i.e.\ inner fibrations with lifts of equivalences (cf \cite[Cor.\ 2.6.5]{highertopostheory}).
+%    \end{itemize}
+%\end{itemize}
+%
+%The category $\D\op$ has a Reedy structure, which gives us, together with the Kan model structure, a model structure on the category $\Fun(\D\op, \SSet)$ with the following properties.
+%\begin{itemize}
+%  \item The cofibrations are monomorphisms.
+%
+%  \item The weak equivalences are level-wise weak homotopy equivalences.
+%
+%  \item The fibrations are \emph{Reedy fibrations} (\hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}}).
+%\end{itemize}
+%
 \subsection{Divisibility of bifunctors}
 \label{sss:divisibility_of_bifunctors}
 
@@ -1688,6 +1873,5 @@ If both $\category{E}_{1}$ and $\category{E}_{2}$ are finitely complete and $\ca
     \end{tikzcd}
   \end{equation*}
 \end{proposition}
-
 
 \end{document}
