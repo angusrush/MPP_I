@@ -21,9 +21,11 @@ In this work we restrict our attention to cocartesian fibrations between complet
 
 This work consists of two sections. \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, we explore cocartesian fibrations between Segal spaces. After a review in \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}} of some material in \cite{qcats_vs_segal_spaces}, most notably the box functor $- \square -$ and its adjoints, we define marked bisimplicial sets in \hyperref[ssc:marked_bisimplicial_sets]{Section~\ref*{ssc:marked_bisimplicial_sets}}. We then define a marked version of the box functor, and show that some results analogous to the unmarked case hold. In \hyperref[ssc:simplicial_technology]{Section~\ref*{ssc:simplicial_technology}}, we prove some technical lemmas about simplicial sets with certain restrictions on individual morphisms. The main result is a lemma which allows us to translate a condition on marked bisimplicial sets for a `pointwise condition' involving unmarked bisimplicial sets.
 
-In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts (plus a technical condition on the cartesian morphisms, which is likely to be unnecessary). We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
+In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts (plus a technical condition on the cocartesian morphisms, which is likely to be unnecessary). We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
 
-In \hyperref[sec:complete_segal_spaces_of_spans]{Section~\ref*{sec:complete_segal_spaces_of_spans}}, we prove the main theorem. After a brief review of the quasicategory and complete Segal space models for $\infty$-categories of spans in \hyperref[ssc:a_review_of_infinity_categories_of_spans]{Section~\ref*{ssc:a_review_of_infinity_categories_of_spans}}, in \hyperref[ssc:doubly-marked_simplicial_sets]{Section~\ref*{ssc:doubly-marked_simplicial_sets}} we introduce doubly-marked simplicial sets in order to prove a technical lemma about bicartesian fibrations. This allows us, in \hyperref[ssc:cartesian_morphisms]{Section~\ref*{ssc:cartesian_morphisms}}, to show the existence of cocartesian morphisms. In \hyperref[ssc:main_theorem]{Section~\ref*{ssc:main_theorem}} we prove the main result.
+In \hyperref[sec:complete_segal_spaces_of_spans]{Section~\ref*{sec:complete_segal_spaces_of_spans}}, we prove the main theorem. After a brief review of the quasicategory and complete Segal space models for $\infty$-categories of spans in \hyperref[ssc:a_review_of_infinity_categories_of_spans]{Section~\ref*{ssc:a_review_of_infinity_categories_of_spans}}, in \hyperref[ssc:doubly-marked_simplicial_sets]{Section~\ref*{ssc:doubly-marked_simplicial_sets}} we introduce doubly-marked simplicial sets in order to prove a technical lemma about bicartesian fibrations. 
+
+Let $p\colon \category{C} \to \category{D}$ be a bicartesian fibration as above. The results of \hyperref[ssc:doubly-marked_simplicial_sets]{Section~\ref*{ssc:doubly-marked_simplicial_sets}} allow us to show, in \hyperref[ssc:cartesian_morphisms]{Section~\ref*{ssc:cartesian_morphisms}}, that $\pi\colon \SPAN(\category{C}) \to \SPAN(\category{D})$ (the map between complete Segal spaces of spans) has enough cocartesian lifts. In \hyperref[ssc:main_theorem]{Section~\ref*{ssc:main_theorem}}, we show that $\pi$ is a cocartesian fibration, which proves the main result by our work in \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}.
 
 
 \section{Cocartesian fibrations between complete Segal spaces}
@@ -107,9 +109,9 @@ If $X$ is Reedy fibrant, then each simplicial set $X_{n}$ is a Kan complex. Late
 \end{definition}
 
 %In \cite{qcats_vs_segal_spaces}, the theory of such bifunctors is explored. The results that we will need are reproduced in \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}}. However, we note here the following.
-Note that by \hyperref[eg:box_product_and_yoneda]{Example~\ref*{eg:box_product_and_yoneda}}, the simplicial set $\Delta^{m} \backslash X$ is the $m$th column of $X$. If $X$ is a Segal space, this is the space of $m$-simplices of $X$, which we have agreed to call $X_{m}$. Similarly, the simplicial set $X / \Delta^{n}$ is the $n$th row of $X$. In particular $X / \Delta^{0}$ is the zeroth row of $X$. (This, confusingly, is usually called the \emph{first row} of $X$; this terminological inconsistency is somewhat justified by the fact that, unlike the columns, one tends to be interested mainly in the zeroth row.) In \cite{qcats_vs_segal_spaces}, it is shown that if $f\colon X \to Y$ is a Reedy fibration between complete Segal spaces, then $f / \Delta^{0}\colon X / \Delta^{0} \to Y / \Delta^{0}$ is an inner fibration between quasicategories.
+Note that by \hyperref[eg:box_product_and_yoneda]{Example~\ref*{eg:box_product_and_yoneda}}, the simplicial set $\Delta^{m} \backslash X$ is the $m$th column of $X$, which we have agreed to call $X_{m}$. Similarly, the simplicial set $X / \Delta^{n}$ is the $n$th row of $X$. In particular $X / \Delta^{0}$ is the zeroth row of $X$. (This, confusingly, is usually called the \emph{first row} of $X$; this terminological inconsistency is somewhat justified by the fact that, unlike the columns, one tends to be interested mainly in the zeroth row.) 
 
-We will not fully develop the theory of box functors and divisbility here; for this, we refer readers to \cite{qcats_vs_segal_spaces}. However, we provide here a partial proof of the following result because we will need to refer to it later.
+We provide here a partial proof of the following result because we will need to refer to it later.
 \begin{proposition}
   \label{prop:bijection_exhibiting_box_divisibility}
   The box functor is \emph{divisible on the left.} This means that for each simplicial set $A$, there is an adjunction
@@ -193,13 +195,16 @@ We will not fully develop the theory of box functors and divisbility here; for t
   \end{itemize}
 \end{definition}
 
-We will also make use of the following fact.
+That \hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}} is equivalent to the usual definition is shown in \cite[Prop.\ 3.4]{qcats_vs_segal_spaces}. We will also make use of the following fact (\cite[Prop.\ 3.10]{qcats_vs_segal_spaces}).
 
-\begin{theorem}[\cite{qcats_vs_segal_spaces}]
+\begin{theorem}
   \label{thm:inner_fibration_between_quasicategories}
   If $f\colon X \to Y$ is a Reedy fibration between Segal spaces, then for any monomorphism of simplicial sets $v$, the map $\langle f / v \rangle$ is an inner fibration.
 \end{theorem}
 
+\begin{corollary}
+  If $f\colon X \to Y$ is a Reedy fibration between complete Segal spaces, then $f / \Delta^{0}\colon X / \Delta^{0} \to Y / \Delta^{0}$ is an inner fibration between quasicategories.
+\end{corollary}
 
 \subsection{Marked bisimplicial sets}
 \label{ssc:marked_bisimplicial_sets}
@@ -237,7 +242,7 @@ Our first order of business is to generalize the results of \cite{qcats_vs_segal
   \end{itemize}
 \end{definition}
 
-Again, we are overloading notation, so there is the potential for confusion. Again however, again there is no real ambiguity; the symbol $A \backslash X$ means the marked construction if $A$ and $X$ are marked, and the unmarked construction if $A$ and $X$ are unmarked. We have tried to be clear in stating whether (bi)simplicial sets do or do not carry markings.
+Again, we are overloading notation, so there is the potential for confusion. However, there is no real ambiguity; the symbol $A \backslash X$ means the marked construction if $A$ and $X$ are marked, and the unmarked construction if $A$ and $X$ are unmarked. We have tried to be clear in stating whether (bi)simplicial sets do or do not carry markings.
 
 \begin{example}
   Recall that we can think of a marked bisimplicial set $X$ as an unmarked bisimplicial set $\mathring{X}$ together with a marking $\mathcal{E}$ on the simplicial set $\mathring{X} / \Delta^{0}$. The marking $\mathcal{E}$ agrees with the marking on $X / \Delta^{0}$.
@@ -451,8 +456,7 @@ We will call an inclusion of unmarked simplicial sets $B \hookrightarrow B'$ \em
       \arrow[r]
       \arrow[ur, dashed]
       & A \backslash X \times_{A' \backslash Y} A' \backslash Y
-    \end{tikzcd},
-    \qquad n \geq 1,\quad 0 \leq k \leq n.
+    \end{tikzcd}.
   \end{equation*}
   First assume that $n \geq 2$. We can augment the above square as follows.
   \begin{equation*}
@@ -971,7 +975,7 @@ For any simplicial set $A$, define a marked simplicial set $(\Delta^{1} \star A,
       L_{n} \cup d_{1} \Delta^{n}
       \arrow[r, hook]
       & L_{n} \cup d_{1}\Delta^{n} \cup Q
-    \end{tikzcd}.
+    \end{tikzcd}
   \end{equation*}
   Since $L_{n} \cup d_{1} \Delta^{n} \cup Q \cong \Lambda^{n}_{0}$, the bottom map is $w_{n}$, so it suffices to show that the top map belongs to $\mathcal{A}$. But this is isomorphic to
   \begin{equation*}
@@ -1275,7 +1279,7 @@ Just as in the marked case, we will a set of doubly-marked anodyne morphisms, wh
       \\
       00
     \end{tikzcd}
-    \qquad\hookrightarrow\qquad
+    \qquad\longrightarrow\qquad
     \begin{tikzcd}
       & \
       \\
@@ -1284,7 +1288,7 @@ Just as in the marked case, we will a set of doubly-marked anodyne morphisms, wh
       \\
       00
     \end{tikzcd}
-    \qquad\hookrightarrow\qquad
+    \qquad\longrightarrow\qquad
     \begin{tikzcd}
       && 11
       \\
@@ -1551,7 +1555,7 @@ Just as in the marked case, we will a set of doubly-marked anodyne morphisms, wh
   is a trivial fibration, which follows from \hyperref[lemma:smash_product_of_doubly-marked_anodyne_and_monic_is_doubly-marked_anodyne]{Lemma~\ref*{lemma:smash_product_of_doubly-marked_anodyne_and_monic_is_doubly-marked_anodyne}}.
 \end{proof}
 
-\subsection{Cartesian morphisms}
+\subsection{Cocartesian morphisms}
 \label{ssc:cartesian_morphisms}
 
 In this section, we show that we really have identified the cocartesian morphisms correctly. 
