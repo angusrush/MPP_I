@@ -13,13 +13,13 @@ The aim of this work is to prove the following theorem.
 
 This is a special case of a theorem of Barwick \cite{spectralmackeyfunctors1}. There, Barwick proves a stronger result, which treats the weaker case of inner fibrations separately, and allows conditions on the legs of the spans. Barwick's proof is explicit, constructing horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
 
-Our proof is more homotopy-theoretic in character, relying on the fact that for any quasicategory $\category{C}$ with pullbacks, the infinity-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. In our proof, we define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data available in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
+Our proof is more homotopy-theoretic in character, relying on the fact that for any quasicategory $\category{C}$ with pullbacks, the infinity-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. In our proof, we define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
 
 Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first written down by De Brito in \cite{2016arXiv160500706B}, and expanded by Rasekh in \cite{rasekhcartesianfibrations}. There, Rasekh defines a model structure whose fibrant objects model cocartesian fibrations between Segal spaces. In defining this model structure, it is necessary to distinguish certain morphisms, and Rasekh solves this problem by adding an extra simplicial dimension; the model structure for cocartesian fibrations defined there is thus a model structure on slice categories of trisimplicial sets.
 
-In this work we restrict our attention to cocartesian fibrations between complete Segal spaces. This allows us to approach the problem of controlling cocartesian morphisms differently, by introducing a marking. This method is much closer to that used to work with cocartesian fibrations in \cite{highertopostheory}, and has the advantage that the many of the results proved there can be leveraged in explicit calculations. In particular, we provide a definition of a cocartesian fibration between complete Segal spaces to which Rasekh's definition reduces in the case that both the domain and codomain are complete Segal spaces.
+In this work we restrict our attention to cocartesian fibrations between complete Segal spaces. This allows us to approach the problem of controlling cocartesian morphisms differently, by introducing a marking. This method is much closer to that used to work with cocartesian fibrations in \cite{highertopostheory}, and has the advantage that many of the results proved there can be leveraged in explicit calculations. In particular, we provide a definition of a cocartesian fibration between complete Segal spaces to which Rasekh's definition reduces in the case that both the domain and codomain are complete Segal spaces.
 
-This work consists of two sections. \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, we explore cocartesian fibrations between Segal spaces. After a review in \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}} of some material in \cite{qcats_vs_segal_spaces}, most notably the box functor $- \square -$ and its adjoints, we define marked bisimplicial sets in \hyperref[ssc:marked_bisimplicial_sets]{Section~\ref*{ssc:marked_bisimplicial_sets}}. We then define a marked version of the box functor, and show that some results analogous to the unmarked case hold. In \hyperref[ssc:simplicial_technology]{Section~\ref*{ssc:simplicial_technology}}, we prove some technical lemmas about simplicial sets with certain restrictions on individual morphisms. The main result is a lemma which allows us to translate a condition on marked bisimplicial sets for a `pointwise condition' involving unmarked bisimplicial sets.
+This work consists of two sections. \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, we explore cocartesian fibrations between Segal spaces. After a review in \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}} of some material in \cite{qcats_vs_segal_spaces}, most notably the box product $- \square -$ and its adjoints, we define marked bisimplicial sets in \hyperref[ssc:marked_bisimplicial_sets]{Section~\ref*{ssc:marked_bisimplicial_sets}}. We then define a marked version of the box functor, and show that some results analogous to the unmarked case hold. In \hyperref[ssc:simplicial_technology]{Section~\ref*{ssc:simplicial_technology}}, we prove some technical lemmas about simplicial sets with certain restrictions on individual morphisms. The main result is a lemma which allows us to translate a condition on marked bisimplicial sets for a `pointwise condition' involving unmarked bisimplicial sets.
 
 In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts (plus a technical condition on the cocartesian morphisms, which is likely to be unnecessary). We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
 
@@ -75,7 +75,7 @@ In the former case, we think of a bisimplicial set $X$ as an $\N$-indexed collec
     & \
   \end{tikzcd}
 \end{equation*}
-Thus, the $n$th row of $X$ is the simplicial set $X_{\bullet n}$, and the $m$th column of $X$ is the simplicial set $X_{m \bullet}$. When we think of bisimplicial sets as $\N$-indexed collections of simplicial sets $X_{n}$, we mean by $X_{n}$ the $n$th \emph{column} of $X$; that is, $X_{n} = X_{\bullet n}$.
+Thus, the $n$th row of $X$ is the simplicial set $X_{\bullet n}$, and the $m$th column of $X$ is the simplicial set $X_{m \bullet}$. When we think of bisimplicial sets as $\N$-indexed collections of simplicial sets $X_{m}$, we mean by $X_{m}$ the $m$th \emph{column} of $X$; that is, $X_{m} = X_{m, \bullet}$.
 
 If $X$ is Reedy fibrant, then each simplicial set $X_{n}$ is a Kan complex. Later, when we are interested in complete Segal spaces, we will interpret $X_{n}$ as the space of $n$-simplices of $X$.
 
@@ -84,7 +84,7 @@ If $X$ is Reedy fibrant, then each simplicial set $X_{n}$ is a Kan complex. Late
   \begin{equation*}
     (X, Y) \mapsto X \square Y,\qquad (X \square Y)_{mn} = X_{m} \times Y_{n}.
   \end{equation*}
-  We will call this functor the \defn{box functor.}
+  We will call this functor the \defn{box product.}
 \end{definition}
 
 \begin{example}
@@ -114,12 +114,12 @@ Note that by \hyperref[eg:box_product_and_yoneda]{Example~\ref*{eg:box_product_a
 We provide here a partial proof of the following result because we will need to refer to it later.
 \begin{proposition}
   \label{prop:bijection_exhibiting_box_divisibility}
-  The box functor is \emph{divisible on the left.} This means that for each simplicial set $A$, there is an adjunction
+  The box product is \emph{divisible on the left.} This means that for each simplicial set $A$, there is an adjunction
   \begin{equation*}
     A \square -\colon \SSet \longleftrightarrow \SSSet : A \backslash -.
   \end{equation*}
 
-  Similarly, the box functor is \emph{divisible on the right.} This means that for each simplicial set $B$ there is an adjunction
+  Similarly, the box product is \emph{divisible on the right.} This means that for each simplicial set $B$ there is an adjunction
   \begin{equation*}
     - \square B\colon \SSet \longleftrightarrow \SSSet : - / B.
   \end{equation*}
@@ -183,7 +183,7 @@ We provide here a partial proof of the following result because we will need to 
 \end{proof}
 
 
-\hyperref[prop:bijection_exhibiting_box_divisibility]{Proposition~\ref*{prop:bijection_exhibiting_box_divisibility}}, together with the fact that $\SSet$ and $\SSSet$ are finitely complete and cocomplete, implies all of the results of \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}} apply to the box functor. In the notation found there, we can give a compact formulation of the definition of a Reedy fibration which we will use repeatedly.
+\hyperref[prop:bijection_exhibiting_box_divisibility]{Proposition~\ref*{prop:bijection_exhibiting_box_divisibility}}, together with the fact that $\SSet$ and $\SSSet$ are finitely complete and cocomplete, implies all of the results of \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}} apply to the box product. In the notation found there, we can give a compact formulation of the definition of a Reedy fibration which we will use repeatedly.
 
 \begin{definition}
   \label{def:reedy_fibration}
@@ -195,7 +195,7 @@ We provide here a partial proof of the following result because we will need to 
   \end{itemize}
 \end{definition}
 
-That \hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}} is equivalent to the usual definition is shown in \cite[Prop.\ 3.4]{qcats_vs_segal_spaces}. We will also make use of the following fact (\cite[Prop.\ 3.10]{qcats_vs_segal_spaces}).
+(For the notation $\langle u \backslash f \rangle$ see \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}}.) That \hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}} is equivalent to the usual definition is shown in \cite[Prop.\ 3.4]{qcats_vs_segal_spaces}. We will also make use of the following fact (\cite[Prop.\ 3.10]{qcats_vs_segal_spaces}).
 
 \begin{theorem}
   \label{thm:inner_fibration_between_quasicategories}
@@ -208,6 +208,8 @@ That \hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}} is eq
 
 \subsection{Marked bisimplicial sets}
 \label{ssc:marked_bisimplicial_sets}
+
+In this section, we define the basic theory of marked bisimplicial sets. In the following, one should keep in mind that the case in we are mostly interested is when our bisimplicial spaces are complete spaces, and thus that only first (horizontal) simplicial direction should be thought of as categorical. For this reason, only the first simplicial direction will carry a marking.
 
 \begin{definition}
   A \defn{marked bisimplicial set} $(X, \mathcal{E})$ is a bisimplicial set $X$ together with a distinguished subset $\mathcal{E} \subseteq X_{10}$ containing all degenerate edges, i.e.\ all edges in the image of $s_{0}\colon X_{00} \to X_{10}$. Equivalently, a marked bisimplicial set is bisimplicial set $X$ together with a marking $\mathcal{E}$ on the simplicial set $X / \Delta^{0}$.
@@ -336,7 +338,7 @@ The marked constructions above have similar properties to the unmarked construct
   \end{equation*}
   We need to check that this respects the markings on $A \square B$ and $X$, i.e.\ that for each marked simplex $a \in A_{1}$ and each $b \in B_{0}$, the element $\Psi(\mathring{g})_{10}(a, b)$ is marked in $X_{10}$. But $\Psi(\mathring{g})_{10}(a, b) = g(b)_{10}(a, \id_{\Delta^{0}})$, which is marked because $g$ lands in $A \backslash X$ by assumption. Thus, $\Psi(\mathring{g})$ descends to a map $\tilde{g}\colon A \square B \to X$.
 
-  Now we show the other bijection. Unlike the unmarked case, because of the asymmetry of the marked box functor, this is not precisely the same as what we have just shown. Again we have inclusions
+  Now we show the other bijection. Unlike the unmarked case, because of the asymmetry of the marked box product, this is not precisely the same as what we have just shown. Again we have inclusions
   \begin{equation*}
     \Hom_{\SSSet^{+}}(A \square B, X) \overset{j_{0}}{\subseteq} \Hom_{\SSSet}(\mathring{A} \square B, \mathring{X})
   \end{equation*}
@@ -398,7 +400,7 @@ This shows that the marked version of $\square$ is, in the language of \cite{qca
 We will call an inclusion of unmarked simplicial sets $B \hookrightarrow B'$ \emph{full} if it has the following property: an $n$-simplex $\sigma\colon \Delta^{n} \to B'$ factors through $B$ if and only if each vertex of $\sigma$ factors through $B$. That is, any $n$-simplex in $B'$ whose vertices belong to $B$ belongs to $B$.
 
 \begin{lemma}
-  For any marked simplicial set $A$ and marked bisimplicial set $X$, the simplicial set $A \backslash X$ is a Kan complex, and the inclusion $i\colon A \backslash X \hookrightarrow A^{\flat} \backslash X \cong \mathring{A} \backslash \mathring{X}$ is full.
+  For any marked simplicial set $A$ and Reedy-fibrant marked bisimplicial set $X$, the simplicial set $A \backslash X$ is a Kan complex, and the inclusion $i\colon A \backslash X \hookrightarrow A^{\flat} \backslash X \cong \mathring{A} \backslash \mathring{X}$ is full.
 \end{lemma}
 \begin{proof}
   We first show that the map $i$ is a full inclusion. The $n$-simplices of $A \backslash X$ are maps of marked simplicial sets $\tilde{\sigma}\colon A \square \Delta^{n} \to X$. A map of underlying bisimplicial sets gives a map of marked bisimplicial sets if and only if it respects the markings, i.e.\ if and only if for each $(a, i) \in A_{1} \times (\Delta^{n})_{0}$ with $a$ marked, $\tilde{\sigma}(a, i)$ is marked in $X$. This is equivalent to demanding that $\sigma|_{\Delta^{\{i\}}}$ belong to $A \backslash X$.
@@ -1038,7 +1040,7 @@ For each $n \geq 2$, denote by $h^{n}$ the $\mathcal{L}$-marked inclusion
 
 \begin{corollary}
   \label{cor:pointwise_left_horn_condition}
-  Let $f\colon X \to Y$ be a cocartesian fibration between complete segal spaces. Then for each cocartesian edge $e \in X_{10}$, the map
+  Let $f\colon X \to Y$ be a cocartesian fibration between complete Segal spaces. Then for each cocartesian edge $e \in X_{10}$, the map
   \begin{equation*}
     (\Delta^{n} \backslash X)^{e} \to (\Lambda^{n}_{0} \backslash X)^{e} \times_{(\Lambda^{n}_{0} \backslash Y)^{f(e)}} (\Delta^{n} \backslash Y)^{f(e)}
   \end{equation*}
