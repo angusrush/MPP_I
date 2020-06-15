@@ -69,12 +69,12 @@
 \newcommand{\marked}[1]{\mathbf{#1}}
 % General
 \newcommand{\R}{\mathbb{R}}
-\newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
 \renewcommand{\P}{\mathcal{P}}
-\newcommand{\asd}{\mathrm{asd}}
+\newcommand{\sd}{\mathrm{sd}}
+\newcommand{\triple}[1]{(\category{#1}, \category{#1}_{\dagger}, \category{#1}^{\dagger})}
 % Typesetting
 \newcommand{\defn}[1]{\emph{\textbf{#1}}}
 \newcommand{\abs}[1]{{| #1 |}}
@@ -91,13 +91,13 @@
 \newcommand{\im}{\mathrm{im}}
 \newcommand{\coker}{\mathrm{coker}}
 \DeclareMathOperator*{\colim}{colim}
-\newcommand{\Fun}{\mathbf{Fun}}
+\newcommand{\Fun}{\mathrm{Fun}}
 \newcommand{\End}{\mathrm{End}}
 \newcommand{\Map}{\mathrm{Map}}
 \newcommand{\Aut}{\mathrm{Aut}}
 \newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\Ran}{\mathrm{Ran}}
-\newcommand{\Cart}{\mathrm{Cart}}
+\newcommand{\aCart}{\mathrm{aCart}}
 % Model categories
 \newcommand{\fib}{\mathsf{Fib}}
 \newcommand{\cof}{\mathsf{Cof}}
@@ -147,8 +147,10 @@
 \newcommand{\shp}{^{\sharp}}
 \newcommand{\nat}{^{\natural}}
 \newcommand{\flt}{^{\flat}}
-% Dirty typesetting hacks
+\newcommand{\ing}{\rightarrowtail}
+\newcommand{\eg}{\twoheadrightarrow}
 
+% Dirty typesetting hacks
 \newcommand{\lmarkedparen}{\mathrlap{(}\text{\textbf{-}}}
 \newcommand{\rmarkedparen}{\mathrlap{)}\text{\textbf{-}}}
 
