@@ -100,6 +100,54 @@
       \endverb
       \keyw{Mathematics - Algebraic Topology}
     \endentry
+    \entry{spectralmackeyfunctors2}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=06f83ea8e5fbb3836278ac17f0831a65}{%
+           family={C.\bibnamedelimi Barwick},
+           familyi={C\bibinitperiod\bibinitdelim B\bibinitperiod},
+           given={J.\bibnamedelimi Shah},
+           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
+           suffix={S.\bibnamedelimi Glasman},
+           suffixi={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{06f83ea8e5fbb3836278ac17f0831a65}
+      \strng{fullhash}{06f83ea8e5fbb3836278ac17f0831a65}
+      \strng{bibnamehash}{06f83ea8e5fbb3836278ac17f0831a65}
+      \strng{authorbibnamehash}{06f83ea8e5fbb3836278ac17f0831a65}
+      \strng{authornamehash}{06f83ea8e5fbb3836278ac17f0831a65}
+      \strng{authorfullhash}{06f83ea8e5fbb3836278ac17f0831a65}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Spectral Mackey functors and equivariant algebraic K-theory (II)}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb arXiv:1505.03098v2
+      \endverb
+    \endentry
+    \entry{luriehigheralgebra}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4824f2fc2c61b9f4da55e476206c5db3}{%
+           family={Lurie},
+           familyi={L\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{4824f2fc2c61b9f4da55e476206c5db3}
+      \strng{fullhash}{4824f2fc2c61b9f4da55e476206c5db3}
+      \strng{bibnamehash}{4824f2fc2c61b9f4da55e476206c5db3}
+      \strng{authorbibnamehash}{4824f2fc2c61b9f4da55e476206c5db3}
+      \strng{authornamehash}{4824f2fc2c61b9f4da55e476206c5db3}
+      \strng{authorfullhash}{4824f2fc2c61b9f4da55e476206c5db3}
+      \field{extraname}{1}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Higher Algebra}
+      \field{year}{2017}
+    \endentry
     \entry{highertopostheory}{book}{}
       \name{author}{1}{}{%
         {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
@@ -117,6 +165,7 @@
       \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \field{extraname}{2}
       \field{sortinit}{L}
       \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
       \field{labelnamesource}{author}
