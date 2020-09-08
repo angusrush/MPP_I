@@ -1,0 +1,1013 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{Segal spaces of spans}
+\label{sec:segal_spaces_of_spans}
+
+\subsection{Basic definitions}
+
+We recall the basic definitions of Segal spaces of spans. Note that spans as we will define them form not only a Segal space, but a \emph{complete} Segal space; this will not concern us. For more information, we direct the reader to \cite{spectralmackeyfunctors1}. This section is intended to be a summary of the results found there which we will need.
+
+The objects of our study will be $\infty$-categories whose morphisms are spans
+\begin{equation*}
+  \begin{tikzcd}
+    & y
+    \arrow[dl, swap, "\phi"]
+    \arrow[dr, "\psi"]
+    \\
+    x
+    && x'
+  \end{tikzcd}
+\end{equation*}
+in some quasicategory $\category{C}$ (this means that $x$, $x'$, and $y$ are objects in $\category{C}$, and that $\phi$ and $\psi$ are morphisms in $\category{C}$). We will want to be able to place certain conditions on the legs $\phi$ and $\psi$ of our spans. For example, we may want to restrict our attention to spans such that $\phi$ is an equivalence, or has contractible fibers. More precisely, we pick out two subcategories of $\category{C}$ to which the respective legs of our spans must belong.
+
+\begin{definition}
+  A \defn{triple} of categories is a triple $\triple{C}$, where $\category{C}$ is a quasicategory where $\category{C}_{\dagger}$ and $\category{C}^{\dagger}$ are subcategories (in the sense of \cite[Sec.\ 1.2.11]{highertopostheory}), each of which contain all equivalences.
+\end{definition}
+
+We will use the following terminology and notation for the morphsism in our subcategories.
+\begin{itemize}
+  \item We denote the morphisms in $\category{C}_{\dagger}$ with tails (as in $x \ing y$), and call them \emph{ingressive}.
+
+  \item We denote the morphisms in $\category{C}^{\dagger}$ with two heads (as in $x \eg y$), and call them \emph{egressive}.
+\end{itemize}
+
+In order for a triple of categories to be able to support a category of spans, it will have to satisfy certain properties. We will call such categories \emph{adequate.}
+
+\begin{definition}
+  A triple $(\category{C}, \category{C}_{\dagger}, \category{C}^{\dagger})$ is said to be \defn{adequate} if it has the following properties:
+  \begin{enumerate}
+    \item For any morphism $y \ing x \in \category{C}_{\dagger}$ and any morphism $x' \eg x \in \category{C}^{\dagger}$, there exists a pullback square
+      \begin{equation*}
+        \begin{tikzcd}
+          y'
+          \arrow[r]
+          \arrow[d]
+          & x'
+          \arrow[d, two heads]
+          \\
+          y
+          \arrow[r, rightarrowtail]
+          & x
+        \end{tikzcd}.
+      \end{equation*}
+
+    \item For any pullback square
+      \begin{equation*}
+        \begin{tikzcd}
+          y'
+          \arrow[r, "f'"]
+          \arrow[d]
+          & x'
+          \arrow[d]
+          \\
+          y
+          \arrow[r, "f"]
+          & x
+        \end{tikzcd},
+      \end{equation*}
+      if the arrow $f$ belongs to $\category{C}_{\dagger}$ (resp.\ $\category{C}^{\dagger}$), then the arrow $f'$ belongs to $\category{C}_{\dagger}$ (resp.\ $\category{C}^{\dagger}$).
+  \end{enumerate}
+\end{definition}
+
+We will call a square of the form
+\begin{equation*}
+  \begin{tikzcd}
+    y'
+    \arrow[r, rightarrowtail]
+    \arrow[d, two heads]
+    & x'
+    \arrow[d, two heads]
+    \\
+    y
+    \arrow[r, rightarrowtail]
+    & x
+  \end{tikzcd}
+\end{equation*}
+\emph{ambigressive.} If such an ambigressive square is also a pullback square, we will call it \emph{ambigressive pullback.}
+
+It is now time to set about building our categories of spans. We give only a sketch. For each $n \geq 0$, we define a poset $\Sigma_{n}$ as follows:
+\begin{itemize}
+  \item The elements of $\Sigma_{n}$ are pairs of integers $(i, j)$, with $0 \leq i \leq j \leq n$.
+
+  \item We define a partial order via 
+    \begin{equation*}
+      (i, j) \leq (i', j') \iff i \leq i' \leq j' \leq j.
+    \end{equation*}
+\end{itemize}
+
+\begin{example}
+  We can draw $\Sigma_{4}$ as follows.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny, row sep=small]
+      \\
+      &&&& {(0, 4)}
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      &&& {(0, 3)}
+      \arrow[dl]
+      \arrow[dr]
+      && {(1, 4)}
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      && {(0, 2)}
+      \arrow[dl]
+      \arrow[dr]
+      && {(1, 3)}
+      \arrow[dl]
+      \arrow[dr]
+      && {(2, 4)}
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & {(0, 1)}
+      \arrow[dl]
+      \arrow[dr]
+      && {(1, 2)}
+      \arrow[dl]
+      \arrow[dr]
+      && {(2, 3)}
+      \arrow[dl]
+      \arrow[dr]
+      && {(3, 4)}
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      {(0, 0)}
+      && {(1, 1)}
+      && {(2, 2)}
+      && {(3, 3)}
+      && {(4, 4)}
+    \end{tikzcd}
+  \end{equation*}
+\end{example}
+
+These $\Sigma_{n}$ assemble into a cosimplicial object 
+\begin{equation*}
+  \Delta \to \SSet;\qquad [n] \mapsto N(\Sigma_{n}),
+\end{equation*}
+Left Kan extending yields a functor $\sd\colon \SSet \to \SSet$. General abstract nonsense gives us right adjoint $\Span'\colon \SSet \to \SSet$ forming an adjunction
+\begin{equation*}
+  \sd: \SSet \longleftrightarrow \SSet : \Span'.
+\end{equation*}
+For any simplicial set $A$, the simplicial set $\Span'(A)$ has $n$-simplices
+\begin{equation*}
+  \Span'(A)_{n} = \Hom_{\SSet}(\sd(\Delta^{n}), A).
+\end{equation*}
+
+Fix some triple $\triple{C}$. We will call a functor $\sd(\Delta^{n}) \to \category{C}$ is called \emph{ambigressive Cartesian} if the image of each square in $\sd(\Delta^{n}) = N(\Sigma_{n})$ of the form
+\begin{equation*}
+  \begin{tikzcd}[column sep=tiny]
+    & {(i, j)}
+    \arrow[dr]
+    \arrow[dl]
+    \\
+    {(i, j - \ell)}
+    \arrow[dr]
+    & & {(i + k , j)}
+    \arrow[dl]
+    \\
+    & {(i + k , j - \ell)}
+  \end{tikzcd}
+\end{equation*}
+(where we include the possibilities $k = 0$ and $\ell = 0$) is an ambigressive pullback. The quasicategory $\Span\triple{C}$ is then defined level-wise to be the subset
+\begin{equation*}
+  \Span\triple{C} \subseteq \Span'(\category{C})
+\end{equation*}
+on functors $\sd(\Delta^{n}) \to \category{C}$ which are ambigressive Cartesian.
+
+Analogously, for an adequate triple $\triple{C}$ and any simplicial set $A$, define
+\begin{equation*}
+  \Map^{\mathrm{aCart}}(\sd(A), \category{C})^{\simeq} \subseteq \Map(\sd(A), \category{C})^{\simeq}
+\end{equation*}
+to be the full simplicial subset on functors $\sd(A)$ such that for each standard simplex $\sigma$ of $A$, the image of $\sd(\sigma)$ in $\category{C}$ is ambigressive Cartesian. The (complete) Segal space of spans $\SPAN\triple{C}$ is defined level-wise by 
+\begin{equation*}
+  \SPAN\triple{C}_{n} = \Map^{\mathrm{aCart}}(\sd(\Delta^{n}), \category{C})^{\simeq}.
+\end{equation*}
+
+For a proof that this really is a Segal space, the reader is once again referred to \cite{spectralmackeyfunctors1}.
+
+\begin{example}
+  For any quasicategory, we can define a triple $(\category{C}, \category{C}\downdag = \category{C}, \category{C}\updag = \category{C}^{\simeq})$. The corresponding spans are of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & y
+      \arrow[dl, swap, "\simeq"]
+      \arrow[dr]
+      \\
+      x
+      && x'
+    \end{tikzcd},
+  \end{equation*}
+  where $Y \to X$ is an equivalence in $\category{C}$.
+
+  The resulting quasicategory of spans is categorically equivalent to the category $\category{C}$ from which we started. To see this, note that for each $n \geq 0$ there is a retraction of posets
+  \begin{equation*}
+    [n] \hookrightarrow \Sigma_{n} \twoheadrightarrow [n],
+  \end{equation*}
+  where the first map takes $i \mapsto (i, n)$, and the second takes $(i, j) \mapsto i$. Under the nerve, this corresponds to a retraction of simplicial sets
+  \begin{equation*}
+    \Delta^{n} \hookrightarrow \sd(\Delta^{n}) \twoheadrightarrow \Delta^{n}.
+  \end{equation*}
+  Pulling back along these maps gives us, for each $n$, a retraction
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun(\Delta^{n}, \category{C}) 
+      \arrow[r, hook, "i_{n}"]
+      & \Fun(\sd(\Delta^{n}), \category{C}) 
+      \arrow[r, hook, "r_{n}"]
+      & \Fun(\Delta^{n}, \category{C})
+    \end{tikzcd}.
+  \end{equation*}
+  Note that the image of the inclusion $i$
+
+  It is not hard to convince oneself that a map $\sd(\Delta^{n}) \to \category{C}$ is ambigressive cartesian if and only if it is a right Kan extension of its restriction along $\Delta^{n} \hookrightarrow \sd(\Delta^{n})$. In the case $n = 2$, the inclusion $[2] \hookrightarrow \Sigma_{2}$ is of the form
+  \begin{equation*}
+    \begin{tikzcd}[row sep=small, column sep=tiny]
+      0
+      \arrow[dr]
+      \\
+      & 1
+      \arrow[dr]
+      \\
+      && 2
+    \end{tikzcd}
+    \qquad \hookrightarrow \qquad
+    \begin{tikzcd}[row sep=small, column sep=tiny]
+      && (0, 2)
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      & (0, 1)
+      \arrow[dl]
+      \arrow[dr]
+      && (1, 2)
+      \arrow[dl]
+      \arrow[dr]
+      \\
+      (0, 0)
+      && (1, 1)
+      && (2, 2)
+    \end{tikzcd}.
+  \end{equation*}
+  The right Kan extension of a diagram $\Delta^{2} \to \category{C}$ 
+
+  The inclusions $\Delta^{n} \to \sd(\Delta^{n})$ does not yield a map of cosimplicial objects $\Delta^{\bullet} \to \sd(\Delta^{\bullet})$, but the projections $\sd(\Delta^{n}) \to \Delta^{n}$ do, giving us a map of cosimplicial objects $\sd(\Delta^{\bullet}) \to \Delta^{\bullet}$. 
+
+  There is an equivalence of Segal spaces
+  \begin{equation*}
+    \Gamma(\category{C}) \to \SPAN(\category{C}, \category{C}, \category{C}^{\simeq}),
+  \end{equation*}
+  where $\Gamma(\category{C})$ is the Segal space defined level-wise by
+  \begin{equation*}
+    \Gamma(\category{C})_{n} = \Fun(\Delta^{n}, \category{C}).
+  \end{equation*}
+  This sends a morphism $f\colon x \to y$ in $\category{C}$ to the span
+  \begin{equation*}
+    \begin{tikzcd}
+      & x
+      \arrow[dl, equals]
+      \arrow[dr]
+      \\
+      x
+      && x'
+    \end{tikzcd},
+  \end{equation*}
+\end{example}
+
+A functor between adequate triples $\triple{C} \to \triple{D}$ is a functor
+\begin{equation*}
+  p\colon \category{C} \to \category{D}
+\end{equation*}
+such that $p(\category{C}_{\dagger}) \subseteq \category{D}_{\dagger}$, $p(\category{C}^{\dagger}) \subseteq \category{D}^{\dagger}$, and $p$ preserves ambigressive pullbacks. We will denote the restriction of $p$ to $\category{C}_{\dagger}$ by
+\begin{equation*}
+  p_{\dagger}\colon\category{C}_{\dagger} \to \category{D}_{\dagger},
+\end{equation*}
+and similarly for $p^{\dagger}$. Clearly, a functor $p$ between adequate triples gives functors $\Span(p)$ and $\SPAN(p)$ respectively between quasicategories and Segal spaces of spans.
+
+The goal of the remainder of this document is to provide a proof of the following theorem. This is \cite[Thm.\ 12.2]{spectralmackeyfunctors1}.
+
+\begin{theorem}
+  \label{thm:main}
+  Let $p\colon \triple{C} \to \triple{D}$ be a functor of adequate triples. Further suppose that $p$ satisfies the following conditions:
+  \begin{enumerate}
+    \item For any ingressive morphism $g\colon s \ing t$ of $\category{D}$ and any object $x \in \category{C}_{s}$, there exists an ingressive morphism $f\colon x \ing y$ covering $g$ which is both $p$-cocartesian and $p_{\dagger}$-cocartesian.
+
+    \item Suppose $\sigma$ is a commutative square
+      \begin{equation*}
+        \begin{tikzcd}
+          y'
+          \arrow[r, rightarrowtail, "f'"]
+          \arrow[d, two heads]
+          & x'
+          \arrow[d, "\psi"]
+          \\
+          y
+          \arrow[r, rightarrowtail, swap, "f"]
+          & x
+        \end{tikzcd}
+      \end{equation*}
+      in $\category{C}$ such that $p(\sigma)$ is ambigressive pullback in $\category{D}$, with in- and egressive morphisms as marked, and $f$ is $p$-cocartesian. Then $f'$ is $p$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $\psi$ is egressive).
+  \end{enumerate}
+
+  Then if a morphism in $\Span\triple{C}$ is of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & y
+      \arrow[dl, two heads, swap, "\phi"]
+      \arrow[dr, rightarrowtail, "\psi"]
+      \\
+      x
+      && x'
+    \end{tikzcd},
+  \end{equation*}
+  where $\phi$ is egressive and $p^{\dagger}$-cartesian, and $\psi$ is ingressive and $p$-cocartesian, it is $\pi$-cocartesian.\footnote{This is not precisely the same condition that Barwick gives: he demands that $\phi$ be $p$-cartesian rather than $p^{\dagger}$-cartesian. As far as I can tell, this is simply an error; Barwick seems to use the condition as stated above in his proof.}
+\end{theorem}
+
+This theorem originally appears in \cite{spectralmackeyfunctors1} (although, as noted above, the assumptions are slightly different). However, the proof there is combinatorial in nature. Our proof uses the material developed in \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, leveraging the fact that $\infty$-categories of spans have natural incarnations as (complete) Segal spaces.
+
+Before we get to the meat of the proof, however, we have to prove some preliminary results.
+
+\subsection{Housekeeping}
+
+In this section we recall some basic facts we will need in the course of our proof of the main theorem. 
+
+\subsubsection*{Isofibrations}
+
+We will need some results about isofibrations, sometimes called categorical fibrations. These are standard, and proofs can be found on Kerodon.
+
+\begin{proposition}
+  \label{prop:characterization_of_isofibrations}
+  Let $f\colon \category{C} \to \category{D}$ be a map between quasicategories. The following are equivalent:
+  \begin{itemize}
+    \item The map $f$ is an isofibration.
+
+    \item The map $f$ is an inner fibration, and each equivalence in $\category{D}$ has a lift in $\category{C}$ which is an equivalence.
+  \end{itemize}
+\end{proposition}
+
+We will denote by $\Map(-, -)$ the internal hom on $\SSet$.
+\begin{proposition}
+  Let $f\colon \category{C} \to \category{D}$ be an isofibration between quasicategories, and let $i\colon A \hookrightarrow B$ be an inclusion of simplicial sets. Then the map
+  \begin{equation*}
+    \Map(B, \category{C}) \to \Map(A, \category{C}) \times_{\Map(A, \category{D})} \Map(B, \category{D})
+  \end{equation*}
+  is an isofibration.
+\end{proposition}
+
+We will denote by $(-)^{\simeq}$ the \emph{core} functor, i.e.\ the functor which takes a simplicial set $X$ to the largest Kan complex it contains.
+\begin{proposition}
+  Let $f\colon X \to Y$ be an isofibration of simplicial sets. Then
+  \begin{equation*}
+    f^{\simeq}\colon X^{\simeq} \to Y^{\simeq}
+  \end{equation*}
+  is a Kan fibration.
+\end{proposition}
+
+We will denote the core of the mapping space functor $\Map(-, -)$ by $\Fun(-, -)$. That is, for simplicial sets $A$ and $B$, we have
+\begin{equation*}
+  \Fun(A, B) \cong \Map(A, B)^{\simeq}.
+\end{equation*}
+
+\begin{corollary}
+  \label{cor:kan_fib_and_isofib}
+  Let $f\colon \category{C} \to \category{D}$ be an isofibration between quasicategories, and let $A \hookrightarrow B$ be an inclusion of simplicial sets. Then the map
+  \begin{equation*}
+    \Fun(B, \category{C}) \to \Fun(A, \category{C}) \times_{\Fun(A, \category{D})} \Fun(B, \category{D})
+  \end{equation*}
+  is a Kan fibration.
+\end{corollary}
+
+\subsubsection*{Connected components}
+
+Our proof will rely heavily on the fact that the many properties that morphisms can have (ingressive, egressive, $p$-cocartesian, etc.) are well-behaved with respect to the homotopical structure of the complete Segal spaces in which they live; for example, if a morphism is $p$-cocartesian, then every morphism in its path component is $p$-cocartesian.
+
+Let $X'$ and $X$ be simplicial sets, and let $f\colon X' \hookrightarrow X$ be an inclusion. We will say that $f$ is an \emph{inclusion of connected components} if for all simplices $\sigma \in X$, if $\sigma$ has any vertex in common with $X'$, then $\sigma$ is wholly contained in $X'$.
+
+\begin{lemma}
+  \label{lemma:lifting_wrt_inclusions_of_connected_components}
+  Let $A$ be a simplicial set such that between any two vertices $x$ and $y$ of $A$ there exists a finite zig-zag of 1-simplices of $A$ connecting $x$ to $y$. Let $A_{0} \subseteq$ A be a nonempty simplicial subset of $A$. Let $f\colon X' \hookrightarrow X$ be a morphism between simplicial sets which is an inclusion of connected components. Then the following dashed lift always exists.
+  \begin{equation*}
+    \begin{tikzcd}
+      A_{0}
+      \arrow[r, "f_{0}"]
+      \arrow[d, hook]
+      & X'
+      \arrow[d, hook]
+      \\
+      A
+      \arrow[r, "f"]
+      \arrow[ur, dashed]
+      & X
+    \end{tikzcd}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  We have a map $f\colon A \to X$; in order to construct our dashed lift, it suffices to show that under the above assumptions, $f$ takes every simplex of $A$ to a simplex which belongs to $X'$. To this end, let $\sigma \in A$ be a simplex. There exists a finite zig-zag of $1$-simplices connecting some vertex of $\sigma$ to a vertex $\alpha$ of $A_{0}$; under $f$, this is mapped to a zig-zag of $1$-simplices connecting $f(\alpha)$ to $f(\sigma)$. The vertex $f(\alpha)$ belongs to $X'$; proceeding inductively, we find that the image of every 1-simplex belonging to the zig-zag also belongs to $X'$, and that $f(\sigma)$ therefore also belongs to $X'$.
+\end{proof}
+
+\begin{corollary}
+  \label{cor:connected_components_kan_fibration}
+  Given any commuting square of simplicial sets
+  \begin{equation*}
+    \begin{tikzcd}
+      X'
+      \arrow[r, hook, "i"]
+      \arrow[d, swap, "f'"]
+      & X
+      \arrow[d, "f"]
+      \\
+      Y'
+      \arrow[r, hook]
+      & Y
+    \end{tikzcd}
+  \end{equation*}
+  with monomorphisms as marked, where $i$ is an inclusion of connected components between Kan complexes and $f$ is a Kan fibration, the map $f'$ is a Kan fibration.
+
+  Furthermore, if $f$ is a trivial fibration and $f'$ is surjective on vertices, then $f'$ is a trivial fibration.
+\end{corollary}
+\begin{proof}
+  First, we show that if $f$ is a Kan fibration, then $f'$ is a Kan fibration. We need to show that a dashed lift below exists for each $n \geq 1$ and each $0 \leq i \leq n$.
+  \begin{equation*}
+    \begin{tikzcd}
+      \Lambda^{n}_{i}
+      \arrow[r]
+      \arrow[d]
+      & X'
+      \arrow[r, hook, "i"]
+      \arrow[d, "f'"]
+      & X
+      \arrow[d, "f"]
+      \\
+      \Delta^{n}
+      \arrow[r]
+      \arrow[ur, dashed]
+      & Y'
+      \arrow[r, hook]
+      & Y
+    \end{tikzcd}
+  \end{equation*}
+  We can always solve our outer lifting problem, and by \hyperref[lemma:lifting_wrt_inclusions_of_connected_components]{Lemma~\ref*{lemma:lifting_wrt_inclusions_of_connected_components}}, our lift factors through $X'$.
+
+  Now suppose that $f$ is a trivial Kan fibration. The logic above says that $f'$ has the right lifting property with respect to $\partial \Delta^{n} \hookrightarrow \Delta^{n}$ for $n \geq 1$; the right lifting property with respect to $\partial \Delta^{0} \hookrightarrow \Delta^{0}$ is equivalent to the surjectivity of $f'$ on vertices.
+\end{proof}
+
+\subsubsection*{Contractibility}
+
+We will need at certain points to show that various spaces of lifts are contractible. These are mostly common-sense results, but it will be helpful to have them written down somewhere so we can refer to them later.
+
+\begin{lemma}
+  \label{lemma:inner_fib_contractible_fibers}
+  Let $f\colon \category{C} \to \category{D}$ be an inner fibration between quasicategories. Then for any commuting square
+  \begin{equation*}
+    \begin{tikzcd}
+      \Lambda^{2}_{1}
+      \arrow[r, "\alpha"]
+      \arrow[d, hook]
+      & \category{C}
+      \arrow[d, "f"]
+      \\
+      \Delta^{2}
+      \arrow[r, "\beta"]
+      & \category{D}
+    \end{tikzcd},
+  \end{equation*}
+  the fiber $F$ in the pullback square below is contractible.
+  \begin{equation*}
+    \begin{tikzcd}[column sep=large]
+      F
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\Delta^{2}, \category{C})
+      \arrow[d]
+      \\
+      \Delta^{0}
+      \arrow[r, "{(\alpha, f\alpha, \beta)}"]
+      & \Fun(\Lambda^{2}_{1}, \category{C}) \times_{\Fun(\Lambda^{2}_{1}, \category{D})} \Fun(\Delta^{2}, \category{D})
+    \end{tikzcd}
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  The right-hand map is a trivial Kan fibration.
+\end{proof}
+
+One should interpret this as telling us that given a $\Lambda^{2}_{2}$-horn $\alpha$ in $\category{C}$ lying over a 2-simplex $\beta$ in $\category{D}$, the space of fillings of $\alpha$ lying over $\beta$ is contractible. We will need a pantheon of similar results.
+
+\begin{lemma}
+  \label{lemma:cartesian_horn_fillings_contractible}
+  Let $f\colon \category{C} \to \category{D}$ be an inner fibration between quasicategories. Let $e$ be any $f$-cartesian edge. Then for any square
+  \begin{equation*}
+    \begin{tikzcd}
+      \Lambda^{2}_{2}
+      \arrow[r, "\alpha"]
+      \arrow[d, hook]
+      & \category{C}
+      \arrow[d, "f"]
+      \\
+      \Delta^{2}
+      \arrow[r, "\beta"]
+      & \category{D}
+    \end{tikzcd}
+  \end{equation*}
+  such that $\alpha|_{\{1,2\}} = e$, the fiber $F$ in the pullback diagram
+  \begin{equation}
+    \label{eq:fiber_of_inn_fib_with_cocart}
+    \begin{tikzcd}[column sep=large]
+      F
+      \arrow[r]
+      \arrow[d]
+      & \Fun(\Delta^{2}, \category{C})
+      \arrow[d]
+      \\
+      \Delta^{0}
+      \arrow[r, "{(\alpha, f\alpha, \beta)}"]
+      & \Fun(\Lambda^{2}_{2}, \category{C}) \times_{\Fun(\Lambda^{2}_{1}, \category{D})} \Fun(\Delta^{2}, \category{D})
+    \end{tikzcd}
+  \end{equation}
+  is contractible.
+\end{lemma}
+\begin{proof}
+  Denote $f(e) = \bar{e}$. Define a marking $\mathcal{E}'$ on $\category{D}$ containing all degenerate edges and $\bar{e}$. Define a marking $\mathcal{E}$ on $\category{C}$ containing the $f$-cocartesian lifts of the edges in $\mathcal{E}$. By \cite[Prop.\ 3.1.1.6]{highertopostheory}, the map $\category{C}^{\mathcal{E}} \to \category{D}^{\mathcal{E}'}$ has the right-lifting property with respect to all cocartesian-marked anodyne morphisms. It follows that
+  \begin{equation*}
+    \begin{tikzcd}[column sep=large]
+      \Map^{\sharp}((\Delta^{2})^{\mathcal{L}}, \category{C}^{\mathcal{E}})
+      \arrow[d]
+      \\
+      \Map^{\sharp}((\Lambda^{2}_{2})^{\mathcal{L}}, \category{C}^{\mathcal{E}}) \times_{\Map^{\sharp}((\Lambda^{2}_{1})^{\mathcal{L}}, \category{D}^{\mathcal{E}'})} \Map^{\sharp}((\Delta^{2})^{\mathcal{L}}, \category{D}^{\mathcal{E}'})
+    \end{tikzcd}
+  \end{equation*}
+  is a trivial Kan fibration; the map on the right-hand side of \hyperref[eq:fiber_of_inn_fib_with_cocart]{Diagram~\ref*{eq:fiber_of_inn_fib_with_cocart}} is the core of this map, and is thus also a trivial Kan fibration.
+\end{proof}
+
+\begin{lemma}
+  \label{lemma:twice_cartesian_lifts_contractible}
+  Let $\triple{C} \to \triple{D}$ be an inner fibration between triples satisfying the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}. Denote by $\Fun'(\Delta^{1}, \category{C}^{\dagger})$ the full simplicial subset of $\Fun(\Delta^{1}, \category{C}^{\dagger})$ on edges $\Delta^{1} \to \category{C}^{\dagger}$ which are both $p$-cocartesian and $p^{\dagger}$-cocartesian. Then the fibers of the map
+  \begin{equation*}
+    \Fun'(\Delta^{1}, \category{C}^{\dagger}) \to
+    \Fun(\Delta^{\{0\}}, \category{C}^{\dagger})
+    \times_{\Fun(\Delta^{\{0\}}, \category{D}^{\dagger})}
+    \Fun(\Delta^{1}, \category{D}^{\dagger})
+  \end{equation*}
+  are contractible.
+\end{lemma}
+\begin{proof}
+  Denote by $\Fun''(\Delta^{1}, \category{C}^{\dagger})$ the full simplicial subset of $\Fun(\Delta^{1}, \category{C}^{\dagger})$ on edges which are $p^{\dagger}$-cartesian. Then we have a square
+  \begin{equation*}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&]
+        \Fun'(\Delta^{1}, \category{C}^{\dagger})
+        \arrow[r, hook]
+        \arrow[d]
+        \& \Fun''(\Delta^{1}, \category{C}^{\dagger})
+        \arrow[d]
+        \\
+        \Fun(\Delta^{\{0\}}, \category{C}^{\dagger})
+        \times_{\Fun(\Delta^{\{0\}}, \category{D}^{\dagger})}
+        \Fun(\Delta^{1}, \category{D}^{\dagger})
+        \arrow[r, equals]
+        \& \Fun(\Delta^{\{0\}}, \category{C}^{\dagger})
+        \times_{\Fun(\Delta^{\{0\}}, \category{D}^{\dagger})}
+        \Fun(\Delta^{1}, \category{D}^{\dagger})
+      \end{tikzcd}
+    }
+  \end{equation*}
+  in which the top map is an inclusion of connected components, the right map is a trivial Kan fibration, and the left map is surjective on vertices. Thus, the left map is a trivial Kan fibration by \hyperref[cor:connected_components_kan_fibration]{Corollary~\ref*{cor:connected_components_kan_fibration}}
+\end{proof}
+
+\subsection{Main theorem}
+
+Our goal is now to prove \hyperref[thm:main]{Theorem~\ref*{thm:main}}. As in the statement of the theorem, we fix a map of triples $p\colon \triple{C} \to \triple{D}$ giving us a functor of quasicategories
+\begin{equation*}
+  \pi\colon \Span\triple{C} \to \Span\triple{D}.
+\end{equation*}
+We wish to show that morphsims of the form
+\begin{equation}
+  \label{eq:form_of_p_cocartesian_morphisms}
+  \begin{tikzcd}
+    & y
+    \arrow[dl, two heads, swap, "\phi"]
+    \arrow[dr, rightarrowtail, "\psi"]
+    \\
+    x
+    && x'
+  \end{tikzcd},
+\end{equation}
+are $\pi$-cocartesian, where $\phi$ is egressive and $p_{\dagger}$-cartesian, and $\psi$ is ingressive and $p$-cocartesian.
+
+The way forward is clear: the functor $\pi$ is the zeroth row of a functor of Segal spaces
+\begin{equation*}
+  \pi'\colon \SPAN\triple{C} \to \SPAN\triple{D}.
+\end{equation*}
+It will suffice to show by \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}} that morphisms of the above form are $\pi'$-cocartesian. Morally, this result should not be surprising. We should think of the homotopy pullback condition defining cocartesian morphisms (\hyperref[def:cocartesian_morphism]{Definition~\ref*{def:cocartesian_morphism}}) as telling us that we can fill relative $\Lambda^{2}_{2}$-horns in $\pi'\colon \SPAN\triple{C} \to \SPAN\triple{D}$, and that such fillings are unique up to contractible choice. Finding a filling 
+\begin{equation*}
+  \begin{tikzcd}
+    \Lambda^{2}_{2}
+    \arrow[r]
+    \arrow[d, hook]
+    & \SPAN\triple{C}
+    \arrow[d, "\pi'"]
+    \\
+    \Delta^{2}
+    \arrow[r]
+    \arrow[ur, dashed]
+    & \SPAN\triple{D}
+  \end{tikzcd}
+\end{equation*}
+is equivalent finding a filling
+\begin{equation*}
+  \begin{tikzcd}
+    \sd(\Lambda^{2}_{2})
+    \arrow[r]
+    \arrow[d, hook]
+    & \category{C}
+    \arrow[d, "p"]
+    \\
+    \sd(\Delta^{2})
+    \arrow[r]
+    \arrow[ur, dashed]
+    & \category{D}
+  \end{tikzcd}
+\end{equation*}
+(such that the filling is ambigressive and the necessary square is pullback); the conditions on $p$ guarantee us that we can perform this filling in a series of steps pictured in \hyperref[fig:factorization]{Figure~\ref*{fig:factorization}}, each of which is unique up to contractible choice.
+
+\subsubsection*{Reedy fibration}
+
+First, however, we have to check that $\pi'$ is a Reedy fibration. This follows from the following useful fact, implied by the first assumption of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
+\begin{lemma}
+  Let $p\colon \triple{C} \to \triple{D}$ be a functor of triples satisfying the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}. Then the map $p\colon \category{C} \to \category{D}$ is an isofibration.
+\end{lemma}
+\begin{proof}
+  By assumption, $p$ is an inner fibration and $\category{C}$ and $\category{D}$ are quasicategories, so it suffices by \hyperref[prop:characterization_of_isofibrations]{Proposition~\ref*{prop:characterization_of_isofibrations}} to show that $p$ admits lifts of equivalences. Each equivalence in $\category{D}$ is in particular ingressive, and hence admits a $p$-cocartesian lift by the assumptions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}; these are automatically equivalences.
+\end{proof}
+
+\begin{proposition}
+  For any functor of adequate triples $p\colon \triple{C} \to \triple{D}$, the map
+  \begin{equation*}
+    \pi'\colon \SPAN\triple{C} \to \SPAN\triple{D}
+  \end{equation*}
+  is a Reedy fibration.
+\end{proposition}
+\begin{proof}
+  Consider the following diagram.
+  \begin{equation*}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&]
+        \Fun^{\aCart}(\sd(\Delta^{n}), \category{C})
+        \arrow[r, hook]
+        \arrow[d]
+        \& \Fun(\sd(\Delta^{n}), \category{C})
+        \arrow[d]
+        \\
+        \Fun^{\aCart}(\sd(\partial\Delta^{n}), \category{C})
+        \times_{\Fun^{\aCart}(\sd(\partial\Delta^{n}), \category{D})}
+        \Fun^{\aCart}(\sd(\Delta^{n}), \category{D})
+        \arrow[r, hook]
+        \& \Fun(\sd(\partial\Delta^{n}), \category{C})
+        \times_{\Fun(\sd(\partial\Delta^{n}), \category{D})}
+        \Fun(\sd(\Delta^{n}), \category{D})
+      \end{tikzcd}.
+    }
+  \end{equation*}
+  The right-hand map is a Kan fibration by \hyperref[cor:kan_fib_and_isofib]{Corollary~\ref*{cor:kan_fib_and_isofib}} (because $\sd$ preserves monomorphisms), and the top map is an inclusion of connected components, so \hyperref[cor:connected_components_kan_fibration]{Corollary~\ref*{cor:connected_components_kan_fibration}} implies that the left-hand map is a Kan fibration, which is what we needed to show.
+\end{proof}
+
+We are now ready to begin in earnest our proof that morphisms of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}} are $\pi'$-cocartesian. We first introduce some notation. Let $p\colon \triple{C} \to \triple{D}$ be a functor of triples.
+\begin{itemize}
+  \item We will denote $p$-cartesian morphisms in $\category{C}$ with a circle:
+    \begin{equation*}
+      \begin{tikzcd}
+        x
+        \arrow[r, "\circ" marking]
+        & y
+      \end{tikzcd}
+    \end{equation*}
+
+  \item We will denote $p$-cocartesian morphisms in $\category{C}$ with a bullet:
+    \begin{equation*}
+      \begin{tikzcd}
+        x
+        \arrow[r, "\bullet" marking]
+        & y
+      \end{tikzcd}
+    \end{equation*}
+
+  \item We will denote $p^{\dagger}$-cartesian morphisms in $\category{C}$ with a triangle:
+    \begin{equation*}
+      \begin{tikzcd}
+        x
+        \arrow[r, "\vartriangleright" marking]
+        & y
+      \end{tikzcd}
+    \end{equation*}
+
+  \item We will denote $p_{\dagger}$-cocartesian morphisms in $\category{C}$ with a filled triangle:
+    \begin{equation*}
+      \begin{tikzcd}
+        x
+        \arrow[r, "\blacktriangleright" marking]
+        & y
+      \end{tikzcd}
+    \end{equation*}
+\end{itemize}
+Thus, an ingressive morphism which is both $p$-cocartesian and $p_{\dagger}$-cocartesian will be denoted by
+\begin{equation*}
+  \begin{tikzcd}[column sep=large]
+    x
+    \arrow[r, rightarrowtail, "\blacktriangleright \bullet" marking]
+    & y
+  \end{tikzcd}
+\end{equation*}
+
+Our proof will rest on the factorization $\sd(\Lambda^{2}_{0}) \hookrightarrow \sd(\Delta^{2})$ pictured in \hyperref[fig:factorization]{Figure~\ref*{fig:factorization}}. Denote the underlying factorization of simplicial sets by
+\begin{equation*}
+  A_{1} \overset{i_{1}}{\hookrightarrow}
+  A_{2} \overset{i_{2}}{\hookrightarrow}
+  A_{3} \overset{i_{3}}{\hookrightarrow}
+  A_{4} \overset{i_{4}}{\hookrightarrow}
+  A_{5} \overset{i_{5}}{\hookrightarrow}
+  A_{6}
+\end{equation*}
+
+\begin{sidewaysfigure}[p]
+  \begin{equation*}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, rightarrowtail, "\bullet" marking]
+      \arrow[dl, two heads, "\vartriangleleft" marking]
+      \\
+      00
+      && 02
+      \arrow[ll, two heads]
+      \arrow[rr, rightarrowtail]
+      && 22
+    \end{tikzcd}
+    \overset{i_{1}}{\longrightarrow}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, rightarrowtail, "\bullet" marking]
+      \arrow[dl, two heads, "\vartriangleleft" marking]
+      \\
+      00
+      && 02
+      \arrow[ll, two heads]
+      \arrow[rr, rightarrowtail]
+      \arrow[ul, two heads]
+      && 22
+    \end{tikzcd}
+    \overset{i_{2}}{\longrightarrow}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, rightarrowtail, "\bullet" marking]
+      \arrow[dl, two heads, "\vartriangleleft" marking]
+      \\
+      00
+      && 02
+      \arrow[ll, two heads]
+      \arrow[rr, rightarrowtail]
+      \arrow[uu]
+      \arrow[ul, two heads]
+      && 22
+    \end{tikzcd}
+  \end{equation*}
+  \vspace{2cm}
+  \begin{equation*}
+    \overset{i_{3}}{\longrightarrow}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, rightarrowtail, "\bullet" marking]
+      \arrow[dl, two heads, "\vartriangleleft" marking]
+      && 12
+      \\
+      00
+      && 02
+      \arrow[ur, sloped, "\bullet \blacktriangleright" marking, rightarrowtail]
+      \arrow[ll, two heads]
+      \arrow[rr, rightarrowtail]
+      \arrow[uu]
+      \arrow[ul, two heads]
+      && 22
+    \end{tikzcd}
+    \overset{i_{4}}{\longrightarrow}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, rightarrowtail, "\bullet" marking]
+      \arrow[dl, two heads, "\vartriangleleft" marking]
+      && 12
+      \arrow[ul]
+      \\
+      00
+      && 02
+      \arrow[ur, sloped, "\bullet \blacktriangleright" marking, rightarrowtail]
+      \arrow[ll, two heads]
+      \arrow[rr, rightarrowtail]
+      \arrow[uu]
+      \arrow[ul, two heads]
+      && 22
+    \end{tikzcd}
+    \overset{i_{5}}{\longrightarrow}
+    \begin{tikzcd}
+      && 11
+      \\
+      & 01
+      \arrow[ur, rightarrowtail, "\bullet" marking]
+      \arrow[dl, two heads, "\vartriangleleft" marking]
+      && 12
+      \arrow[ul]
+      \arrow[dr, rightarrowtail]
+      \\
+      00
+      && 02
+      \arrow[ur, sloped, "\bullet \blacktriangleright" marking, rightarrowtail]
+      \arrow[ll, two heads]
+      \arrow[rr, rightarrowtail]
+      \arrow[uu]
+      \arrow[ul, two heads]
+      && 22
+    \end{tikzcd}
+  \end{equation*}
+  \caption{A factorization of the inclusion $\sd(\Lambda^{2}_{0}) \hookrightarrow \sd(\Delta^{2})$, where certain morphisms have been labelled.}
+  \label{fig:factorization}
+\end{sidewaysfigure}
+
+For each of the $A_{i}$ above, denote by
+\begin{equation}
+  \label{eq:inclusion_of_functors_respecting_labelling}
+  \Fun'(A_{i}, \category{C}) \subseteq \Fun(A_{i}, \category{C})
+\end{equation}
+the full simplicial subset on those functors $A_{i} \to \category{C}$ which respect each labelling in \hyperref[fig:factorization]{Figure~\ref*{fig:factorization}}:
+\begin{itemize}
+  \item ingressive
+  \item egressive
+  \item $p$-cartesian
+  \item $p$-cocartesian
+  \item $p^{\dagger}$-cartesian
+  \item $p_{\dagger}$-cocartesian
+\end{itemize}
+Note that because equivalences in $\category{C}$ belong to each of these classes of morphisms, the inclusion in \hyperref[eq:inclusion_of_functors_respecting_labelling]{Equation~\ref*{eq:inclusion_of_functors_respecting_labelling}} is an inclusion of connected components.
+
+Similarly, we will denote by $\Fun'(A_{i}, \category{D})$ the full simplicial subset on functors which respect the ingressive and egressive labellings.
+
+\begin{lemma}
+  \label{lemma:homotopy_pullback_for_filling_procedure}
+  The square
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun'(A_{6}, \category{C})
+      \arrow[r]
+      \arrow[d]
+      & \Fun'(A_{0}, \category{C})
+      \arrow[d]
+      \\
+      \Fun'(A_{6}, \category{D})
+      \arrow[r]
+      & \Fun'(A_{0}, \category{D})
+    \end{tikzcd}
+  \end{equation*}
+  is homotopy pullback.
+\end{lemma}
+\begin{proof}
+  The factorization of \hyperref[fig:factorization]{Figure~\ref*{fig:factorization}} gives us a factorization of the above square into five squares
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun'(A_{k+1}, \category{C})
+      \arrow[r]
+      \arrow[d]
+      & \Fun'(A_{k}, \category{C})
+      \arrow[d]
+      \\
+      \Fun'(A_{k+1}, \category{D})
+      \arrow[r]
+      & \Fun'(A_{k}, \category{D})
+    \end{tikzcd},
+    \qquad1 \leq k < 6,
+  \end{equation*}
+  each corresponding to one of the inclusions $i_{k}$. We will be done if we can show that each of these squares is homotopy pullback. It suffices to show that for each $k$, the map
+  \begin{equation*}
+    j_{k}\colon \Fun'(A_{k+1}, \category{C})
+    \to
+    \Fun'(A_{k}, \category{C})
+    \times_{\Fun'(A_{k+1}, \category{D})}
+    \Fun'(A_{k}, \category{D})
+  \end{equation*}
+  is a weak equivalence. First, we show that each of these maps is a Kan fibration. To see this, consider the square
+  \begin{equation*}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&]
+        \Fun'(A_{k+1}, \category{C})
+        \arrow[r, hook]
+        \arrow[d, swap, "j_{k}"]
+        \& \Fun(A_{k+1}, \category{C})
+        \arrow[d]
+        \\
+        \Fun'(A_{k}, \category{C})
+        \times_{\Fun'(A_{k+1}, \category{D})}
+        \Fun'(A_{k}, \category{D})
+        \arrow[r, hook]
+        \& \Fun(A_{k}, \category{C})
+        \times_{\Fun(A_{k+1}, \category{D})}
+        \Fun(A_{k}, \category{D})
+      \end{tikzcd}.
+    }
+  \end{equation*}
+  The right-hand map is a Kan fibration because of \hyperref[cor:kan_fib_and_isofib]{Corollary~\ref*{cor:kan_fib_and_isofib}}, and we have already seen that the top map is an inclusion of connected componenents. Hence each $j_{k}$ is a Kan fibration by \hyperref[cor:connected_components_kan_fibration]{Corollary~\ref*{cor:connected_components_kan_fibration}}. Thus, in order to show that each $j_{k}$ is a weak equivalence, it suffices to show that the fibers are contractible.
+
+  First consider the case $k = 1$. For any map $\alpha$ below, consider the following pullback square.
+  \begin{equation*}
+    \begin{tikzcd}
+      F_{\alpha}
+      \arrow[r]
+      \arrow[d]
+      & \Fun'(A_{1}, \category{C})
+      \arrow[d, "j_{1}"]
+      \\
+      \Delta^{0}
+      \arrow[r, "\alpha"]
+      & \Fun'(A_{0}, \category{C})
+      \times_{\Fun'(A_{1}, \category{D})}
+      \Fun'(A_{1}, \category{D})
+    \end{tikzcd}.
+  \end{equation*}
+  The fiber $F_{\alpha}$ over $\alpha$ is the space of ways of completing a diagram of shape $A_{0}$ in $\category{C}$ to a diagram of shape $A_{1}$ in $\category{C}$ given a diagram of shape $A_{1}$ in $\category{D}$. This is the space of ways of filling $\Lambda^{2}_{2} \hookrightarrow \Delta^{2}$ in $\category{C}^{\dagger}$ lying over a $2$-simplex in $\category{D}^{\dagger}$. This is contractible by \hyperref[lemma:cartesian_horn_fillings_contractible]{Lemma~\ref*{lemma:cartesian_horn_fillings_contractible}}.
+
+  The case $k = 2$ is similar, using \hyperref[lemma:inner_fib_contractible_fibers]{Lemma~\ref*{lemma:inner_fib_contractible_fibers}}.
+
+  The case $k = 3$ is similar, using \hyperref[lemma:twice_cartesian_lifts_contractible]{Lemma~\ref*{lemma:twice_cartesian_lifts_contractible}}.
+
+  The cases $k = 4$ and $k = 5$ use the dual to \hyperref[lemma:cartesian_horn_fillings_contractible]{Lemma~\ref*{lemma:cartesian_horn_fillings_contractible}}.
+\end{proof}
+We are now ready to show that morphisms of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Diagram~\ref*{eq:form_of_p_cocartesian_morphisms}} are $\pi'$-cocartesian. 
+
+\begin{proposition}
+  For any morphism $e$ of the form given in \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}}, the square
+  \begin{equation*}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&]
+        \Fun^{\aCart}(\sd(\Delta^{2}), \category{C}) \times_{\Fun^{\aCart}(\sd(\Delta^{\{0, 1\}}), \category{C})} \{e\}
+        \arrow[r]
+        \arrow[d]
+        \& \Fun^{\aCart}(\sd(\Lambda^{2}_{0}), \category{C}) \times_{\Fun^{\aCart}(\sd(\Delta^{\{0, 1\}}), \category{C})} \{e\}
+        \arrow[d]
+        \\
+        \Fun^{\aCart}(\sd(\Delta^{2}), \category{D}) \times_{\Fun^{\aCart}(\sd(\Delta^{\{0, 1\}}), \category{D})} \{\pi e\}
+        \arrow[r]
+        \& \Fun^{\aCart}(\sd(\Lambda^{2}_{0}), \category{D}) \times_{\Fun^{\aCart}(\sd(\Delta^{\{0, 1\}}), \category{D})} \{\pi e\}
+      \end{tikzcd}
+    }
+  \end{equation*}
+  is homotopy pullback.
+\end{proposition}
+\begin{proof}
+  This square factors into the two squares
+  \begin{equation*}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+        \Fun^{\aCart}(\sd(\Delta^{2}), \category{C}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{C})} \{e\}
+        \arrow[r]
+        \arrow[d]
+        \& \Fun'(A_{6}, \category{C}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{C})} \{e\}
+        \arrow[d]
+        \\
+        \Fun^{\aCart}(\sd(\Delta^{2}), \category{D}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{D})} \{\pi e\}
+        \arrow[r]
+        \& \Fun'(A_{6}, \category{D}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{C})} \{\pi e\}
+      \end{tikzcd}
+    }
+  \end{equation*}
+  and
+  \begin{equation*}
+    \noindent\makebox[\textwidth]{%
+      \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+        \Fun'(A_{6}, \category{C}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{C})} \{e\}
+        \arrow[r]
+        \arrow[d]
+        \& \Fun'(A_{0}, \category{C}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{C})} \{e\}
+        \arrow[d]
+        \\
+        \Fun'(A_{6}, \category{D}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{C})} \{\pi e\}
+        \arrow[r]
+        \& \Fun'(A_{0}, \category{D}) \times_{\Fun(\sd(\Delta^{\{0, 1\}}), \category{C})} \{\pi e\}
+      \end{tikzcd}.
+    }
+  \end{equation*}
+
+  The first is homotopy pullback because the bottom map is an inclusion of connected components, and the second condition of \hyperref[thm:main]{Theorem~\ref*{thm:main}} guarantees that the fiber over an ambigressive $\sd(\Delta^{2}) \to \category{D}$ belonging to $\Fun'(A_{6}, \category{D})$ whose restriction to $\sd(\Delta^{\{0, 1\}})$ is $\pi e$ is precisely an ambigressive Cartesian functor $\sd(\Delta^{2}) \to \category{C}$ whose restriction to $\sd(\Delta^{\{0, 1\}})$ is $e$.
+
+  That the second is homotopy pullback follows immediately from \hyperref[lemma:homotopy_pullback_for_filling_procedure]{Lemma~\ref*{lemma:homotopy_pullback_for_filling_procedure}}.
+\end{proof}
+
+This proves \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
+
+\end{document}

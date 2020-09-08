@@ -1,0 +1,175 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\appendix
+
+\section{Appendix}
+
+%\subsection{Bisimplicial sets}
+%\label{sss:bisimplicial_sets}
+%
+%The category $\SSet$ carries two model structures of which we will make frequent use:
+%\begin{itemize}
+%  \item The \emph{Kan} model structure, which has the following description.
+%    \begin{itemize}
+%      \item The fibrations are the Kan fibrations.
+%
+%      \item The cofibrations are the monomorphisms.
+%
+%      \item The weak equivalences are weak homotopy equivalences.
+%    \end{itemize}
+%
+%  \item The \emph{Joyal} model structure. We will not give a complete description, referring the reader to \cite[Sec.\ 2.2.5]{highertopostheory}. We will make use of the following properties.
+%    \begin{itemize}
+%      \item The cofibrations are monomorphisms.
+%
+%      \item The fibrant objects are quasicategories, and the fibrations between fibrant objects are isofibrations, i.e.\ inner fibrations with lifts of equivalences (cf \cite[Cor.\ 2.6.5]{highertopostheory}).
+%    \end{itemize}
+%\end{itemize}
+%
+%The category $\D\op$ has a Reedy structure, which gives us, together with the Kan model structure, a model structure on the category $\Fun(\D\op, \SSet)$ with the following properties.
+%\begin{itemize}
+%  \item The cofibrations are monomorphisms.
+%
+%  \item The weak equivalences are level-wise weak homotopy equivalences.
+%
+%  \item The fibrations are \emph{Reedy fibrations} (\hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}}).
+%\end{itemize}
+%
+\subsection{Divisibility of bifunctors}
+\label{sss:divisibility_of_bifunctors}
+
+In this section, we recall some key results from \cite{qcats_vs_segal_spaces}. We refer readers there for more information.
+
+Let $\odot\colon \mathcal{E}_{1} \times \category{E}_{2} \to \category{E}_{3}$ be a functor. We will say that $\odot$ is \emph{divisible on the left} if for each $A \in \category{E}_{1}$, the functor $A \odot -$ admits a right adjoint $A \backslash -$. In this case, this construction turns out also to be functorial in $A$; that is, we get a functor
+\begin{equation*}
+  - \backslash -\colon \category{E}_{1}\op \times \category{E}_{3} \to \category{E}_{2}.
+\end{equation*}
+
+Analogously, $\odot\colon \mathcal{E}_{1} \times \mathcal{E}_{2} \to \mathcal{E}_{3}$ is \emph{divisible on the right} if for for each $B \in \category{E}_{2}$, the functor $- \odot B$ admits a right adjoint $- / B$. In this case we get a of two variables
+\begin{equation*}
+  - / -\colon \category{E}_{3} \times \category{E}_{2}\op \to \category{E}_{1}.
+\end{equation*}
+
+\begin{example}
+  It will be helpful to keep in mind the cartesian product 
+  \begin{equation*}
+    - \times -\colon \SSet \times \SSet \to \SSet. 
+  \end{equation*}
+  In this case, both $A \backslash X$ and $X / A$ are the mapping space $X^{A}$.
+\end{example}
+
+If $\odot$ is divisible on both sides, then there is a bijection between maps of the following types:
+\begin{equation*}
+  A \odot B \to X,\qquad A \to X / B,\qquad B \to A \backslash X.
+\end{equation*}
+In particular, this implies that the functors $X / -$ and $- \backslash X$ are mutually right adjoint.
+
+If both $\category{E}_{1}$ and $\category{E}_{2}$ are finitely complete and $\category{E}_{3}$ is finitely cocomplete, then from a map $u\colon A \to A'$ in $\category{E}_{1}$, a map $v\colon B \to B'$ in $\category{E}_{2}$, and a map $f\colon X \to Y$ in $\category{E}_{3}$, we can build the following maps.
+\begin{itemize}
+  \item From the square
+    \begin{equation*}
+      \begin{tikzcd}
+        A \odot B
+        \arrow[r]
+        \arrow[d]
+        & A' \odot B
+        \arrow[d]
+        \\
+        A \odot B'
+        \arrow[r]
+        & A' \odot B'
+      \end{tikzcd}
+    \end{equation*}
+    we get a map
+    \begin{equation*}
+      u \odot' v\colon A \odot B' \amalg_{A \odot B} A' \odot B \to A' \odot B'.
+    \end{equation*}
+
+  \item From the square
+    \begin{equation*}
+      \begin{tikzcd}
+        A' \backslash X
+        \arrow[r]
+        \arrow[d]
+        & A \backslash X
+        \arrow[d]
+        \\
+        A' \backslash Y
+        \arrow[r]
+        & A \backslash Y
+      \end{tikzcd}
+    \end{equation*}
+    we get a map
+    \begin{equation*}
+      \langle u \backslash f \rangle\colon A' \backslash X \to A \backslash X \times_{A \backslash Y} A' \backslash Y
+    \end{equation*}
+
+  \item From the square
+    \begin{equation*}
+      \begin{tikzcd}
+        X / B'
+        \arrow[r]
+        \arrow[d]
+        & X / B
+        \arrow[d]
+        \\
+        Y / B'
+        \arrow[r]
+        & Y / B
+      \end{tikzcd}
+    \end{equation*}
+    we get a map
+    \begin{equation*}
+      \langle f / v \rangle\colon X / B' \to X / B \times_{Y / B} Y / B'.
+    \end{equation*}
+\end{itemize}
+
+\begin{proposition}
+  \label{prop:equivalent_lifting_problems}
+  With the above notation, the following are equivalent adjoint lifting problems:
+  \begin{equation*}
+    \begin{tikzcd}
+      A \odot B' \amalg_{A \odot B} A' \odot B
+      \arrow[r]
+      \arrow[d]
+      & X
+      \arrow[d]
+      \\
+      A' \odot B'
+      \arrow[r]
+      \arrow[ur, dashed]
+      & Y
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+      A
+      \arrow[r]
+      \arrow[d]
+      & X / B'
+      \arrow[d]
+      \\
+      A'
+      \arrow[r]
+      \arrow[ur, dashed]
+      & X / B \times_{Y / B} Y / B'
+    \end{tikzcd}
+  \end{equation*}
+  \begin{equation*}
+    \begin{tikzcd}
+      B
+      \arrow[r]
+      \arrow[d]
+      & A' \backslash X
+      \arrow[d]
+      \\
+      B'
+      \arrow[r]
+      \arrow[ur, dashed]
+      & A \backslash X \times_{A \backslash Y} A' \backslash Y
+    \end{tikzcd}
+  \end{equation*}
+\end{proposition}
+
+\end{document}

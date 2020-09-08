@@ -1,0 +1,454 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+
+\section{Application to presheaves}
+\label{sec:application_to_presheaves}
+
+\subsection{Introduction}
+\label{ssc:introduction}
+
+Consider the $\infty$-category $\S$ of spaces. By \cite[Lemma 6.1.1.1]{highertopostheory} and \cite[Lemma 2.4.7.12]{highertopostheory}, the functor
+\begin{equation}
+  \label{eq:ev1}
+  \ev_{1}\colon \Map(\Delta^{1}, \S) \to \S
+\end{equation}
+is a bicartesian fibration. For each edge $f\colon \Delta^{1} \to \S$, corresponding to a morphism $f\colon X \to Y$ of spaces, the fiber of $\ev_{1}$ over $f$ corresponds to a pair of adjoint functor
+\begin{equation*}
+  f_{!} : \S^{/X} \longleftrightarrow \S^{/Y} : f^{*}
+\end{equation*}
+Interpreting $\S^{/X}$ and $\S^{/Y}$ as models for the $\P(X)$ and $\P(Y)$, the $\infty$-categories of presheaves on $X$ and $Y$, the functor $f^{*}$ corresponds to restriction, taking a presheaf $Y \to \S$ to the pullback $X \to Y \to \S$, and the functor $f_{!}$ takes a preasheaf $X \to \S$ to its left Kan extension along $X \to Y$.
+
+In this section, we apply the construction of the previous chapter to build from these data a functor
+\begin{equation}
+  \label{eq:rhat}
+  \hat{r}\colon \Span(\S) \to \ICat.
+\end{equation}
+This functor will take a space $X$ to the category of presheaves on $X$, denoted $\P(X)$, and a span of spaces
+\begin{equation*}
+  \begin{tikzcd}
+    & Y
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    \\
+    X
+    && X'
+  \end{tikzcd}
+\end{equation*}
+to the map $\P(X) \to \P(Y)$ given by the composition
+\begin{equation*}
+  \begin{tikzcd}
+    & \P(Y)
+    \arrow[dr, "f^{*}"]
+    \\
+    \P(X)
+    \arrow[ur, "g_{!}"]
+    \arrow[rr, "f^{*} \circ g_{!}"]
+    && \P(X').
+  \end{tikzcd}.
+\end{equation*}
+
+Note that the category $\S$ has products. This induces a symmetric monoidal structure on $\S$, the Cartesian monoidal structure, which (as we will see) induces a symmetric monoidal structure on $\Span(\S)$. When we take $\Cat_{\infty}$ also to carry the Cartesian monoidal structure, we will see that our functor $\hat{r}$ (\hyperref[eq:rhat]{Equation~\ref*{eq:rhat}}) is even lax monoidal.
+
+The idea behind the construction of the functor $\hat{r}$, in broad strokes, is as follows. We dress up the functor $\ev_{1}$, making it into a symmetric monoidal functor as follows (the monoidal structures on $\Fun(\Delta^{1}, \S)^{\otimes}$ and $\S^{\otimes}$ are not exactly the standard cocartesian monoidal functors, as we will later discuss; they are represented by \emph{cartesian,} rather than \emph{cocartesian} fibrations).
+\begin{equation*}
+  \begin{tikzcd}
+    \Fun(\Delta^{1}, \S)^{\otimes}
+    \arrow[rr, "r"]
+    \arrow[dr, swap, "q"]
+    && \S^{\otimes}
+    \arrow[dl, "p"]
+    \\
+    & \Finp\op
+  \end{tikzcd}
+\end{equation*}
+
+We then take spans in each of these categories, restricting the backwards- and forwards-facing legs judiciously so that we get a diagram
+\begin{equation*}
+  \begin{tikzcd}
+    \Span(\Fun(\Delta^{1}, \S))^{\otimes}
+    \arrow[rr, "\rho"]
+    \arrow[dr, swap, "\varpi"]
+    && \Span(\S)^{\otimes}
+    \arrow[dl, "\pi"]
+    \\
+    & \Finp
+  \end{tikzcd},
+\end{equation*}
+where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Fun(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds a cocartesian fibration, which classifies a functor $\Span(\S) \to \ICat$. By \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, this functor is lax monoidal, giving us our functor $\hat{r}$.
+
+Much of the technology in this section is present in \cite{spectralmackeyfunctors2}. However, the manner in which we present it allows for generalization in a different direction than that carried out there. This will be the subject of future work.
+
+\subsection{Defining the maps \texorpdfstring{$p$}{p}, \texorpdfstring{$q$}{q}, and \texorpdfstring{$r$}{r}}
+\label{ssc:defining_the_maps_p_q_and_r}
+
+Recall that for any $\infty$-category $\category{C}$ with finite products, one can construct a symmetric monoidal structure $\category{C}^{\times} \to \Finp$ whose corresponding tensor product $\times\colon \category{C} \times \category{C} \to \category{C}$ is the cartesian product; for more details, see \cite[Sec.\ 2.4.1]{luriehigheralgebra}. Similarly, as described in \cite[Sec.\ 2.4.2]{luriehigheralgebra}, for any $\infty$-category with coproducts there is a symmetric monoidal structure $\category{C}^{\amalg} \to \Finp$, called the \emph{cocartesian monoidal structure,} whose tensor product $\amalg\colon \category{C} \times \category{C} \to \category{C}$ is the coproduct. Because cocartesian fibrations give better control of the morphisms out of an object than morphisms into an object, the cocartesian monoidal structure is much more tractable than the cartesian monoidal structure.
+
+Since taking coproducts in $\category{C}\op$ is the same as taking products in $\category{C}$, we can express the cartesian monoidal structure on $\category{C}$ as a cartesian fibration by taking the opposite of the cocartesian monoidal structure on $\category{C}\op$. In the case $\category{C} = \S$, this gives us the monoidal structure we are interested in.
+
+\begin{definition}
+  We define the cartesian fibration $p\colon \S_{\times} \to \Finp\op$ to be the functor
+  \begin{equation*}
+    ((\category{S}\op)^{\amalg} \to \Finp)\op.
+  \end{equation*}
+\end{definition}
+
+Explicitly, the objects of 
+
+\begin{lemma}
+  The map $p$ is a cartesian fibration, with $p$-cartesian morphisms in $\S_{\times}$ those which induce products in the sense of Higher Algebra, reference to come.
+\end{lemma}
+
+We can now define $q$ and $r$ in one fell swoop via the following diagram, where the left-hand square is pullback.
+\begin{equation*}
+  \begin{tikzcd}
+    \Fun(\Delta^{1}, \S)_{\times}
+    \arrow[r]
+    \arrow[rr, bend left, "r"]
+    \arrow[d, swap, "q"]
+    & \Fun(\Delta^{1}, \S_{\times})
+    \arrow[r, "\ev_{1}"]
+    \arrow[d]
+    & \S_{\times}
+    \arrow[d, "p"]
+    \\
+    \Finp\op
+    \arrow[r]
+    \arrow[rr, bend right, swap, "\id"]
+    & \Fun(\Delta^{1}, \Finp\op)
+    \arrow[r, "\ev_{1}"]
+    & \Finp\op
+  \end{tikzcd}
+\end{equation*}
+
+\begin{lemma}
+  The map $q$ is a Cartesian fibration, and the cartesian morphisms are level-wise cartesian morphisms in $\S_{\times}$.
+\end{lemma}
+\begin{proof}
+  The map $q$ is given by the pullback
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun(\Delta^{1}, \category{S})_{\times}
+      \arrow[r]
+      \arrow[d, swap, "q"]
+      & \Fun(\Delta^{1}, \category{S}_{\times})
+      \arrow[d]
+      \\
+      \Finp\op
+      \arrow[r]
+      & \Fun(\Delta^{1}, \Finp\op)
+    \end{tikzcd}.
+  \end{equation*}
+  The right-hand map is a Cartesian fibration whose cartesian morphisms are point-wise cartesian morphisms in $\S_{\times}$. The left-hand map is also a Cartesian fibration with the same Cartesian morphsims (that every left-hand cartesian morphism is right-hand cartesian follows from HTT; the other direction follows from the existence of a comparison equivalence between cartesian morphisms).
+\end{proof}
+
+\begin{lemma}
+  \label{lemma:map_on_cartesian_cats_is_bicart_fib}
+  The map $r$ is a bicartesian fibration with $r$-cartesian morphisms pullback squares in $\S_{\times}$ and $r$-cocartesian morphisms squares of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      X
+      \arrow[r, "\simeq"]
+      \arrow[d]
+      & Y
+      \arrow[d]
+      \\
+      X'
+      \arrow[r]
+      & Y'
+    \end{tikzcd}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  The map $r$ factors into
+  \begin{equation*}
+    \begin{tikzcd}
+      \Fun(\Delta^{1}, \S)_{\times}
+      \arrow[r, hook, "j"]
+      & \Fun(\Delta^{1}, \S_{\times})
+      \arrow[r, "\ev_{1}"]
+      & \S_{\times}
+    \end{tikzcd}
+  \end{equation*}
+  The map $\ev_{1}$ is a bicartesian fibration with the morphisms above; the map $j$ is a full inclusion, and therefore has the right-lifting property with respect to \emph{all} horn inclusions $\Lambda^{n}_{i} \hookrightarrow \Delta^{n}$, $n \geq 2$ (because $\Lambda^{n}_{i}$ contains all vertices for $n \geq 2$). Every edge in $\Fun(\Delta^{1}, \S)_{\times}$ is therefore both $j$-cartesian and $j$-cocartesian. HTT 2.4.1.3.3 implies that an edge in $\Fun(\Delta^{1}, \S)_{\times}$ is $r$-cartesian (resp.\ cocartesian) if and only if its image in $\Fun(\Delta^{1}, \S_{\times})$ is $\ev_{1}$-cartesian (resp.\ cocartesian).
+\end{proof}
+
+\subsection{Restricting the legs of the spans}
+\label{ssc:restricting_the_legs_of_the_spans}
+
+Our next step is to define the subcategories to which the legs of our spans are allowed to belong. As in \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we do this by defining triples of categories.
+
+%We define three triples and morphisms between them as follows.
+%\begin{equation*}
+%  \begin{tikzcd}
+%    \triple{M}
+%    \arrow[rr, "r"]
+%    \arrow[dr, swap, "q"]
+%    && \triple{P}
+%    \arrow[dl, "p"]
+%    \\
+%    & \triple{F}
+%  \end{tikzcd}
+%\end{equation*}
+
+Here:
+\begin{itemize}
+  \item $\mathcal{F} = \Finp\op$
+
+  \item $\mathcal{F}\downdag = (\Finp\op)^{\simeq}$
+
+  \item $\mathcal{F}\updag = \Finp\op$
+
+  \item $\mathcal{P} = \mathcal{S}_{\times}$, the Cartesian structure on the $\infty$-category of spaces presented as a Cartesian fibration, i.e.\ $((\S\op)^{\amalg})\op$
+
+  \item $\mathcal{P}\downdag = \mathcal{S}_{\times} \times_{\Finp\op} (\Finp\op)^{\simeq}$
+
+  \item $\mathcal{P}\updag = \mathcal{S}_{\times}$
+
+  \item $\mathcal{M} = \Fun(\Delta^{1}, \S)_{\times}$, i.e.\ the pullback
+    \begin{equation*}
+      \begin{tikzcd}
+        \Fun(\Delta^{1}, \mathcal{S})_{\times}
+        \arrow[r]
+        \arrow[d]
+        & \Fun(\Delta^{1}, \mathcal{S}_{\times})
+        \arrow[d]
+        \\
+        \Finp\op
+        \arrow[r]
+        & \Fun(\Delta^{1}, \Finp\op)
+      \end{tikzcd}
+    \end{equation*}
+
+   \item $\mathcal{M}\downdag$ is given by the pullback
+    \begin{equation*}
+      \begin{tikzcd}
+        \mathcal{M}\downdag
+        \arrow[r]
+        \arrow[d]
+        & \mathcal{M}
+        \arrow[d]
+        \\
+        (\Finp\op)^{\simeq}
+        \arrow[r]
+        & \Finp\op
+      \end{tikzcd}.
+    \end{equation*}
+
+  \item $\mathcal{M}\updag$ is given by the subcategory of $\mathcal{M}$ on morphisms
+    \begin{equation*}
+      \begin{tikzcd}
+        S
+        \arrow[r, "f"]
+        \arrow[d]
+        & T
+        \arrow[d]
+        \\
+        X
+        \arrow[r]
+        & Y
+      \end{tikzcd}
+    \end{equation*}
+    such that $f$ is $p$-cartesian.\footnote{We need to make sure that over $\id_{\langle n \rangle}$, $f$ is an isomorphism, and this seems like the best way of doing this.}
+\end{itemize}
+
+The maps $p$, $q$, and $r$ are in particular maps $\mathcal{M} \to \mathcal{P} \to \mathcal{F}$ as follows:
+\begin{equation*}
+  \begin{tikzcd}
+    \Fun(\Delta^{1}, \S)_{\times}
+    \arrow[rr, "r"]
+    \arrow[dr, swap, "q"]
+    && \S_{\times}
+    \arrow[dl, "p"]
+    \\
+    & \Finp\op
+  \end{tikzcd}
+\end{equation*}
+It is not hard to check that $p$, $q$, and $r$ restrict to maps
+\begin{equation*}
+  \begin{tikzcd}[column sep=small]
+    \mathcal{M}_{\dagger}
+    \arrow[r, "r_{\dagger}"]
+    \arrow[rr, swap,  bend right, "q_{\dagger}"]
+    & \mathcal{P}_{\dagger}
+    \arrow[r, "q_{\dagger}"]
+    & \mathcal{F}_{\dagger}
+  \end{tikzcd}
+  \qquad\text{and}\qquad
+  \begin{tikzcd}[column sep=small]
+    \mathcal{M}^{\dagger}
+    \arrow[r, "r^{\dagger}"]
+    \arrow[rr, swap,  bend right, "q^{\dagger}"]
+    & \mathcal{P}^{\dagger}
+    \arrow[r, "q^{\dagger}"]
+    & \mathcal{F}^{\dagger}
+  \end{tikzcd}.
+\end{equation*}
+
+
+
+\begin{lemma}
+  The morphism $p$ satisfies the conditions of the Omnibus theorem.
+\end{lemma}
+\begin{proof}
+  We have to check the conditions of the Omnibus Theorem:
+  \begin{enumerate}
+    \item We have to show that for any isomorphism in $\Finp\op$, there exists a $p$-cocartesian lift. But since every morphism in $\mathcal{F}_{\dagger} = (\Finp\op)^{\simeq}$ is an equivalence, it suffices to find a $p$-cartesian lift, which is possible because $p$ is a Cartesian fibration.
+
+    \item We need to show that for any commutative square
+      \begin{equation*}
+        \sigma \ = \quad
+        \begin{tikzcd}
+          S'
+          \arrow[r, "f"]
+          \arrow[d]
+          & T'
+          \arrow[d]
+          \\
+          S
+          \arrow[r, "\simeq"]
+          & T
+        \end{tikzcd}
+      \end{equation*}
+      lying over a square
+      \begin{equation*}
+        \begin{tikzcd}
+          \langle n \rangle
+          & \langle n \rangle
+          \arrow[l, swap, "\cong"]
+          \\
+          \langle m \rangle
+          \arrow[u]
+          & \langle m \rangle
+          \arrow[l, swap, "\cong"]
+          \arrow[u]
+        \end{tikzcd}
+      \end{equation*}
+      in $\Finp\op$ (where we have drawn the arrows as they are in $\Finp$), $\sigma$ is a pullback square if and only if $f$ is $p$-cocartesian. But $f$ is lying over an equivalence, so it is $p$-cocartesian if and only if it is an equivalence, which in turn is true if and only if the square in question is pullback.
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+  The morphism $q$ satisfies the conditions of the Omnibus theorem.
+\end{lemma}
+\begin{proof}
+  We have to check the conditions of the Omnibus Theorem:
+  \begin{enumerate}
+    \item We have to show that for any isomorphism in $\Finp\op$, there exists a $q$-cocartesian lift. But it suffices to find a $q$-cartesian lift, which is possible because $q$ is a Cartesian fibration.
+
+    \item We need to show that for any commutative square in $\Fun(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$ of the form
+      \begin{equation*}
+        \begin{tikzcd}
+          X'
+          \arrow[rr, "F"]
+          \arrow[dd]
+          \arrow[dr, "\phi"]
+          && Y'
+          \arrow[dd]
+          \arrow[dr, "\psi"]
+          \\
+          & X
+          \arrow[rr, crossing over, near start, "\simeq"]
+          && Y
+          \arrow[dd]
+          \\
+          S'
+          \arrow[dr]
+          \arrow[rr, near start, "f"]
+          && T'
+          \arrow[dr]
+          \\
+          & S
+          \arrow[from=uu, crossing over]
+          \arrow[rr, "\simeq"]
+          && T
+        \end{tikzcd}
+      \end{equation*}
+      (where $\phi$ is $p$-cartesian) and lying over a square in $\Finp\op$ of the form
+      \begin{equation*}
+        \begin{tikzcd}
+          \langle n \rangle
+          & \langle n \rangle
+          \arrow[l, swap, "\cong"]
+          \\
+          \langle m \rangle
+          \arrow[u]
+          & \langle m \rangle
+          \arrow[l, swap, "\cong"]
+          \arrow[u]
+        \end{tikzcd},
+      \end{equation*}
+      the morphism $(F, f)$ is $p$-cocartesian if and only if the top and bottom squares are pullback and $\psi$ is $p$-cocartesian. But this again follows because equivalences are $p$-cocartesian, and cocartesian morphisms are closed under composition.
+  \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+  The map $r$ satisfies the conditions of the Omnibus Theorem.
+\end{lemma}
+\begin{proof}
+  \leavevmode
+  \begin{enumerate}
+    \item It suffices to show that for each morphism $T \to S'$ in $\S_{\times}$ lying over $\langle m \rangle \overset{\cong}{\leftarrow} \langle m \rangle$ and each $Y \to T$ in the fiber over $\langle m \rangle$, the square
+      \begin{equation*}
+        \begin{tikzcd}
+          Y
+          \arrow[r, equals]
+          \arrow[d]
+          & Y
+          \arrow[d]
+          \\
+          T
+          \arrow[r]
+          & S'
+        \end{tikzcd}
+      \end{equation*}
+      is both $p$-cocartesian and $p_{\dagger}$-cocartesian, both of which follow from \hyperref[lemma:map_on_cartesian_cats_is_bicart_fib]{Lemma~\ref*{lemma:map_on_cartesian_cats_is_bicart_fib}}.
+
+    \item We need to show that for any commutative square in $\Fun(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$ of the form
+      \begin{equation*}
+        \begin{tikzcd}
+          X'
+          \arrow[rr, "F"]
+          \arrow[dd]
+          \arrow[dr, "\simeq"]
+          && Y'
+          \arrow[dd]
+          \arrow[dr, "\psi"]
+          \\
+          & X
+          \arrow[rr, crossing over, near start, "\simeq"]
+          && Y
+          \arrow[dd]
+          \\
+          S'
+          \arrow[dr]
+          \arrow[rr, near start, "f"]
+          && T'
+          \arrow[dr]
+          \\
+          & S
+          \arrow[from=uu, crossing over]
+          \arrow[rr]
+          && T
+        \end{tikzcd}
+      \end{equation*}
+      where the bottom square is pullback, the morphism $(F, f)$ is $r$-cocartesian if and only if the top square is pullback and $\psi$ is an equivalence. This is clear.
+  \end{enumerate}
+\end{proof}
+
+This gives us the following commutative diagram.
+
+\begin{equation*}
+  \begin{tikzcd}
+    \Span\triple{M}
+    \arrow[rr, "\rho"]
+    \arrow[dr, swap, "\varpi"]
+    && \Span\triple{P}
+    \arrow[dl, "\pi"]
+    \\
+    & \Span\triple{F}
+  \end{tikzcd}
+\end{equation*}
+
+
+\end{document}
