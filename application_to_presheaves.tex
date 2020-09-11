@@ -13,9 +13,9 @@ Consider the $\infty$-category $\S$ of spaces. By \cite[Lemma 6.1.1.1]{highertop
   \label{eq:ev1}
   \ev_{1}\colon \Map(\Delta^{1}, \S) \to \S
 \end{equation}
-is a bicartesian fibration. For each edge $f\colon \Delta^{1} \to \S$, corresponding to a morphism $f\colon X \to Y$ of spaces, the fiber of $\ev_{1}$ over $f$ corresponds to a pair of adjoint functor
+is a bicartesian fibration. For each edge $f\colon \Delta^{1} \to \S$, corresponding to a morphism $f\colon X \to Y$ of spaces, the fiber of $\ev_{1}$ over $f$ corresponds to a pair of adjoint functors
 \begin{equation*}
-  f_{!} : \S^{/X} \longleftrightarrow \S^{/Y} : f^{*}
+  f_{!} : \S^{/X} \longleftrightarrow \S^{/Y} : f^{*}.
 \end{equation*}
 Interpreting $\S^{/X}$ and $\S^{/Y}$ as models for the $\P(X)$ and $\P(Y)$, the $\infty$-categories of presheaves on $X$ and $Y$, the functor $f^{*}$ corresponds to restriction, taking a presheaf $Y \to \S$ to the pullback $X \to Y \to \S$, and the functor $f_{!}$ takes a preasheaf $X \to \S$ to its left Kan extension along $X \to Y$.
 
@@ -50,10 +50,10 @@ to the map $\P(X) \to \P(Y)$ given by the composition
 
 Note that the category $\S$ has products. This induces a symmetric monoidal structure on $\S$, the Cartesian monoidal structure, which (as we will see) induces a symmetric monoidal structure on $\Span(\S)$. When we take $\Cat_{\infty}$ also to carry the Cartesian monoidal structure, we will see that our functor $\hat{r}$ (\hyperref[eq:rhat]{Equation~\ref*{eq:rhat}}) is even lax monoidal.
 
-The idea behind the construction of the functor $\hat{r}$, in broad strokes, is as follows. We dress up the functor $\ev_{1}$, making it into a symmetric monoidal functor as follows (the monoidal structures on $\Fun(\Delta^{1}, \S)^{\otimes}$ and $\S^{\otimes}$ are not exactly the standard cocartesian monoidal functors, as we will later discuss; they are represented by \emph{cartesian,} rather than \emph{cocartesian} fibrations).
+The idea behind the construction of the functor $\hat{r}$, in broad strokes, is as follows. We dress up the functor $\ev_{1}$, making it into a symmetric monoidal functor as follows (the monoidal structures on $\Map(\Delta^{1}, \S)^{\otimes}$ and $\S^{\otimes}$ are not exactly the standard cocartesian monoidal functors, as we will later discuss; they are represented by \emph{cartesian,} rather than \emph{cocartesian} fibrations).
 \begin{equation*}
   \begin{tikzcd}
-    \Fun(\Delta^{1}, \S)^{\otimes}
+    \Map(\Delta^{1}, \S)^{\otimes}
     \arrow[rr, "r"]
     \arrow[dr, swap, "q"]
     && \S^{\otimes}
@@ -66,7 +66,7 @@ The idea behind the construction of the functor $\hat{r}$, in broad strokes, is 
 We then take spans in each of these categories, restricting the backwards- and forwards-facing legs judiciously so that we get a diagram
 \begin{equation*}
   \begin{tikzcd}
-    \Span(\Fun(\Delta^{1}, \S))^{\otimes}
+    \Span(\Map(\Delta^{1}, \S))^{\otimes}
     \arrow[rr, "\rho"]
     \arrow[dr, swap, "\varpi"]
     && \Span(\S)^{\otimes}
@@ -75,7 +75,7 @@ We then take spans in each of these categories, restricting the backwards- and f
     & \Finp
   \end{tikzcd},
 \end{equation*}
-where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Fun(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds a cocartesian fibration, which classifies a functor $\Span(\S) \to \ICat$. By \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, this functor is lax monoidal, giving us our functor $\hat{r}$.
+where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Map(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds a cocartesian fibration, which classifies a functor $\Span(\S) \to \ICat$. By \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, this functor is lax monoidal, giving us our functor $\hat{r}$.
 
 Much of the technology in this section is present in \cite{spectralmackeyfunctors2}. However, the manner in which we present it allows for generalization in a different direction than that carried out there. This will be the subject of future work.
 
@@ -84,7 +84,7 @@ Much of the technology in this section is present in \cite{spectralmackeyfunctor
 
 Recall that for any $\infty$-category $\category{C}$ with finite products, one can construct a symmetric monoidal structure $\category{C}^{\times} \to \Finp$ whose corresponding tensor product $\times\colon \category{C} \times \category{C} \to \category{C}$ is the cartesian product; for more details, see \cite[Sec.\ 2.4.1]{luriehigheralgebra}. Similarly, as described in \cite[Sec.\ 2.4.2]{luriehigheralgebra}, for any $\infty$-category with coproducts there is a symmetric monoidal structure $\category{C}^{\amalg} \to \Finp$, called the \emph{cocartesian monoidal structure,} whose tensor product $\amalg\colon \category{C} \times \category{C} \to \category{C}$ is the coproduct. Because cocartesian fibrations give better control of the morphisms out of an object than morphisms into an object, the cocartesian monoidal structure is much more tractable than the cartesian monoidal structure.
 
-Since taking coproducts in $\category{C}\op$ is the same as taking products in $\category{C}$, we can express the cartesian monoidal structure on $\category{C}$ as a cartesian fibration by taking the opposite of the cocartesian monoidal structure on $\category{C}\op$. In the case $\category{C} = \S$, this gives us the monoidal structure we are interested in.
+Since taking coproducts in $\category{C}\op$ is the same as taking products in $\category{C}$, we can express the cartesian monoidal structure on $\category{C}$ as a cartesian fibration rather than a cocartesian fibration by taking the opposite of the cocartesian monoidal structure on $\category{C}\op$. In the case $\category{C} = \S$, this gives us the monoidal structure we are interested in.
 
 \begin{definition}
   We define the map $p\colon \S_{\times} \to \Finp\op$ to be the functor
@@ -101,7 +101,7 @@ In low degrees, the category $\S_{\times}$ admits the following description.
   \item The morphisms $(\langle m \rangle, \vec{X}) \to (\langle n \rangle, \vec{Y})$ are pairs $(\phi, \Psi)$, where $\phi\colon \langle n \rangle \to \langle m \rangle$ is a morphism in $\Finp$, and $\Psi$ consists, for each $i \in \langle m \rangle^{\circ}$, of a collection of morphisms $X_{i} \to Y_{j}$ for each $j \in \langle n \rangle^{\circ}$ with $\phi(j) = i$.
 \end{itemize}
 
-The functor $\S_{\times} \to \Finp$ is simply the obvious forgetful functor.
+The functor $\S_{\times} \to \Finp$ is the obvious forgetful functor.
 
 \begin{example}
   \label{eg:morphisms_in_cocartesian_monoidal_structure_on_spaces}
@@ -142,15 +142,16 @@ The functor $\S_{\times} \to \Finp$ is simply the obvious forgetful functor.
   The morphism described in \hyperref[eg:morphisms_in_cocartesian_monoidal_structure_on_spaces]{Example~\ref*{eg:morphisms_in_cocartesian_monoidal_structure_on_spaces}} is cartesian if and only if $X \simeq Y \times Y'$, and the maps $X \to Y$ and $X \to Y'$ are the canonical projections.
 \end{example}
 
+We can now define the maps $q$ and $r$ in one fell swoop.
 \begin{definition}
-  We can now define the maps $q$ and $r$ in one fell swoop via the following diagram, where the left-hand square is pullback. In particular, the space $\Fun(\Delta^{1}, \S)_{\times}$ is defined to be the (strict) pullback below.
+  We define the maps $q$ and $r$ via the following diagram, where the left-hand square is pullback. In particular, the space $\Map(\Delta^{1}, \S)_{\times}$ is defined to be the (strict) pullback below.
   \begin{equation*}
     \begin{tikzcd}
-      \Fun(\Delta^{1}, \S)_{\times}
+      \Map(\Delta^{1}, \S)_{\times}
       \arrow[r, hook]
       \arrow[rr, bend left, "r"]
       \arrow[d, swap, "q"]
-      & \Fun(\Delta^{1}, \S_{\times})
+      & \Map(\Delta^{1}, \S_{\times})
       \arrow[r, "\ev_{1}"]
       \arrow[d]
       & \S_{\times}
@@ -159,7 +160,7 @@ The functor $\S_{\times} \to \Finp$ is simply the obvious forgetful functor.
       \Finp\op
       \arrow[r, hook]
       \arrow[rr, bend right, swap, "\id"]
-      & \Fun(\Delta^{1}, \Finp\op)
+      & \Map(\Delta^{1}, \Finp\op)
       \arrow[r, "\ev_{1}"]
       & \Finp\op
     \end{tikzcd}
@@ -173,18 +174,18 @@ The functor $\S_{\times} \to \Finp$ is simply the obvious forgetful functor.
   The map $q$ is given by the pullback
   \begin{equation*}
     \begin{tikzcd}
-      \Fun(\Delta^{1}, \category{S})_{\times}
+      \Map(\Delta^{1}, \category{S})_{\times}
       \arrow[r, hook]
       \arrow[d, swap, "q"]
-      & \Fun(\Delta^{1}, \category{S}_{\times})
+      & \Map(\Delta^{1}, \category{S}_{\times})
       \arrow[d, "q'"]
       \\
       \Finp\op
       \arrow[r, hook]
-      & \Fun(\Delta^{1}, \Finp\op)
+      & \Map(\Delta^{1}, \Finp\op)
     \end{tikzcd}.
   \end{equation*}
-  By \cite[Prop.\ 3.1.2.1]{highertopostheory}, the map $q'$ is a cartesian fibration whose cartesian morphisms are pointwise cartesian morphisms in $\S_{\times}$. The map $q$ is also a cartesian fibration, where a morphism in $\Fun(\Delta^{1}, \S)_{\times}$ is $q$-cartesian if and only if its image in $\Fun(\Delta^{1}, \S_{\times})$ is $q'$-cartesian. That every $q$ cartesian morphism is $q'$ cartesian follows from \cite[Prop\ 2.4.1.3]{highertopostheory}; to see other direction, consider a $q$-cartesian morphism in $\Fun(\Delta^{1}, \S)_{\times}$. 
+  By \cite[Prop.\ 3.1.2.1]{highertopostheory}, the map $q'$ is a cartesian fibration whose cartesian morphisms are pointwise cartesian morphisms in $\S_{\times}$. The map $q$ is also a cartesian fibration, where a morphism in $\Map(\Delta^{1}, \S)_{\times}$ is $q$-cartesian if and only if its image in $\Map(\Delta^{1}, \S_{\times})$ is $q'$-cartesian. That every $q$ cartesian morphism is $q'$ cartesian follows from \cite[Prop\ 2.4.1.3]{highertopostheory}; to see other direction, consider a $q$-cartesian morphism in $\Map(\Delta^{1}, \S)_{\times}$. 
 \end{proof}
 
 \begin{lemma}
@@ -208,20 +209,20 @@ The functor $\S_{\times} \to \Finp$ is simply the obvious forgetful functor.
   The map $r$ factors into
   \begin{equation*}
     \begin{tikzcd}
-      \Fun(\Delta^{1}, \S)_{\times}
+      \Map(\Delta^{1}, \S)_{\times}
       \arrow[r, hook, "j"]
-      & \Fun(\Delta^{1}, \S_{\times})
+      & \Map(\Delta^{1}, \S_{\times})
       \arrow[r, "\ev_{1}"]
       & \S_{\times}
     \end{tikzcd}
   \end{equation*}
-  The map $\ev_{1}$ is a bicartesian fibration with the cartesian and cocartesian morphisms described above; the map $j$ is a full inclusion (in the sense of \hyperref[def:full_inclusion]{Definition~\ref*{def:full_inclusion}}), and therefore has the right-lifting property with respect to \emph{all} horn inclusions $\Lambda^{n}_{i} \hookrightarrow \Delta^{n}$, $n \geq 2$ (because $\Lambda^{n}_{i}$ contains all vertices for $n \geq 2$). Every edge in $\Fun(\Delta^{1}, \S)_{\times}$ is therefore both $j$-cartesian and $j$-cocartesian. \cite[Prop\ 2.4.1.3.3]{highertopostheory} implies that an edge in $\Fun(\Delta^{1}, \S)_{\times}$ is $r$-cartesian (resp.\ cocartesian) if and only if its image in $\Fun(\Delta^{1}, \S_{\times})$ is $\ev_{1}$-cartesian (resp.\ cocartesian).
+  The map $\ev_{1}$ is a bicartesian fibration with the cartesian and cocartesian morphisms described above; the map $j$ is a full inclusion (in the sense of \hyperref[def:full_inclusion]{Definition~\ref*{def:full_inclusion}}), and therefore has the right-lifting property with respect to \emph{all} horn inclusions $\Lambda^{n}_{i} \hookrightarrow \Delta^{n}$, $n \geq 2$ (because $\Lambda^{n}_{i}$ contains all vertices for $n \geq 2$). Every edge in $\Map(\Delta^{1}, \S)_{\times}$ is therefore both $j$-cartesian and $j$-cocartesian. \cite[Prop\ 2.4.1.3.3]{highertopostheory} implies that an edge in $\Map(\Delta^{1}, \S)_{\times}$ is $r$-cartesian (resp.\ cocartesian) if and only if its image in $\Map(\Delta^{1}, \S_{\times})$ is $\ev_{1}$-cartesian (resp.\ cocartesian).
 \end{proof}
 
 Let us take stock. We have now defined the data of the commutative diagram below. Here, $p$ and $q$ are cartesian fibrations, and $r$ is a bicartesian fibration.
 \begin{equation*}
   \begin{tikzcd}
-    \Fun(\Delta^{1}, \S)_{\times}
+    \Map(\Delta^{1}, \S)_{\times}
     \arrow[rr, "r"]
     \arrow[dr, swap, "q"]
     && \S_{\times}
@@ -235,7 +236,7 @@ Our next step is to take spans with judiciously-chosen legs in each of these qua
 \subsection{Restricting the legs of the spans}
 \label{ssc:restricting_the_legs_of_the_spans}
 
-In this section, we define triple structures on the quasicategories $\Fun(\Delta^{1}, \S)_{\times}$, $\S_{\times}$, and $\Finp\op$.
+In this section, we define triple structures on the quasicategories $\Map(\Delta^{1}, \S)_{\times}$, $\S_{\times}$, and $\Finp\op$.
 
 We start by defining a triple structure on $\Finp\op$.
 
@@ -250,25 +251,47 @@ We start by defining a triple structure on $\Finp\op$.
   \end{itemize}
 \end{definition}
 
-Recall that in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}}, we considered a triple structure on any quasicategory $\category{C}$ which produced spans in $\category{C}$ whose backwards-pointing legs were equivalences; this yielded a quasicategory $\Span^{\simeq}(\category{C})$ which was equivalent to $\category{C}$ via a weak categorical equivalence $\category{C} \to \Span^{\simeq}(\category{C})$, which we constructed explicitly. The triple $\triple{F}$ is similar to the triple structure used to define $\Span^{\simeq}(\category{C})$, except that the forward-facing legs are equivalences, rather than the backward-facing legs. A dual construction thus produces the following.
+Recall that in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}}, we considered a triple structure on any quasicategory $\category{C}$ which produced spans in $\category{C}$ whose backwards-pointing legs were equivalences; this yielded a quasicategory $\Span^{\simeq}(\category{C})$ which was equivalent to $\category{C}$ via a weak categorical equivalence $\category{C} \to \Span^{\simeq}(\category{C})$, which we constructed explicitly. The triple $\triple{F}$ is similar to the triple structure used to define $\Span^{\simeq}(\category{C})$, except that the forward-facing legs are equivalences rather than the backward-facing legs. A dual construction thus produces the following.
 
 \begin{lemma}
   There is a weak Joyal equvialence
   \begin{equation*}
     \Finp \to \Span\triple{F},
   \end{equation*}
-  which sends an $n$-simplex morphism $\langle m \rangle \to \langle n \rangle \to \cdots \to \langle p \rangle$ to a diagram
+  which sends an $n$-simplex $\langle m \rangle \to \langle n \rangle \to \cdots \to \langle p \rangle$ to a diagram
   \begin{equation*}
-    \begin{tikzcd}
-      & \langle n \ranglre
-      \arrow[dr, equals]
+    \begin{tikzcd}[row sep=small, column sep=tiny]
+      &&& \respace{\langle p \rangle}
+      \\
+      && \respace{\iddots}
+      \arrow[ur]
+      && \respace{\ddots}
+      \arrow[ul, equals]
+      \\
+      & \respace{\langle n \rangle}
+      \arrow[ur]
+      && \respace{\iddots}
+      \arrow[ur]
+      && \respace{\langle p \rangle}
+      \arrow[ul, equals]
       \\
       \langle m \rangle
-      \arrow[ur, \phi]
-      && \langle n \rangle
+      \arrow[ur]
+      && \respace{\langle n \rangle}
+      \arrow[ul, equals]
+      \arrow[ur]
+      && \respace{\dots}
+      && \respace{\langle p \rangle}
+      \arrow[ul, equals]
     \end{tikzcd},
   \end{equation*}
   where we have drawn the morphisms in the span as belonging to $\Finp$ rather than $\Finp\op$.
+\end{lemma}
+
+The reasoning in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}} also shows the following.
+
+\begin{lemma}
+  The triple $\triple{F}$ is adequate.
 \end{lemma}
 
 Next, we define a triple structure on $\S_{\times}$.
@@ -284,65 +307,71 @@ Next, we define a triple structure on $\S_{\times}$.
   \end{itemize}
 \end{definition}
 
-Here:
-\begin{itemize}
-  \item $\mathcal{P} = \mathcal{S}_{\times}$, the Cartesian structure on the $\infty$-category of spaces presented as a Cartesian fibration, i.e.\ $((\S\op)^{\amalg})\op$
+Here, we do not restrict the legs of our spans at all, except to ensure that $p$ restricts to a map $p\downdag\colon \category{P}\downdag \to \category{F}\downdag$.
 
-  \item $\mathcal{P}\downdag = \mathcal{S}_{\times} \times_{\Finp\op} (\Finp\op)^{\simeq}$
+Next, we need to show that the triple $\triple{P}$ is adequate. For this we need a few lemmas.
 
-  \item $\mathcal{P}\updag = \mathcal{S}_{\times}$
+\begin{lemma}
+  The cartesian fibration $p\colon \S_{\times} \to \Finp\op$ admits relative pullbacks.
+\end{lemma}
+\begin{proof}
+  By \cite[Cor.\ 4.3.1.1]{highertopostheory}, it suffices to show that each fiber $(\S_{\times})_{\langle n \rangle}$ admits pullbacks, and that for each map $\phi\colon \langle m \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, the map $\phi^{*}\colon (\S_{\times})_{\langle m \rangle} \to (\S_{\times})_{\langle n \rangle}$ preserves pullbacks.
+\end{proof}
 
-  \item $\mathcal{M} = \Fun(\Delta^{1}, \S)_{\times}$, i.e.\ the pullback
-    \begin{equation*}
-      \begin{tikzcd}
-        \Fun(\Delta^{1}, \mathcal{S})_{\times}
-        \arrow[r]
-        \arrow[d]
-        & \Fun(\Delta^{1}, \mathcal{S}_{\times})
-        \arrow[d]
-        \\
-        \Finp\op
-        \arrow[r]
-        & \Fun(\Delta^{1}, \Finp\op)
-      \end{tikzcd}
-    \end{equation*}
+\begin{lemma}
+  The triple $\triple{P}$ is adequate.
+\end{lemma}
+\begin{proof}
+  It will suffice to show that
+\end{proof}
 
-   \item $\mathcal{M}\downdag$ is given by the pullback
-    \begin{equation*}
-      \begin{tikzcd}
-        \mathcal{M}\downdag
-        \arrow[r]
-        \arrow[d]
-        & \mathcal{M}
-        \arrow[d]
-        \\
-        (\Finp\op)^{\simeq}
-        \arrow[r]
-        & \Finp\op
-      \end{tikzcd}.
-    \end{equation*}
+Lastly, we define a triple structure on $\Map(\Delta^{1}, \S)_{\times}$.
+\begin{definition}
+  We define a triple $\triple{Q}$ as follows.
+  \begin{itemize}
+    \item $\mathcal{Q} = \Map(\Delta^{1}, \S)_{\times}$.
+  
+     \item $\mathcal{Q}\downdag$ is given by the pullback
+      \begin{equation*}
+        \begin{tikzcd}
+          \mathcal{Q}\downdag
+          \arrow[r]
+          \arrow[d]
+          & \mathcal{Q}
+          \arrow[d]
+          \\
+          (\Finp\op)^{\simeq}
+          \arrow[r]
+          & \Finp\op
+        \end{tikzcd}.
+      \end{equation*}
+  
+    \item $\mathcal{Q}\updag$ is given by the subcategory of $\mathcal{Q}$ on morphisms
+      \begin{equation*}
+        \begin{tikzcd}
+          S
+          \arrow[r, "f"]
+          \arrow[d]
+          & T
+          \arrow[d]
+          \\
+          X
+          \arrow[r]
+          & Y
+        \end{tikzcd}
+      \end{equation*}
+      such that $f$ is $p$-cartesian.%\footnote{We need to make sure that over $\id_{\langle n \rangle}$, $f$ is an isomorphism, and this seems like the best way of doing this.}
+  \end{itemize}
+\end{definition}
 
-  \item $\mathcal{M}\updag$ is given by the subcategory of $\mathcal{M}$ on morphisms
-    \begin{equation*}
-      \begin{tikzcd}
-        S
-        \arrow[r, "f"]
-        \arrow[d]
-        & T
-        \arrow[d]
-        \\
-        X
-        \arrow[r]
-        & Y
-      \end{tikzcd}
-    \end{equation*}
-    such that $f$ is $p$-cartesian.\footnote{We need to make sure that over $\id_{\langle n \rangle}$, $f$ is an isomorphism, and this seems like the best way of doing this.}
-\end{itemize}
+\begin{lemma}
+  The triple $\triple{Q}$ is adequate.
+\end{lemma}
 
 The maps $p$, $q$, and $r$ are in particular maps $\mathcal{M} \to \mathcal{P} \to \mathcal{F}$ as follows:
 \begin{equation*}
   \begin{tikzcd}
-    \Fun(\Delta^{1}, \S)_{\times}
+    \Map(\Delta^{1}, \S)_{\times}
     \arrow[rr, "r"]
     \arrow[dr, swap, "q"]
     && \S_{\times}
@@ -351,7 +380,7 @@ The maps $p$, $q$, and $r$ are in particular maps $\mathcal{M} \to \mathcal{P} \
     & \Finp\op
   \end{tikzcd}
 \end{equation*}
-It is not hard to check that $p$, $q$, and $r$ restrict to maps
+By definition, $p$, $q$, and $r$ restrict to maps
 \begin{equation*}
   \begin{tikzcd}[column sep=small]
     \mathcal{M}_{\dagger}
@@ -373,12 +402,27 @@ It is not hard to check that $p$, $q$, and $r$ restrict to maps
 \end{equation*}
 
 
+\subsection{Building categories of spans}
+\label{ssc:building_categories_of_spans}
+
+We now have the following diagram of adequate triples.
+\begin{equation*}
+  \begin{tikzcd}
+    \triple{Q}
+    \arrow[rr]
+    \arrow[dr]
+    && \triple{P}
+    \arrow[dl]
+    \\
+    & \triple{F}
+  \end{tikzcd}
+\end{equation*}
 
 \begin{lemma}
-  The morphism $p$ satisfies the conditions of the Omnibus theorem.
+  The morphism $p$ satisfies the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
 \end{lemma}
 \begin{proof}
-  We have to check the conditions of the Omnibus Theorem:
+  We check the conditions.
   \begin{enumerate}
     \item We have to show that for any isomorphism in $\Finp\op$, there exists a $p$-cocartesian lift. But since every morphism in $\mathcal{F}_{\dagger} = (\Finp\op)^{\simeq}$ is an equivalence, it suffices to find a $p$-cartesian lift, which is possible because $p$ is a Cartesian fibration.
 
@@ -423,7 +467,7 @@ It is not hard to check that $p$, $q$, and $r$ restrict to maps
   \begin{enumerate}
     \item We have to show that for any isomorphism in $\Finp\op$, there exists a $q$-cocartesian lift. But it suffices to find a $q$-cartesian lift, which is possible because $q$ is a Cartesian fibration.
 
-    \item We need to show that for any commutative square in $\Fun(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$ of the form
+    \item We need to show that for any commutative square in $\Map(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$ of the form
       \begin{equation*}
         \begin{tikzcd}
           X'
@@ -491,7 +535,7 @@ It is not hard to check that $p$, $q$, and $r$ restrict to maps
       \end{equation*}
       is both $p$-cocartesian and $p_{\dagger}$-cocartesian, both of which follow from \hyperref[lemma:map_on_cartesian_cats_is_bicart_fib]{Lemma~\ref*{lemma:map_on_cartesian_cats_is_bicart_fib}}.
 
-    \item We need to show that for any commutative square in $\Fun(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$ of the form
+    \item We need to show that for any commutative square in $\Map(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$ of the form
       \begin{equation*}
         \begin{tikzcd}
           X'
