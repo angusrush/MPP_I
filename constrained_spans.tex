@@ -33,9 +33,22 @@ We will use the following terminology and notation for the morphsism in our subc
   \item We denote the morphisms in $\category{C}^{\dagger}$ with two heads (as in $x \eg y$), and call them \emph{egressive}.
 \end{itemize}
 
-In order for a triple of categories to be able to support a category of spans, it will have to satisfy certain properties. We will call such categories \emph{adequate.}
+The egressive morphisms will correspond to the backwards (i.e.\ leftwards) facing legs of our spans, and the ingressive morphisms will correspond to the forwards (i.e.\ rightwards) facing legs. We provide the following diagram as a sort of cheat-sheet.
+\begin{equation*}
+  \begin{tikzcd}
+    & Y
+    \arrow[dl, two heads, swap, "\substack{\text{egressive} \\ \category{C}\updag}"]
+    \arrow[dr, rightarrowtail, "\substack{\text{ingressive} \\ \category{C}\downdag}"]
+    \\
+    X
+    && X'
+  \end{tikzcd}
+\end{equation*}
+
+In order for a triple of categories to be able to support a category of spans, it will have to satisfy certain properties. Following Barwick, we will call such triples \emph{adequate.}
 
 \begin{definition}
+  \label{def:adequate_triple}
   A triple $(\category{C}, \category{C}_{\dagger}, \category{C}^{\dagger})$ is said to be \defn{adequate} if it has the following properties:
   \begin{enumerate}
     \item For any morphism $y \ing x \in \category{C}_{\dagger}$ and any morphism $x' \eg x \in \category{C}^{\dagger}$, there exists a pullback square
@@ -203,7 +216,7 @@ For a proof that this really is a Segal space, the reader is once again referred
       && X'
     \end{tikzcd},
   \end{equation*}
-  i.e.\ spans such that the backwards-facing map $Y \to X$ is an equivalence in $\category{C}$. A functor $\sd(\Delta^{n}) \to \category{C}$ is ambigressive cartesian if and only if each backward-facing leg is an equivalence. Note that the triple $(\category{C}, \category{C}, \category{C}^{\simeq})$ defined above is adequate even if $\category{C}$ does not admit pullbacks: for any solid diagram of below, where $g$ is an equivalence, the dashed square completion is a pullback, where $g^{-1}$ is any homotopy inverse for $g$.
+  i.e.\ spans such that the backwards-facing map $Y \to X$ is an equivalence in $\category{C}$. With this triple, a functor $\sd(\Delta^{n}) \to \category{C}$ is ambigressive cartesian if and only if each backward-facing leg is an equivalence. Note that the triple $(\category{C}, \category{C}, \category{C}^{\simeq})$ defined above is adequate even if $\category{C}$ does not admit pullbacks: for any solid diagram below, where $g$ is an equivalence, the dashed square completion is a pullback, where $g^{-1}$ is any homotopy inverse for $g$.
   \begin{equation*}
     \begin{tikzcd}
       X
@@ -334,7 +347,7 @@ such that $p(\category{C}_{\dagger}) \subseteq \category{D}_{\dagger}$, $p(\cate
 \end{equation*}
 and similarly for $p^{\dagger}$. Clearly, a functor $p$ between adequate triples gives functors $\Span(p)$ and $\SPAN(p)$ respectively between quasicategories and Segal spaces of spans.
 
-The goal of the remainder of this document is to provide a proof of the following theorem. This is \cite[Thm.\ 12.2]{spectralmackeyfunctors1}.
+The goal of the remainder of this section is to provide a proof of the following theorem. This is \cite[Thm.\ 12.2]{spectralmackeyfunctors1}.
 
 \begin{theorem}
   \label{thm:main}

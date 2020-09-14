@@ -35,7 +35,7 @@ This functor will take a space $X$ to the category $\P(X)$ of presheaves on $X$,
     && X'
   \end{tikzcd}
 \end{equation*}
-to the map $\P(X) \to \P(Y)$ given by the composition
+to the map $\P(X) \to \P(X')$ given by the composition
 \begin{equation*}
   \begin{tikzcd}
     & \P(Y)
@@ -290,9 +290,9 @@ Recall that in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg
 
 The reasoning in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}} also shows the following.
 
-\begin{lemma}
-  The triple $\triple{F}$ is adequate.
-\end{lemma}
+\begin{proposition}
+  The triple $\triple{F}$ is adequate in the sense of \hyperref[def:adequate_triple]{Definition~\ref*{def:adequate_triple}}.
+\end{proposition}
 
 Next, we define a triple structure on $\S_{\times}$.
 
@@ -312,17 +312,75 @@ Here, we do not restrict the legs of our spans at all, except to ensure that $p$
 Next, we need to show that the triple $\triple{P}$ is adequate. For this we need a few lemmas.
 
 \begin{lemma}
+  \label{lemma:spaces_fibration_admits_relative_pullbacks}
   The cartesian fibration $p\colon \S_{\times} \to \Finp\op$ admits relative pullbacks.
 \end{lemma}
 \begin{proof}
-  By \cite[Cor.\ 4.3.1.1]{highertopostheory}, it suffices to show that each fiber $(\S_{\times})_{\langle n \rangle}$ admits pullbacks, and that for each map $\phi\colon \langle m \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, the map $\phi^{*}\colon (\S_{\times})_{\langle m \rangle} \to (\S_{\times})_{\langle n \rangle}$ preserves pullbacks.
+  By \cite[Cor.\ 4.3.1.11]{highertopostheory}, it suffices to show that each fiber $(\S_{\times})_{\langle n \rangle}$ admits pullbacks, and that for each map $\phi\colon \langle m \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, the map $\phi^{*}\colon (\S_{\times})_{\langle m \rangle} \to (\S_{\times})_{\langle n \rangle}$ preserves pullbacks. By the defintion of the cocartesian monoidal structure on $\S\op$, we have an isomorphism  $(\S_{\times})_{\langle n \rangle} \cong \S^{n}$, and $\S^{n}$ admits pullbacks. Hence, each fiber admits pullbacks. 
+
+  Now we show that for any map $\phi\colon \langle m \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, the map $\phi^{*}$ preserves pullbacks. Unravelling the definitions, we find that $\phi^{*}$ sends an object $(X_{1}, \ldots, X_{m}) \in \left( \S_{\times} \right)_{\langle m \rangle}$ to an object $(Y_{1}, \ldots, Y_{n}) \in (\S_{\times})_{\langle n \rangle}$ such that
+  \begin{equation*}
+    X_{i} \simeq \prod_{\phi(j) = i} Y_{j},
+  \end{equation*}
+  and the action on higher simplices is determined by the universal property for products. Since pullbacks in $\S^{m}$ are level-wise pullbacks in $\S$ and products commute with pullbacks, the result follows.
 \end{proof}
 
 \begin{lemma}
-  The triple $\triple{P}$ is adequate.
+  \label{lemma:existence_and_preservation_of_limits}
+  Let $p\colon \category{C} \to \category{D}$ be a cartesian fibration between quasicategories, and let $K$ be a simplicial set. Suppose that that $\category{D}$ admits all $K$-shaped limits, and that $p$ admits all relative $K$-shaped limits. Then the following hold.
+  \begin{enumerate}
+    \item The quasicategory $\category{C}$ admits all $K$-shaped limits.
+
+    \item The map $p$ preserves all $K$-shaped limits.
+  \end{enumerate}
 \end{lemma}
 \begin{proof}
-  It will suffice to show that
+  \begin{enumerate}
+    \item For any diagram $q\colon K \to \category{C}$, the diagram $p \circ q\colon K \to \category{D}$ admits a limit cone $\overline{p \circ q}\colon K\cone \to \category{D}$, and this data admits a relative $p$-limit cone $\bar{q}$ as below.
+      \begin{equation*}
+        \begin{tikzcd}
+          K
+          \arrow[r, "q"]
+          \arrow[d, hook]
+          & \category{C}
+          \arrow[d, "p"]
+          \\
+          K\cone
+          \arrow[r, swap, "\overline{p \circ q}"]
+          \arrow[ur, dashed, "\bar{q}"]
+          & \category{D}
+        \end{tikzcd}
+      \end{equation*}
+      This is a limit cone for $q$ by \cite[Prop.\ 4.3.1.5]{highertopostheory}.
+
+    \item Let $\bar{q}\colon K\cone \to \category{C}$ be a limit cone, and write $q = \bar{q}|_{K}$. We need to show that $p \circ \bar{q}\colon K\cone \to \category{D}$ is a limit cone in $\category{D}$. The restriction $p \circ q\colon K \to \category{D}$ admits a limit cone $\widehat{p \circ q}\colon K\cone \to \category{D}$, which admits a relative lift to a limit cone $\hat{q}\colon K\cone \to \category{C}$. But $\bar{q}$ and $\hat{q}$ are both limit cones of $q$, hence are equivalent as objects of $\Map(K\cone, \category{C})$ (by \cite[Prop.\ 4.3.1.5]{highertopostheory}). Therefore, $\widehat{p \circ q} = p \circ \hat{q}$ and $p \circ \bar{q}$ are equivalent as objects of $\Map(K\cone, \category{D})$, so $p \circ \bar{q}$ is a limit cone since $\widehat{p \circ q}$ is.
+  \end{enumerate}
+\end{proof}
+
+\begin{proposition}
+  The triple $\triple{P}$ is adequate.
+\end{proposition}
+\begin{proof}
+  We check the conditions of \hyperref[def:adequate_triple]{Definition~\ref*{def:adequate_triple}}.
+  \begin{enumerate}
+    \item The category $\S_{\times}$ admits all pullbacks by \hyperref[lemma:spaces_fibration_admits_relative_pullbacks]{Lemma~\ref*{lemma:spaces_fibration_admits_relative_pullbacks}}, hence certainly admits ambigressive pullbacks.
+
+    \item We need to show that for any pullback square in $\S_{\times}$
+      \begin{equation*}
+        \begin{tikzcd}
+          X
+          \arrow[r]
+          \arrow[d, swap, "f"]
+          & X'
+          \arrow[d, "f'"]
+          \\
+          Y
+          \arrow[r]
+          & Y'
+        \end{tikzcd}
+      \end{equation*}
+      such that $f$ lies over an isomorphism in $\Finp\op$, so does $f'$. But \hyperref[lemma:existence_and_preservation_of_limits]{Lemma~\ref*{lemma:existence_and_preservation_of_limits}} implies that the above square lies over a pullback square in $\Finp\op$, and the pullback of an isomorphism is an isomorphism.
+  \end{enumerate}
 \end{proof}
 
 Lastly, we define a triple structure on $\Map(\Delta^{1}, \S)_{\times}$.
@@ -338,49 +396,91 @@ Lastly, we define a triple structure on $\Map(\Delta^{1}, \S)_{\times}$.
           \arrow[r]
           \arrow[d]
           & \mathcal{Q}
-          \arrow[d]
+          \arrow[d, "{(q, \ev_{0})}"]
           \\
-          (\Finp\op)^{\simeq}
+          (\Finp\op)^{\simeq} \times \S_{\times}^{\simeq}
           \arrow[r]
-          & \Finp\op
+          & \Finp\op \times \S_{\times}
         \end{tikzcd}.
       \end{equation*}
   
-    \item $\mathcal{Q}\updag$ is given by the subcategory of $\mathcal{Q}$ on morphisms
-      \begin{equation*}
-        \begin{tikzcd}
-          S
-          \arrow[r, "f"]
-          \arrow[d]
-          & T
-          \arrow[d]
-          \\
-          X
-          \arrow[r]
-          & Y
-        \end{tikzcd}
-      \end{equation*}
-      such that $f$ is $p$-cartesian.%\footnote{We need to make sure that over $\id_{\langle n \rangle}$, $f$ is an isomorphism, and this seems like the best way of doing this.}
+    \item $\mathcal{Q}\updag = \mathcal{Q}$.
   \end{itemize}
 \end{definition}
 
 \begin{lemma}
+  The functor $q\colon \Fun(\Delta^{1}, \S)_{\times} \to \Finp\op$ admits relative pullbacks.
+\end{lemma}
+\begin{proof}
+  We need to show that each fiber $(\Fun(\Delta^{1}, \S)_{\times})_{\langle n \rangle}$ admits pullbacks. Using the isomorphisms $(\S_{\times})_{\langle n \rangle} \simeq \S^{n}$, we find isomorphisms 
+  \begin{equation*}
+    (\Fun(\Delta^{1}, \S)_{\times})_{\langle n \rangle} \cong \Fun(\Delta^{1}, \S)^{n}.
+  \end{equation*}
+  The proof of \hyperref[lemma:spaces_fibration_admits_relative_pullbacks]{Lemma~\ref*{lemma:spaces_fibration_admits_relative_pullbacks}} then applies to our situation, with $\S$ replaced by $\Fun(\Delta^{1}, \S)$.
+\end{proof}
+
+\begin{lemma}
   The triple $\triple{Q}$ is adequate.
 \end{lemma}
+\begin{proof}
+  We check the conditions of \hyperref[def:adequate_triple]{Definition~\ref*{def:adequate_triple}}.
+  \begin{enumerate}
+    \item Since $q$ admits relative pullbacks and $\Finp\op$ admits pullbacks, \hyperref[lemma:existence_and_preservation_of_limits]{Lemma~\ref*{lemma:existence_and_preservation_of_limits}} implies that $\Fun(\Delta^{1}, \S)_{\times}$ admits all pullbacks, hence certainly ambigressive pullbacks. 
+          
+    \item Consider a pullback square in $\Fun(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$
+      \begin{equation}
+        \label{eq:cube_in_Q}
+        \begin{tikzcd}
+          S'
+          \arrow[rr, "F"]
+          \arrow[dd]
+          \arrow[dr]
+          && T'
+          \arrow[dd]
+          \arrow[dr]
+          \\
+          & S
+          \arrow[rr, crossing over, near start, "f"]
+          && T
+          \arrow[dd]
+          \\
+          X'
+          \arrow[dr]
+          \arrow[rr]
+          && Y'
+          \arrow[dr]
+          \\
+          & X
+          \arrow[from=uu, crossing over]
+          \arrow[rr]
+          && Y
+        \end{tikzcd},
+      \end{equation}
+      and which is lying over a square
+      \begin{equation}
+        \label{eq:square_in_finp_under_Q}
+        \begin{tikzcd}
+          \langle n \rangle
+          & \langle n' \rangle
+          \arrow[l, swap, "\psi"]
+          \\
+          \langle m \rangle
+          \arrow[u]
+          & \langle m' \rangle
+          \arrow[l, swap, "\phi"]
+          \arrow[u]
+        \end{tikzcd}
+      \end{equation}
+      in $\Finp\op$. We need to show that (a) if $f$ is an equivalence, then $F$ is an equivalence, and (b) if $\phi$ is an equivalence, then $\psi$ is an equivalence.
+      \begin{enumerate}
+        \item By \cite[Cor.\ 4.3.1.15]{highertopostheory} with $\category{C} = \Fun(\Delta^{1}, \S_{\times})$, $\category{D} = \category{E} = \Fun(\Delta^{1}, \Finp\op)$, and $\category{E}_{0} = \Finp\op$, the cube in \hyperref[eq:cube_in_Q]{Diagram~\ref*{eq:cube_in_Q}} corresponds to a pullback diagram in $\Fun(\Delta^{1}, \S)_{\times}$ if and only if it corresponds to a pullback square in $\Fun(\Delta^{1}, \S_{\times})$, which in turn is true if and only if the top and bottom squares are pullback in $\S_{\times}$. The result follows because pullbacks preserve equivalences.
 
-The maps $p$, $q$, and $r$ are in particular maps $\mathcal{M} \to \mathcal{P} \to \mathcal{F}$ as follows:
-\begin{equation*}
-  \begin{tikzcd}
-    \Map(\Delta^{1}, \S)_{\times}
-    \arrow[rr, "r"]
-    \arrow[dr, swap, "q"]
-    && \S_{\times}
-    \arrow[dl, "p"]
-    \\
-    & \Finp\op
-  \end{tikzcd}
-\end{equation*}
-By definition, $p$, $q$, and $r$ restrict to maps
+        \item \hyperref[lemma:existence_and_preservation_of_limits]{Lemma~\ref*{lemma:existence_and_preservation_of_limits}} implies that the square in \hyperref[eq:square_in_finp_under_Q]{Diagram~\ref*{eq:square_in_finp_under_Q}} is pullback (in $\Finp\op$), and the result again follows because pullbacks preserve equivalences.
+      \end{enumerate}
+  \end{enumerate}
+\end{proof}
+
+As we have defined them, it is clear that $p$, $q$, and $r$ restrict to maps
 \begin{equation*}
   \begin{tikzcd}[column sep=small]
     \mathcal{M}_{\dagger}
@@ -544,7 +644,7 @@ We now have the following diagram of adequate triples.
           \arrow[dr, "\simeq"]
           && Y'
           \arrow[dd]
-          \arrow[dr, "\psi"]
+          \arrow[dr]
           \\
           & X
           \arrow[rr, crossing over, near start, "\simeq"]
