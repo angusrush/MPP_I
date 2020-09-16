@@ -5,16 +5,87 @@
 \section*{Introduction}
 \label{sec:introduction}
 
-The aim of this work is to to provide a new proof of a theorem of Barwick \cite{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $\category{C} \to \category{D}$ to yield a cocartesian fibration between categories of spans $\Span(\category{C}) \to \Span(\category{D})$. Barwick's proof is explicit, constructing horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
+Denote by $\S$ the $\infty$-category of spaces. For any space $X \in \S$, denote by $\P(X)$ the $\infty$-category of presheaves (of spaces) on $X$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\P(X)$ and $\P(Y)$. In particular:
+\begin{itemize}
+  \item The functor $f^{*}\colon \P(Y) \to \P(X)$ pulls back presheaves on $Y$ to preasheaves on $X$, sending a presheaf $\mathcal{F}\colon Y \to \S$ to the presheaf $f^{*}\mathcal{F}$ given by the composition
+    \begin{equation*}
+      \begin{tikzcd}
+        X
+        \arrow[r, "f"]
+        & Y
+        \arrow[r, "\mathcal{F}"]
+        & \S
+      \end{tikzcd}.
+    \end{equation*}
+
+  \item The functor $f_{!}\colon \P(X) \to \P(Y)$ pushes forward presheaves via left Kan extension, sending a presheaf $\mathcal{G}\colon X \to \S$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
+    \begin{equation*}
+      \begin{tikzcd}
+        X
+        \arrow[rr, "\mathcal{G}"]
+        \arrow[dr, swap, "f"]
+        && \S
+        \\
+        & Y
+        \arrow[ur, swap, "\mathrm{Lan}_{f}\mathcal{G}"]
+      \end{tikzcd}
+    \end{equation*}
+\end{itemize}
+
+This is a prototype of a common situation: one has a functor (say, of quasicategories) $F\colon \category{C} \to \category{D}$, which sends an object $c \in \category{C}$ to an object $F(c) \in \category{D}$, and a morphism $f\colon c \to c'$ in $\category{C}$ to a morphism $f_{!}\colon F(c) \to F(c')$ in $\category{D}$. However one has additionally a `wrong-way' map, which sends creates from a morphism $f\colon c \to c'$ a morphism $f^{*}\colon F(c') \to F(c)$. In this case, from the data of a diagram in $\category{C}$ of the form
+\begin{equation}
+  \label{eq:span}
+  \begin{tikzcd}
+    & c'
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    \\
+    c
+    && c''
+  \end{tikzcd},
+\end{equation}
+one can produce a morphism $F(c) \to F(c'')$ in $\category{D}$ via the composition
+\begin{equation*}
+  \begin{tikzcd}
+    & F(c')
+    \arrow[dr, "f_{!}"]
+    \\
+    F(c)
+    \arrow[ur, "g^{*}"]
+    \arrow[rr, swap, "f_{!} \circ g^{*}"]
+    && F(c'')
+  \end{tikzcd}.
+\end{equation*}
+
+The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} in $\category{C}$. It is natural to ask whether this construction can be extended to a functor $\Span(\category{C}) \to \category{D}$, where $\Span(\category{C})$ is an infinity-category whose morphisms are spans in $\category{C}$.
+
+The aim of this work is twofold. First, we to provide a new proof of a theorem of Barwick \cite[Thm. 12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $\category{C} \to \category{D}$ to yield a cocartesian fibration between categories of spans $\Span(\category{C}) \to \Span(\category{D})$. 
+
+Second, we use this result to construct a functor $\Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\P(X)$ of presheaves on $X$, and a morphism in $\Span(\S)$ represented by a span
+\begin{equation*}
+  \begin{tikzcd}
+    & Y
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    \\
+    X
+    && X'
+  \end{tikzcd}
+\end{equation*}
+to the functor $f_{!} \circ g^{*}\colon \P(X) \to \P(X')$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$.
+
+We begin by providing a new proof of Barwick's theorem. Barwick's proof is explicit, constructing the necessary horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
 
 Our proof is more homotopy-theoretic in character, relying on the fact that for any quasicategory $\category{C}$ with pullbacks, the infinity-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. We first define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
 
 Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first written down by De Brito in \cite{2016arXiv160500706B}, and expanded by Rasekh in \cite{rasekhcartesianfibrations}. There, Rasekh defines a model structure whose fibrant objects model cocartesian fibrations between Segal spaces. In defining this model structure, it is necessary to distinguish certain morphisms, and Rasekh solves this problem by adding an extra simplicial dimension; the model structure for cocartesian fibrations defined there is thus a model structure on slice categories of trisimplicial sets.
 
-In this work we restrict our attention to cocartesian fibrations between complete Segal spaces. This allows us to approach the problem of controlling cocartesian morphisms differently, by introducing a marking. This method is much closer to that used to work with cocartesian fibrations in \cite{highertopostheory}, and has the advantage that many of the results proved there can be leveraged in explicit calculations. In particular, we provide a definition of a cocartesian fibration between complete Segal spaces to which Rasekh's definition reduces in the case that both the domain and codomain are complete Segal spaces.
+In this work we restrict our attention to cocartesian fibrations between Segal spaces. This allows us to approach the problem of controlling cocartesian morphisms differently, by introducing a marking. This method is much closer to that used to work with cocartesian fibrations in \cite{highertopostheory}, and has the advantage that many of the results proved there can be leveraged in explicit calculations. In particular, we provide a definition of a cocartesian fibration between complete Segal spaces to which Rasekh's definition reduces in the case that both the domain and codomain are complete Segal spaces.
 
-This work consists of two sections. \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, we explore cocartesian fibrations between Segal spaces. After a review in \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}} of some material in \cite{qcats_vs_segal_spaces}, most notably the box product $- \square -$ and its adjoints, we define marked bisimplicial sets in \hyperref[ssc:marked_bisimplicial_sets]{Section~\ref*{ssc:marked_bisimplicial_sets}}. We then define a marked version of the box functor, and show that some results analogous to the unmarked case hold. In \hyperref[ssc:simplicial_technology]{Section~\ref*{ssc:simplicial_technology}}, we prove some technical lemmas about simplicial sets with certain restrictions on individual morphisms. The main result is a lemma which allows us to translate a condition on marked bisimplicial sets for a `pointwise condition' involving unmarked bisimplicial sets.
+This work consists of three sections. In \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, we explore cocartesian fibrations between Segal spaces. After a review in \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}} of some material in \cite{qcats_vs_segal_spaces}, most notably the box product $- \square -$ and its adjoints, we define marked bisimplicial sets in \hyperref[ssc:marked_bisimplicial_sets]{Section~\ref*{ssc:marked_bisimplicial_sets}}. We then define a marked version of the box functor, and show that some results analogous to the unmarked case hold. In \hyperref[ssc:simplicial_technology]{Section~\ref*{ssc:simplicial_technology}}, we prove some technical lemmas about simplicial sets with certain restrictions on individual morphisms. The main result is a lemma which allows us to translate a condition on marked bisimplicial sets for a `pointwise condition' involving unmarked bisimplicial sets.
 
 In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts. We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
+
+In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove a theorem of Barwick, \cite[Thm. 12.2]{spectralmackeyfunctors1}. After a brief review in \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}} of the definitions of the quasicategory $\Span(\category{C})$ and Segal space $\SPAN(\category{C})$ of spans in a quasicategory $\category{C}$, we construct in \hyperref[ssc:defining_the_maps_p_q_and_r]{Sections~\ref*{ssc:defining_the_maps_p_q_and_r}--\ref*{ssc:building_the_functor}} our functor $\Span(\S) \to \ICat$, and show that it is lax monoidal.
 
 \end{document}

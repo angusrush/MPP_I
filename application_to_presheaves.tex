@@ -17,7 +17,7 @@ is a bicartesian fibration. For each edge $f\colon \Delta^{1} \to \S$, correspon
 \begin{equation*}
   f_{!} : \S^{/X} \longleftrightarrow \S^{/Y} : f^{*}.
 \end{equation*}
-Interpreting $\S^{/X}$ and $\S^{/Y}$ as models for the $\P(X)$ and $\P(Y)$, the $\infty$-categories of presheaves on $X$ and $Y$, the functor $f^{*}$ corresponds to restriction, taking a presheaf $Y \to \S$ to the pullback $X \to Y \to \S$, and the functor $f_{!}$ takes a preasheaf $X \to \S$ to its left Kan extension along $X \to Y$.
+Interpreting $\S^{/X}$ as models for the $\P(X)$, the $\infty$-categories of presheaves on $X$, the functor $f^{*}$ corresponds to the functor which restricts along $f$, taking a presheaf $Y \to \S$ to the pullback $X \to Y \to \S$. The functor $f_{!}$ takes a preasheaf $X \to \S$ to its left Kan extension along $X \to Y$.
 
 In this section, we apply the construction of the previous chapter to build from these data a functor
 \begin{equation}
@@ -48,10 +48,11 @@ to the map $\P(X) \to \P(X')$ given by the composition
   \end{tikzcd}.
 \end{equation*}
 
-Note that the category $\S$ has products. This induces a symmetric monoidal structure on $\S$, the Cartesian monoidal structure, which (as we will see) induces a symmetric monoidal structure on $\Span(\S)$. When we take $\Cat_{\infty}$ also to carry the Cartesian monoidal structure, we will see that our functor $\hat{r}$ (\hyperref[eq:rhat]{Equation~\ref*{eq:rhat}}) is even lax monoidal.
+Note that the category $\S$ has products. This induces a symmetric monoidal structure on $\S$, the cartesian monoidal structure, which (as we will see) induces a symmetric monoidal structure on $\Span(\S)$. When we take $\Cat_{\infty}$ also to carry the cartesian monoidal structure, we will see that our functor $\hat{r}$ (\hyperref[eq:rhat]{Equation~\ref*{eq:rhat}}) is even lax monoidal.
 
 The idea behind the construction of the functor $\hat{r}$, in broad strokes, is as follows. We dress up the functor $\ev_{1}$, making it into a symmetric monoidal functor as follows (the monoidal structures on $\Map(\Delta^{1}, \S)^{\otimes}$ and $\S^{\otimes}$ are not exactly the standard cocartesian monoidal functors, as we will later discuss; they are represented by \emph{cartesian,} rather than \emph{cocartesian} fibrations).
-\begin{equation*}
+\begin{equation}
+  \label{eq:wishlist_prq}
   \begin{tikzcd}
     \Map(\Delta^{1}, \S)^{\otimes}
     \arrow[rr, "r"]
@@ -61,12 +62,13 @@ The idea behind the construction of the functor $\hat{r}$, in broad strokes, is 
     \\
     & \Finp\op
   \end{tikzcd}
-\end{equation*}
+\end{equation}
 
 We then take spans in each of these categories, restricting the backwards- and forwards-facing legs judiciously so that we get a diagram
-\begin{equation*}
+\begin{equation}
+  \label{eq:wishlist_pivarpirho}
   \begin{tikzcd}
-    \Span(\Map(\Delta^{1}, \S))^{\otimes}
+    \Span'(\Map(\Delta^{1}, \S))^{\otimes}
     \arrow[rr, "\rho"]
     \arrow[dr, swap, "\varpi"]
     && \Span(\S)^{\otimes}
@@ -74,10 +76,10 @@ We then take spans in each of these categories, restricting the backwards- and f
     \\
     & \Finp
   \end{tikzcd},
-\end{equation*}
+\end{equation}
 where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Map(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds a cocartesian fibration, which classifies a functor $\Span(\S) \to \ICat$. By \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, this functor is lax monoidal, giving us our functor $\hat{r}$.
 
-Much of the technology in this section is present in \cite{spectralmackeyfunctors2}. However, the manner in which we present it allows for generalization in a different direction than that carried out there. This will be the subject of future work.
+Much of the technology in this section is similar to work already done in \cite{spectralmackeyfunctors2}. However, the manner in which we present it allows for generalization in a different direction than that carried out there. This will be the subject of future work.
 
 \subsection{Defining the maps \texorpdfstring{$p$}{p}, \texorpdfstring{$q$}{q}, and \texorpdfstring{$r$}{r}}
 \label{ssc:defining_the_maps_p_q_and_r}
@@ -101,11 +103,11 @@ In low degrees, the category $\S_{\times}$ admits the following description.
   \item The morphisms $(\langle m \rangle, \vec{X}) \to (\langle n \rangle, \vec{Y})$ are pairs $(\phi, \Psi)$, where $\phi\colon \langle n \rangle \to \langle m \rangle$ is a morphism in $\Finp$, and $\Psi$ consists, for each $i \in \langle m \rangle^{\circ}$, of a collection of morphisms $X_{i} \to Y_{j}$ for each $j \in \langle n \rangle^{\circ}$ with $\phi(j) = i$.
 \end{itemize}
 
-The functor $\S_{\times} \to \Finp$ is the obvious forgetful functor.
+The functor $\S_{\times} \to \Finp\op$ is the obvious forgetful functor.
 
 \begin{example}
   \label{eg:morphisms_in_cocartesian_monoidal_structure_on_spaces}
-  An object $(\langle 1 \rangle, \vec{X})$ of $\S_{\times}$ in the fiber over $\langle 1 \rangle$ is the same thing as an object $X \in \langle S \rangle$. An object $( \langle 2 \rangle, \vec{Y})$ in the fiber over $\langle 2 \rangle$ is the same as a pair of objects $[Y, Y']$ in $\S$.
+  An object $(\langle 1 \rangle, \vec{X})$ of $\S_{\times}$ in the fiber over $\langle 1 \rangle \in \Finp\op$ is the same thing as an object $X \in \langle S \rangle$. An object $( \langle 2 \rangle, \vec{Y})$ in the fiber over $\langle 2 \rangle$ is the same as a pair of objects $[Y, Y']$ in $\S$.
 
   A morphism $(\phi, \Psi)\colon (\langle 1 \rangle, \vec{X}) \to (\langle 2 \rangle, \vec{Y})$ where $\phi\colon \langle 2 \rangle \to \langle 1 \rangle$ is the morphism in $\Finp$ which sends $1 \mapsto 1$, $2 \mapsto 1$, consists of a pair of maps $X \to Y$, $X \to Y'$.
   \begin{equation*}
@@ -142,9 +144,10 @@ The functor $\S_{\times} \to \Finp$ is the obvious forgetful functor.
   The morphism described in \hyperref[eg:morphisms_in_cocartesian_monoidal_structure_on_spaces]{Example~\ref*{eg:morphisms_in_cocartesian_monoidal_structure_on_spaces}} is cartesian if and only if $X \simeq Y \times Y'$, and the maps $X \to Y$ and $X \to Y'$ are the canonical projections.
 \end{example}
 
-We can now define the maps $q$ and $r$ in one fell swoop.
+We can now define the maps $q$ and $r$ rather easily.
+
 \begin{definition}
-  We define the maps $q$ and $r$ via the following diagram, where the left-hand square is pullback. In particular, the space $\Map(\Delta^{1}, \S)_{\times}$ is defined to be the (strict) pullback below.
+  We define maps $q$ and $r$ via the following diagram, where the left-hand square is pullback. In particular, the space $\Map(\Delta^{1}, \S)_{\times}$ is defined to be the (strict) pullback below.
   \begin{equation*}
     \begin{tikzcd}
       \Map(\Delta^{1}, \S)_{\times}
@@ -168,7 +171,7 @@ We can now define the maps $q$ and $r$ in one fell swoop.
 \end{definition}
 
 \begin{lemma}
-  The map $q$ is a Cartesian fibration, and the cartesian morphisms are those which are level-wise cartesian morphisms in $\S_{\times}$.
+  The map $q$ is a cartesian fibration, and the cartesian morphisms are those which are level-wise cartesian morphisms in $\S_{\times}$.
 \end{lemma}
 \begin{proof}
   The map $q$ is given by the pullback
@@ -185,7 +188,7 @@ We can now define the maps $q$ and $r$ in one fell swoop.
       & \Map(\Delta^{1}, \Finp\op)
     \end{tikzcd}.
   \end{equation*}
-  By \cite[Prop.\ 3.1.2.1]{highertopostheory}, the map $q'$ is a cartesian fibration whose cartesian morphisms are pointwise cartesian morphisms in $\S_{\times}$. The map $q$ is also a cartesian fibration, where a morphism in $\Map(\Delta^{1}, \S)_{\times}$ is $q$-cartesian if and only if its image in $\Map(\Delta^{1}, \S_{\times})$ is $q'$-cartesian. That every $q$ cartesian morphism is $q'$ cartesian follows from \cite[Prop\ 2.4.1.3]{highertopostheory}; to see other direction, consider a $q$-cartesian morphism in $\Map(\Delta^{1}, \S)_{\times}$. 
+  By \cite[Prop.\ 3.1.2.1]{highertopostheory}, the map $q'$ is a cartesian fibration whose cartesian morphisms are pointwise cartesian morphisms in $\S_{\times}$. The map $q$ is also a cartesian fibration, where a morphism in $\Map(\Delta^{1}, \S)_{\times}$ is $q$-cartesian if and only if its image in $\Map(\Delta^{1}, \S_{\times})$ is $q'$-cartesian. That every $q$ cartesian morphism is $q'$ cartesian follows from \cite[Prop\ 2.4.1.3]{highertopostheory}; to see other direction, consider a $q$-cartesian morphism $g$ in $\Map(\Delta^{1}, \S)_{\times}$. Its image $\tilde{g}\Map(\Delta^{1}, \S_{\times})$ lies over some morphism $\phi$, and this morphism 
 \end{proof}
 
 \begin{lemma}
@@ -220,7 +223,8 @@ We can now define the maps $q$ and $r$ in one fell swoop.
 \end{proof}
 
 Let us take stock. We have now defined the data of the commutative diagram below. Here, $p$ and $q$ are cartesian fibrations, and $r$ is a bicartesian fibration.
-\begin{equation*}
+\begin{equation}
+  \label{eq:data_of_pqr}
   \begin{tikzcd}
     \Map(\Delta^{1}, \S)_{\times}
     \arrow[rr, "r"]
@@ -230,7 +234,7 @@ Let us take stock. We have now defined the data of the commutative diagram below
     \\
     & \Finp\op
   \end{tikzcd}
-\end{equation*}
+\end{equation}
 Our next step is to take spans with judiciously-chosen legs in each of these quasicategories. To do this, we must define the subcategories to which the legs of our spans are allowed to belong. As in \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we do this by defining triples of categories.
 
 \subsection{Restricting the legs of the spans}
@@ -238,7 +242,22 @@ Our next step is to take spans with judiciously-chosen legs in each of these qua
 
 In this section, we define triple structures on the quasicategories $\Map(\Delta^{1}, \S)_{\times}$, $\S_{\times}$, and $\Finp\op$.
 
-We start by defining a triple structure on $\Finp\op$.
+\subsubsection*{Triple structure on \texorpdfstring{$\Finp\op$}{Fin.op}}
+
+Let us cast our minds back to \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}}. We have cartesian fibrations $p$, $q$, and $r$ as in \hyperref[eq:data_of_pqr]{Diagram~\ref*{eq:data_of_pqr}}; these play the role of the maps alluded to in \hyperref[eq:wishlist_prq]{Diagram~\ref*{eq:wishlist_prq}}. We would like a triple structure on $\Finp\op$ such that, when passing to quasicategories of spans, we find \emph{cocartesian fibrations} of the form \hyperref[eq:wishlist_pivarpirho]{Diagram~\ref*{eq:wishlist_pivarpirho}}.
+
+This means, in particular, that we want a triple structure on $\Finp\op$ which gives us something like $\Finp$ upon taking categories of spans. Thus, we should take spans whose forward-pointing legs are equivalences:
+\begin{equation*}
+  \begin{tikzcd}
+    \langle m \rangle
+    \arrow[r]
+    & \langle n \rangle
+    & \langle n \rangle
+    \arrow[l, swap, "\simeq"]
+  \end{tikzcd}.
+\end{equation*}
+
+The following definition does precisely that.
 
 \begin{definition}
   We define a triple $\triple{F}$ as follows.
@@ -251,7 +270,7 @@ We start by defining a triple structure on $\Finp\op$.
   \end{itemize}
 \end{definition}
 
-Recall that in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}}, we considered a triple structure on any quasicategory $\category{C}$ which produced spans in $\category{C}$ whose backwards-pointing legs were equivalences; this yielded a quasicategory $\Span^{\simeq}(\category{C})$ which was equivalent to $\category{C}$ via a weak categorical equivalence $\category{C} \to \Span^{\simeq}(\category{C})$, which we constructed explicitly. The triple $\triple{F}$ is similar to the triple structure used to define $\Span^{\simeq}(\category{C})$, except that the forward-facing legs are equivalences rather than the backward-facing legs. A dual construction thus produces the following.
+This is the triple structure considered in \hyperref[eg:spans_with_equivalences_on_forwards_leg]{Example~\ref*{eg:spans_with_equivalences_on_forwards_leg}}. There, we saw that the corresponding category of spans, which we called $\Span_{\simeq}(\Finp\op)$, was equivalent to $\Finp$. More precisely, we showed the following.
 
 \begin{lemma}
   There is a weak Joyal equvialence
@@ -288,11 +307,7 @@ Recall that in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg
   where we have drawn the morphisms in the span as belonging to $\Finp$ rather than $\Finp\op$.
 \end{lemma}
 
-The reasoning in \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}} also shows the following.
-
-\begin{proposition}
-  The triple $\triple{F}$ is adequate in the sense of \hyperref[def:adequate_triple]{Definition~\ref*{def:adequate_triple}}.
-\end{proposition}
+\subsubsection*{Triple structure on \texorpdfstring{$\S_{\times}$}{S}}
 
 Next, we define a triple structure on $\S_{\times}$.
 
@@ -316,7 +331,7 @@ Next, we need to show that the triple $\triple{P}$ is adequate. For this we need
   The cartesian fibration $p\colon \S_{\times} \to \Finp\op$ admits relative pullbacks.
 \end{lemma}
 \begin{proof}
-  By \cite[Cor.\ 4.3.1.11]{highertopostheory}, it suffices to show that each fiber $(\S_{\times})_{\langle n \rangle}$ admits pullbacks, and that for each map $\phi\colon \langle m \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, the map $\phi^{*}\colon (\S_{\times})_{\langle m \rangle} \to (\S_{\times})_{\langle n \rangle}$ preserves pullbacks. By the defintion of the cocartesian monoidal structure on $\S\op$, we have an isomorphism  $(\S_{\times})_{\langle n \rangle} \cong \S^{n}$, and $\S^{n}$ admits pullbacks. Hence, each fiber admits pullbacks. 
+  By \cite[Cor.\ 4.3.1.11]{highertopostheory}, it suffices to show that each fiber $(\S_{\times})_{\langle n \rangle}$ admits pullbacks, and that for each map $\phi\colon \langle m \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, the map $\phi^{*}\colon (\S_{\times})_{\langle m \rangle} \to (\S_{\times})_{\langle n \rangle}$ preserves pullbacks. By the defintion of the cocartesian monoidal structure on $\S\op$, we have an isomorphism  $(\S_{\times})_{\langle n \rangle} \cong \S^{n}$, and $\S^{n}$ admits pullbacks. Hence, each fiber admits pullbacks.
 
   Now we show that for any map $\phi\colon \langle m \rangle \leftarrow \langle n \rangle$ in $\Finp\op$, the map $\phi^{*}$ preserves pullbacks. Unravelling the definitions, we find that $\phi^{*}$ sends an object $(X_{1}, \ldots, X_{m}) \in \left( \S_{\times} \right)_{\langle m \rangle}$ to an object $(Y_{1}, \ldots, Y_{n}) \in (\S_{\times})_{\langle n \rangle}$ such that
   \begin{equation*}
@@ -327,7 +342,7 @@ Next, we need to show that the triple $\triple{P}$ is adequate. For this we need
 
 \begin{lemma}
   \label{lemma:existence_and_preservation_of_limits}
-  Let $p\colon \category{C} \to \category{D}$ be a cartesian fibration between quasicategories, and let $K$ be a simplicial set. Suppose that that $\category{D}$ admits all $K$-shaped limits, and that $p$ admits all relative $K$-shaped limits. Then the following hold.
+  Let $p\colon \category{C} \to \category{D}$ be a cartesian fibration between quasicategories, and let $K$ be a simplicial set. Suppose that $\category{D}$ admits all $K$-shaped limits, and that $p$ admits all relative $K$-shaped limits. Then the following hold.
   \begin{enumerate}
     \item The quasicategory $\category{C}$ admits all $K$-shaped limits.
 
@@ -383,13 +398,15 @@ Next, we need to show that the triple $\triple{P}$ is adequate. For this we need
   \end{enumerate}
 \end{proof}
 
+\subsubsection*{Triple structure on \texorpdfstring{$\Fun(\Delta^{1}, \S)_{\times}$}{Fun}}
+
 Lastly, we define a triple structure on $\Map(\Delta^{1}, \S)_{\times}$.
 \begin{definition}
   We define a triple $\triple{Q}$ as follows.
   \begin{itemize}
     \item $\mathcal{Q} = \Map(\Delta^{1}, \S)_{\times}$.
-  
-     \item $\mathcal{Q}\downdag$ is given by the pullback
+
+    \item $\mathcal{Q}\downdag$ is given by the pullback
       \begin{equation*}
         \begin{tikzcd}
           \mathcal{Q}\downdag
@@ -403,7 +420,7 @@ Lastly, we define a triple structure on $\Map(\Delta^{1}, \S)_{\times}$.
           & \Finp\op \times \S_{\times}
         \end{tikzcd}.
       \end{equation*}
-  
+
     \item $\mathcal{Q}\updag = \mathcal{Q}$.
   \end{itemize}
 \end{definition}
@@ -412,7 +429,7 @@ Lastly, we define a triple structure on $\Map(\Delta^{1}, \S)_{\times}$.
   The functor $q\colon \Fun(\Delta^{1}, \S)_{\times} \to \Finp\op$ admits relative pullbacks.
 \end{lemma}
 \begin{proof}
-  We need to show that each fiber $(\Fun(\Delta^{1}, \S)_{\times})_{\langle n \rangle}$ admits pullbacks. Using the isomorphisms $(\S_{\times})_{\langle n \rangle} \simeq \S^{n}$, we find isomorphisms 
+  We need to show that each fiber $(\Fun(\Delta^{1}, \S)_{\times})_{\langle n \rangle}$ admits pullbacks. Using the isomorphisms $(\S_{\times})_{\langle n \rangle} \simeq \S^{n}$, we find isomorphisms
   \begin{equation*}
     (\Fun(\Delta^{1}, \S)_{\times})_{\langle n \rangle} \cong \Fun(\Delta^{1}, \S)^{n}.
   \end{equation*}
@@ -425,8 +442,8 @@ Lastly, we define a triple structure on $\Map(\Delta^{1}, \S)_{\times}$.
 \begin{proof}
   We check the conditions of \hyperref[def:adequate_triple]{Definition~\ref*{def:adequate_triple}}.
   \begin{enumerate}
-    \item Since $q$ admits relative pullbacks and $\Finp\op$ admits pullbacks, \hyperref[lemma:existence_and_preservation_of_limits]{Lemma~\ref*{lemma:existence_and_preservation_of_limits}} implies that $\Fun(\Delta^{1}, \S)_{\times}$ admits all pullbacks, hence certainly ambigressive pullbacks. 
-          
+    \item Since $q$ admits relative pullbacks and $\Finp\op$ admits pullbacks, \hyperref[lemma:existence_and_preservation_of_limits]{Lemma~\ref*{lemma:existence_and_preservation_of_limits}} implies that $\Fun(\Delta^{1}, \S)_{\times}$ admits all pullbacks, hence certainly ambigressive pullbacks.
+
     \item Consider a pullback square in $\Fun(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$
       \begin{equation}
         \label{eq:cube_in_Q}
@@ -498,25 +515,41 @@ As we have defined them, it is clear that $p$, $q$, and $r$ restrict to maps
     & \mathcal{P}^{\dagger}
     \arrow[r, "q^{\dagger}"]
     & \mathcal{F}^{\dagger}
-  \end{tikzcd}.
+  \end{tikzcd},
 \end{equation*}
+and preserve ambigressive pullback squares.
 
 
 \subsection{Building categories of spans}
 \label{ssc:building_categories_of_spans}
 
-We now have the following diagram of adequate triples.
+We have now constructued the following diagram of adequate triples and maps between them.
 \begin{equation*}
   \begin{tikzcd}
     \triple{Q}
-    \arrow[rr]
-    \arrow[dr]
+    \arrow[rr, "r"]
+    \arrow[dr, swap, "q"]
     && \triple{P}
-    \arrow[dl]
+    \arrow[dl, "p"]
     \\
     & \triple{F}
   \end{tikzcd}
 \end{equation*}
+
+By construction, this gives us a commuting triangle
+\begin{equation}
+  \label{eq:commuting_diagram_of_spans}
+  \begin{tikzcd}
+    \Span\triple{Q}
+    \arrow[rr, "\rho'"]
+    \arrow[dr, swap, "\varpi'"]
+    && \Span\triple{P}
+    \arrow[dl, "\pi'"]
+    \\
+    & \Span\triple{F}
+  \end{tikzcd}.
+\end{equation}
+Our next step is to show that the maps $\pi'$, $\rho'$, and $\varpi'$ are cocartesian fibrations. To do this, we need to exhibit that they admit enough cocartesian lifts; the form of these lifts will be given by \hyperref[thm:main]{Theorem~\ref*{thm:main}}, assuming we can show that this theorem applies.
 
 \begin{lemma}
   The morphism $p$ satisfies the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
@@ -524,7 +557,7 @@ We now have the following diagram of adequate triples.
 \begin{proof}
   We check the conditions.
   \begin{enumerate}
-    \item We have to show that for any isomorphism in $\Finp\op$, there exists a $p$-cocartesian lift. But since every morphism in $\mathcal{F}_{\dagger} = (\Finp\op)^{\simeq}$ is an equivalence, it suffices to find a $p$-cartesian lift, which is possible because $p$ is a Cartesian fibration.
+    \item We have to show that for any isomorphism in $\Finp\op$, there exists a $p$-cocartesian lift. But since every morphism in $\mathcal{F}_{\dagger} = (\Finp\op)^{\simeq}$ is an equivalence, it suffices to find a $p$-cartesian lift, which is possible because $p$ is a cartesian fibration.
 
     \item We need to show that for any commutative square
       \begin{equation*}
@@ -555,17 +588,17 @@ We now have the following diagram of adequate triples.
           \arrow[u]
         \end{tikzcd}
       \end{equation*}
-      in $\Finp\op$ (where we have drawn the arrows as they are in $\Finp$), $\sigma$ is a pullback square if and only if $f$ is $p$-cocartesian. But $f$ is lying over an equivalence, so it is $p$-cocartesian if and only if it is an equivalence, which in turn is true if and only if the square in question is pullback.
+      in $\Finp\op$ (where we have drawn the arrows as belonging to $\Finp$), $\sigma$ is a pullback square if and only if $f$ is $p$-cocartesian. But $f$ is lying over an equivalence, so it is $p$-cocartesian if and only if it is an equivalence, which in turn is true if and only if the square in question is pullback.
   \end{enumerate}
 \end{proof}
 
 \begin{lemma}
-  The morphism $q$ satisfies the conditions of the Omnibus theorem.
+  The morphism $q$ satisfies the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
 \end{lemma}
 \begin{proof}
-  We have to check the conditions of the Omnibus Theorem:
+  We have to check the conditions of the \hyperref[thm:main]{Theorem~\ref*{thm:main}}:
   \begin{enumerate}
-    \item We have to show that for any isomorphism in $\Finp\op$, there exists a $q$-cocartesian lift. But it suffices to find a $q$-cartesian lift, which is possible because $q$ is a Cartesian fibration.
+    \item We have to show that for any isomorphism $\phi$ in $\Finp\op$, there exists a $q$-cocartesian lift. It follows from the $2/3$ property for equivalences that such a lift will automatically be $q\downdag$-cocartesian. But because $\phi$ is an equivalence, it suffices to find a $q$-cartesian lift, which is possible because $q$ is a cartesian fibration.
 
     \item We need to show that for any commutative square in $\Map(\Delta^{1}, \S)_{\times}$ corresponding to a cube in $\S_{\times}$ of the form
       \begin{equation*}
@@ -573,10 +606,10 @@ We now have the following diagram of adequate triples.
           X'
           \arrow[rr, "F"]
           \arrow[dd]
-          \arrow[dr, "\phi"]
+          \arrow[dr]
           && Y'
           \arrow[dd]
-          \arrow[dr, "\psi"]
+          \arrow[dr]
           \\
           & X
           \arrow[rr, crossing over, near start, "\simeq"]
@@ -595,7 +628,7 @@ We now have the following diagram of adequate triples.
           && T
         \end{tikzcd}
       \end{equation*}
-      (where $\phi$ is $p$-cartesian) and lying over a square in $\Finp\op$ of the form
+      and lying over a square in $\Finp\op$ of the form
       \begin{equation*}
         \begin{tikzcd}
           \langle n \rangle
@@ -614,7 +647,7 @@ We now have the following diagram of adequate triples.
 \end{proof}
 
 \begin{lemma}
-  The map $r$ satisfies the conditions of the Omnibus Theorem.
+  The map $r$ satisfies the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
 \end{lemma}
 \begin{proof}
   \leavevmode
@@ -641,7 +674,7 @@ We now have the following diagram of adequate triples.
           X'
           \arrow[rr, "F"]
           \arrow[dd]
-          \arrow[dr, "\simeq"]
+          \arrow[dr]
           && Y'
           \arrow[dd]
           \arrow[dr]
@@ -667,20 +700,224 @@ We now have the following diagram of adequate triples.
   \end{enumerate}
 \end{proof}
 
-This gives us the following commutative diagram.
+\hyperref[thm:main]{Theorem~\ref*{thm:main}} then tells us immediately that the maps in \hyperref[eq:commuting_diagram_of_spans]{Diagram~\ref*{eq:commuting_diagram_of_spans}} are inner fibrations. Thus, in order to show that they are cocartesian fibrations, it suffices to exhibit sufficient cocartesian lifts.
 
+\begin{proposition}
+  The maps $\pi'$, $\varpi'$, and $\rho'$ are cocartesian fibrations.
+\end{proposition}
+\begin{proof}
+  We need to check that each of $\pi'$, $\varpi'$, and $\rho'$ admits enough cocartesian lifts. \hyperref[thm:main]{Theorem~\ref*{thm:main}} provides a sufficient condition that morphisms be cocartesian, so we can simply check that lifts of these forms exist. Fix be a morphism
+  \begin{equation*}
+    \phi =
+    \begin{tikzcd}
+      \langle m \rangle
+      \arrow[r]
+      & \langle n \rangle
+      & \langle n \rangle
+      \arrow[l, swap, "\simeq"]
+    \end{tikzcd}
+  \end{equation*}
+  in $\Span\triple{F}$, and a morphism
+  \begin{equation*}
+    \Gamma =
+    \begin{tikzcd}
+      S
+      & T
+      \arrow[l]
+      \arrow[r]
+      & S'
+    \end{tikzcd}
+  \end{equation*}
+  in $\Span\triple{P}$
+  \begin{itemize}
+    \item Given an object $X$ in $\Span\triple{P}$ lying over $\langle m \rangle$, \hyperref[thm:main]{Theorem~\ref*{thm:main}} tells us that a $\pi'$-cocartesian lift of $\phi$ is of the form
+      \begin{equation*}
+        \begin{tikzcd}
+          X
+          & Y
+          \arrow[l, swap, "f"]
+          \arrow[r, "\simeq"]
+          & X'
+        \end{tikzcd},
+      \end{equation*}
+      where $f$ is $p$-cartesian. Such lifts always exist because $p$ is a cartesian fibration.
+
+    \item Given an object $S \to X$ in $\Span\triple{Q}$ lying over $\langle m \rangle$, a $\varpi'$-cocartesian lift of $\phi$ is of the form
+      \begin{equation*}
+        \begin{tikzcd}
+          S
+          \arrow[d]
+          & T
+          \arrow[l, swap, "F"]
+          \arrow[r, "\simeq"]
+          \arrow[d]
+          & S'
+          \arrow[d]
+          \\
+          X
+          & Y
+          \arrow[l, swap, "f"]
+          \arrow[r, "\simeq"]
+          & X'
+        \end{tikzcd},
+      \end{equation*}
+      where $F$ and $f$ are $p$-cartesian (i.e.\ the left-hand square corresponds to a $q$-cartesian morphism in $\Fun(\Delta^{1}, \S)_{\times}$). Such lifts automatically exist because $q$ is a cartesian fibration.
+
+    \item Given an object $S \to X$ in $\Span\triple{Q}$ lying over $\langle m \rangle$, a $\rho'$-cocartesian lift of $\phi$ is of the form
+      \begin{equation*}
+        \begin{tikzcd}
+          S
+          \arrow[d]
+          & S \times_{X} Y
+          \arrow[l]
+          \arrow[r, "\simeq"]
+          \arrow[d]
+          & S'
+          \arrow[d]
+          \\
+          X
+          & Y
+          \arrow[l]
+          \arrow[r]
+          & X'
+        \end{tikzcd},
+      \end{equation*}
+      where the left-hand square is pullback. Such lifts exist because $\S_{\times}$ admits pullbacks.
+  \end{itemize}
+\end{proof}
+
+Recall that there is an equivalence $\Finp \to \Span\triple{F}$. Pulling back \hyperref[eq:commuting_diagram_of_spans]{Diagram~\ref*{eq:commuting_diagram_of_spans}} along this map gives a diagram of cocartesian fibrations
 \begin{equation*}
   \begin{tikzcd}
-    \Span\triple{M}
+    P
     \arrow[rr, "\rho"]
     \arrow[dr, swap, "\varpi"]
-    && \Span\triple{P}
+    && Q
     \arrow[dl, "\pi"]
     \\
-    & \Span\triple{F}
-  \end{tikzcd}
+    & \Finp
+  \end{tikzcd}.
 \end{equation*}
 
-Recall that there is an equivalence $\Finp \to \Span(\triple{F})$. Pulling back along this map gives 
+\begin{proposition}
+  The maps $\pi$ and $\varpi$ are monoidal structures.
+\end{proposition}
+\begin{proof}
+  We consider the case of $\pi$. We need to show that the pushforward functors corresponding to the inert maps $\rho_{i}\colon \langle n \rangle \to \langle 1 \rangle$ induce an equivalence $P_{\langle n \rangle} \simeq P_{\langle 1 \rangle}^{n}$. These maps send (up to equivalence) $[X_{1}, \ldots, X_{n}] \mapsto X_{i}$, giving an isomorphism $P_{\langle n \rangle} \cong P_{\langle 1 \rangle}^{n}$.
+
+  The case of $\varpi$ is similar.
+\end{proof}
+
+\subsection{Building the functor \texorpdfstring{$\hat{r}$}{r}}
+\label{ssc:building_the_functor}
+
+We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to \ICat$, as discussed in \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}}. Restricting the functor $\rho$ to the component lying over $\langle 1 \rangle \in \Finp$ gives a cocartesian fibration $\rho_{\langle 1 \rangle\colon }Q_{\langle 1 \rangle} \to P_{\langle 1 \rangle}$, which classifies a functor $P_{\langle 1 \rangle} \to \ICat$. This will be almost the functor we need.
+
+\begin{proposition}
+  There is an isomorphism of simplicial sets $P_{\langle 1 \rangle} \cong \Span(\S)$.
+\end{proposition}
+\begin{proof}
+  The $n$-simplices of $P_{\langle 1 \rangle}$ are ambigressive cartesian maps $\sigma\colon \sd(\Delta^{n}) \to \S_{\times}$ making the diagram
+  \begin{equation*}
+    \begin{tikzcd}
+      \sd(\Delta^{n})
+      \arrow[rr, "\sigma"]
+      \arrow[dr, swap, "\const_{\langle 1 \rangle}"]
+      && \S_{\times}
+      \arrow[dl]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  commute. The condition that the diagram commute is the condition that $\sigma$ land in $(\S_{\times})_{\langle 1 \rangle} \simeq \S$, and the ambigressiveness condition is that the forward-facing legs in $\sigma$ lie over equivalences in $\Finp\op$, which is automatic.
+\end{proof}
+
+\begin{proposition}
+  For any $X \in P_{\langle 1 \rangle}$, there is an equivalence
+  \begin{equation*}
+    (Q_{\langle 1 \rangle})_{X} \simeq (\S_{/X})\op.
+  \end{equation*}
+\end{proposition}
+\begin{proof}
+  The $n$-simplices of $(Q_{\langle 1 \rangle})_{X}$ are ambigressive cartesian maps $\sigma\colon \sd(\Delta^{n}) \to \Fun(\Delta^{1}, \S)_{\times}$ such that the diagrams
+  \begin{equation*}
+    \begin{tikzcd}
+      \sd(\Delta^{n})
+      \arrow[rr, "\sigma"]
+      \arrow[dr, swap, "\const_{\langle 1 \rangle}"]
+      && \Fun(\Delta^{1}, \S)_{\times}
+      \arrow[dl]
+      \\
+      & \Finp\op
+    \end{tikzcd}
+  \end{equation*}
+  and
+  \begin{equation*}
+    \begin{tikzcd}
+      \sd(\Delta^{n})
+      \arrow[rr, bend left, "\const_{X}"]
+      \arrow[r, "\sigma"]
+      & \Fun(\Delta^{1}, \S)_{\times}
+      \arrow[r, "\ev_{1}"]
+      & \S_{\times}
+    \end{tikzcd}
+  \end{equation*}
+  commute. The first diagram ensures that $\sigma$ lands entirely inside $(\Fun(\Delta^{1}, \S)_{\times})_{\langle 1 \rangle} \cong \Fun(\Delta^{1}, \S)$, so $\sigma$ is equivalently a map $\sd(\Delta^{n}) \times \Delta^{1} \to \S$ such that:
+  \begin{itemize}
+    \item The composition
+      \begin{equation*}
+        \sd(\Delta^{n}) \times \Delta^{\{1\}} \hookrightarrow \sd(\Delta^{n}) \times \Delta^{1} \to \S
+      \end{equation*}
+      is equal to $\const_{X}$.
+
+    \item The forward-facing legs in $\sd(\Delta^{n}) \times \Delta^{\{0\}}$ are mapped to equivalences in $\S$.
+  \end{itemize}
+  This is precisely the data of a map $\sd(\Delta^{n}) \diamond \Delta^{0} \to \S$ sending $\Delta^{0} \mapsto X$, and such that and the forward-facing legs of $\sd(\Delta^{n})$ are sent to equivalences in $\S$. But these are precisely the $n$-simplices of $\Span_{\simeq}(\S^{/X})$. The equvialence $(\S^{/X})\op \to \Span_{\simeq}(\S^{/X})$ and $\S_{/X} \simeq \S^{/X}$ now give us the equivalence that we want.
+\end{proof}
+
+We now define $R$ to be the functor classified by the cocartesian fibration $\rho$. On objects, this functor sends a space $X$ to the category $(\S_{/X})\op$. A morphism in $\Span(\S)$ represented by a span of spaces
+\begin{equation*}
+  \begin{tikzcd}
+    X
+    & Y
+    \arrow[l, swap, "g"]
+    \arrow[r, "f"]
+    & X'
+  \end{tikzcd}
+\end{equation*}
+is sent to the functor $(\S_{/X})\op \to (\S_{/X'})\op$ defined by sending an object $S \to X$ to the object $S' \to X'$ defined up to equivalence as follows.
+\begin{equation*}
+  \begin{tikzcd}
+    S
+    \arrow[d]
+    & S \times_{X} Y
+    \arrow[l]
+    \arrow[r, "\simeq"]
+    \arrow[d]
+    & S'
+    \arrow[d]
+    \\
+    X
+    & Y
+    \arrow[l, swap, "g"]
+    \arrow[r, "f"]
+    & X'
+  \end{tikzcd}
+\end{equation*}
+This is almost what we want, up to an $\mathrm{op}$: we would like our functor $\hat{r}$ to send $X \mapsto \S_{/X}$ rather than $(\S_{/X})\op$. Fortunately, this is only an inconvenience. Recall that there is an autoequivalence of $\ICat$ sending $\category{C} \mapsto \category{C}\op$.
+\begin{definition}
+  We define the map $\hat{r}\colon \Span(\S) \to \ICat$ to be the composition
+  \begin{equation*}
+    \begin{tikzcd}
+      \Span(\S)
+      \arrow[r, "R"]
+      & \ICat
+      \arrow[r, "\mathrm{op}"]
+      & \ICat
+    \end{tikzcd}.
+  \end{equation*}
+\end{definition}
+
+The map $R$ is lax monoidal by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, and the map $R$ is lax monoidal because it is an equivalence, so $\hat{r}$ is lax monoidal.
 
 \end{document}
