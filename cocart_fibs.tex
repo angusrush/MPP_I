@@ -183,7 +183,7 @@ We provide here a partial proof of the following result because we will need to 
 \subsection{Marked bisimplicial sets}
 \label{ssc:marked_bisimplicial_sets}
 
-In this section, we define the basic theory of marked bisimplicial sets. In the following, one should keep in mind that the case in we are mostly interested is when our bisimplicial spaces are Segal spaces, and thus that only first (horizontal) simplicial direction should be thought of as categorical. For this reason, only the first simplicial direction will carry a marking.
+In this section, we define a basic theory of marked bisimplicial sets, in analogy to the theory of marked simplicial sets laid out in \cite{highertopostheory}. In the following, one should keep in mind that the case in which we are mostly interested is when our bisimplicial spaces are Segal spaces, and thus that only the first (horizontal) simplicial direction should be thought of as categorical. For this reason, only the first simplicial direction will carry a marking.
 
 \begin{definition}
   A \defn{marked bisimplicial set} $(X, \mathcal{E})$ is a bisimplicial set $X$ together with a distinguished subset $\mathcal{E} \subseteq X_{10}$ containing all degenerate edges, i.e.\ all edges in the image of $s_{0}\colon X_{00} \to X_{10}$. Equivalently, a marked bisimplicial set is bisimplicial set $X$ together with a marking $\mathcal{E}$ on the simplicial set $X / \Delta^{0}$.
@@ -198,7 +198,7 @@ This construction gives us a functor
   - \square -  \colon \SSet^{+} \times \SSet \to \SSSet^{+}.
 \end{equation*}
 
-There is a potential source of confusion here: we are using the same notation for the marked and unmarked box constructions. However, there is no real ambiguity: when we write $A \square B$, we mean the marked construction if $A$ is a marked simplicial set and the unmarked construction if $A$ is an unmarked simplicial set.
+This is potentially ambiguous: we are using the same notation for the marked and unmarked box constructions. However, there is no real chance of confusion: when we write $A \square B$, we mean the marked construction if $A$ is a marked simplicial set and the unmarked construction if $A$ is an unmarked simplicial set.
 
 Our first order of business is to generalize the results of \cite{qcats_vs_segal_spaces} summarized in \hyperref[sss:divisibility_of_bifunctors]{Section~\ref*{sss:divisibility_of_bifunctors}} to the marked case. We will first show that the above functor is divisible on the left and on the right.
 
@@ -1070,9 +1070,7 @@ For each $n \geq 2$, denote by $h^{n}$ the $\mathcal{L}$-marked inclusion
       \langle u \backslash f^{\mathcal{E}} \rangle \text{ weak homotopy equivalence}
     \right\}.
   \end{equation*}
-  It is clear that this set has the right cancellation property (\hyperref[def:right_cancellation_property]{Definition~\ref*{def:right_cancellation_property}}).
-
-  The set of morphisms of marked simplicial sets whose underlying morphisms are monic clearly has the right-cancellation property. To show that $S$ does, let $u\colon A \to B$ and $v\colon B \to C$ be such morphisms and consider the following diagram.
+  We claim that this set has the right cancellation property (\hyperref[def:right_cancellation_property]{Definition~\ref*{def:right_cancellation_property}}). The set of morphisms of marked simplicial sets whose underlying morphisms are monic clearly has the right-cancellation property. To show that $S$ does, let $u\colon A \to B$ and $v\colon B \to C$ be such morphisms and consider the following diagram.
   \begin{equation*}
     \begin{tikzcd}[column sep=large]
       C \backslash X

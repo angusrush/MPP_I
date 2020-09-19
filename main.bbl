@@ -174,6 +174,29 @@
       \field{title}{Higher Topos Theory}
       \field{year}{2009}
     \endentry
+    \entry{kerodon}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
+           family={Lurie},
+           familyi={L\bibinitperiod},
+           given={Jacob},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{fullhash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{bibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
+      \field{extraname}{3}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://kerodon.net}}
+      \field{title}{Kerodon}
+      \field{year}{2020}
+    \endentry
     \entry{rasekhcartesianfibrations}{article}{}
       \name{author}{1}{}{%
         {{hash=ef7be26de40244df94c067d8acda98cb}{%

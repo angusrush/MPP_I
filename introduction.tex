@@ -32,7 +32,7 @@ Denote by $\S$ the $\infty$-category of spaces. For any space $X \in \S$, denote
     \end{equation*}
 \end{itemize}
 
-This is a prototype of a common situation: one has a functor (say, of quasicategories) $F\colon \category{C} \to \category{D}$, which sends an object $c \in \category{C}$ to an object $F(c) \in \category{D}$, and a morphism $f\colon c \to c'$ in $\category{C}$ to a morphism $f_{!}\colon F(c) \to F(c')$ in $\category{D}$. However one has additionally a `wrong-way' map, which sends creates from a morphism $f\colon c \to c'$ a morphism $f^{*}\colon F(c') \to F(c)$. In this case, from the data of a diagram in $\category{C}$ of the form
+This is a prototype of a common situation: one has a functor (say, of quasicategories) $F\colon \category{C} \to \category{D}$, which sends an object $c \in \category{C}$ to an object $F(c) \in \category{D}$, and a morphism $f\colon c \to c'$ in $\category{C}$ to a morphism $f_{!}\colon F(c) \to F(c')$ in $\category{D}$. However one has additionally a `wrong-way' map, which creates from a morphism $f\colon c \to c'$ a morphism $f^{*}\colon F(c') \to F(c)$. In this case, from the data of a diagram in $\category{C}$ of the form
 \begin{equation}
   \label{eq:span}
   \begin{tikzcd}
@@ -57,9 +57,38 @@ one can produce a morphism $F(c) \to F(c'')$ in $\category{D}$ via the compositi
   \end{tikzcd}.
 \end{equation*}
 
-The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} in $\category{C}$. It is natural to ask whether this construction can be extended to a functor $\Span(\category{C}) \to \category{D}$, where $\Span(\category{C})$ is an infinity-category whose morphisms are spans in $\category{C}$.
+The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} in $\category{C}$. It is natural to ask whether this construction can be extended to a functor $\Span(\category{C}) \to \category{D}$, where $\Span(\category{C})$ is an infinity-category whose objects are the same as the objects of $\category{C}$, and whose morphisms are spans in $\category{C}$.
 
-The aim of this work is twofold. First, we to provide a new proof of a theorem of Barwick \cite[Thm. 12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $\category{C} \to \category{D}$ to yield a cocartesian fibration between categories of spans $\Span(\category{C}) \to \Span(\category{D})$. 
+In defining the quasicategory $\Span(\category{C})$, it is necessary to specify a composition law for spans. There is a natural way of doing this: given two spans $X \leftarrow Y \rightarrow X'$ and $X' \leftarrow Y' \rightarrow X''$ in $\category{C}$, we define their composition to be the pullback $X \leftarrow Y \times_{X'} Y' \rightarrow X''$ as below.
+\begin{equation*}
+  \begin{tikzcd}
+    && Y \times_{X'} Y'
+    \arrow[dl, dashed, swap, "q'"]
+    \arrow[dr, dashed, "f'"]
+    \\
+    & Y
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    && Y'
+    \arrow[dl, swap, "q"]
+    \arrow[dr, "p"]
+    \\
+    X
+    && X'
+    && X''
+  \end{tikzcd}
+\end{equation*}
+In order for functor $\Span(\category{C}) \to \category{D}$ to be well-defined, it will have to respect composition. That is, we must have for all such pullback diagrams
+\begin{equation*}
+  (p \circ f')_{!} \circ (g \circ q')^{*} \simeq p_{!} \circ q^{*} \circ f_{!} \circ g^{*}.
+\end{equation*}
+Equivalently, for any pullback square as above we must have an equivalence
+\begin{equation*}
+  f'_{!} \circ (q')^{*} \simeq q^{*} \circ f_{!}.
+\end{equation*}
+This is know as the \emph{base change condtition,} or the \emph{Beck--Chevalley condition.}
+
+The aim of this work is twofold. First, we to provide a new proof of a theorem of Barwick \cite[Thm. 12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$. %We will see that in order for such a functor to exist, the map $p$ must satisfy an unstraightened version of the Beck--Chevalley condition.
 
 Second, we use this result to construct a functor $\Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\P(X)$ of presheaves on $X$, and a morphism in $\Span(\S)$ represented by a span
 \begin{equation*}
@@ -86,6 +115,6 @@ This work consists of three sections. In \hyperref[sec:cocartesian_fibrations_be
 
 In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts. We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
 
-In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove a theorem of Barwick, \cite[Thm. 12.2]{spectralmackeyfunctors1}. After a brief review in \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}} of the definitions of the quasicategory $\Span(\category{C})$ and Segal space $\SPAN(\category{C})$ of spans in a quasicategory $\category{C}$, we construct in \hyperref[ssc:defining_the_maps_p_q_and_r]{Sections~\ref*{ssc:defining_the_maps_p_q_and_r}--\ref*{ssc:building_the_functor}} our functor $\Span(\S) \to \ICat$, and show that it is lax monoidal.
+In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove the above of Barwick, originally published in \cite[Thm. 12.2]{spectralmackeyfunctors1}. After a brief review in \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}} of the definitions of the quasicategory and Segal space models for the $\infty$-category of spans in a quasicategory $\category{C}$, we construct in \hyperref[ssc:defining_the_maps_p_q_and_r]{Sections~\ref*{ssc:defining_the_maps_p_q_and_r}--\ref*{ssc:building_the_functor}} our functor $\Span(\S) \to \ICat$, and show that it is lax monoidal.
 
 \end{document}

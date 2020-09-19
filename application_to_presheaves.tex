@@ -48,7 +48,7 @@ to the map $\P(X) \to \P(X')$ given by the composition
   \end{tikzcd}.
 \end{equation*}
 
-Note that the category $\S$ has products. This induces a symmetric monoidal structure on $\S$, the cartesian monoidal structure, which (as we will see) induces a symmetric monoidal structure on $\Span(\S)$. When we take $\Cat_{\infty}$ also to carry the cartesian monoidal structure, we will see that our functor $\hat{r}$ (\hyperref[eq:rhat]{Equation~\ref*{eq:rhat}}) is even lax monoidal.
+Note that the category $\S$ has products. This induces a symmetric monoidal structure on $\S$, the cartesian monoidal structure, which (as we will see) induces a symmetric monoidal structure on $\Span(\S)$. When we take $\Cat_{\infty}$ also to carry the cartesian monoidal structure, we will see that our functor $\hat{r}$ (\hyperref[eq:rhat]{Equation~\ref*{eq:rhat}}) even admits a lax monoidal structure.
 
 The idea behind the construction of the functor $\hat{r}$, in broad strokes, is as follows. We dress up the functor $\ev_{1}$, making it into a symmetric monoidal functor as follows (the monoidal structures on $\Map(\Delta^{1}, \S)^{\otimes}$ and $\S^{\otimes}$ are not exactly the standard cocartesian monoidal functors, as we will later discuss; they are represented by \emph{cartesian,} rather than \emph{cocartesian} fibrations).
 \begin{equation}
@@ -64,11 +64,15 @@ The idea behind the construction of the functor $\hat{r}$, in broad strokes, is 
   \end{tikzcd}
 \end{equation}
 
+\begin{note}
+  Here, and in what follows, we notationally suppres the nerve, writing $\Finp$ instead of $N(\Finp)$.
+\end{note}
+
 We then take spans in each of these categories, restricting the backwards- and forwards-facing legs judiciously so that we get a diagram
 \begin{equation}
   \label{eq:wishlist_pivarpirho}
   \begin{tikzcd}
-    \Span'(\Map(\Delta^{1}, \S))^{\otimes}
+    \Span(\Map(\Delta^{1}, \S))^{\otimes}
     \arrow[rr, "\rho"]
     \arrow[dr, swap, "\varpi"]
     && \Span(\S)^{\otimes}
@@ -77,7 +81,7 @@ We then take spans in each of these categories, restricting the backwards- and f
     & \Finp
   \end{tikzcd},
 \end{equation}
-where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Map(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds a cocartesian fibration, which classifies a functor $\Span(\S) \to \ICat$. By \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, this functor is lax monoidal, giving us our functor $\hat{r}$.
+where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Map(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds a cocartesian fibration, which classifies a functor $\Span(\S) \to \ICat$. By \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, this functor admits a lax monoidal structure, giving us our functor $\hat{r}$.
 
 Much of the technology in this section is similar to work already done in \cite{spectralmackeyfunctors2}. However, the manner in which we present it allows for generalization in a different direction than that carried out there. This will be the subject of future work.
 
@@ -244,7 +248,7 @@ In this section, we define triple structures on the quasicategories $\Map(\Delta
 
 \subsubsection*{Triple structure on \texorpdfstring{$\Finp\op$}{Fin.op}}
 
-Let us cast our minds back to \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}}. We have cartesian fibrations $p$, $q$, and $r$ as in \hyperref[eq:data_of_pqr]{Diagram~\ref*{eq:data_of_pqr}}; these play the role of the maps alluded to in \hyperref[eq:wishlist_prq]{Diagram~\ref*{eq:wishlist_prq}}. We would like a triple structure on $\Finp\op$ such that, when passing to quasicategories of spans, we find \emph{cocartesian fibrations} of the form \hyperref[eq:wishlist_pivarpirho]{Diagram~\ref*{eq:wishlist_pivarpirho}}.
+Recall \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}}. We have cartesian fibrations $p$, $q$, and $r$ as in \hyperref[eq:data_of_pqr]{Diagram~\ref*{eq:data_of_pqr}}; these play the role of the maps alluded to in \hyperref[eq:wishlist_prq]{Diagram~\ref*{eq:wishlist_prq}}. We would like a triple structure on $\Finp\op$ such that, when passing to quasicategories of spans, we find cocartesian fibrations of the form \hyperref[eq:wishlist_pivarpirho]{Diagram~\ref*{eq:wishlist_pivarpirho}}.
 
 This means, in particular, that we want a triple structure on $\Finp\op$ which gives us something like $\Finp$ upon taking categories of spans. Thus, we should take spans whose forward-pointing legs are equivalences:
 \begin{equation*}
@@ -257,7 +261,9 @@ This means, in particular, that we want a triple structure on $\Finp\op$ which g
   \end{tikzcd}.
 \end{equation*}
 
-The following definition does precisely that.
+We have considered this situation before, in \hyperref[eg:spans_with_equivalences_on_forwards_leg]{Example~\ref*{eg:spans_with_equivalences_on_forwards_leg}}. There, we saw that by considering spans in some quasicategory $\category{C}$ whose forward-facing legs were equivalences, we found a categorical equivalence $\category{C}\op \to \Span_{\simeq}(\category{C})$.
+
+Thus, we will take on $\Finp\op$ the triple structure defined in \hyperref[eg:spans_with_equivalences_on_forwards_leg]{Example~\ref*{eg:spans_with_equivalences_on_forwards_leg}}.
 
 \begin{definition}
   We define a triple $\triple{F}$ as follows.
@@ -270,7 +276,7 @@ The following definition does precisely that.
   \end{itemize}
 \end{definition}
 
-This is the triple structure considered in \hyperref[eg:spans_with_equivalences_on_forwards_leg]{Example~\ref*{eg:spans_with_equivalences_on_forwards_leg}}. There, we saw that the corresponding category of spans, which we called $\Span_{\simeq}(\Finp\op)$, was equivalent to $\Finp$. More precisely, we showed the following.
+For posterity, we record the content of \hyperref[eg:spans_with_equivalences_on_forwards_leg]{Example~\ref*{eg:spans_with_equivalences_on_forwards_leg}} in the following proposition.
 
 \begin{lemma}
   There is a weak Joyal equvialence
@@ -549,7 +555,7 @@ By construction, this gives us a commuting triangle
     & \Span\triple{F}
   \end{tikzcd}.
 \end{equation}
-Our next step is to show that the maps $\pi'$, $\rho'$, and $\varpi'$ are cocartesian fibrations. To do this, we need to exhibit that they admit enough cocartesian lifts; the form of these lifts will be given by \hyperref[thm:main]{Theorem~\ref*{thm:main}}, assuming we can show that this theorem applies.
+Our next step is to show that the maps $\pi'$, $\rho'$, and $\varpi'$ are cocartesian fibrations. To do this, we need to show that they are inner fibrations, and that they admit enough cocartesian lifts; both of these will be assured by \hyperref[thm:main]{Theorem~\ref*{thm:main}}, assuming we can show that this theorem applies.
 
 \begin{lemma}
   The morphism $p$ satisfies the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
@@ -817,7 +823,7 @@ We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to 
   There is an isomorphism of simplicial sets $P_{\langle 1 \rangle} \cong \Span(\S)$.
 \end{proposition}
 \begin{proof}
-  The $n$-simplices of $P_{\langle 1 \rangle}$ are ambigressive cartesian maps $\sigma\colon \sd(\Delta^{n}) \to \S_{\times}$ making the diagram
+  Unravelling the defintitions, the $n$-simplices of $P_{\langle 1 \rangle}$ are ambigressive cartesian maps $\sigma\colon \sd(\Delta^{n}) \to \S_{\times}$ making the diagram
   \begin{equation*}
     \begin{tikzcd}
       \sd(\Delta^{n})
@@ -918,6 +924,6 @@ This is almost what we want, up to an $\mathrm{op}$: we would like our functor $
   \end{equation*}
 \end{definition}
 
-The map $R$ is lax monoidal by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, and the map $R$ is lax monoidal because it is an equivalence, so $\hat{r}$ is lax monoidal.
+The map $R$ admits a lax monoidal structure by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, and the map $\mathrm{op}$ is monoidal with respect to the cartesian monoidal structure on $\ICat$ because it is an equivalence and hence preserves products. Thus, $\hat{r}$ is lax monoidal.
 
 \end{document}
