@@ -7,7 +7,7 @@
 
 \subsection{Basic definitions}
 
-We recall the basic definitions of Segal spaces of spans. Note that spans as we will define them form not only a Segal space, but a \emph{complete} Segal space; for the most part, this will not concern us. For more information, we direct the reader to \cite{spectralmackeyfunctors1}. This section is intended to be a summary of the results found there which we will need.
+We recall the basic definitions of Segal spaces of spans. Note that spans as we will define them form not only a Segal space, but a \emph{complete} Segal space; for the most part, this will not concern us. For more information, we direct the reader to \cite{spectralmackeyfunctors1}. This section is intended to be a summary of the relevant results of loc.\ cit.
 
 The objects of our study will be $\infty$-categories whose morphisms are spans in some quasicategory $\category{C}$, i.e.\ diagrams in $\category{C}$ of the form
 \begin{equation*}
@@ -23,7 +23,7 @@ The objects of our study will be $\infty$-categories whose morphisms are spans i
 We will want to be able to place certain conditions on the legs $\phi$ and $\psi$ of our spans. For example, we may want to restrict our attention to spans such that $\phi$ is an equivalence. More precisely, we pick out two subcategories of $\category{C}$ to which the respective legs of our spans must belong.
 
 \begin{definition}
-  A \defn{triple} of categories is a triple $\triple{C}$, where $\category{C}$ is a quasicategory where $\category{C}_{\dagger}$ and $\category{C}^{\dagger}$ are subcategories (in the sense of \cite[Sec.\ 1.2.11]{highertopostheory}), each of which contain all equivalences.
+  A \defn{triple} of categories is a triple $\triple{C}$, where $\category{C}$ is a quasicategory where $\category{C}_{\dagger}$ and $\category{C}^{\dagger}$ are subcategories, each of which contain all equivalences.
 \end{definition}
 
 We will use the following terminology and notation for the morphsism in our subcategories.
@@ -33,7 +33,7 @@ We will use the following terminology and notation for the morphsism in our subc
   \item We denote the morphisms in $\category{C}^{\dagger}$ with two heads (as in $x \eg y$), and call them \emph{egressive}.
 \end{itemize}
 
-The egressive morphisms will correspond to the backwards (i.e.\ leftwards) facing legs of our spans, and the ingressive morphisms will correspond to the forwards (i.e.\ rightwards) facing legs. We provide the following diagram as a sort of cheat-sheet.
+The egressive morphisms will correspond to the backwards (i.e.\ leftwards) facing legs of our spans, and the ingressive morphisms will correspond to the forwards (i.e.\ rightwards) facing legs. We provide the following diagram as a summary of this terminology.
 \begin{equation*}
   \begin{tikzcd}
     & Y
@@ -100,17 +100,92 @@ We will call a square of the form
 \end{equation*}
 \emph{ambigressive.} If such an ambigressive square is also a pullback square, we will call it \emph{ambigressive pullback.}
 
-It is now time to set about building our categories of spans. We give only a sketch. For each $n \geq 0$, we define a poset $\Sigma_{n}$ as follows:
-\begin{itemize}
-  \item The elements of $\Sigma_{n}$ are pairs of integers $(i, j)$, with $0 \leq i \leq j \leq n$.
+It is now time to set about building our $\infty$-categories of spans. Fix some triple $\triple{C}$. We will define two models for such a category: a Segal space $\SPAN\triple{C}$, and the quasicategory $\Span\triple{C}$.
 
-  \item For $(i, j)$, $(i', j') \in \Sigma_{n}$, we define
-    \begin{equation*}
-      (i, j) \leq (i', j') \iff i \leq i' \leq j' \leq j.
-    \end{equation*}
-\end{itemize}
+Given two $1$-simplices in $\Span\triple{C}$ represented by spans $X \twoheadleftarrow Y \rightarrowtail X'$ and $X' \twoheadleftarrow Y' \rightarrowtail X''$ in $\category{C}$, we need to specify what it means to compose them. We define the composition to be the span $X \twoheadleftarrow Y \times_{X'} Y' \rightarrowtail X''$ given by the diagram below, where the top square is pullback.
+\begin{equation*}
+  \begin{tikzcd}
+    && Y \times_{X'} Y'
+    \arrow[dl, two heads, dashed, swap, "q'"]
+    \arrow[dr, tail, dashed, "f'"]
+    \\
+    & Y
+    \arrow[dl, two heads, swap, "g"]
+    \arrow[dr, tail, "f"]
+    && Y'
+    \arrow[dl, two heads, swap, "q"]
+    \arrow[dr, tail, "p"]
+    \\
+    X
+    && X'
+    && X''
+  \end{tikzcd}
+\end{equation*}
+Note that the conditions in \hyperref[def:adequate_triple]{Definition~\ref*{def:adequate_triple}} tell us precisely that such a composition always exists.
+
+Equivalently, we this means that a $2$-simplex in $\Span\triple{C}$ should be a diagram in $\category{C}$ of the above form. More generally, we would like an $n$-simplex in $\Span\triple{C}$ to correspond to $n$-fold composition of spans. For example, for $n = 4$, such an $n$-simplex in $\Span\triple{C}$ should consist of a diagram in $\category{C}$ of the form
+\begin{equation*}
+  \begin{tikzcd}[column sep=tiny, row sep=small]
+    \\
+    &&&& X_{04}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    \\
+    &&& X_{03}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    && X_{14}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    \\
+    && X_{02}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    && X_{13}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    && X_{24}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    \\
+    & X_{01}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    && X_{12}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    && X_{23}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    && X_{34}
+    \arrow[dl, two heads]
+    \arrow[dr, tail]
+    \\
+    X_{00}
+    && X_{11}
+    && X_{22}
+    && X_{33}
+    && X_{44}
+  \end{tikzcd},
+\end{equation*}
+where the morphisms are ingressive and egressive as shown, and each square is pullback.
+
+All that remains is to make this definition rigorous. To this end, we make the following definition.
+
+\begin{definition}
+  for each $n \geq 0$, we define a poset $\Sigma_{n}$ as follows:
+  \begin{itemize}
+    \item The elements of $\Sigma_{n}$ are pairs of integers $(i, j)$, with $0 \leq i \leq j \leq n$.
+  
+    \item For $(i, j)$, $(i', j') \in \Sigma_{n}$, we define
+      \begin{equation*}
+        (i, j) \leq (i', j') \iff i \leq i' \leq j' \leq j.
+      \end{equation*}
+  \end{itemize}
+\end{definition}
 
 \begin{example}
+  \label{eg:sigma_4}
   We can draw $\Sigma_{4}$ as follows.
   \begin{equation*}
     \begin{tikzcd}[column sep=tiny, row sep=small]
@@ -158,7 +233,7 @@ It is now time to set about building our categories of spans. We give only a ske
   \end{equation*}
 \end{example}
 
-These $\Sigma_{n}$ assemble into a cosimplicial object 
+These posets $\Sigma_{n}$ assemble into a cosimplicial object 
 \begin{equation*}
   \Delta \to \SSet;\qquad [n] \mapsto N(\Sigma_{n}),
 \end{equation*}
@@ -171,84 +246,46 @@ For any simplicial set $A$, the simplicial set $\Span'(A)$ has $n$-simplices
   \Span'(A)_{n} = \Hom_{\SSet}(\sd(\Delta^{n}), A).
 \end{equation*}
 
-For example, for $n = 4$, such an $n$-simplex consists of a diagram of the form
-\begin{equation*}
-  \begin{tikzcd}[column sep=tiny, row sep=small]
-    \\
-    &&&& X_{04}
-    \arrow[dl]
-    \arrow[dr]
-    \\
-    &&& X_{03}
-    \arrow[dl]
-    \arrow[dr]
-    && X_{14}
-    \arrow[dl]
-    \arrow[dr]
-    \\
-    && X_{02}
-    \arrow[dl]
-    \arrow[dr]
-    && X_{13}
-    \arrow[dl]
-    \arrow[dr]
-    && X_{24}
-    \arrow[dl]
-    \arrow[dr]
-    \\
-    & X_{01}
-    \arrow[dl]
-    \arrow[dr]
-    && X_{12}
-    \arrow[dl]
-    \arrow[dr]
-    && X_{23}
-    \arrow[dl]
-    \arrow[dr]
-    && X_{34}
-    \arrow[dl]
-    \arrow[dr]
-    \\
-    X_{00}
-    && X_{11}
-    && X_{22}
-    && X_{33}
-    && X_{44}
-  \end{tikzcd}.
-\end{equation*}
-For any $n$-simplex $\sd(\Delta^{n}) \to \category{C}$ corresponding to a diagram as above, we will call the morphisms $X_{ij} \to X_{ij'}$ \emph{backward-facing,} and the morphisms $X_{ij} \to X_{i'j}$ \emph{forward-facing.} 
+Note that for a quasicategory $\category{C}$, the simplicial set $\Span'(\category{C})$ is very close to what we want; its $n$-simplices are maps $\Sigma_{n} \to \category{C}$, but the backward- and forward-facing legs of the spans do not necessarily belong to the categories $\category{C}\downdag$ and $\category{C}\updag$, and the squares are not necessarily pullback. We will use the term to refer to a map $\sd(\Delta^{n}) \to \category{C}$ which has the desired form.
 
-Fix some adequate triple $\triple{C}$. We will call a functor $\sd(\Delta^{n}) \to \category{C}$ \emph{ambigressive Cartesian} if each square in $\sd(\Delta^{n}) = N(\Sigma_{n})$ of the form
-\begin{equation*}
-  \begin{tikzcd}[column sep=tiny]
-    & {(i, j)}
-    \arrow[dr]
-    \arrow[dl]
-    \\
-    {(i, j - \ell)}
-    \arrow[dr]
-    & & {(i + k , j)}
-    \arrow[dl]
-    \\
-    & {(i + k , j - \ell)}
-  \end{tikzcd}
-\end{equation*}
-(where we include the possibilities $k = 0$ and $\ell = 0$) is mapped to an ambigressive pullback square,
-\begin{equation*}
-  \begin{tikzcd}[column sep=tiny]
-    & X_{ij}
-    \arrow[dr]
-    \arrow[dl]
-    \\
-    X_{i(j-\ell)}
-    \arrow[dr]
-    & & X_{(i+k)(j)}
-    \arrow[dl]
-    \\
-    & X_{(i+k)(j-\ell)}
-  \end{tikzcd}
-\end{equation*}
-where the backwards-facing morphsims are egressive and the forwards-facing morphisms are ingressive. 
+%For any $n$-simplex $\sd(\Delta^{n}) \to \category{C}$ corresponding to a diagram as above, we will call the morphisms $X_{ij} \to X_{ij'}$ \emph{backward-facing,} and the morphisms $X_{ij} \to X_{i'j}$ \emph{forward-facing.} 
+
+\begin{definition}
+  \label{def:ambigressive_cartesian}
+  For any adequate triple $\triple{C}$, we will call a functor $\sd(\Delta^{n}) \to \category{C}$ \emph{ambigressive Cartesian} if each square in $\sd(\Delta^{n}) = N(\Sigma_{n})$ of the form
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny]
+      & {(i, j)}
+      \arrow[dr]
+      \arrow[dl]
+      \\
+      {(i, j - \ell)}
+      \arrow[dr]
+      & & {(i + k , j)}
+      \arrow[dl]
+      \\
+      & {(i + k , j - \ell)}
+    \end{tikzcd}
+  \end{equation*}
+  (where we include the possibilities $k = 0$ and $\ell = 0$) is mapped to an ambigressive pullback square,
+  \begin{equation*}
+    \begin{tikzcd}[column sep=tiny]
+      & X_{ij}
+      \arrow[dr]
+      \arrow[dl]
+      \\
+      X_{i(j-\ell)}
+      \arrow[dr]
+      & & X_{(i+k)(j)}
+      \arrow[dl]
+      \\
+      & X_{(i+k)(j-\ell)}
+    \end{tikzcd}
+  \end{equation*}
+  where the backwards-facing morphsims are egressive and the forwards-facing morphisms are ingressive. 
+\end{definition}
+
+We are now ready to define our category $\Span(\category{C})$.
 
 \begin{definition}
   We define a simplicial set $\Span\triple{C}$ level-wise to be the subset
@@ -309,13 +346,13 @@ If the morphism $g$ were invertible, we could fill this to a full 2-simplex
     && X'
   \end{tikzcd}.
 \end{equation*}
-Even if $g$ is not invertible, we can think of our span as representing formally a map `$f \circ g^{-1}\colon X \to X'$', which may not exist in $\category{C}$.
+Even if $g$ is not invertible, we can think of our span as formally representing a `fraction of morphisms' $f \circ g^{-1}\colon X \to X'$, which may not exist in $\category{C}$.
 
-With this point of view in mind, if we build from a quasicategory $\category{C}$ a category of spans whose forwards-facing legs are arbitrary morphisms in $\category{C}$, and whose backward-facing legs are equivalences, then we have not really done anything; each span, thought of as a formal morphism in $\category{C}$, is represented by an actual morphism in $\category{C}$. Thus, the category of spans in $\category{C}$ whose backward-facing legs are equivalences should be equivalent to the category $\category{C}$. In the following example, we construct this equivalence.
+With this point of view in mind, if we build from a quasicategory $\category{C}$ a category of spans whose forwards-facing legs are arbitrary morphisms in $\category{C}$, and whose backward-facing legs are equivalences, then we have not really done anything; each span, thought of as a formal morphism in $\category{C}$, is represented by an actual morphism in $\category{C}$. Thus, the category of spans in $\category{C}$ whose backward-facing legs are equivalences should be equivalent to the category $\category{C}$. In the following example, we construct this equivalence. This example, as well as the following one, will be important in several places to the construction in \hyperref[sec:application_to_presheaves]{Section~\ref*{sec:application_to_presheaves}}.
 
 \begin{example}
   \label{eg:spans_with_equivalences_on_one_leg}
-  For any quasicategory $\category{C}$, we can define a triple $(\category{C}, \category{C}\downdag = \category{C}, \category{C}\updag = \category{C}^{\simeq})$. These choices of ingressive and egressive morphisms correspond to spans of the form
+  For any quasicategory $\category{C}$, we can define a triple $(\category{C}, \category{C}\updag = \category{C}, \category{C}\downdag = \category{C}^{\simeq})$. These choices of ingressive and egressive morphisms correspond to spans of the form
   \begin{equation*}
     \begin{tikzcd}
       & Y
@@ -352,100 +389,100 @@ With this point of view in mind, if we build from a quasicategory $\category{C}$
   where the first map takes $i \mapsto (i, n)$, and the second takes $(i, j) \mapsto i$. In the case $n = 2$, the inclusion can be drawn
 
   \tikzset{LA/.style = {line width=#1, -{Straight Barb[length=3pt]}}, LA/.default=1.5pt}
-\begin{equation*}
-  \begin{tikzcd}[row sep=small, column sep=tiny]
-    0
-    \arrow[dr, LA]
-    \\
-    & 1
-    \arrow[dr, LA]
-    \\
-    && 2
-  \end{tikzcd}
-  \qquad \hookrightarrow \qquad
-  \begin{tikzcd}[row sep=small, column sep=tiny]
-    && (0, 2)
-    \arrow[dl]
-    \arrow[dr, LA]
-    \\
-    & (0, 1)
-    \arrow[dl]
-    \arrow[dr]
-    && (1, 2)
-    \arrow[dl]
-    \arrow[dr, LA]
-    \\
-    (0, 0)
-    && (1, 1)
-    && (2, 2)
-  \end{tikzcd},
-\end{equation*}
-and the map $\sd(\Delta^{n}) \to \Delta^{n}$ `collapses' the backward-facing legs of the spans. The general case is hopefully clear.
+  \begin{equation*}
+    \begin{tikzcd}[row sep=small, column sep=tiny]
+      0
+      \arrow[dr, LA]
+      \\
+      & 1
+      \arrow[dr, LA]
+      \\
+      && 2
+    \end{tikzcd}
+    \qquad \hookrightarrow \qquad
+    \begin{tikzcd}[row sep=small, column sep=tiny]
+      && (0, 2)
+      \arrow[dl]
+      \arrow[dr, LA]
+      \\
+      & (0, 1)
+      \arrow[dl]
+      \arrow[dr]
+      && (1, 2)
+      \arrow[dl]
+      \arrow[dr, LA]
+      \\
+      (0, 0)
+      && (1, 1)
+      && (2, 2)
+    \end{tikzcd},
+  \end{equation*}
+  and the map $\sd(\Delta^{n}) \to \Delta^{n}$ `collapses' the backward-facing legs of the spans. The general case is analogous.
 
-Applying the nerve, we find a retraction of simplicial sets
-\begin{equation*}
-  \Delta^{n} \hookrightarrow \sd(\Delta^{n}) \twoheadrightarrow \Delta^{n}.
-\end{equation*}
-Pulling back along these maps gives us, for each $n$, a retraction
-\begin{equation*}
-  \begin{tikzcd}
-    \Map(\Delta^{n}, \category{C})^{\simeq}
-    \arrow[r, hook, "i'_{n}"]
-    & \Map(\sd(\Delta^{n}), \category{C})^{\simeq} 
-    \arrow[r, hook, "r'_{n}"]
-    & \Map(\Delta^{n}, \category{C})^{\simeq}
-  \end{tikzcd}.
-\end{equation*}
-Note that the image of the inclusion $i'_{n}$ consists of spans whose backwards-facing legs are identities (hence certainly equivalences), and hence that we can restrict the total space of our retraction:
-\begin{equation*}
-  \begin{tikzcd}
-    \Map(\Delta^{n}, \category{C})^{\simeq} 
-    \arrow[r, hook, "i_{n}"]
-    & \Map^{\aCart}(\sd(\Delta^{n}), \category{C})^{\simeq}
-    \arrow[r, two heads, "r_{n}"]
-    & \Map(\Delta^{n}, \category{C})^{\simeq}
-  \end{tikzcd}.
-\end{equation*}
+  Applying the nerve, we find a retraction of simplicial sets
+  \begin{equation*}
+    \Delta^{n} \hookrightarrow \sd(\Delta^{n}) \twoheadrightarrow \Delta^{n}.
+  \end{equation*}
+  Pulling back along these maps gives us, for each $n$, a retraction
+  \begin{equation*}
+    \begin{tikzcd}
+      \Map(\Delta^{n}, \category{C})^{\simeq}
+      \arrow[r, hook, "i'_{n}"]
+      & \Map(\sd(\Delta^{n}), \category{C})^{\simeq} 
+      \arrow[r, hook, "r'_{n}"]
+      & \Map(\Delta^{n}, \category{C})^{\simeq}
+    \end{tikzcd}.
+  \end{equation*}
+  Note that the image of the inclusion $i'_{n}$ consists of spans whose backwards-facing legs are identities (hence certainly equivalences), and hence that we can restrict the total space of our retraction:
+  \begin{equation*}
+    \begin{tikzcd}
+      \Map(\Delta^{n}, \category{C})^{\simeq} 
+      \arrow[r, hook, "i_{n}"]
+      & \Map^{\aCart}(\sd(\Delta^{n}), \category{C})^{\simeq}
+      \arrow[r, two heads, "r_{n}"]
+      & \Map(\Delta^{n}, \category{C})^{\simeq}
+    \end{tikzcd}.
+  \end{equation*}
 
-It is not hard to convince oneself that a map $\sd(\Delta^{n}) \to \category{C}$ is ambigressive cartesian if and only if it is a right Kan extension of its restriction along $\Delta^{n} \hookrightarrow \sd(\Delta^{n})$. In the case $n = 2$, for example, it is clear from the limit formula that any right Kan extension of a diagram $\Delta^{2} \to \category{C}$ along the inclusion $\Delta^{2} \hookrightarrow \sd(\Delta^{2})$ is of the form
-\begin{equation*}
-  \begin{tikzcd}[row sep=small, column sep=tiny]
-    X
-    \arrow[dr]
-    \\
-    & Y
-    \arrow[dr]
-    \\
-    && Z
-  \end{tikzcd}
-  \qquad \hookrightarrow \qquad
-  \begin{tikzcd}[row sep=small, column sep=tiny]
-    && X
-    \arrow[dl, swap, "\simeq"]
-    \arrow[dr]
-    \\
-    & X'
-    \arrow[dl, swap, "\simeq"]
-    \arrow[dr]
-    && Y
-    \arrow[dl, swap, "\simeq"]
-    \arrow[dr]
-    \\
-    X''
-    && Y'
-    && Z
-  \end{tikzcd},
-\end{equation*}
-(and conversely, any diagram of the above form is a right Kan extension), and diagrams of the above form are precisely those which are ambigressive cartesian. Put differently, $\Fun^{\aCart}(\sd(\Delta^{n}), \category{C})$ is the full subcategory of $\Fun(\sd(\Delta^{n}), \category{C})$ on functors which are right Kan extensions of their restrictions to $\Delta^{n}$. This, together with \cite[Prop.\ 4.3.2.15]{highertopostheory} implies that $r_{n}$ is a trivial fibration for all $n$. The identity $\id_{\Fun(\Delta^{n}, \category{C})}$ is certainly a weak Kan equivalence, so by the $2/3$ property for weak equivalences, $i_{n}$ is also a weak equivalence for all $n$.
+  It is not hard to convince oneself that a map $\sd(\Delta^{n}) \to \category{C}$ is ambigressive cartesian if and only if it is a right Kan extension of its restriction along $\Delta^{n} \hookrightarrow \sd(\Delta^{n})$. In the case $n = 2$, for example, it is clear from the limit formula that any right Kan extension of a diagram $\Delta^{2} \to \category{C}$ along the inclusion $\Delta^{2} \hookrightarrow \sd(\Delta^{2})$ is of the form
+  \begin{equation*}
+    \begin{tikzcd}[row sep=small, column sep=tiny]
+      X
+      \arrow[dr]
+      \\
+      & Y
+      \arrow[dr]
+      \\
+      && Z
+    \end{tikzcd}
+    \qquad \hookrightarrow \qquad
+    \begin{tikzcd}[row sep=small, column sep=tiny]
+      && X
+      \arrow[dl, swap, "\simeq"]
+      \arrow[dr]
+      \\
+      & X'
+      \arrow[dl, swap, "\simeq"]
+      \arrow[dr]
+      && Y
+      \arrow[dl, swap, "\simeq"]
+      \arrow[dr]
+      \\
+      X''
+      && Y'
+      && Z
+    \end{tikzcd},
+  \end{equation*}
+  (and conversely, any diagram of the above form is a right Kan extension), and diagrams of the above form are precisely those which are ambigressive cartesian. Put differently, $\Fun^{\aCart}(\sd(\Delta^{n}), \category{C})$ is the full subcategory of $\Fun(\sd(\Delta^{n}), \category{C})$ on functors which are right Kan extensions of their restrictions to $\Delta^{n}$. This, together with \cite[Prop.\ 4.3.2.15]{highertopostheory} implies that $r_{n}$ is a trivial fibration for all $n$. The identity $\id_{\Fun(\Delta^{n}, \category{C})}$ is certainly a weak Kan equivalence, so by the $2/3$ property for weak equivalences, $i_{n}$ is also a weak equivalence for all $n$.
 
-The projections $\sd(\Delta^{n}) \to \Delta^{n}$ assemble into a cosimplicial object $\sd(\Delta^{\bullet}) \to \Delta^{\bullet}$. From this it easily follows that the maps $i_{n}$ assemble into a map of Segal spaces
-\begin{equation*}
-  i\colon \Gamma(\category{C}) = \Fun(\Delta^{\bullet}, \category{C}) \to \Fun^{\aCart}(\sd(\Delta^{\bullet}), \category{C}) = \SPAN^{\simeq}(\category{C})
-\end{equation*}
-which is a level-wise Kan weak equivalence, and hence a weak equivalence in the complete Segal spaces model structure.\footnote{For a brief review of the model structures in question, see \hyperref[sss:a_brief_list_of_model_structures]{Appendix~\ref*{sss:a_brief_list_of_model_structures}}. For more information, see \cite{qcats_vs_segal_spaces}, especially the discussion following Thm.\ 4.1.} Here $\Gamma(\category{C})$ is the complete Segal space defined in \cite{qcats_vs_segal_spaces} in the discussion preceding Thm.\ 4.11. In \cite{qcats_vs_segal_spaces} it is also discussed that the functor $( - )/\Delta^{0}\colon \SSSet^{\mathrm{CSS}} \to \SSet^{\mathrm{Joyal}}$ is the right Quillen functor in a Quillen equivalence between the Complete Segal Space model structure and the Joyal model structure. Thus, because $\Gamma(\category{C})$ and $\SPAN^{\simeq}(\category{C})$ are complete Segal spaces, the restricion of $i$ to first rows $i / \Delta^{0}$ is a weak categorical equivalence, which is what we wanted to show.
+  The projections $\sd(\Delta^{n}) \to \Delta^{n}$ assemble into a cosimplicial object $\sd(\Delta^{\bullet}) \to \Delta^{\bullet}$. From this it easily follows that the maps $i_{n}$ assemble into a map of Segal spaces
+  \begin{equation*}
+    i\colon \Gamma(\category{C}) = \Fun(\Delta^{\bullet}, \category{C}) \to \Fun^{\aCart}(\sd(\Delta^{\bullet}), \category{C}) = \SPAN^{\simeq}(\category{C})
+  \end{equation*}
+  which is a level-wise Kan weak equivalence, and hence a weak equivalence in the complete Segal spaces model structure.\footnote{For a brief review of the model structures in question, see \hyperref[sss:a_brief_list_of_model_structures]{Appendix~\ref*{sss:a_brief_list_of_model_structures}}. For more information, see \cite{qcats_vs_segal_spaces}, especially the discussion following Thm.\ 4.1.} Here $\Gamma(\category{C})$ is the complete Segal space defined in \cite{qcats_vs_segal_spaces} in the discussion preceding Thm.\ 4.11. In \cite{qcats_vs_segal_spaces} it is also discussed that the functor $( - )/\Delta^{0}\colon \SSSet^{\mathrm{CSS}} \to \SSet^{\mathrm{Joyal}}$ is the right Quillen functor in a Quillen equivalence between the Complete Segal Space model structure and the Joyal model structure. Thus, because $\Gamma(\category{C})$ and $\SPAN^{\simeq}(\category{C})$ are complete Segal spaces, the restricion of $i$ to first rows $i / \Delta^{0}$ is a weak categorical equivalence, which is what we wanted to show.
 \end{example}
 
-\hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}} allows us to find a copy of $\category{C}$ in a category of spans. Similarly, if we look at spans whose forward-facing legs are equivalences, we find a copy of $\category{C}\op$.
+\hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}} allows us to find an equivalence between $\category{C}$ and a quasicategory of spans. Similarly, if we look at spans whose forward-facing legs are equivalences, we find a category of spans equivalent to $\category{C}\op$.
 
 \begin{example}
   \label{eg:spans_with_equivalences_on_forwards_leg}
@@ -479,7 +516,7 @@ such that $p(\category{C}_{\dagger}) \subseteq \category{D}_{\dagger}$, $p(\cate
 \end{equation*}
 and similarly for $p^{\dagger}$. Clearly, a functor $p$ between adequate triples gives functors $\Span(p)$ and $\SPAN(p)$ respectively between quasicategories and Segal spaces of spans.
 
-The goal of the remainder of this section is to provide a proof of the following theorem. This is \cite[Thm.\ 12.2]{spectralmackeyfunctors1}.
+The goal of the remainder of this section is to provide a proof of the following theorem, originally appearing as \cite[Thm.\ 12.2]{spectralmackeyfunctors1}. This theorem provides conditions on a functor $p$ between adequate triples such that the induced map between category of spans is an inner fibration, and provides the form of a $p$-cocartesian morphism in $\Span\triple{C}$.
 
 \begin{theorem}
   \label{thm:main}
@@ -504,7 +541,7 @@ The goal of the remainder of this section is to provide a proof of the following
       in $\category{C}$ such that $p(\sigma)$ is ambigressive pullback in $\category{D}$, with in- and egressive morphisms as marked, and $f$ is $p$-cocartesian. Then $f'$ is $p$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $\psi$ is egressive).
   \end{enumerate}
 
-  Then $\pi$ is an inner fibration, and if a morphism in $\Span\triple{C}$ is of the form
+  Then $\pi$ is an inner fibration. Further, if a morphism in $\Span\triple{C}$ is of the form
   \begin{equation*}
     \begin{tikzcd}
       & y
@@ -768,7 +805,7 @@ One should interpret this as telling us that given a $\Lambda^{2}_{2}$-horn $\al
   in which the top map is an inclusion of connected components, the right map is a trivial Kan fibration, and the left map is surjective on vertices. Thus, the left map is a trivial Kan fibration by \hyperref[cor:connected_components_kan_fibration]{Corollary~\ref*{cor:connected_components_kan_fibration}}
 \end{proof}
 
-\subsection{Main theorem}
+\subsection{Proof of main theorem}
 
 Our goal is now to prove \hyperref[thm:main]{Theorem~\ref*{thm:main}}. As in the statement of the theorem, we fix a map of triples $p\colon \triple{C} \to \triple{D}$ giving us a functor of quasicategories
 \begin{equation*}
@@ -1059,12 +1096,12 @@ Similarly, we will denote by $\Fun'(A_{i}, \category{D})$ the full simplicial su
       \Fun'(A_{6}, \category{C})
       \arrow[r]
       \arrow[d]
-      & \Fun'(A_{0}, \category{C})
+      & \Fun'(A_{1}, \category{C})
       \arrow[d]
       \\
       \Fun'(A_{6}, \category{D})
       \arrow[r]
-      & \Fun'(A_{0}, \category{D})
+      & \Fun'(A_{1}, \category{D})
     \end{tikzcd}
   \end{equation*}
   is homotopy pullback.
@@ -1161,7 +1198,7 @@ We are now ready to show that morphisms of the form \hyperref[eq:form_of_p_cocar
   is homotopy pullback.
 \end{proposition}
 \begin{proof}
-  This square factors into the two squares
+  This square factors horizontally into the two squares
   \begin{equation*}
     \noindent\makebox[\textwidth]{%
       \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]

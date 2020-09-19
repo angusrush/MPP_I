@@ -13,7 +13,7 @@ The aim of this work is to prove the following theorem.
 
 This is a special case of a theorem of Barwick \cite{spectralmackeyfunctors1}. There, Barwick proves a stronger result, which treats the weaker case of inner fibrations separately, and allows conditions on the legs of the spans. Barwick's proof is explicit, constructing horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
 
-Our proof is more homotopy-theoretic in character, relying on the fact that for any quasicategory $\category{C}$ with pullbacks, the infinity-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. In our proof, we define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
+Our proof is more homotopy-theoretic in character, relying on the fact that for any quasicategory $\category{C}$ with pullbacks, the $\infty$-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. In our proof, we define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
 
 Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first written down by De Brito in \cite{2016arXiv160500706B}, and expanded by Rasekh in \cite{rasekhcartesianfibrations}. There, Rasekh defines a model structure whose fibrant objects model cocartesian fibrations between Segal spaces. In defining this model structure, it is necessary to distinguish certain morphisms, and Rasekh solves this problem by adding an extra simplicial dimension; the model structure for cocartesian fibrations defined there is thus a model structure on slice categories of trisimplicial sets.
 
@@ -125,7 +125,7 @@ We provide here a partial proof of the following result because we will need to 
   \end{equation*}
 \end{proposition}
 \begin{proof}
-  We prove divisibility on the left; because the Cartesian product is symmetric, divisibility on the right is identical. We do this by explicitly exhibiting a natural bijection
+  We prove divisibility on the left; because the Cartesian product is symmetric, divisibility on the right is analogous. We do this by explicitly exhibiting a natural bijection
   \begin{equation*}
     \begin{tikzcd}
       \Hom_{\SSSet}(A \square B, X) \cong \Hom_{\SSet}(B, A \backslash X).

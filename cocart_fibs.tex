@@ -51,7 +51,7 @@ In the former case, we think of a bisimplicial set $X$ as an $\N$-indexed collec
 \end{equation*}
 Thus, the $n$th row of $X$ is the simplicial set $X_{\bullet n}$, and the $m$th column of $X$ is the simplicial set $X_{m \bullet}$. When we think of bisimplicial sets as $\N$-indexed collections of simplicial sets $X_{m}$, we mean by $X_{m}$ the $m$th \emph{column} of $X$; that is, $X_{m} = X_{m, \bullet}$.
 
-If $X$ is Reedy fibrant, then each simplicial set $X_{n}$ is a Kan complex. Later, when we are interested in Segal spaces, we will interpret $X_{n}$ as the space of $n$-simplices of $X$.
+If $X$ is Reedy fibrant (i.e.\ fibrant with respect to the Reedy model structure on $\SSSet$, see \hyperref[ssc:a_review_of_bisimplicial_sets]{Subsection~\ref*{ssc:a_review_of_bisimplicial_sets}}), then each simplicial set $X_{n}$ is a Kan complex. Later, when we are interested in Segal spaces, we will interpret $X_{n}$ as the space of $n$-simplices of $X$.
 
 \begin{definition}
   Define a functor $- \square -\colon \SSet \times \SSet \to \SSSet$ by the formula
@@ -63,7 +63,7 @@ If $X$ is Reedy fibrant, then each simplicial set $X_{n}$ is a Kan complex. Late
 
 \begin{example}
   \label{eg:box_product_and_yoneda}
-  By the Yoneda lemma, maps $\Delta^{m} \square \Delta^{n} \to X$ are the same as elements of $X_{mn}$.
+  By the Yoneda lemma, providing a map $\Delta^{m} \square \Delta^{n} \to X$ is equivalent to providing as an element of $X_{mn}$.
 \end{example}
 
 \begin{definition}
@@ -85,7 +85,7 @@ If $X$ is Reedy fibrant, then each simplicial set $X_{n}$ is a Kan complex. Late
 %In \cite{qcats_vs_segal_spaces}, the theory of such bifunctors is explored. The results that we will need are reproduced in \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}}. However, we note here the following.
 Note that by \hyperref[eg:box_product_and_yoneda]{Example~\ref*{eg:box_product_and_yoneda}}, the simplicial set $\Delta^{m} \backslash X$ is the $m$th column of $X$, which we have agreed to call $X_{m}$. Similarly, the simplicial set $X / \Delta^{n}$ is the $n$th row of $X$. In particular $X / \Delta^{0}$ is the zeroth row of $X$. (This, confusingly, is usually called the \emph{first row} of $X$; this terminological inconsistency is somewhat justified by the fact that, unlike the columns, one tends to be interested mainly in the zeroth row.)
 
-We provide here a partial proof of the following result because we will need to refer to it later.
+We provide here a partial proof of the following result because we will need to refer to it later, when we prove \hyperref[prop:marked_box_adjunctions]{Proposition~\ref*{prop:marked_box_adjunctions}}.
 \begin{proposition}
   \label{prop:bijection_exhibiting_box_divisibility}
   The box product is \emph{divisible on the left.} This means that for each simplicial set $A$, there is an adjunction
@@ -150,7 +150,7 @@ We provide here a partial proof of the following result because we will need to 
   \begin{equation*}
     \Psi'\colon \Hom_{\SSet}(A, X / B) \to \Hom_{\SSSet}(A \square B, X),
   \end{equation*}
-  where in defining $\Psi'$ we use a map $\ev'\colon (X / B) \square B \to X$ sending
+  where in defining $\Psi'$ we use a map $\ev'\colon (X / B) \square B \to X$ determined by sending
   \begin{equation*}
     (\phi\colon \Delta^{m} \square B \to X, b \in B_{n}) \mapsto \phi_{mn}(\id_{\Delta^{m}}, b).\qedhere
   \end{equation*}
@@ -169,7 +169,7 @@ We provide here a partial proof of the following result because we will need to 
   \end{itemize}
 \end{definition}
 
-(For the notation $\langle u \backslash f \rangle$ see \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}}.) That \hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}} is equivalent to the usual definition is shown in \cite[Prop.\ 3.4]{qcats_vs_segal_spaces}. We will also make use of the following fact (\cite[Prop.\ 3.10]{qcats_vs_segal_spaces}).
+(For the notations $\langle u \backslash f \rangle$ and $\langle f / v \rangle$ see \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}}.) That \hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}} is equivalent to the usual definition is shown in \cite[Prop.\ 3.4]{qcats_vs_segal_spaces}. We will also make use of the following fact (\cite[Prop.\ 3.10]{qcats_vs_segal_spaces}).
 
 \begin{theorem}
   \label{thm:inner_fibration_between_quasicategories}
@@ -249,6 +249,7 @@ We will need the following analogs of the $\flat$- and $\sharp$-markings for mar
 The marked constructions above have similar properties to the unmarked constructions from \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}}. In particular, we have the following.
 
 \begin{proposition}
+  \label{prop:marked_box_adjunctions}
   We have the following adjunctions.
   \begin{enumerate}
     \item For each marked simplicial set $A \in \SSet^{+}$ there is an adjunction.
@@ -412,9 +413,10 @@ This shows that the marked version of the box product $\square$ is, in the langu
   Since $A^{\flat} \backslash X$ is a Kan complex, we can always find such a dashed lift. The inclusion $\Lambda^{n}_{k} \hookrightarrow \Delta^{n}$ is surjective on vertices, so our lift factors through $A \backslash X$.
 \end{proof}
 
+Recall that when thinking of a bisimplicial set $X$ as a cosimplicial object in $\SSet$, we think of the simplicial set $X_{1}$ as the space of $1$-simplices in $X$. In particular, if $X$ is a Segal space, then $X_{1}$ should be thought of as the space of morphisms in $X$. We should think of morphisms which are in the same path component of $X_{1}$ as equivalent. Therefore, we would like to pay special attention to markings which respect this homotopical structure.
 \begin{definition}
   \label{def:respects_path_components}
-  Let $(X, \mathcal{E})$ be a marked bisimplicial set. We will say that $\mathcal{E}$ \defn{respects path components} if it has the following property: for any map $\Delta^{1} \to X_{1}$ representing an edge $e \to e'$ between morphisms $e$ and $e'$, the morphism $e$ is marked if and only if the morphism $e'$ is marked.
+  Let $(X, \mathcal{E})$ be a marked bisimplicial set. We will say that the marking $\mathcal{E}$ \defn{respects path components} if it has the following property: for any map $\Delta^{1} \to X_{1}$ representing an edge $e \to e'$ between morphisms $e$ and $e'$, the morphism $e$ is marked if and only if the morphism $e'$ is marked.
 \end{definition}
 
 \begin{proposition}
@@ -521,13 +523,13 @@ This shows that the marked version of the box product $\square$ is, in the langu
   \end{equation*}
   where the triangle on the right is the adjunct to the triangle above. In order to check that the dashed lift respects the marking on $X$, we have to show that for each $(a, b) \in (A' \square \Delta^{1})_{10} = A'_{1} \times \{0, 1\}$ with $a$ marked, the element $\ell(a, b) \in X_{10}$ is marked. Because the map $\gamma$ comes from a map of marked simplicial sets, the commutativity of the triangle guarantees this for $b = 0$. The map $\Delta^{1} \square \Delta^{1} \to \mathring{X}$ gives us a 1-simplex $\Delta^{1} \to X_{1}$ representing a 1-simplex $\ell(a, 0) \to \ell(a, 1)$, which implies by that $\ell(a, 1)$ is also marked because each marking respects path components.
 
-  The case $n = 1$, $k = 1$ is identical.
+  The case $n = 1$, $k = 1$ is analogous.
 \end{proof}
 
 \subsection{Simplicial technology}
 \label{ssc:simplicial_technology}
 
-In the next section, we will need to work in several different cases with simplicial subsets $A \subseteq \Delta^{n}$ with certain conditions placed on the edge is $\Delta^{\{0, 1\}}$. In this section we prove some technical results in this direction. The main result in this section is \hyperref[lemma:check_marked_trivial_fibration_pointwise]{Lemma~\ref*{lemma:check_marked_trivial_fibration_pointwise}}.
+In the next section, we will need to work in several different cases with simplicial subsets $A \subseteq \Delta^{n}$ with certain conditions placed on the edge $\Delta^{\{0, 1\}}$. In this section we prove some technical results in this direction. The main result in this section is \hyperref[lemma:check_marked_trivial_fibration_pointwise]{Lemma~\ref*{lemma:check_marked_trivial_fibration_pointwise}}.
 
 For the remainder of this section, fix $n \geq 2$.
 
@@ -700,7 +702,7 @@ Again, comparing simplices level-wise shows the following.
 \subsection{Cocartesian fibrations}
 \label{ssc:cocartesian_fibrations}
 
-Let $\pi\colon \category{C} \to \category{D}$ be an inner fibration between quasicategories. A morphism $e \in \category{C}_{1}$ is $\pi$-cocartesian if and only if, for all $n \geq 2$, a dashed lift in the below diagram exists.
+Let $\pi\colon \category{C} \to \category{D}$ be an inner fibration between quasicategories. There are several equivalent ways of defining when a morphism in $\category{C}$ is $\pi$-cocartesian. For our purposes, the following will be the most useful: a morphism $e \in \category{C}_{1}$ is $\pi$-cocartesian if and only if, for all $n \geq 2$, a dashed lift in the below diagram exists. 
 \begin{equation*}
   \begin{tikzcd}
     \Delta^{\{0, 1\}}
@@ -849,7 +851,7 @@ Cocartesian morphisms automatically respect path components in the following sen
   \end{itemize}
 \end{definition}
 
-Our next order of business is to show that the our definition of cocartesian morphisms in terms of lifting with respect to the morphism $\Lambda^{2}_{0} \hookrightarrow \Delta^{2}$ implies lifting with respect to $\Lambda^{n}_{0} \to \Delta^{n}$ for all $n \geq 2$.
+Our next order of business is to show that our definition of cocartesian morphisms in terms of lifting with respect to the morphism $\Lambda^{2}_{0} \hookrightarrow \Delta^{2}$ implies lifting with respect to $\Lambda^{n}_{0} \to \Delta^{n}$ for all $n \geq 2$.
 
 \begin{definition}
   Define the following simplicial subsets of $\Delta^{n}$.
