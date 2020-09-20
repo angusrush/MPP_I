@@ -8,7 +8,7 @@
 \subsection{Introduction}
 \label{ssc:introduction}
 
-The goal of this work is to construct a lax monoidal functor
+The goal of the remainder of this work is to construct a lax monoidal functor
 \begin{equation}
   \label{eq:rhat}
   \hat{r}\colon \Span(\S) \to \ICat,
@@ -67,9 +67,9 @@ In \cite{highertopostheory} the following is shown.
     \label{eq:ev1}
     \ev_{1}\colon \Map(\Delta^{1}, \S) \to \S
   \end{equation}
-  is an inner fibration, and for a morphism $f$ in $\Map(\Delta^{1}, \S)$ corresponding to a square
+  is an inner fibration. Further, for any morphism $f$ between objects $(S \to X)$ and $(S' \to X')$ in $\Map(\Delta^{1}, \S)$ corresponding to a square
   \begin{equation*}
-    \sigma = 
+    \sigma =
     \begin{tikzcd}
       S
       \arrow[r]
@@ -101,7 +101,7 @@ With this in mind, the following follows immediately.
 \begin{proof}
   Fix a generic morphism $f\colon X \to X'$ in $\S$.
 
-  First, we check that this morphism has a cartesian lift. Fix a lift $S' \to X'$ of the source $X'$ in $\Map(\Delta^{1}, \S)$. This gives us the following data.
+  First, we check that this morphism has a cartesian lift given a lift of its target. Fix a lift $S' \to X'$ of $X'$ in $\Map(\Delta^{1}, \S)$. This gives us the following data.
   \begin{equation*}
     \begin{tikzcd}
       & S'
@@ -140,7 +140,7 @@ With this in mind, the following follows immediately.
       & X'
     \end{tikzcd}.
   \end{equation*}
-  Such a lift is given by the square
+  Such a lift is given, for example, by the square
   \begin{equation*}
     \begin{tikzcd}
       S
@@ -162,7 +162,7 @@ Thus, for each edge $f\colon \Delta^{1} \to \S$, corresponding to a morphism $f\
 \end{equation*}
 Interpreting $\S^{/X}$ as models for $\P(X)$, the $\infty$-categories of presheaves on $X$, the functor $f^{*}$ corresponds to the functor which restricts along $f$, taking a presheaf $Y \to \S$ to the pullback $X \to Y \to \S$. The functor $f_{!}$ takes a preasheaf $X \to \S$ to its left Kan extension along $X \to Y$.
 
-This gives us everything we need to build our functor $\hat{r}$. By taking appropriate spans in $\Map(\Delta^{1}, \S)$ and $\S$, \hyperref[thm:main]{Theorem~\ref*{thm:main}} will provide us with a cocartesian fibration over $\Span(\S)$, which will classify a functor $\Span(\S) \to \ICat$. We thus define the following triple structures.
+This gives us everything we need to build our functor $\hat{r}$. By taking spans in $\Map(\Delta^{1}, \S)$ and $\S$ (and appropriately restricting the legs), \hyperref[thm:main]{Theorem~\ref*{thm:main}} will provide us with a cocartesian fibration over $\Span(\S)$, which will classify a functor $\Span(\S) \to \ICat$. We thus define the following triple structures.
 \begin{itemize}
   \item In $\S$, we place no restriction on the frontward- or backward-facing legs of the spans, taking the triple $(\S, \S\downdag = \S, \S\updag = \S)$.
 
@@ -189,7 +189,7 @@ One checks the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}} and fi
 \end{equation*}
 The functor $\Span(\S) \to \ICat$ classified by this cocartesian fibration has the following description.
 \begin{itemize}
-  \item Each object $X \in \Span(\S)$ is sent, up to equivalence, to the fiber over $X$. This is equivalent to $\S^{/X} \simeq \P(X)$.
+  \item Each object $X \in \Span(\S)$ is sent, up to equivalence, to the fiber over $X$. This is equivalent to $(\S^{/X})\op \simeq (\P(X))\op$.
 
   \item A morphism in $\Span(\S)$ corresponding to a span $X \leftarrow Y \rightarrow X'$ in $\S$ sends an object $S \to X$ to the object $S' \to X'$ defined as in the following diagram in which the left-hand square corresponds to an $\ev_{1}$-cartesian morphism, and the right-hand square corresponds to an $\ev_{1}$-cocartesian morphism.
     \begin{equation*}
@@ -214,11 +214,18 @@ The functor $\Span(\S) \to \ICat$ classified by this cocartesian fibration has t
 
 Denote by $\mathcal{F}$ the presheaf $X \to \S$ classified by $S \to X$. Then the presheaf classified by $S \times_{X} Y \to Y$ classifies the presheaf $q^{*}\mathcal{F}$, and the presheaf classified by $S' \to X'$ classifies the presheaf $p_{!}q^{*}\mathcal{F}$. This is precisely what we wanted.
 
+There is a small annoyance: the functor we have constructed sends a space $X$ not to the category $\P(X)$ of presheaves on $X$, but to $\P(X)\op$. This is an artifact of the way we constructed our category of spans, and is not an essential difficulty; composint with $\mathrm{op}\colon \ICat \to \ICat$ gives us a functor sending $X \mapsto \P(X)$.
+
 \subsubsection{Sketch of the construction of the lax monoidal structure}
+\label{sss:sketch_of_lax_monoidal_structure}
 
 Note that the category $\S$ has products. This induces a symmetric monoidal structure on $\S$, the cartesian monoidal structure (defined, for example, in \cite[Sec.~2.4.1]{luriehigheralgebra}), which (as we will show) induces a symmetric monoidal structure on $\Span(\S)$. When we take $\Cat_{\infty}$ also to carry the cartesian monoidal structure, we will see that our functor $\hat{r}$ (\hyperref[eq:rhat]{Equation~\ref*{eq:rhat}}) even admits a lax monoidal structure.
 
-The idea behind the construction of the functor $\hat{r}$, in broad strokes, is as follows. We define symmetric monoidal structures on $\Map(\Delta^{1}, \S)$ and $\S$, and upgrade the functor $\ev_{1}$ to a symmetric monoidal functor $r$ as follows (the monoidal structures on $\Map(\Delta^{1}, \S)^{\otimes}$ and $\S^{\otimes}$ are not exactly the standard cocartesian monoidal functors, as we will later discuss; they are represented by \emph{cartesian,} rather than \emph{cocartesian} fibrations).
+In the theory of quasicategories, one packages up the coherence data involved in writing down a symmetric monoidal category using a cartesian fibration, and a
+
+The idea behind our construction of the functor $\hat{r}$, in broad strokes, is as follows.
+
+In \hyperref[ssc:defining_the_maps_p_q_and_r]{Subsection~\ref*{ssc:defining_the_maps_p_q_and_r}}, we define symmetric monoidal structures on $\Map(\Delta^{1}, \S)$ and $\S$, and upgrade the functor $\ev_{1}$ to a symmetric monoidal functor $r$ as follows (the monoidal structures on $\Map(\Delta^{1}, \S)^{\otimes}$ and $\S^{\otimes}$ are not exactly the standard cocartesian monoidal functors, as we will later discuss; they are represented by \emph{cartesian,} rather than \emph{cocartesian} fibrations). Schematically, this means we will define the following data.
 \begin{equation}
   \label{eq:wishlist_prq}
   \begin{tikzcd}
@@ -236,7 +243,7 @@ The idea behind the construction of the functor $\hat{r}$, in broad strokes, is 
   Here, and in what follows, we notationally suppress the nerve in $N(\Finp)$, writing simply $\Finp$.
 \end{note}
 
-We then take spans in each of the categories in $\hyperref[eq:wishlist_prq]{Diagram~\ref*{eq:wishlist_prq}}$, restricting the backwards- and forwards-facing legs judiciously so that we get a diagram
+In \hyperref[ssc:restricting_the_legs_of_the_spans]{Subsection~\ref*{ssc:restricting_the_legs_of_the_spans}} and \hyperref[ssc:building_categories_of_spans]{Subsection~\ref*{ssc:building_categories_of_spans}}, we take spans in each of the categories in \hyperref[eq:wishlist_prq]{Diagram~\ref*{eq:wishlist_prq}}, restricting the backwards- and forwards-facing legs judiciously so that we get a diagram
 \begin{equation}
   \label{eq:wishlist_pivarpirho}
   \begin{tikzcd}
@@ -249,12 +256,16 @@ We then take spans in each of the categories in $\hyperref[eq:wishlist_prq]{Diag
     & \Finp
   \end{tikzcd},
 \end{equation}
-where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Map(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds the cocartesian fibration described in \hyperref[sss:sketch_of_underlying_functor]{Subsubsection~\ref*{sss:sketch_of_underlying_functor}}. However, by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, the existence of $\rho$, $\pi$, and $\varpi$ implies that the functor classified by this cartesian fibration is lax monoidal.
+where the $\varpi$ and $\pi$ are symmetric monoidal structures and $\rho$ is a cocartesian fibration. In the language of \cite{luriehigheralgebra}, $\rho$ exhibits $\Span(\Map(\Delta^{1}, \S))$ as a $\Span(\S)$-monoidal category.
+
+In \hyperref[ssc:building_the_functor]{Subsection~\ref*{ssc:building_the_functor}}, we will finally construct the functor $\hat{r}$. Restricting to the component of $\rho$ over $\langle 1 \rangle \in \Finp$, one finds precisely the cocartesian fibration described in \hyperref[sss:sketch_of_underlying_functor]{Subsubsection~\ref*{sss:sketch_of_underlying_functor}}. However, by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, the existence of $\rho$, $\pi$, and $\varpi$ implies that the functor classified by this cartesian fibration is lax monoidal.
 
 Much of the technology in this section is similar to work already done in \cite{spectralmackeyfunctors2}. However, the manner in which we present it allows for generalization in a different direction than that carried out there. This will be the subject of future work.
 
 \subsection{Defining the maps \texorpdfstring{$p$}{p}, \texorpdfstring{$q$}{q}, and \texorpdfstring{$r$}{r}}
 \label{ssc:defining_the_maps_p_q_and_r}
+
+In this section, we begin our construction of the functor $\hat{r}$, following the plan laid out in \hyperref[sss:sketch_of_lax_monoidal_structure]{Subsubsection~\ref*{sss:sketch_of_lax_monoidal_structure}}. Our first step is to define the maps $p$, $q$, and $r$ as described in \hyperref[eq:wishlist_prq]{Diagram~\ref*{eq:wishlist_prq}}. The maps $p$ and $q$ are cartesian fibrations, exhibiting symmetric monoidal structures on $\Map(\Delta^{1}, \S)$ and $\S$; the map $r$ is a monoidal version of the map $\ev_{1}$.
 
 Recall that for any $\infty$-category $\category{C}$ with finite products, one can construct a symmetric monoidal structure $\category{C}^{\times} \to \Finp$ whose corresponding tensor product $\times\colon \category{C} \times \category{C} \to \category{C}$ is the cartesian product; for more details, see \cite[Sec.\ 2.4.1]{luriehigheralgebra}. Similarly, as described in \cite[Sec.\ 2.4.2]{luriehigheralgebra}, for any $\infty$-category with coproducts there is a symmetric monoidal structure $\category{C}^{\amalg} \to \Finp$, called the \emph{cocartesian monoidal structure,} whose tensor product $\amalg\colon \category{C} \times \category{C} \to \category{C}$ is the coproduct. Because cocartesian fibrations give better control of the morphisms out of an object than morphisms into an object, the cocartesian monoidal structure is much more tractable than the cartesian monoidal structure.
 
@@ -309,7 +320,7 @@ The functor $\S_{\times} \to \Finp\op$ is the obvious forgetful functor.
   The map $p$ is a cartesian fibration, and a morphism $(\phi, \Psi)\colon (\langle m \rangle, \vec{X}) \to (\langle n \rangle, \vec{Y})$ in $\S_{\times}$ is $p$-cartesian if and only if it for each $i \in \langle m \rangle^{\circ}$, the maps $X_{i} \to Y_{j}$ exhibit $X_{i}$ as the product of the $Y_{j}$.
 \end{lemma}
 \begin{proof}
-  This follows easily from the definition of the cocartesian monoidal structure.
+  This follows easily from \cite[Rem.~2.4.3.4]{luriehigheralgebra}.
 \end{proof}
 
 \begin{example}
@@ -360,7 +371,7 @@ We can now define the maps $q$ and $r$ rather easily.
       & \Map(\Delta^{1}, \Finp\op)
     \end{tikzcd}.
   \end{equation*}
-  By \cite[Prop.\ 3.1.2.1]{highertopostheory}, the map $q'$ is a cartesian fibration whose cartesian morphisms are pointwise cartesian morphisms in $\S_{\times}$. The map $q$ is also a cartesian fibration, where a morphism in $\Map(\Delta^{1}, \S)_{\times}$ is $q$-cartesian if and only if its image in $\Map(\Delta^{1}, \S_{\times})$ is $q'$-cartesian. That every $q$ cartesian morphism is $q'$ cartesian follows from \cite[Prop\ 2.4.1.3]{highertopostheory}; to see other direction, consider a $q$-cartesian morphism $g$ in $\Map(\Delta^{1}, \S)_{\times}$. Its image $\tilde{g}\Map(\Delta^{1}, \S_{\times})$ lies over some morphism $\phi$, and this morphism
+  By \cite[Prop.\ 3.1.2.1]{highertopostheory}, the map $q'$ is a cartesian fibration whose cartesian morphisms are pointwise cartesian morphisms in $\S_{\times}$. The map $q$ is also a cartesian fibration, where a morphism in $\Map(\Delta^{1}, \S)_{\times}$ is $q$-cartesian if and only if its image in $\Map(\Delta^{1}, \S_{\times})$ is $q'$-cartesian. That every $q$ cartesian morphism is $q'$ cartesian follows from \cite[Prop\ 2.4.1.3]{highertopostheory}; the converse follows from the existence of comparison equivalences between cartesian lifts of the same morphism.
 \end{proof}
 
 \begin{lemma}
@@ -409,16 +420,16 @@ Let us take stock. We have now defined the data of the commutative diagram below
 \end{equation}
 Our next step is to take spans with judiciously-chosen legs in each of these quasicategories. To do this, we must define the subcategories to which the legs of our spans are allowed to belong. As in \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we do this by defining triples of categories.
 
-\subsection{Restricting the legs of the spans}
+\subsection{Defining the adequate triple structures}
 \label{ssc:restricting_the_legs_of_the_spans}
 
-In this section, we define triple structures on the quasicategories $\Map(\Delta^{1}, \S)_{\times}$, $\S_{\times}$, and $\Finp\op$.
+In this section, we continue our construction of the functor $\hat{r}$, following the plan laid out in \hyperref[sss:sketch_of_lax_monoidal_structure]{Subsubsection~\ref*{sss:sketch_of_lax_monoidal_structure}}. Our next step is to define triple structures on the quasicategories $\Map(\Delta^{1}, \S)_{\times}$, $\S_{\times}$, and $\Finp\op$, which specify the categories of spans in \hyperref[eq:wishlist_pivarpirho]{Diagram~\ref*{eq:wishlist_pivarpirho}}.
 
 \subsubsection{Defining the triple structure on \texorpdfstring{$\Finp\op$}{Fin.op}}
 
 Recall \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}}. We have cartesian fibrations $p$, $q$, and $r$ as in \hyperref[eq:data_of_pqr]{Diagram~\ref*{eq:data_of_pqr}}; these play the role of the maps alluded to in \hyperref[eq:wishlist_prq]{Diagram~\ref*{eq:wishlist_prq}}. We would like a triple structure on $\Finp\op$ such that, when passing to quasicategories of spans, we find cocartesian fibrations of the form \hyperref[eq:wishlist_pivarpirho]{Diagram~\ref*{eq:wishlist_pivarpirho}}.
 
-This means, in particular, that we want a triple structure on $\Finp\op$ which gives us something like $\Finp$ upon taking categories of spans. Thus, we should take spans whose forward-pointing legs are equivalences:
+This means, in particular, that we want a triple structure on $\Finp\op$ which gives us something equivalent to $\Finp$ upon taking categories of spans. Thus, we should take spans whose forward-pointing legs are equivalences:
 \begin{equation*}
   \begin{tikzcd}
     \langle m \rangle
@@ -710,7 +721,7 @@ We have now constructued the following diagram of adequate triples and maps betw
   \end{tikzcd}
 \end{equation*}
 
-By construction, this gives us a commuting triangle
+This gives us a commuting triangle
 \begin{equation}
   \label{eq:commuting_diagram_of_spans}
   \begin{tikzcd}
@@ -974,7 +985,7 @@ Recall that there is an equivalence $\Finp \to \Span\triple{F}$. Pulling back \h
 \end{equation*}
 
 \begin{proposition}
-  The maps $\pi$ and $\varpi$ are monoidal structures.
+  The maps $\pi$ and $\varpi$ exhibit $P$ and $Q$ as symmetric monoidal categories in the sense of \cite[Def.~2.0.0.7]{luriehigheralgebra}.
 \end{proposition}
 \begin{proof}
   We consider the case of $\pi$. We need to show that the pushforward functors corresponding to the inert maps $\rho_{i}\colon \langle n \rangle \to \langle 1 \rangle$ induce an equivalence $P_{\langle n \rangle} \simeq P_{\langle 1 \rangle}^{n}$. These maps send (up to equivalence) $[X_{1}, \ldots, X_{n}] \mapsto X_{i}$, giving an isomorphism $P_{\langle n \rangle} \cong P_{\langle 1 \rangle}^{n}$.
@@ -985,13 +996,13 @@ Recall that there is an equivalence $\Finp \to \Span\triple{F}$. Pulling back \h
 \subsection{Building the functor \texorpdfstring{$\hat{r}$}{r}}
 \label{ssc:building_the_functor}
 
-We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to \ICat$, as discussed in \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}}. Restricting the functor $\rho$ to the component lying over $\langle 1 \rangle \in \Finp$ gives a cocartesian fibration $\rho_{\langle 1 \rangle\colon }Q_{\langle 1 \rangle} \to P_{\langle 1 \rangle}$, which classifies a functor $P_{\langle 1 \rangle} \to \ICat$. This will be almost the functor we need.
+We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to \ICat$. Restricting the functor $\rho$ to the component lying over $\langle 1 \rangle \in \Finp$ gives a cocartesian fibration $\rho_{\langle 1 \rangle\colon }Q_{\langle 1 \rangle} \to P_{\langle 1 \rangle}$, which classifies a functor $P_{\langle 1 \rangle} \to \ICat$. This will be almost the functor we need, as the following propositions show.
 
 \begin{proposition}
-  There is an isomorphism of simplicial sets $P_{\langle 1 \rangle} \cong \Span(\S)$.
+  There is an equivalence of simplicial sets $P_{\langle 1 \rangle} \simeq \Span(\S)$.
 \end{proposition}
 \begin{proof}
-  Unravelling the defintitions, the $n$-simplices of $P_{\langle 1 \rangle}$ are ambigressive cartesian maps $\sigma\colon \sd(\Delta^{n}) \to \S_{\times}$ making the diagram
+  Unravelling the defintitions, the $n$-simplices of $P_{\langle 1 \rangle}$ are ambigressive cartesian maps $\sigma\colon \sd(\Delta^{n}) \to \S_{\times}$ which make the diagram
   \begin{equation*}
     \begin{tikzcd}
       \sd(\Delta^{n})
@@ -1003,7 +1014,7 @@ We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to 
       & \Finp\op
     \end{tikzcd}
   \end{equation*}
-  commute. The condition that the diagram commute is the condition that $\sigma$ land in $(\S_{\times})_{\langle 1 \rangle} \simeq \S$, and the ambigressiveness condition is that the forward-facing legs in $\sigma$ lie over equivalences in $\Finp\op$, which is automatic.
+  commute. The condition that the diagram commute is the condition that $\sigma$ land in $(\S_{\times})_{\langle 1 \rangle} \simeq \S$, and the ambigressiveness condition is that the forward-facing legs in $\sigma$ lie over equivalences in $\Finp\op$, which is automatic. This provides an isomorphism of simplicial sets $P_{\langle 1 \rangle} \cong \Span(\S)$, which is stronger than what we are looking for.
 \end{proof}
 
 \begin{proposition}
@@ -1036,7 +1047,7 @@ We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to 
       & \S_{\times}
     \end{tikzcd}
   \end{equation*}
-  commute. The first diagram ensures that $\sigma$ lands entirely inside $(\Map(\Delta^{1}, \S)_{\times})_{\langle 1 \rangle} \cong \Map(\Delta^{1}, \S)$, so $\sigma$ is equivalently a map $\sd(\Delta^{n}) \times \Delta^{1} \to \S$ such that:
+  commute. The first diagram ensures that $\sigma$ lands entirely inside $(\Map(\Delta^{1}, \S)_{\times})_{\langle 1 \rangle} \cong \Map(\Delta^{1}, \S)$, so any such $\sigma$ is uniquely determined by a map $\sd(\Delta^{n}) \times \Delta^{1} \to \S$ such that:
   \begin{itemize}
     \item The composition
       \begin{equation*}
@@ -1046,7 +1057,7 @@ We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to 
 
     \item The forward-facing legs in $\sd(\Delta^{n}) \times \Delta^{\{0\}}$ are mapped to equivalences in $\S$.
   \end{itemize}
-  This is precisely the data of a map $\sd(\Delta^{n}) \diamond \Delta^{0} \to \S$ sending $\Delta^{0} \mapsto X$, and such that and the forward-facing legs of $\sd(\Delta^{n})$ are sent to equivalences in $\S$. But these are precisely the $n$-simplices of $\Span_{\simeq}(\S^{/X})$. The equvialence $(\S^{/X})\op \to \Span_{\simeq}(\S^{/X})$ and $\S_{/X} \simeq \S^{/X}$ now give us the equivalence that we want.
+  This is precisely the data of a map $\sd(\Delta^{n}) \diamond \Delta^{0} \to \S$ sending $\Delta^{0} \mapsto X$, and such that and the forward-facing legs of $\sd(\Delta^{n})$ are sent to equivalences in $\S$. But these are precisely the $n$-simplices of $\Span_{\simeq}(\S^{/X})$. This provides an isomorphism $Q_{\langle 1 \rangle} \cong \Span_{\simeq}(\S^{/X})$. The equvialences $(\S^{/X})\op \to \Span_{\simeq}(\S^{/X})$ and $\S_{/X} \simeq \S^{/X}$ now give us the equivalence that we want.
 \end{proof}
 
 We now define $R$ to be the functor classified by the cocartesian fibration $\rho$. On objects, this functor sends a space $X$ to the category $(\S_{/X})\op$. A morphism in $\Span(\S)$ represented by a span of spaces
@@ -1092,6 +1103,31 @@ This is almost what we want, up to an $\mathrm{op}$: we would like our functor $
   \end{equation*}
 \end{definition}
 
-The map $R$ admits a lax monoidal structure by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, and the map $\mathrm{op}$ is monoidal with respect to the cartesian monoidal structure on $\ICat$ because it is an equivalence and hence preserves products. Thus, $\hat{r}$ is lax monoidal.
+The map $R$ admits a lax monoidal structure by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, and the map $\mathrm{op}$ is an equivalence, hence certainly monoidal with respect to the cartesian monoidal structure on $\ICat$. Thus, $\hat{r}$ is lax monoidal.
+
+\subsection{Conclusion and outlook}
+\label{ssc:conclusion}
+
+Let us meditate on our construction of the functor $\hat{r}$. Our starting point was the fact that the assignment of a space $X$ to the quasicateogry $\P(X)$ of presheaves on $X$ admits both covariant and contravariant functoriality. More specifically, we saw that for any map of spaces $f\colon X \to Y$, we could construct the following maps of presheaves.
+\begin{itemize}
+  \item The left Kan extension functor $f_{!}\colon \P(X) \to \P(Y)$,
+
+  \item The pullback functor $f^{*}\colon \P(Y) \to \P(X)$.
+\end{itemize}
+The existence of these two maps in opposite directions was the key ingredient that allowed us to construct our map $\hat{r}\colon \Span(\S) \to \ICat$.
+
+However, as we alluded to in \hyperref[sec:introduction]{Section~\ref*{sec:introduction}}, having a way of producing from a morphism in some category $\category{C}$ a morphism in some category $\category{D}$ in both a covariant and a contravariant way is a rather common situation. The following are examples.
+
+\begin{itemize}
+  \item Let $p\colon X \to Y$ be a covering space map with finite fibers, say of cardinality $n$. This induces a map $p_{*}\colon H_{*}X \to H_{*}Y$ on singular homology. Additionally, for any singular $n$-simplex $\sigma\colon |\Delta^{n}| \to Y$, the homotopy lifting property allows us to construct an element $t(\sigma)$ of $S_{n}(X)$ such that $p_{*} \circ t(\sigma) = n$. Roughly, $t(\sigma)$ is a sum of singular $n$-simplices in $X$ each lying above $\sigma$, one in each fiber. This extends to a map of singular chain complexes, and descends to a transfer map $t_{!}\colon H_{*}Y \to H_{*}X$.
+
+  \item More generally, given such a covering space map $p\colon E \to B$, Roush showed in \cite{roushtransfer} that one gets a stable transfer map $\Sigma^{\infty} Y_{+} \to \Sigma^{\infty} X_{+}$.
+
+  \item Becker and Gottlieb generalized this result in
+\end{itemize}
+
+Note that in both of these examples, not all morphisms admit wrong-way maps, and that it is therefore vital to have control over the classes of morphisms to which each leg is allowed to belong.
+
+It is the hope of the author that the technology we have used in constructing the functor $\hat{r}$ will be useful in understanding similar constructions in other transfer theories. There are relatively simple generalizations, such as replacing presheaves valued in $\S$ with presheaves valued in other categories.
 
 \end{document}

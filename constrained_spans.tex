@@ -297,12 +297,12 @@ We are now ready to define our category $\Span(\category{C})$.
 
 While it is not hard to check that the face and degeneracy maps on $\Span'\triple{C}$ restrict to $\Span\triple{C}$ (and thus that the above construction really produces a simplicial set), solving the lifting problems necessary to prove directly that $\Span\triple{C}$ is a quasicategory turns out to be combinatorially strenuous. It turns out to be easier to switch to a new model of quasicategories, (complete) Segal spaces, which give easier access to homotopical data.
 
-To that end, for an adequate triple $\triple{C}$ and any simplicial set $A$, we make the following defintion.
+To that end, for an adequate triple $\triple{C}$, we make the following defintion.
 \begin{definition}
   \label{def:acart}
-  We define a simplicial set $\Map^{\mathrm{aCart}}(\sd(A), \category{C})^{\simeq}$ to be the full simplicial subset
+  For any simplicial set $A$, we define a simplicial set $\Map^{\mathrm{aCart}}(\sd(A), \category{C})^{\simeq}$ to be the full simplicial subset
   \begin{equation*}
-    \Map^{\mathrm{aCart}}(\sd(A), \category{C})^{\simeq} \subseteq \Map(\sd(A) \category{C})^{\simeq}
+    \Map^{\mathrm{aCart}}(\sd(A), \category{C})^{\simeq} \subseteq \Map(\sd(A), \category{C})^{\simeq}
   \end{equation*}
   on functors $\sd(A) \to \category{C}$ such that for each standard simplex $\sigma$ of $A$, the image of $\sd(\sigma)$ in $\category{C}$ is ambigressive Cartesian. 
 \end{definition}
@@ -346,7 +346,7 @@ If the morphism $g$ were invertible, we could fill this to a full 2-simplex
     && X'
   \end{tikzcd}.
 \end{equation*}
-Even if $g$ is not invertible, we can think of our span as formally representing a `fraction of morphisms' $f \circ g^{-1}\colon X \to X'$, which may not exist in $\category{C}$.
+Even if $g$ is not invertible, we can think of our span as formally representing a `fraction of morphisms' $f \circ g^{-1}\colon X \to X'$, which may or may not exist in $\category{C}$.
 
 With this point of view in mind, if we build from a quasicategory $\category{C}$ a category of spans whose forwards-facing legs are arbitrary morphisms in $\category{C}$, and whose backward-facing legs are equivalences, then we have not really done anything; each span, thought of as a formal morphism in $\category{C}$, is represented by an actual morphism in $\category{C}$. Thus, the category of spans in $\category{C}$ whose backward-facing legs are equivalences should be equivalent to the category $\category{C}$. In the following example, we construct this equivalence. This example, as well as the following one, will be important in several places to the construction in \hyperref[sec:application_to_presheaves]{Section~\ref*{sec:application_to_presheaves}}.
 
@@ -479,10 +479,10 @@ With this point of view in mind, if we build from a quasicategory $\category{C}$
   \begin{equation*}
     i\colon \Gamma(\category{C}) = \Fun(\Delta^{\bullet}, \category{C}) \to \Fun^{\aCart}(\sd(\Delta^{\bullet}), \category{C}) = \SPAN^{\simeq}(\category{C})
   \end{equation*}
-  which is a level-wise Kan weak equivalence, and hence a weak equivalence in the complete Segal spaces model structure.\footnote{For a brief review of the model structures in question, see \hyperref[sss:a_brief_list_of_model_structures]{Appendix~\ref*{sss:a_brief_list_of_model_structures}}. For more information, see \cite{qcats_vs_segal_spaces}, especially the discussion following Thm.\ 4.1.} Here $\Gamma(\category{C})$ is the complete Segal space defined in \cite{qcats_vs_segal_spaces} in the discussion preceding Thm.\ 4.11. In \cite{qcats_vs_segal_spaces} it is also discussed that the functor $( - )/\Delta^{0}\colon \SSSet^{\mathrm{CSS}} \to \SSet^{\mathrm{Joyal}}$ is the right Quillen functor in a Quillen equivalence between the Complete Segal Space model structure and the Joyal model structure. Thus, because $\Gamma(\category{C})$ and $\SPAN^{\simeq}(\category{C})$ are complete Segal spaces, the restricion of $i$ to first rows $i / \Delta^{0}$ is a weak categorical equivalence, which is what we wanted to show.
+  which is a level-wise Kan weak equivalence, and hence a weak equivalence in the complete Segal spaces model structure.\footnote{For a brief review of the model structures in question, see \hyperref[sss:a_brief_list_of_model_structures]{Appendix~\ref*{sss:a_brief_list_of_model_structures}}. For more information, see \cite{qcats_vs_segal_spaces}, especially the discussion following Thm.\ 4.1.} Here $\Gamma(\category{C})$ is the complete Segal space defined in \cite{qcats_vs_segal_spaces} in the discussion preceding Thm.\ 4.11. Thus, because $\Gamma(\category{C})$ and $\SPAN^{\simeq}(\category{C})$ are complete Segal spaces (hence fibrant-cofibrant objects in the complete Segal space model structure), the restricion of $i$ to first rows $i / \Delta^{0}$ is a weak categorical equivalence, which is what we wanted to show.
 \end{example}
 
-\hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}} allows us to find an equivalence between $\category{C}$ and a quasicategory of spans. Similarly, if we look at spans whose forward-facing legs are equivalences, we find a category of spans equivalent to $\category{C}\op$.
+As \hyperref[eg:spans_with_equivalences_on_one_leg]{Example~\ref*{eg:spans_with_equivalences_on_one_leg}} shows, taking spans whose backward-facing legs are equivalences allows us to find an equivalence between $\category{C}$ and a quasicategory of spans in $\category{C}$. Similarly, if we look at spans whose forward-facing legs are equivalences, we find a category of spans equivalent to $\category{C}\op$.
 
 \begin{example}
   \label{eg:spans_with_equivalences_on_forwards_leg}
@@ -506,17 +506,27 @@ With this point of view in mind, if we build from a quasicategory $\category{C}$
 \subsection{Maps between triples}
 \label{ssc:maps_between_triples}
 
-A functor between adequate triples $\triple{C} \to \triple{D}$ is a functor
-\begin{equation*}
-  p\colon \category{C} \to \category{D}
-\end{equation*}
-such that $p(\category{C}_{\dagger}) \subseteq \category{D}_{\dagger}$, $p(\category{C}^{\dagger}) \subseteq \category{D}^{\dagger}$, and $p$ preserves ambigressive pullbacks. We will denote the restriction of $p$ to $\category{C}_{\dagger}$ by
+We have now seen that given any quasicategory $\category{C}$ with pullbacks, one can create a quasicategory of spans $\Span(\category{C})$, and that by defining an adequate triple structure $\triple{C}$ on $\category{C}$, one can specify certain classes of morphisms to which the legs of the spans are allowed to belong. It is easy to see that any functor $\category{C} \to \category{D}$ between quasicategories $\category{C}$ and $\category{D}$ with pullbacks induces a functor $\Span(\category{C}) \to \Span(\category{D})$. Similarly, we make the following definition.
+
+\begin{definition}
+  Let $\triple{C}$ and $\triple{D}$ be adequate triples. A functor $p\colon \category{C} \to \category{D}$ is said to be a \defn{functor between adequate triples} $\triple{C} \to \triple{D}$ 
+  if the following conditions hold. 
+  \begin{enumerate}
+    \item The functor $p$ preserves ingressive morphisms. That is, $p(\category{C}_{\dagger}) \subseteq \category{D}_{\dagger}$
+
+    \item The functor $p$ preserves egressive morphsims. That is, $p(\category{C}^{\dagger}) \subseteq \category{D}^{\dagger}$. 
+
+    \item The functor $p$ preserves ambigressive pullbacks.
+  \end{enumerate}
+\end{definition}
+
+We will denote the restriction of $p$ to $\category{C}_{\dagger}$ by
 \begin{equation*}
   p_{\dagger}\colon\category{C}_{\dagger} \to \category{D}_{\dagger},
 \end{equation*}
 and similarly for $p^{\dagger}$. Clearly, a functor $p$ between adequate triples gives functors $\Span(p)$ and $\SPAN(p)$ respectively between quasicategories and Segal spaces of spans.
 
-The goal of the remainder of this section is to provide a proof of the following theorem, originally appearing as \cite[Thm.\ 12.2]{spectralmackeyfunctors1}. This theorem provides conditions on a functor $p$ between adequate triples such that the induced map between category of spans is an inner fibration, and provides the form of a $p$-cocartesian morphism in $\Span\triple{C}$.
+It is natural to wonder about the relationship between $p$ and $\Span(p)$. The goal of the remainder of this section is to provide a proof of the following theorem, originally appearing as \cite[Thm.\ 12.2]{spectralmackeyfunctors1}. This theorem provides conditions on a functor $p$ between adequate triples such that the induced map between category of spans is an inner fibration, and provides the form of a $p$-cocartesian morphism in $\Span\triple{C}$.
 
 \begin{theorem}
   \label{thm:main}
@@ -563,7 +573,7 @@ Before we get to the meat of the proof, however, we have to prove some prelimina
 
 In this section we recall some basic facts we will need in the course of our proof of the main theorem. It is recommended to skip this section on first reading, and refer back to the results as necessary.
 
-\subsubsection*{Isofibrations}
+\subsubsection{Isofibrations}
 
 We will need some results about isofibrations, sometimes called categorical fibrations. These are standard, and proofs can be found in \cite{kerodon}.
 
@@ -609,7 +619,7 @@ We will denote the core of the mapping space functor $\Map(-, -)$ by $\Fun(-, -)
   is a Kan fibration.
 \end{corollary}
 
-\subsubsection*{Connected components}
+\subsubsection{Connected components}
 
 Our proof will rely heavily on the fact that the many properties that morphisms can have (ingressive, egressive, $p$-cocartesian, etc.) are well-behaved with respect to the homotopical structure of the complete Segal spaces in which they live; for example, if a morphism is $p$-cocartesian, then every morphism in its path component is $p$-cocartesian.
 
@@ -683,7 +693,7 @@ Let $X'$ and $X$ be simplicial sets, and let $f\colon X' \hookrightarrow X$ be a
   Now suppose that $f$ is a trivial Kan fibration. The logic above says that $f'$ has the right lifting property with respect to $\partial \Delta^{n} \hookrightarrow \Delta^{n}$ for $n \geq 1$; the right lifting property with respect to $\partial \Delta^{0} \hookrightarrow \Delta^{0}$ is equivalent to the surjectivity of $f'$ on vertices.
 \end{proof}
 
-\subsubsection*{Contractibility}
+\subsubsection{Contractibility}
 
 We will need at certain points to show that various spaces of lifts are contractible. These are mostly common-sense results, but it will be helpful to have them written down somewhere so we can refer to them later.
 
@@ -807,63 +817,44 @@ One should interpret this as telling us that given a $\Lambda^{2}_{2}$-horn $\al
 
 \subsection{Proof of main theorem}
 
-Our goal is now to prove \hyperref[thm:main]{Theorem~\ref*{thm:main}}. As in the statement of the theorem, we fix a map of triples $p\colon \triple{C} \to \triple{D}$ giving us a functor of quasicategories
+Our goal is now to prove \hyperref[thm:main]{Theorem~\ref*{thm:main}}. As in the statement of the theorem, we fix a functor of triples $p\colon \triple{C} \to \triple{D}$ giving us a functor of quasicategories
 \begin{equation*}
   \pi\colon \Span\triple{C} \to \Span\triple{D}.
 \end{equation*}
-We wish to show that morphsims of the form
-\begin{equation}
-  \label{eq:form_of_p_cocartesian_morphisms}
-  \begin{tikzcd}
-    & y
-    \arrow[dl, two heads, swap, "\phi"]
-    \arrow[dr, rightarrowtail, "\psi"]
-    \\
-    x
-    && x'
-  \end{tikzcd},
-\end{equation}
-are $\pi$-cocartesian, where $\phi$ is egressive and $p_{\dagger}$-cartesian, and $\psi$ is ingressive and $p$-cocartesian.
+We wish to show that the following hold.
+\begin{enumerate}
+  \item The map $\pi$ is an inner fibration.
+
+  \item Morphsims of the form
+    \begin{equation}
+      \label{eq:form_of_p_cocartesian_morphisms}
+      \begin{tikzcd}
+        & y
+        \arrow[dl, two heads, swap, "\phi"]
+        \arrow[dr, rightarrowtail, "\psi"]
+        \\
+        x
+        && x'
+      \end{tikzcd},
+    \end{equation}
+    are $\pi$-cocartesian, where $\phi$ is egressive and $p_{\dagger}$-cartesian, and $\psi$ is ingressive and $p$-cocartesian.
+\end{enumerate}
 
 The way forward is clear: the functor $\pi$ is the zeroth row of a functor of Segal spaces
 \begin{equation*}
   \pi'\colon \SPAN\triple{C} \to \SPAN\triple{D}.
 \end{equation*}
-It will suffice to show by \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}} that morphisms of the above form are $\pi'$-cocartesian. Morally, this result should not be surprising. We should think of the homotopy pullback condition defining cocartesian morphisms (\hyperref[def:cocartesian_morphism]{Definition~\ref*{def:cocartesian_morphism}}) as telling us that we can fill relative $\Lambda^{2}_{2}$-horns in $\pi'\colon \SPAN\triple{C} \to \SPAN\triple{D}$, and that such fillings are unique up to contractible choice. Finding a filling 
-\begin{equation*}
-  \begin{tikzcd}
-    \Lambda^{2}_{2}
-    \arrow[r]
-    \arrow[d, hook]
-    & \SPAN\triple{C}
-    \arrow[d, "\pi'"]
-    \\
-    \Delta^{2}
-    \arrow[r]
-    \arrow[ur, dashed]
-    & \SPAN\triple{D}
-  \end{tikzcd}
-\end{equation*}
-is equivalent finding a filling
-\begin{equation*}
-  \begin{tikzcd}
-    \sd(\Lambda^{2}_{2})
-    \arrow[r]
-    \arrow[d, hook]
-    & \category{C}
-    \arrow[d, "p"]
-    \\
-    \sd(\Delta^{2})
-    \arrow[r]
-    \arrow[ur, dashed]
-    & \category{D}
-  \end{tikzcd}
-\end{equation*}
-(such that the filling is ambigressive and the necessary square is pullback); the conditions on $p$ guarantee us that we can perform this filling in a series of steps pictured in \hyperref[fig:factorization]{Figure~\ref*{fig:factorization}}, each of which is unique up to contractible choice.
 
-\subsubsection*{Reedy fibration}
+The results of \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}} therefore guarantee the following.
+\begin{enumerate}
+  \item In order to show that $\pi$ is an inner fibration, it suffices to show that $\pi'$ is a Reedy fibration.
 
-First, however, we have to check that $\pi'$ is a Reedy fibration. This follows from the following useful fact, implied by the first assumption of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
+  \item In order to show that morphisms of the required form are $\pi$-cocartesian, it will suffice to show by \hyperref[cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats]{Corollary~\ref*{cor:cocart_fib_between_css_gives_cocart_fib_of_quasicats}} that morphisms of this form are $\pi'$-cocartesian. 
+\end{enumerate}
+
+\subsubsection{The map \texorpdfstring{$\pi$}{pi} is an inner fibration}
+
+We begin by checking that the map $\pi$ is an inner fibration. As stated above, we do this by checking that $\pi'$ is a Reedy fibration. This follows from the following useful fact, implied by the first assumption of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
 \begin{lemma}
   Let $p\colon \triple{C} \to \triple{D}$ be a functor of triples satisfying the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}. Then the map $p\colon \category{C} \to \category{D}$ is an isofibration.
 \end{lemma}
@@ -902,7 +893,49 @@ First, however, we have to check that $\pi'$ is a Reedy fibration. This follows 
   The right-hand map is a Kan fibration by \hyperref[cor:kan_fib_and_isofib]{Corollary~\ref*{cor:kan_fib_and_isofib}} (because $\sd$ preserves monomorphisms), and the top map is an inclusion of connected components, so \hyperref[cor:connected_components_kan_fibration]{Corollary~\ref*{cor:connected_components_kan_fibration}} implies that the left-hand map is a Kan fibration, which is what we needed to show.
 \end{proof}
 
-We are now ready to begin in earnest our proof that morphisms of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}} are $\pi'$-cocartesian. We first introduce some notation. Let $p\colon \triple{C} \to \triple{D}$ be a functor of triples.
+\begin{corollary}
+  The map $\pi$ is an inner fibration
+\end{corollary}
+\begin{proof}
+  \hyperref[cor:reedy_implies_inner]{Corollary~\ref*{cor:reedy_implies_inner}}.
+\end{proof}
+
+\subsubsection{Cocartesian morphisms have the promised form}
+\label{sss:cocartesian_morphisms_have_the_promised_form}
+
+We are now ready to begin in earnest our proof that morphisms of the form \hyperref[eq:form_of_p_cocartesian_morphisms]{Equation~\ref*{eq:form_of_p_cocartesian_morphisms}} are $\pi'$-cocartesian. Morally, this result should not be surprising. We should think of the homotopy pullback condition defining cocartesian morphisms (\hyperref[def:cocartesian_morphism]{Definition~\ref*{def:cocartesian_morphism}}) as telling us that we can fill relative $\Lambda^{2}_{2}$-horns in $\pi'\colon \SPAN\triple{C} \to \SPAN\triple{D}$, and that such fillings are unique up to contractible choice. Finding a filling 
+\begin{equation*}
+  \begin{tikzcd}
+    \Lambda^{2}_{2}
+    \arrow[r]
+    \arrow[d, hook]
+    & \SPAN\triple{C}
+    \arrow[d, "\pi'"]
+    \\
+    \Delta^{2}
+    \arrow[r]
+    \arrow[ur, dashed]
+    & \SPAN\triple{D}
+  \end{tikzcd}
+\end{equation*}
+is equivalent finding a filling
+\begin{equation*}
+  \begin{tikzcd}
+    \sd(\Lambda^{2}_{2})
+    \arrow[r]
+    \arrow[d, hook]
+    & \category{C}
+    \arrow[d, "p"]
+    \\
+    \sd(\Delta^{2})
+    \arrow[r]
+    \arrow[ur, dashed]
+    & \category{D}
+  \end{tikzcd}
+\end{equation*}
+(such that the filling is ambigressive and the necessary square is pullback); the conditions on $p$ guarantee us that we can perform this filling in a series of steps pictured in \hyperref[fig:factorization]{Figure~\ref*{fig:factorization}}, each of which is unique up to contractible choice.
+
+In fact, our proof mainly consists of making this idea rigorous. To this end, we first introduce some notation. Let $p\colon \triple{C} \to \triple{D}$ be a functor of triples.
 \begin{itemize}
   \item We will denote $p$-cartesian morphisms in $\category{C}$ with a circle:
     \begin{equation*}

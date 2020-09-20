@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\section*{Introduction}
+\section{Introduction}
 \label{sec:introduction}
 
 Denote by $\S$ the $\infty$-category of spaces. For any space $X \in \S$, denote by $\P(X)$ the $\infty$-category of presheaves (of spaces) on $X$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\P(X)$ and $\P(Y)$. In particular:
@@ -32,7 +32,7 @@ Denote by $\S$ the $\infty$-category of spaces. For any space $X \in \S$, denote
     \end{equation*}
 \end{itemize}
 
-This is a prototype of a common situation: one has a functor (say, of quasicategories) $F\colon \category{C} \to \category{D}$, which sends an object $c \in \category{C}$ to an object $F(c) \in \category{D}$, and a morphism $f\colon c \to c'$ in $\category{C}$ to a morphism $f_{!}\colon F(c) \to F(c')$ in $\category{D}$. However one has additionally a `wrong-way' map, which creates from a morphism $f\colon c \to c'$ a morphism $f^{*}\colon F(c') \to F(c)$. In this case, from the data of a diagram in $\category{C}$ of the form
+This is a prototype of a common situation: one has a functor (say, of quasicategories) $F\colon \category{C} \to \category{D}$, which sends an object $c \in \category{C}$ to an object $F(c) \in \category{D}$, and a morphism $f\colon c \to c'$ in $\category{C}$ to a morphism $f_{!}\colon F(c) \to F(c')$ in $\category{D}$. One has additionally a `wrong-way' map, which creates from a morphism $f\colon c \to c'$ a morphism $f^{*}\colon F(c') \to F(c)$. In this case, from the data of a diagram in $\category{C}$ of the form
 \begin{equation}
   \label{eq:span}
   \begin{tikzcd}
@@ -78,11 +78,11 @@ We will define two $\infty$-categorical models for our category of spans in $\ca
     && X''
   \end{tikzcd}
 \end{equation*}
-In order for functor $\Span(\category{C}) \to \category{D}$ to be well-defined, it will have to respect this composition law. That is, we must have for all such pullback diagrams an equivalence
+In order for a functor $\Span(\category{C}) \to \category{D}$ to be well-defined, it will have to respect this composition law on $\Span(\category{C})$. That is, we must have for all such pullback diagrams an equivalence
 \begin{equation*}
   (p \circ f')_{!} \circ (g \circ q')^{*} \simeq p_{!} \circ q^{*} \circ f_{!} \circ g^{*}.
 \end{equation*}
-Equivalently, for any pullback square as above we must have an equivalence
+This is equivalent to the simpler condition that for any pullback square as above we must have an equivalence
 \begin{equation*}
   f'_{!} \circ (q')^{*} \simeq q^{*} \circ f_{!}.
 \end{equation*}
@@ -90,7 +90,7 @@ This is know as the \emph{base change condtition,} or the \emph{Beck--Chevalley 
 
 The aim of this work is twofold. First, we to provide a new proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$. %We will see that in order for such a functor to exist, the map $p$ must satisfy an unstraightened version of the Beck--Chevalley condition.
 
-Second, we use this result to construct a functor $\Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\P(X)$ of presheaves on $X$, and a morphism in $\Span(\S)$ represented by a span
+Second, we use this result to construct a functor $\hat{r}\colon \Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\P(X)$ of presheaves on $X$, and a morphism in $\Span(\S)$ represented by a span
 \begin{equation*}
   \begin{tikzcd}
     & Y
@@ -103,16 +103,26 @@ Second, we use this result to construct a functor $\Span(\category{S}) \to \ICat
 \end{equation*}
 to the functor $f_{!} \circ g^{*}\colon \P(X) \to \P(X')$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$.
 
-We begin by providing a new proof of Barwick's theorem. Barwick's proof is explicit, constructing the necessary horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
+We begin by providing a new proof of the theorem of Barwick mentioned above. Barwick's proof is explicit, constructing the necessary horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
 
 Our proof is more homotopy-theoretic in character, relying on the fact that for any quasicategory $\category{C}$ with pullbacks, the $\infty$-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. We define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
 
 Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first written down by De Brito in \cite{2016arXiv160500706B}, and expanded by Rasekh in \cite{rasekhcartesianfibrations}. There, Rasekh defines a model structure whose fibrant objects model cocartesian fibrations between Segal spaces. In defining this model structure, it is necessary to distinguish certain morphisms, and Rasekh solves this problem by adding an extra simplicial dimension; the model structure for cocartesian fibrations defined there is thus a model structure on slice categories of trisimplicial sets. In this work we restrict our attention to cocartesian fibrations between Segal spaces. This allows us to approach the problem of controlling cocartesian morphisms differently, by introducing a marking. This method is much closer to that used to work with cocartesian fibrations in \cite{highertopostheory}, and has the advantage that many of the results proved there can be leveraged in explicit calculations. In particular, we provide a definition of a cocartesian fibration between complete Segal spaces to which Rasekh's definition reduces in the case that both the domain and codomain are complete Segal spaces.
 
+\subsection{Outline}
+\label{ssc:outline}
+
 This work consists of three sections. In \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, we explore cocartesian fibrations between Segal spaces. After a review in \hyperref[ssc:a_review_of_bisimplicial_sets]{Section~\ref*{ssc:a_review_of_bisimplicial_sets}} of some material in \cite{qcats_vs_segal_spaces}, most notably the box product $- \square -$ and its adjoints, we define marked bisimplicial sets in \hyperref[ssc:marked_bisimplicial_sets]{Section~\ref*{ssc:marked_bisimplicial_sets}}. We then define a marked version of the box functor, and prove some results analogous to the unmarked case. In \hyperref[ssc:simplicial_technology]{Section~\ref*{ssc:simplicial_technology}}, we prove some technical lemmas about simplicial sets with certain restrictions on individual morphisms. The main result is a lemma which allows us to translate a condition on marked bisimplicial sets for a `pointwise condition' involving unmarked bisimplicial sets.
 
 In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts. We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
 
-In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove the above of Barwick, originally published in \cite[Thm.~12.2]{spectralmackeyfunctors1}. After a brief review in \hyperref[ssc:introduction]{Subsection~\ref*{ssc:introduction}} of the definitions of the quasicategory and Segal space models for the $\infty$-category of spans in a quasicategory $\category{C}$, we construct in \hyperref[ssc:defining_the_maps_p_q_and_r]{Sections~\ref*{ssc:defining_the_maps_p_q_and_r}--\ref*{ssc:building_the_functor}} the functor $\Span(\S) \to \ICat$, and show that it is lax monoidal.
+In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove the theorem of Barwick mentioned above, originally published in \cite[Thm.~12.2]{spectralmackeyfunctors1}. The proof leverages the fact, proven in \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}} that, when checking that a morphism in a Segal space is cocartesian relative to some Reedy fibration, it suffices to check that the lowest lifting problem $\Lambda^{2}_{1} \hookrightarrow \Delta^{2}$ has a contractible space of solutions, which is combinatorially tractible.
+
+In \hyperref[sec:application_to_presheaves]{Section~\ref*{sec:application_to_presheaves}}, we construct the functor $\hat{r}\colon \Span(\S) \to \ICat$, together with a lax monoidal structure on it.
+
+\subsection{Acknowledgements}
+\label{ssc:acknowledgements}
+
+The author would like to thank Prof.\ Tobias Dyckerhoff for his patience and invaluable advice. We are also indebted to Merlin Christ for his helpful feedback on this document.
 
 \end{document}
