@@ -42,7 +42,7 @@ In this section, we leverage \hyperref[thm:main]{Theorem~\ref*{thm:main}} to con
 \subsubsection{Sketch of the construction of the functor underlying \texorpdfstring{$\hat{r}$}{r}}
 \label{sss:sketch_of_underlying_functor}
 
-Consider the category $\Map(\Delta^{1}, \S)$, whose objects are morphisms $S \to X$ in $\S$, and whose morphisms $(S \to X) \to (S' \to X')$ are commuting squares in $\S$
+Consider the category $\Map(\Delta^{1}, \S)$, whose objects are arrows $S \to X$ in $\S$, and whose morphisms $(S \to X) \to (S' \to X')$ are commuting squares in $\S$
 \begin{equation*}
   \begin{tikzcd}
     S
@@ -57,10 +57,19 @@ Consider the category $\Map(\Delta^{1}, \S)$, whose objects are morphisms $S \to
   \end{tikzcd}.
 \end{equation*}
 
-There is a functor $\ev_{1}\colon \Map(\Delta^{1}, \S) \to \S$, which sends an $n$-simplex $\Delta^{n} \to \Map(\Delta^{1}, \S)$ corresponding to a map $\Delta^{n} \times \Delta^{1} \to \S$ to the $n$-simplex $\Delta^{n} \times \Delta^{\{1\}} \to \S$ corresponding to the `bottom face'.
+There is a functor $\ev_{1}\colon \Map(\Delta^{1}, \S) \to \S$, which sends an $n$-simplex $\sigma\colon \Delta^{n} \to \Map(\Delta^{1}, \S)$ corresponding to a map $\Delta^{n} \times \Delta^{1} \to \S$ to the pullback $n$-simplex 
+\begin{equation*}
+\begin{tikzcd}
+  \Delta^{n} \times \Delta^{\{1\}} 
+  \arrow[r, hook]
+  & \Delta^{n} \times \Delta^{1}
+  \arrow[r, "\sigma"]
+  & \S
+\end{tikzcd}.
+\end{equation*}
+In other words, this map sends a prism to its bottom face.
 
 In \cite{highertopostheory} the following is shown.
-
 \begin{proposition}
   The functor
   \begin{equation}
@@ -835,7 +844,6 @@ Our next step is to show that the maps $\pi'$, $\rho'$, and $\varpi'$ are cocart
   The map $r$ satisfies the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}.
 \end{lemma}
 \begin{proof}
-  \leavevmode
   \begin{enumerate}
     \item It suffices to show that for each morphism $T \to S'$ in $\S_{\times}$ lying over $\langle m \rangle \overset{\cong}{\leftarrow} \langle m \rangle$ and each $Y \to T$ in the fiber over $\langle m \rangle$, the square
       \begin{equation*}
@@ -996,7 +1004,7 @@ Recall that there is an equivalence $\Finp \to \Span\triple{F}$. Pulling back \h
 \subsection{Building the functor \texorpdfstring{$\hat{r}$}{r}}
 \label{ssc:building_the_functor}
 
-We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to \ICat$. Restricting the functor $\rho$ to the component lying over $\langle 1 \rangle \in \Finp$ gives a cocartesian fibration $\rho_{\langle 1 \rangle\colon }Q_{\langle 1 \rangle} \to P_{\langle 1 \rangle}$, which classifies a functor $P_{\langle 1 \rangle} \to \ICat$. This will be almost the functor we need, as the following propositions show.
+We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to \ICat$. Restricting the functor $\rho$ to the component lying over $\langle 1 \rangle \in \Finp$ gives a cocartesian fibration $\rho_{\langle 1 \rangle\colon }Q_{\langle 1 \rangle} \to P_{\langle 1 \rangle}$, which classifies a functor $P_{\langle 1 \rangle} \to \ICat$. This is the functor described in \hyperref[sss:sketch_of_underlying_functor]{Subsubsection~\ref*{sss:sketch_of_underlying_functor}}. This will be almost the functor we need, as the following results show.
 
 \begin{proposition}
   There is an equivalence of simplicial sets $P_{\langle 1 \rangle} \simeq \Span(\S)$.
@@ -1047,7 +1055,7 @@ We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to 
       & \S_{\times}
     \end{tikzcd}
   \end{equation*}
-  commute. The first diagram ensures that $\sigma$ lands entirely inside $(\Map(\Delta^{1}, \S)_{\times})_{\langle 1 \rangle} \cong \Map(\Delta^{1}, \S)$, so any such $\sigma$ is uniquely determined by a map $\sd(\Delta^{n}) \times \Delta^{1} \to \S$ such that:
+  commute. The first diagram ensures that $\sigma$ lands entirely inside the simplicial subset $(\Map(\Delta^{1}, \S)_{\times})_{\langle 1 \rangle} \cong \Map(\Delta^{1}, \S)$, so any such $\sigma$ is uniquely determined by a map $\sd(\Delta^{n}) \times \Delta^{1} \to \S$ such that:
   \begin{itemize}
     \item The composition
       \begin{equation*}
@@ -1060,7 +1068,11 @@ We are now ready to build the lax monoidal functor $\hat{r}\colon \Span(\S) \to 
   This is precisely the data of a map $\sd(\Delta^{n}) \diamond \Delta^{0} \to \S$ sending $\Delta^{0} \mapsto X$, and such that and the forward-facing legs of $\sd(\Delta^{n})$ are sent to equivalences in $\S$. But these are precisely the $n$-simplices of $\Span_{\simeq}(\S^{/X})$. This provides an isomorphism $Q_{\langle 1 \rangle} \cong \Span_{\simeq}(\S^{/X})$. The equvialences $(\S^{/X})\op \to \Span_{\simeq}(\S^{/X})$ and $\S_{/X} \simeq \S^{/X}$ now give us the equivalence that we want.
 \end{proof}
 
-We now define $R$ to be the functor classified by the cocartesian fibration $\rho$. On objects, this functor sends a space $X$ to the category $(\S_{/X})\op$. A morphism in $\Span(\S)$ represented by a span of spaces
+We now define the functor 
+\begin{equation*}
+  R\colon \Span(\S) \to \ICat
+\end{equation*}
+to be the functor classified by the cocartesian fibration $\rho_{\langle 1 \rangle}$. On objects, this functor sends a space $X$ to the category $(\S_{/X})\op$. A morphism in $\Span(\S)$ represented by a span of spaces
 \begin{equation*}
   \begin{tikzcd}
     X
@@ -1103,7 +1115,7 @@ This is almost what we want, up to an $\mathrm{op}$: we would like our functor $
   \end{equation*}
 \end{definition}
 
-The map $R$ admits a lax monoidal structure by \cite{luriehigheralgebra}, 2.4.2.4--2.4.2.6, and the map $\mathrm{op}$ is an equivalence, hence certainly monoidal with respect to the cartesian monoidal structure on $\ICat$. Thus, $\hat{r}$ is lax monoidal.
+The map $R$ admits a lax monoidal structure by \cite[2.4.2.4--2.4.2.6]{luriehigheralgebra}, and the map $\mathrm{op}$ is an equivalence, hence certainly monoidal with respect to the cartesian monoidal structure on $\ICat$. Thus, $\hat{r}$ is lax monoidal.
 
 \subsection{Conclusion and outlook}
 \label{ssc:conclusion}
@@ -1116,18 +1128,18 @@ Let us meditate on our construction of the functor $\hat{r}$. Our starting point
 \end{itemize}
 The existence of these two maps in opposite directions was the key ingredient that allowed us to construct our map $\hat{r}\colon \Span(\S) \to \ICat$.
 
+There are several immediate avenues of generalization which could be explored. For example, one could replace $\S$-valued presheaves by presheaves valued in some other $\infty$-category $\category{C}$, or replace presheaves by sheaves. In both of these situations one has analogs of the pullback and pushforward functors.
+
 However, as we alluded to in \hyperref[sec:introduction]{Section~\ref*{sec:introduction}}, having a way of producing from a morphism in some category $\category{C}$ a morphism in some category $\category{D}$ in both a covariant and a contravariant way is a rather common situation. The following are examples.
 
 \begin{itemize}
-  \item Let $p\colon X \to Y$ be a covering space map with finite fibers, say of cardinality $n$. This induces a map $p_{*}\colon H_{*}X \to H_{*}Y$ on singular homology. Additionally, for any singular $n$-simplex $\sigma\colon |\Delta^{n}| \to Y$, the homotopy lifting property allows us to construct an element $t(\sigma)$ of $S_{n}(X)$ such that $p_{*} \circ t(\sigma) = n$. Roughly, $t(\sigma)$ is a sum of singular $n$-simplices in $X$ each lying above $\sigma$, one in each fiber. This extends to a map of singular chain complexes, and descends to a transfer map $t_{!}\colon H_{*}Y \to H_{*}X$.
+  \item Let $p\colon X \to Y$ be a covering space map with finite fibers, say of cardinality $n$. This induces a map $p_{*}\colon H_{*}X \to H_{*}Y$ on singular homology, as does any continuous map of topological spaces. Additionally, for any singular $n$-simplex $\sigma\colon |\Delta^{n}| \to Y$, the homotopy lifting property allows us to construct a singular $n$-chain $\alpha$ on $X$ such that $p_{*}(\alpha) = n$. Roughly, $\alpha$ is a sum of singular $n$-simplices in $X$ each lying above $\sigma$, one in each fiber. This extends to a map of singular chain complexes, and descends to a transfer map $t\colon H_{*}Y \to H_{*}X$.
 
-  \item More generally, given such a covering space map $p\colon E \to B$, Roush showed in \cite{roushtransfer} that one gets a stable transfer map $\Sigma^{\infty} Y_{+} \to \Sigma^{\infty} X_{+}$.
+  \item Given a covering space map with finite fibers $p\colon X \to Y$ as above, Roush showed in \cite{roushtransfer} that one can construct a stable transfer map $\Sigma^{\infty} Y_{+} \to \Sigma^{\infty} X_{+}$.
 
-  \item Becker and Gottlieb generalized this result in
+  \item Becker and Gottlieb generalized this result in \cite{beckergottlieb} to the case of a fiber bundle $E \to B$ satisfying certain conditions, with standard fiber $F$ a compact smooth manifold with boundary, constructing a stable transfer map $\Sigma^{\infty}B_{+} \to \Sigma^{\infty}E_{+}$. This is known as \emph{Becker-Gottlieb transfer.}
 \end{itemize}
 
-Note that in both of these examples, not all morphisms admit wrong-way maps, and that it is therefore vital to have control over the classes of morphisms to which each leg is allowed to belong.
-
-It is the hope of the author that the technology we have used in constructing the functor $\hat{r}$ will be useful in understanding similar constructions in other transfer theories. There are relatively simple generalizations, such as replacing presheaves valued in $\S$ with presheaves valued in other categories.
+It is the hope of the author that the technology we have used in constructing the functor $\hat{r}$ will be useful in understanding similar constructions in other transfer theories.
 
 \end{document}
