@@ -70,12 +70,12 @@ If $X$ is Reedy fibrant (i.e.\ fibrant with respect to the Reedy model structure
   \label{def:left_and_right_divison_functors}
   Let $A$ denote a simplicial set, and $X$ a bisimplicial set.
   \begin{itemize}
-    \item Define a simplicial set $A \backslash X$ level-wise by
+    \item Define a simplicial set $A \backslash X$ (pronounced \emph{$A$ under $X$}) level-wise by
       \begin{equation*}
         (A \backslash X)_{n} = \Hom_{\SSet}(A \square \Delta^{n}, X).
       \end{equation*}
 
-    \item Define a simplicial set $X / A$ level-wise by
+    \item Define a simplicial set $X / A$ (pronounced \emph{$X$ over $A$}) level-wise by
       \begin{equation*}
         (X / A)_{n} = \Hom_{\SSet}(\Delta^{n} \square A, X).
       \end{equation*}
@@ -84,6 +84,10 @@ If $X$ is Reedy fibrant (i.e.\ fibrant with respect to the Reedy model structure
 
 %In \cite{qcats_vs_segal_spaces}, the theory of such bifunctors is explored. The results that we will need are reproduced in \hyperref[sss:divisibility_of_bifunctors]{Appendix~\ref*{sss:divisibility_of_bifunctors}}. However, we note here the following.
 Note that by \hyperref[eg:box_product_and_yoneda]{Example~\ref*{eg:box_product_and_yoneda}}, the simplicial set $\Delta^{m} \backslash X$ is the $m$th column of $X$, which we have agreed to call $X_{m}$. Similarly, the simplicial set $X / \Delta^{n}$ is the $n$th row of $X$. In particular $X / \Delta^{0}$ is the zeroth row of $X$. (This, confusingly, is usually called the \emph{first row} of $X$; this terminological inconsistency is somewhat justified by the fact that, unlike the columns, one tends to be interested mainly in the zeroth row.)
+
+\begin{note}
+  For $X$ a Reedy-fibrant simplicial set (\hyperref[def:reedy_fibration]{Definition~\ref*{def:reedy_fibration}}), the space $A\backslash X$ is a Kan complex for any simplicial set $A$, and should be thought of as the space of $A$-shaped diagrams in $X$. In particular, $X_{n} = \Delta^{n} \backslash X$ is the space of $n$-simplices in $X$.
+\end{note}
 
 We provide here a partial proof of the following result because we will need to refer to it later, when we prove \hyperref[prop:marked_box_adjunctions]{Proposition~\ref*{prop:marked_box_adjunctions}}.
 \begin{proposition}
@@ -275,7 +279,7 @@ The marked constructions above have similar properties to the unmarked construct
   \end{equation*}
   We have a natural bijection between the right-hand sides of the above inclusions given by the maps $\Phi$ and $\Psi$ of \hyperref[prop:bijection_exhibiting_box_divisibility]{Proposition~\ref*{prop:bijection_exhibiting_box_divisibility}}. To show that there is a natural bijection between the subsets, it suffices to show that $\Phi$ and $\Psi$ restrict to maps between the subsets.
 
-  To this end, suppose we have a map of bimarked simplicial sets $f\colon A \square B \to X$. The inclusion $i_{0}$ forgets the markings, sending this to the map
+  To this end, suppose we have a map of marked bisimplicial sets $f\colon A \square B \to X$. The inclusion $i_{0}$ forgets the markings, sending this to the map
   \begin{equation*}
     \mathring{f}\colon \mathring{A} \square B \to \mathring{X}.
   \end{equation*}
@@ -298,7 +302,7 @@ The marked constructions above have similar properties to the unmarked construct
       \arrow[r, "g"]
       & A \backslash X
       \arrow[r, hook]
-      & A\flt \backslash X \cong \mathring{A} \backslash \mathring{X},
+      & A\flt \backslash X \cong \mathring{A^{\flat}} \backslash \mathring{X},
     \end{tikzcd}
   \end{equation*}
   which we denote by $\mathring{g}$ by mild abuse of notation. Under $\Psi$, this is mapped to the composition
@@ -414,7 +418,7 @@ This shows that the marked version of the box product $\square$ is, in the langu
   Since $A^{\flat} \backslash X$ is a Kan complex, we can always find such a dashed lift. The inclusion $\Lambda^{n}_{k} \hookrightarrow \Delta^{n}$ is surjective on vertices, so our lift factors through $A \backslash X$.
 \end{proof}
 
-Recall that when thinking of a bisimplicial set $X$ as a cosimplicial object in $\SSet$, we think of the simplicial set $X_{1}$ as the space of $1$-simplices in $X$. In particular, if $X$ is a Segal space, then $X_{1}$ should be thought of as the space of morphisms in $X$. We should think of morphisms which are in the same path component of $X_{1}$ as equivalent. Therefore, we would like to pay special attention to markings which respect this homotopical structure.
+Recall that when thinking of a bisimplicial set $X$ as a simplicial object in $\SSet$, we think of the simplicial set $X_{1}$ as the space of $1$-simplices in $X$. In particular, if $X$ is a Segal space, then $X_{1}$ should be thought of as the space of morphisms in $X$. We should think of morphisms which are in the same path component of $X_{1}$ as equivalent. Therefore, we would like to pay special attention to markings which respect this homotopical structure.
 \begin{definition}
   \label{def:respects_path_components}
   Let $(X, \mathcal{E})$ be a marked bisimplicial set. We will say that the marking $\mathcal{E}$ \defn{respects path components} if it has the following property: for any map $\Delta^{1} \to X_{1}$ representing an edge $e \to e'$ between morphisms $e$ and $e'$, the morphism $e$ is marked if and only if the morphism $e'$ is marked.
@@ -1103,7 +1107,7 @@ For each $n \geq 2$, denote by $h^{n}$ the $\mathcal{L}$-marked inclusion
   is a trivial fibration.
 \end{corollary}
 \begin{proof}
-  \hyperref[lemma:check_marked_trivial_fibration_pointwise]{Lemma~\ref*{lemma:check_marked_trivial_fibration_pointwise}}.
+  Apply \hyperref[lemma:check_marked_trivial_fibration_pointwise]{Lemma~\ref*{lemma:check_marked_trivial_fibration_pointwise}} to \hyperref[prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian]{Proposition~\ref*{prop:segal_cocartesian_morphisms_are_quasicategory_cocartesian}}.
 \end{proof}
 
 \begin{corollary}

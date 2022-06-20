@@ -5,9 +5,9 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Denote by $\S$ the $\infty$-category of spaces. For any space $X \in \S$, denote by $\P(X)$ the $\infty$-category of presheaves (of spaces) on $X$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\P(X)$ and $\P(Y)$. In particular:
+Let $\category{C}$ be a cocomplete $\infty$-category. For any space $X \in \S$, denote by $\LS(\category{C})_{X}$ the $\infty$-category of $\category{C}$-local systems on $X$; that is, the $\infty$-category of functors $X \to \category{C}$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\LS(\category{C})_{X}$ and $\LS(\category{C})_{Y}$. In particular:
 \begin{itemize}
-  \item The functor $f^{*}\colon \P(Y) \to \P(X)$ pulls back presheaves on $Y$ to preasheaves on $X$, sending a presheaf $\mathcal{F}\colon Y \to \S$ to the presheaf $f^{*}\mathcal{F}$ given by the composition
+  \item The functor $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \S$ to the local system $f^{*}\mathcal{F}$ given by the composition
     \begin{equation*}
       \begin{tikzcd}
         X
@@ -18,7 +18,7 @@ Denote by $\S$ the $\infty$-category of spaces. For any space $X \in \S$, denote
       \end{tikzcd}.
     \end{equation*}
 
-  \item The functor $f_{!}\colon \P(X) \to \P(Y)$ pushes forward presheaves via left Kan extension, sending a presheaf $\mathcal{G}\colon X \to \S$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
+  \item The functor $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \S$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
     \begin{equation*}
       \begin{tikzcd}
         X
@@ -57,7 +57,34 @@ one can produce a morphism $F(c) \to F(c'')$ in $\category{D}$ via the compositi
   \end{tikzcd}.
 \end{equation*}
 
-The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} in $\category{C}$. It is natural to ask whether this construction can be extended to a functor $\Span(\category{C}) \to \category{D}$, where $\Span(\category{C})$ is an $\infty$-category whose objects are the same as the objects of $\category{C}$, and whose morphisms are spans in $\category{C}$.
+The data of \hyperref[eq:span]{Diagram~\ref*{eq:span}} is known as a \emph{span} in $\category{C}$. It is natural to ask whether this construction can be extended to a functor $\Span(\category{C}) \to \category{D}$, where $\Span(\category{C})$ is an $\infty$-category whose objects are the same as the objects of $\category{C}$, and whose morphisms are spans in $\category{C}$. In defining $\Span(\category{C})$, it is necessary to specify a composition law for spans. There is a natural way of doing this: given two spans $X \leftarrow Y \rightarrow X'$ and $X' \leftarrow Y' \rightarrow X''$ in $\category{C}$, we define their composition to be the pullback $X \leftarrow Y \times_{X'} Y' \rightarrow X''$ as below.
+\begin{equation*}
+  \begin{tikzcd}
+    && Y \times_{X'} Y'
+    \arrow[dl, dashed, swap, "q'"]
+    \arrow[dr, dashed, "f'"]
+    \\
+    & Y
+    \arrow[dl, swap, "g"]
+    \arrow[dr, "f"]
+    && Y'
+    \arrow[dl, swap, "q"]
+    \arrow[dr, "p"]
+    \\
+    X
+    && X'
+    && X''
+  \end{tikzcd}
+\end{equation*}
+In order for a functor $\Span(\category{C}) \to \category{D}$ to be well-defined, it will have to respect this composition law on $\Span(\category{C})$. That is, we must have for all such pullback diagrams an equivalence
+\begin{equation*}
+  (p \circ f')_{!} \circ (g \circ q')^{*} \simeq p_{!} \circ q^{*} \circ f_{!} \circ g^{*}.
+\end{equation*}
+This is equivalent to the simpler condition that for any pullback square as above we must have an equivalence
+\begin{equation*}
+  f'_{!} \circ (q')^{*} \simeq q^{*} \circ f_{!}.
+\end{equation*}
+This is know as the \emph{base change condtition,} or the \emph{Beck--Chevalley condition.}
 
 We will define two $\infty$-categorical models for our category of spans in $\category{C}$: a Segal space $\SPAN(\category{C})$, and a quasicategory $\Span(\category{C})$. Let us for the moment concentrate on the quasicategorical model, although what we say would equally apply to the Segal space model. In defining the quasicategory $\Span(\category{C})$ of spans in $\category{C}$, it is necessary to specify a composition law for spans. There is a natural way of doing this: given two spans $X \leftarrow Y \rightarrow X'$ and $X' \leftarrow Y' \rightarrow X''$ in $\category{C}$, we define their composition to be the pullback $X \leftarrow Y \times_{X'} Y' \rightarrow X''$ as below.
 \begin{equation*}
@@ -88,9 +115,9 @@ This is equivalent to the simpler condition that for any pullback square as abov
 \end{equation*}
 This is know as the \emph{base change condtition,} or the \emph{Beck--Chevalley condition.}
 
-The aim of this work is twofold. First, we to provide a new proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$. %We will see that in order for such a functor to exist, the map $p$ must satisfy an unstraightened version of the Beck--Chevalley condition.
+This is the first part of a two-part paper. In this paper, we to provide a new proof of a theorem of Barwick \cite[Thm.~12.2]{spectralmackeyfunctors1}, which provides sufficient conditions for a functor of quasicategories $p\colon \category{C} \to \category{D}$ to yield a cocartesian fibration between $\infty$-categories of spans $\Span(p)\colon \Span(\category{C}) \to \Span(\category{D})$.
 
-Second, we use this result to construct a functor $\hat{r}\colon \Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\P(X)$ of presheaves on $X$, and a morphism in $\Span(\S)$ represented by a span
+In the second part, we will use this result to construct a functor $\hat{r}\colon \Span(\category{S}) \to \ICat$, which sends a space $X$ to the category $\LS(\category{C})_{X}$ of $\category{C}$-local systems on $X$, and a morphism in $\Span(\S)$ represented by a span
 \begin{equation*}
   \begin{tikzcd}
     & Y
@@ -101,7 +128,7 @@ Second, we use this result to construct a functor $\hat{r}\colon \Span(\category
     && X'
   \end{tikzcd}
 \end{equation*}
-to the functor $f_{!} \circ g^{*}\colon \P(X) \to \P(X')$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$.
+to the functor $f_{!} \circ g^{*}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{X'}$. We further show that our functor is lax monoidal with respect to a monoidal structure on $\Span(\S)$ induced by the cartesian structure on $\S$, and the cartesian structure on $\ICat$.
 
 We begin by providing a new proof of the theorem of Barwick mentioned above. Barwick's proof is explicit, constructing the necessary horn fillings by enumerating the necessary simplices, and arguing one-by-one why each filling is possible. This is an impressive feat of simplicial combinatorics, but provides little intuition for why the result might be true.
 
@@ -118,11 +145,9 @@ In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibration
 
 In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove the theorem of Barwick mentioned above, originally published in \cite[Thm.~12.2]{spectralmackeyfunctors1}. The proof leverages the fact, proven in \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}} that, when checking that a morphism in a Segal space is cocartesian relative to some Reedy fibration, it suffices to check that the lowest lifting problem $\Lambda^{2}_{1} \hookrightarrow \Delta^{2}$ has a contractible space of solutions, which is combinatorially tractible.
 
-In \hyperref[sec:application_to_presheaves]{Section~\ref*{sec:application_to_presheaves}}, we construct the functor $\hat{r}\colon \Span(\S) \to \ICat$ described above, together with a lax monoidal structure on it.
-
-\subsection{Acknowledgements}
-\label{ssc:acknowledgements}
-
-The author would like to thank Prof.\ Tobias Dyckerhoff for his patience and invaluable advice. We are also indebted to Merlin Christ for his helpful feedback on this document.
+%\subsection{Acknowledgements}
+%\label{ssc:acknowledgements}
+%
+%The author would like to thank Prof.\ Tobias Dyckerhoff for his patience and invaluable advice. We are also indebted to Merlin Christ for his helpful feedback on this document.
 
 \end{document}

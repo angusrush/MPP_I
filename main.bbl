@@ -68,33 +68,6 @@
       \verb arXiv:1404.0108
       \endverb
     \endentry
-    \entry{beckergottlieb}{article}{}
-      \name{author}{1}{}{%
-        {{hash=1703ae598031f7f3d0fc4cd3920a556c}{%
-           family={Becker},
-           familyi={B\bibinitperiod},
-           given={D.\bibnamedelimi H.},
-           giveni={D\bibinitperiod\bibinitdelim H\bibinitperiod},
-           suffix={J.\bibnamedelimi C.;\bibnamedelima Gottlieb},
-           suffixi={J\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
-      }
-      \strng{namehash}{1703ae598031f7f3d0fc4cd3920a556c}
-      \strng{fullhash}{1703ae598031f7f3d0fc4cd3920a556c}
-      \strng{bibnamehash}{1703ae598031f7f3d0fc4cd3920a556c}
-      \strng{authorbibnamehash}{1703ae598031f7f3d0fc4cd3920a556c}
-      \strng{authornamehash}{1703ae598031f7f3d0fc4cd3920a556c}
-      \strng{authorfullhash}{1703ae598031f7f3d0fc4cd3920a556c}
-      \field{sortinit}{B}
-      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{topology}
-      \field{title}{The transfer map and fiber bundles}
-      \field{volume}{14}
-      \field{year}{1975}
-      \field{pages}{1\bibrangedash 12}
-      \range{pages}{12}
-    \endentry
     \entry{2016arXiv160500706B}{article}{}
       \name{author}{1}{}{%
         {{hash=ca66c7395b1ca0f2eed3a694a9a5f7ee}{%
@@ -127,54 +100,6 @@
       \endverb
       \keyw{Mathematics - Algebraic Topology}
     \endentry
-    \entry{spectralmackeyfunctors2}{misc}{}
-      \name{author}{1}{}{%
-        {{hash=06f83ea8e5fbb3836278ac17f0831a65}{%
-           family={C.\bibnamedelimi Barwick},
-           familyi={C\bibinitperiod\bibinitdelim B\bibinitperiod},
-           given={J.\bibnamedelimi Shah},
-           giveni={J\bibinitperiod\bibinitdelim S\bibinitperiod},
-           suffix={S.\bibnamedelimi Glasman},
-           suffixi={S\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
-      }
-      \strng{namehash}{06f83ea8e5fbb3836278ac17f0831a65}
-      \strng{fullhash}{06f83ea8e5fbb3836278ac17f0831a65}
-      \strng{bibnamehash}{06f83ea8e5fbb3836278ac17f0831a65}
-      \strng{authorbibnamehash}{06f83ea8e5fbb3836278ac17f0831a65}
-      \strng{authornamehash}{06f83ea8e5fbb3836278ac17f0831a65}
-      \strng{authorfullhash}{06f83ea8e5fbb3836278ac17f0831a65}
-      \field{sortinit}{C}
-      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Spectral Mackey functors and equivariant algebraic K-theory (II)}
-      \field{year}{2016}
-      \verb{eprint}
-      \verb arXiv:1505.03098v2
-      \endverb
-    \endentry
-    \entry{luriehigheralgebra}{article}{}
-      \name{author}{1}{}{%
-        {{hash=4824f2fc2c61b9f4da55e476206c5db3}{%
-           family={Lurie},
-           familyi={L\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-      }
-      \strng{namehash}{4824f2fc2c61b9f4da55e476206c5db3}
-      \strng{fullhash}{4824f2fc2c61b9f4da55e476206c5db3}
-      \strng{bibnamehash}{4824f2fc2c61b9f4da55e476206c5db3}
-      \strng{authorbibnamehash}{4824f2fc2c61b9f4da55e476206c5db3}
-      \strng{authornamehash}{4824f2fc2c61b9f4da55e476206c5db3}
-      \strng{authorfullhash}{4824f2fc2c61b9f4da55e476206c5db3}
-      \field{extraname}{1}
-      \field{sortinit}{L}
-      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Higher Algebra}
-      \field{year}{2017}
-    \endentry
     \entry{highertopostheory}{book}{}
       \name{author}{1}{}{%
         {{hash=760ea879284b1a6eeaad87a82be8d1d7}{%
@@ -192,7 +117,7 @@
       \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \field{extraname}{2}
+      \field{extraname}{1}
       \field{sortinit}{L}
       \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
       \field{labelnamesource}{author}
@@ -215,7 +140,7 @@
       \strng{authorbibnamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authornamehash}{760ea879284b1a6eeaad87a82be8d1d7}
       \strng{authorfullhash}{760ea879284b1a6eeaad87a82be8d1d7}
-      \field{extraname}{3}
+      \field{extraname}{2}
       \field{sortinit}{L}
       \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
       \field{labelnamesource}{author}
@@ -281,32 +206,6 @@
       \field{year}{2001}
       \field{pages}{973\bibrangedash 1007}
       \range{pages}{35}
-    \endentry
-    \entry{roushtransfer}{book}{}
-      \name{author}{1}{}{%
-        {{hash=291e24b38e4701ba8d6c3b16605597b0}{%
-           family={Roush},
-           familyi={R\bibinitperiod},
-           given={F.\bibnamedelimi W.},
-           giveni={F\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Princeton University}%
-      }
-      \strng{namehash}{291e24b38e4701ba8d6c3b16605597b0}
-      \strng{fullhash}{291e24b38e4701ba8d6c3b16605597b0}
-      \strng{bibnamehash}{291e24b38e4701ba8d6c3b16605597b0}
-      \strng{authorbibnamehash}{291e24b38e4701ba8d6c3b16605597b0}
-      \strng{authornamehash}{291e24b38e4701ba8d6c3b16605597b0}
-      \strng{authorfullhash}{291e24b38e4701ba8d6c3b16605597b0}
-      \field{sortinit}{R}
-      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{subtitle}{(Ph.D. thesis)}
-      \field{title}{Transfer in Generalized Cohomology Theories}
-      \field{year}{1972}
-      \field{dateera}{ce}
     \endentry
   \enddatalist
 \endrefsection

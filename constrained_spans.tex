@@ -71,16 +71,16 @@ In order for a triple of categories to be able to support a category of spans, i
         \begin{tikzcd}
           y'
           \arrow[r, "f'"]
-          \arrow[d]
+          \arrow[d, swap, "g'"]
           & x'
-          \arrow[d]
+          \arrow[d, "g"]
           \\
           y
           \arrow[r, "f"]
           & x
         \end{tikzcd},
       \end{equation*}
-      if the arrow $f$ belongs to $\category{C}_{\dagger}$ (resp.\ $\category{C}^{\dagger}$), then the arrow $f'$ belongs to $\category{C}_{\dagger}$ (resp.\ $\category{C}^{\dagger}$).
+      if the arrow $f$ belongs to $\category{C}_{\dagger}$ and the arrow $g$ belongs to $\category{C}\updag$, then the arrow $f'$ belongs to $\category{C}_{\dagger}$ and the arrow $g'$ belongs to $\category{C}\updag$.\note{This is a slightly weaker condition than that imposed in \cite{spectralmackeyfunctors1}. The results we will need will hold just as well under this weakened assumption.}
   \end{enumerate}
 \end{definition}
 
@@ -348,7 +348,7 @@ If the morphism $g$ were invertible, we could fill this to a full 2-simplex
 \end{equation*}
 Even if $g$ is not invertible, we can think of our span as formally representing a `fraction of morphisms' $f \circ g^{-1}\colon X \to X'$, which may or may not exist in $\category{C}$.
 
-With this point of view in mind, if we build from a quasicategory $\category{C}$ a category of spans whose forwards-facing legs are arbitrary morphisms in $\category{C}$, and whose backward-facing legs are equivalences, then we have not really done anything; each span, thought of as a formal morphism in $\category{C}$, is represented by an actual morphism in $\category{C}$. Thus, the category of spans in $\category{C}$ whose backward-facing legs are equivalences should be equivalent to the category $\category{C}$. In the following example, we construct this equivalence. This example, as well as the following one, will be important in several places to the construction in \hyperref[sec:application_to_presheaves]{Section~\ref*{sec:application_to_presheaves}}.
+With this point of view in mind, if we build from a quasicategory $\category{C}$ a category of spans whose forwards-facing legs are arbitrary morphisms in $\category{C}$, and whose backward-facing legs are equivalences, then we have not really done anything; each span, thought of as a formal morphism in $\category{C}$, is represented by an actual morphism in $\category{C}$. Thus, the category of spans in $\category{C}$ whose backward-facing legs are equivalences should be equivalent to the category $\category{C}$. In the following example, we construct this equivalence.
 
 \begin{example}
   \label{eg:spans_with_equivalences_on_one_leg}
@@ -528,29 +528,66 @@ and similarly for $p^{\dagger}$. Clearly, a functor $p$ between adequate triples
 
 It is natural to wonder about the relationship between $p$ and $\Span(p)$. The goal of the remainder of this section is to provide a proof of the following theorem, originally appearing as \cite[Thm.\ 12.2]{spectralmackeyfunctors1}. This theorem provides conditions on a functor $p$ between adequate triples such that the induced map between category of spans is an inner fibration, and provides the form of a $p$-cocartesian morphism in $\Span\triple{C}$.
 
+%\begin{theorem}
+%  \label{thm:main}
+%  Let $p\colon \triple{C} \to \triple{D}$ be a functor of adequate triples which is an inner fibration. Further suppose that $p$ satisfies the following conditions:
+%  \begin{enumerate}
+%    \item For any ingressive morphism $g\colon s \ing t$ of $\category{D}$ and any object $x \in \category{C}_{s}$, there exists an ingressive morphism $f\colon x \ing y$ covering $g$ which is both $p$-cocartesian and $p_{\dagger}$-cocartesian.
+%
+%    \item Suppose $\sigma$ is a commutative square
+%      \begin{equation*}
+%        \begin{tikzcd}
+%          y'
+%          \arrow[r, rightarrowtail, "f'"]
+%          \arrow[d, two heads]
+%          & x'
+%          \arrow[d, "\psi"]
+%          \\
+%          y
+%          \arrow[r, rightarrowtail, swap, "f"]
+%          & x
+%        \end{tikzcd}
+%      \end{equation*}
+%      in $\category{C}$ such that $p(\sigma)$ is ambigressive pullback in $\category{D}$, with in- and egressive morphisms as marked, and $f$ is $p$-cocartesian. Then $f'$ is $p$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $\psi$ is egressive).
+%  \end{enumerate}
+%
+%  Then $\pi$ is an inner fibration. Further, if a morphism in $\Span\triple{C}$ is of the form
+%  \begin{equation*}
+%    \begin{tikzcd}
+%      & y
+%      \arrow[dl, two heads, swap, "\phi"]
+%      \arrow[dr, rightarrowtail, "\psi"]
+%      \\
+%      x
+%      && x'
+%    \end{tikzcd},
+%  \end{equation*}
+%  where $\phi$ is egressive and $p^{\dagger}$-cartesian, and $\psi$ is ingressive and $p$-cocartesian, it is $\pi$-cocartesian.%\footnote{This is not precisely the same condition that Barwick gives: he demands that $\phi$ be $p$-cartesian rather than $p^{\dagger}$-cartesian. As far as I can tell, this is simply an error; Barwick seems to use the condition as stated above in his proof.}
+%\end{theorem}
+
 \begin{theorem}
   \label{thm:main}
-  Let $p\colon \triple{C} \to \triple{D}$ be a functor of adequate triples which is an inner fibration. Further suppose that $p$ satisfies the following conditions:
+  Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
   \begin{enumerate}
-    \item For any ingressive morphism $g\colon s \ing t$ of $\category{D}$ and any object $x \in \category{C}_{s}$, there exists an ingressive morphism $f\colon x \ing y$ covering $g$ which is both $p$-cocartesian and $p_{\dagger}$-cocartesian.
+    \item Each morphism $g \in \category{D}\downdag$ admits a lift to a morphism in $\category{C}\downdag$ (given a lift of the source) which is both $p$-cocartesian and $p\downdag$-cocartesian.
 
-    \item Suppose $\sigma$ is a commutative square
+    \item Consider a commutative square
       \begin{equation*}
+        \sigma = \quad
         \begin{tikzcd}
           y'
           \arrow[r, rightarrowtail, "f'"]
-          \arrow[d, two heads]
+          \arrow[d, two heads, swap, "g'"]
           & x'
-          \arrow[d, "\psi"]
+          \arrow[d, "g"]
           \\
           y
-          \arrow[r, rightarrowtail, swap, "f"]
+          \arrow[r, rightarrowtail, "f"]
           & x
         \end{tikzcd}
       \end{equation*}
-      in $\category{C}$ such that $p(\sigma)$ is ambigressive pullback in $\category{D}$, with in- and egressive morphisms as marked, and $f$ is $p$-cocartesian. Then $f'$ is $p$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $\psi$ is egressive).
+      in $\category{C}$ such that $p(\sigma)$ is ambigressive pullback in $\category{D}$, where $g'$ belongs to $\category{C}\updag$, and $f$ and $f'$ belong to $\category{C}\downdag$. Suppose that $f$ is $p$-cocartesian. Then $f'$ is $p'$-cocartesian if and only if $\sigma$ is an ambigressive pullback square (and in particular $g \in \category{C}\updag$).
   \end{enumerate}
-
   Then $\pi$ is an inner fibration. Further, if a morphism in $\Span\triple{C}$ is of the form
   \begin{equation*}
     \begin{tikzcd}
@@ -568,6 +605,53 @@ It is natural to wonder about the relationship between $p$ and $\Span(p)$. The g
 This theorem originally appears in \cite{spectralmackeyfunctors1}. However, the proof there is combinatorial in nature. Our proof uses the material developed in \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}}, leveraging the fact that $\infty$-categories of spans have natural incarnations as (complete) Segal spaces.
 
 Before we get to the meat of the proof, however, we have to prove some preliminary results.
+
+We also note a variant, the proof of which is similar but easier.
+
+\begin{theorem}
+  \label{thm:new_barwick}
+  Let $p\colon \triple{C} \to \triple{D}$ be a functor between adequate triples such that $p\colon \category{C} \to \category{D}$ is an inner fibration which satisfies the following conditions.
+  \begin{enumerate}
+    \item The subcategory $\category{C}\updag \subseteq \category{C}$ consists of all $p$-cartesian morphisms in $\category{C}$; that is, an $n$-simplex in $\category{C}$ belongs to $\category{C}\updag$ if and only if each $1$-simplex it contains is $p$-cartesian.
+
+    \item The map $p\updag\colon \category{C}\updag \to \category{D}\updag$ is a cartesian fibration.
+
+    \item Consider a square
+      \begin{equation*}
+          \sigma = \quad
+          \begin{tikzcd}
+            y'
+            \arrow[r, "f'"]
+            \arrow[d, two heads, swap, "g'"]
+            & x'
+            \arrow[d, two heads, "g"]
+            \\
+            y
+            \arrow[r, rightarrowtail, "f"]
+            & x
+          \end{tikzcd}
+      \end{equation*}
+      in $\category{C}$ where $g$ and $g'$ belong to $\category{C}\updag$, and $f$ belongs to $\category{C}\downdag$. Further suppose that $f$ is $p$-cocartesian. Then $f'$ belongs to $\category{C}\downdag$, and is both $p$-cocartesian and $p\downdag$-cocartesian.
+  \end{enumerate}
+  Then spans of the form
+  \begin{equation*}
+    \begin{tikzcd}
+      & z
+      \arrow[dl, two heads, swap, "g"]
+      \arrow[dr, rightarrowtail, "f"]
+      \\
+      x
+      && y
+    \end{tikzcd}
+  \end{equation*}
+  are cocartesian, where $g$ is $p\updag$-cartesian and $f$ is $p$-cocartesian.
+\end{theorem}
+%\begin{proof}
+%  We first note that $\sigma$ is automatically pullback; since the sides are $p$-cartesian, it is automatically a relative pullback, and it lies over a pullback square.
+%
+%  The rest is even simpler than the proof in my thesis of the ordinary Barwick's theorem. The square that we have to show is homotopy pullback factors as before, but this time we don't have to take the final homotopy pullback to find path components corresponding to cartesian 2-simplices, since our 2-simplices are automatically cartesian.
+%\end{proof}
+
 
 \subsection{Housekeeping}
 
@@ -605,7 +689,7 @@ We will denote by $(-)^{\simeq}$ the \emph{core} functor, i.e.\ the functor whic
   is a Kan fibration.
 \end{proposition}
 
-We will denote the core of the mapping space functor $\Map(-, -)$ by $\Fun(-, -)$. That is, for simplicial sets $A$ and $B$, we have
+We will denote the core of the functor $\Map(-, -)$ by $\Fun(-, -)$. That is, for simplicial sets $A$ and $B$, we have
 \begin{equation*}
   \Fun(A, B) \cong \Map(A, B)^{\simeq}.
 \end{equation*}
@@ -859,7 +943,7 @@ We begin by checking that the map $\pi$ is an inner fibration. As stated above, 
   Let $p\colon \triple{C} \to \triple{D}$ be a functor of triples satisfying the conditions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}. Then the map $p\colon \category{C} \to \category{D}$ is an isofibration.
 \end{lemma}
 \begin{proof}
-  By assumption, $p$ is an inner fibration and $\category{C}$ and $\category{D}$ are quasicategories, so it suffices by \hyperref[prop:characterization_of_isofibrations]{Proposition~\ref*{prop:characterization_of_isofibrations}} to show that $p$ admits lifts of equivalences. Each equivalence in $\category{D}$ is in particular ingressive, and hence admits a $p$-cocartesian lift by the assumptions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}; these are automatically equivalences.
+  By assumption, $p$ is an inner fibration and $\category{C}$ and $\category{D}$ are quasicategories, so it suffices by \hyperref[prop:characterization_of_isofibrations]{Proposition~\ref*{prop:characterization_of_isofibrations}} to show that $p$ admits lifts of equivalences. Each equivalence in $\category{D}$ is in particular ingressive, and hence admits a $p$-cocartesian lift by the assumptions of \hyperref[thm:main]{Theorem~\ref*{thm:main}}; these are automatically equivalences by \cite[Prop.~2.4.1.5]{highertopostheory}.
 \end{proof}
 
 \begin{proposition}
@@ -992,7 +1076,7 @@ Our proof will rest on the factorization $\sd(\Lambda^{2}_{0}) \hookrightarrow \
   A_{6}
 \end{equation*}
 
-\begin{sidewaysfigure}[p]
+\begin{figure}[p]
   \begin{equation*}
     \begin{tikzcd}
       && 11
@@ -1022,6 +1106,9 @@ Our proof will rest on the factorization $\sd(\Lambda^{2}_{0}) \hookrightarrow \
       \arrow[ul, two heads]
       && 22
     \end{tikzcd}
+  \end{equation*}
+  \vspace{2cm}
+  \begin{equation*}
     \overset{i_{2}}{\longrightarrow}
     \begin{tikzcd}
       && 11
@@ -1038,9 +1125,6 @@ Our proof will rest on the factorization $\sd(\Lambda^{2}_{0}) \hookrightarrow \
       \arrow[ul, two heads]
       && 22
     \end{tikzcd}
-  \end{equation*}
-  \vspace{2cm}
-  \begin{equation*}
     \overset{i_{3}}{\longrightarrow}
     \begin{tikzcd}
       && 11
@@ -1059,6 +1143,9 @@ Our proof will rest on the factorization $\sd(\Lambda^{2}_{0}) \hookrightarrow \
       \arrow[ul, two heads]
       && 22
     \end{tikzcd}
+  \end{equation*}
+  \vspace{2cm}
+  \begin{equation*}
     \overset{i_{4}}{\longrightarrow}
     \begin{tikzcd}
       && 11
@@ -1101,7 +1188,7 @@ Our proof will rest on the factorization $\sd(\Lambda^{2}_{0}) \hookrightarrow \
   \end{equation*}
   \caption{A factorization of the inclusion $\sd(\Lambda^{2}_{0}) \hookrightarrow \sd(\Delta^{2})$, where certain morphisms have been labelled.}
   \label{fig:factorization}
-\end{sidewaysfigure}
+\end{figure}
 
 For each of the $A_{i}$ above, denote by
 \begin{equation}

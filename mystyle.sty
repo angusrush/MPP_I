@@ -29,10 +29,11 @@
 \usepackage{setspace}
 \usepackage{mathdots}
 \usepackage{epigraph}
-%\usepackage[bbgreekl]{mathbbol}
+\usepackage[bbgreekl]{mathbbol}
 \usepackage{mathtools}
 \usepackage{rotating}
 \usepackage{caption}
+\usepackage{fullpage}
 
 \usetikzlibrary{decorations.markings}
 
@@ -62,19 +63,29 @@
 \setlength{\parskip}{.5em}
 \setlength{\headheight}{14.0pt}
 
+% Make mathbbl and mathbb coexist
+\DeclareSymbolFontAlphabet{\mathbbm}{bbold}
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+
+% I'm really, really sorry I'm doing this. I started writing this before I understood good conventions, and this was the easiest way to make things right.
+\newcommand{\Fun}{\mathrm{Map}}
+\newcommand{\Map}{\mathrm{Fun}}
+
 %%% My commands
 % Fonts
 \newcommand{\category}[1]{\mathcal{#1}}
+\newcommand{\bicat}[1]{\mathbbm{#1}}
 \newcommand{\catname}[1]{\mathbf{#1}}
 \newcommand{\marked}[1]{\mathbf{#1}}
 % General
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
-\newcommand{\N}{\mathbb{N}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\sd}{\mathrm{sd}}
 \newcommand{\triple}[1]{(\category{#1}, \category{#1}_{\dagger}, \category{#1}^{\dagger})}
+\newcommand{\CC}{\mathbbm{C}}
+\newcommand{\DD}{\mathbbm{D}}
 % Typesetting
 \newcommand{\defn}[1]{\emph{\textbf{#1}}}
 \newcommand{\abs}[1]{{| #1 |}}
@@ -89,16 +100,20 @@
 \newcommand{\W}{\mathsf{W}}
 \newcommand{\ob}{\mathrm{ob}}
 \newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Mul}{\mathrm{Mul}}
 \newcommand{\im}{\mathrm{im}}
 \newcommand{\coker}{\mathrm{coker}}
 \DeclareMathOperator*{\colim}{colim}
-\newcommand{\Fun}{\mathrm{Fun}}
 \newcommand{\End}{\mathrm{End}}
-\newcommand{\Map}{\mathrm{Map}}
 \newcommand{\Aut}{\mathrm{Aut}}
 \newcommand{\Lan}{\mathrm{Lan}}
 \newcommand{\Ran}{\mathrm{Ran}}
 \newcommand{\aCart}{\mathrm{aCart}}
+\newcommand{\N}{\mathrm{N}}
+\newcommand{\C}{\mathfrak{C}}
+\newcommand{\Nsc}{\mathrm{N}_{\mathrm{sc}}}
+\newcommand{\Csc}{\mathfrak{C}^{\mathrm{sc}}}
+\newcommand{\Mapsc}{\Map^{\mathrm{sc}}}
 % Model categories
 \newcommand{\fib}{\mathsf{Fib}}
 \newcommand{\cof}{\mathsf{Cof}}
@@ -123,16 +138,36 @@
 \newcommand{\Mod}{\catname{Mod}}
 \newcommand{\SSet}{\Set_{\D}}
 \newcommand{\SSSet}{\Set_{\D^{2}}}
+\newcommand{\SSetmk}{\Set_{\D}^{+}}
+\newcommand{\SSetsc}{\Set_{\D}^{\mathrm{sc}}}
 \newcommand{\Kan}{\catname{Kan}}
 \newcommand{\Cat}{\mathcal{C}\mathrm{at}}
 \newcommand{\SCat}{\Cat_{\D}}
+\newcommand{\SCatmk}{\Cat_{\D}^{+}}
+\newcommand{\QCat}{\catname{QCat}}
 \newcommand{\ICat}{\Cat_{\infty}}
+\newcommand{\ICCat}{\mathbbm{C}\mathrm{at}_{\infty}}
+\newcommand{\ICatCart}{\Cat_{\infty,\times}}
+\newcommand{\ICatCocart}{\Cat_{\infty}^{\times}}
+\newcommand{\TICatCart}{\widetilde{\Cat}_{\infty,\times}}
+\newcommand{\TICatCocart}{\widetilde{\Cat}_{\infty}^{\times}}
+\newcommand{\SCart}{\S_{\times}}
+\newcommand{\SCocart}{\S^{\times}}
+\newcommand{\TSCart}{\widetilde{\S}_{\times}}
+\newcommand{\TSCocart}{\widetilde{\S}^{\times}}
+\newcommand{\ITCat}{\Cat_{(\infty,2)}}
+\newcommand{\Tw}{\catname{Tw}}
+\newcommand{\TTw}{\widetilde{\catname{Tw}}}
+\newcommand{\LS}{\catname{LS}}
+\newcommand{\pt}{\mathrm{pt}}
 \newcommand{\Seg}{\catname{Seg}}
 \newcommand{\CSS}{\catname{CSS}}
 \newcommand{\Corr}{\catname{Corr}}
 \newcommand{\Span}{\mathrm{Span}}
 \newcommand{\SPAN}{\catname{Span}}
 \newcommand{\Bord}{\catname{Bord}}
+\newcommand{\LocSys}{\catname{LocSys}}
+\newcommand{\CAlg}{\catname{CAlg}}
 \newcommand{\Cell}{\catname{Cell}}
 \newcommand{\mhyp}{\text{-}}
 \newcommand{\simto}{\overset{\simeq}{\to}}
@@ -147,6 +182,7 @@
 \newcommand{\LFib}{\catname{LFib}}
 \newcommand{\shp}{^{\sharp}}
 \newcommand{\nat}{^{\natural}}
+\newcommand{\pr}{\mathrm{pr}}
 \newcommand{\flt}{^{\flat}}
 \newcommand{\ing}{\rightarrowtail}
 \newcommand{\eg}{\twoheadrightarrow}

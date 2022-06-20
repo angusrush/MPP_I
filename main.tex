@@ -3,51 +3,15 @@
 \usepackage{mystyle}
 \usepackage{subfiles}
 
-\let\oldsection\section
-\renewcommand\section{\clearpage\oldsection}
-
 %bibliography location
 \addbibresource{sources.bib}
 
-\title{Cocartesian Fibrations and Categories of Spans \\ \Large{Towards a Framework for Homotopy-Coherent \\ Transfer Theories}}
+\title{Monoidal Pull-Push I: Cocartesian Fibrations and Categories of Spans}
 \author{Angus Rush}
 
 \begin{document}
 
-\begin{titlepage}
-	
-  ~\\
-  \vspace{3em}~\\
-  {\centering
-    {\fontsize{30}{30} \bfseries Cocartesian Fibrations, Categories of Spans, and Transfer Theories}
-    \vspace{1.3cm} \\
-    {\huge \textit{Angus Hadrian Rush}\\}
-    \vspace{0.8cm}
-    {\LARGE \date\par}
-    \vspace{4cm}
-    {\huge Master's Thesis\\}
-    \vspace{0.4cm}
-    {\Large 
-      Advisor: Prof.\ Dr.\ Tobias Dyckerhoff\\ \vspace{0.3cm}
-    Second Referee: Jun.-Prof.\ Dr.\ Julian Holstein }\\
-    \vspace{2cm}
-    {\LARGE Universität Hamburg\\
-    Department of Mathematics\\}
-
-  }	
-  \newpage \thispagestyle{empty}
-  {\centering \bfseries \Large Eigenständigkeitserklärug\\~\\}
-  \noindent Die vorliegende Arbeit habe ich selbständig verfasst und keine anderen als die angegebenen Hilfsmittel - insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen - benutzt. Die Arbeit habe ich vorher nicht in einem anderen Prüfungsverfahren eingereicht. Die eingereichte schriftliche Fassung entspricht genau der auf dem elektronischen Speichermedium.\\~\\~\\
-  \parbox{4cm}{\centering Hamburg, 21.09.2020 \hrule
-  \strut \centering\footnotesize Ort, Datum} \hfill\parbox{4cm}{\hrule
-  \strut \centering\footnotesize Unterschrift}
-  \vfill
-  \noindent Hiermit stimme ich zu, meine Abschlussarbeit in der Bibliothek des Fachbereichs Mathematik, Universität Hamburg, zu veröffentlichen \\~\\~\\
-  \parbox{4cm}{\centering Hamburg, 21.09.2020 \hrule
-  \strut \centering\footnotesize Ort, Datum} \hfill\parbox{4cm}{\hrule
-  \strut \centering\footnotesize Unterschrift}
-  \vfill 
-\end{titlepage}
+\maketitle
 
 \tableofcontents
 
@@ -55,7 +19,7 @@
 \subfile{cocart_fibs.tex}
 %\subfile{unconstrained_spans.tex}
 \subfile{constrained_spans.tex}
-\subfile{application_to_presheaves.tex}
+%\subfile{application_to_presheaves.tex}
 \subfile{appendix.tex}
 %\subfile{extra.tex}
 
