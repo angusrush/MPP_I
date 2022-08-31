@@ -5,29 +5,38 @@
 \section{Introduction}
 \label{sec:introduction}
 
-Let $\category{C}$ be a cocomplete $\infty$-category. For any space $X \in \S$, denote by $\LS(\category{C})_{X}$ the $\infty$-category of $\category{C}$-local systems on $X$; that is, the $\infty$-category of functors $X \to \category{C}$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\LS(\category{C})_{X}$ and $\LS(\category{C})_{Y}$. In particular:
+\subsection{Introduction}
+\label{ssc:introduction}
+
+In topology, one often studies spaces via algebraic invariants associated to them. One such invariant of particular interest is the \emph{$n$th homology} of a space $X$, denoted $H_{n}(X)$. Roughly speaking, $H_{n}(X)$ is the abelian group consisting of formal sums of certain maps from the standard $n$-simplex $\Delta^{n}$ into $X$, considered modulo some equivalence relation.
+
+It turns out to be fruitful to generalize $n$th homology. Formal sums are nothing else but $\Z$-linear combinations, and one can ask what happens when $\Z$ is replaced by some other commutative ring $R$. The associated invariant is then known as \emph{$n$th homology with coefficients in $R$}. One can even allow the ring $R$ to vary along $X$, or allow $R$ to be not only a ring, but an object of some appropriate category $\category{C}$. The structure which keeps track of these changing coefficients is called a $\category{C}$-\emph{local system}. 
+
+Classically speaking, when we say \emph{space,} we really mean \emph{topological space,} and $\category{C}$-local systems are modelled by locally-constant sheaves with values in $\category{C}$. In modern homotopy theory, one often takes \emph{space} to mean \emph{$\infty$-groupoid;} thought of in this way, a $\category{C}$-local system on a space $X$ is nothing more than a functor $X \to \category{C}$. This is the point of view that we will take.
+
+With this point of view in mind, let $\category{C}$ be a cocomplete $\infty$-category. For any space $X$, denote by $\LS(\category{C})_{X}$ the $\infty$-category of $\category{C}$-local systems on $X$; that is, $\LS(\category{C})_{X} \simeq \Fun(X, \category{C})$. Recall that for any morphism $f\colon X \to Y$ of spaces, there are several associated functors between $\LS(\category{C})_{X}$ and $\LS(\category{C})_{Y}$. In particular:
 \begin{itemize}
-  \item The functor $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \S$ to the local system $f^{*}\mathcal{F}$ given by the composition
+  \item The \emph{pullback functor} $f^{*}\colon \LS(\category{C})_{Y} \to \LS(\category{C})_{X}$ pulls back local systems on $Y$ to local systems on $X$, sending a local system $\mathcal{F}\colon Y \to \category{C}$ to the local system $f^{*}\mathcal{F}$ given by the composition
     \begin{equation*}
       \begin{tikzcd}
         X
         \arrow[r, "f"]
         & Y
         \arrow[r, "\mathcal{F}"]
-        & \S
+        & \category{C}
       \end{tikzcd}.
     \end{equation*}
 
-  \item The functor $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \S$ to the left Kan extension $\mathrm{Lan}_{f}\mathcal{G}$.
+  \item The \emph{pushforward functor} $f_{!}\colon \LS(\category{C})_{X} \to \LS(\category{C})_{Y}$ pushes forward local systems via left Kan extension, sending a local system $\mathcal{G}\colon X \to \category{C}$ to the left Kan extension $f_{!}\mathcal{G}$.
     \begin{equation*}
       \begin{tikzcd}
         X
         \arrow[rr, "\mathcal{G}"]
         \arrow[dr, swap, "f"]
-        && \S
+        && \category{C}
         \\
         & Y
-        \arrow[ur, swap, "\mathrm{Lan}_{f}\mathcal{G}"]
+        \arrow[ur, swap, "f_{!}G"]
       \end{tikzcd}
     \end{equation*}
 \end{itemize}
@@ -134,7 +143,14 @@ We begin by providing a new proof of the theorem of Barwick mentioned above. Bar
 
 Our proof is more homotopy-theoretic in character, relying on the fact that for any quasicategory $\category{C}$ with pullbacks, the $\infty$-category of spans in $\category{C}$ has a a natural incarnation as a complete Segal space $\SPAN(\category{C})$; the quasicategory $\Span(\category{C})$ is then the `first row' of this complete Segal space. We define a notion of cocartesian fibration between complete Segal spaces, and show that any such cocartesian fibration gives a cocartesian fibration between first rows. The readily available homotopical data in complete Segal spaces allow us to define cocartesian morphisms purely via a condition on 2-simplices, where the combinatorics of horn filling in categories of spans is more manageable.
 
-Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first written down by De Brito in \cite{2016arXiv160500706B}, and expanded by Rasekh in \cite{rasekhcartesianfibrations}. There, Rasekh defines a model structure whose fibrant objects model cocartesian fibrations between Segal spaces. In defining this model structure, it is necessary to distinguish certain morphisms, and Rasekh solves this problem by adding an extra simplicial dimension; the model structure for cocartesian fibrations defined there is thus a model structure on slice categories of trisimplicial sets. In this work we restrict our attention to cocartesian fibrations between Segal spaces. This allows us to approach the problem of controlling cocartesian morphisms differently, by introducing a marking. This method is much closer to that used to work with cocartesian fibrations in \cite{highertopostheory}, and has the advantage that many of the results proved there can be leveraged in explicit calculations. In particular, we provide a definition of a cocartesian fibration between complete Segal spaces to which Rasekh's definition reduces in the case that both the domain and codomain are complete Segal spaces.
+\subsection{Relation to previous work}
+\label{ssc:relation_to_previous_work}
+
+The main result of this paper is a new, simplified proof of the main theorem of \cite{spectralmackeyfunctors1}, leveraging the theory of cocartesian morphisms between Segal spaces.
+
+Our definition of a cocartesian fibration between Segal spaces is not new, although the form in which it is presented is original. The definition was first written down by De Brito in \cite{2016arXiv160500706B}, and expanded by Rasekh in \cite{rasekhcartesianfibrations}, and later in \cite{2021arXiv210205192R}. Here, Rasekh proves the existence and equivalence of several model structures for cocartesian fibrations of Segal spaces, including one in terms of marked bisimplicial sets (this did not exist when this paper was written). 
+
+In our treatment, also in terms of marked bisimplicial sets, we have tried to balance explicitness of computations, not shying away from combinatorial calculations, with simplicity, not proving results in more generality than we need when we feel it does not lead to greater conceptual clarity. Thus, we have not constructed a model structure of surrounding our definition, and we treat only the case where both the total and base space are fibrant, both of which are done in \cite{2021arXiv210205192R}. We feel that the more calculational nature of our treatment leads to a greater interoperability with the existing theory of cocartesian fibrations between quasicategories as found in \cite{highertopostheory}.
 
 \subsection{Outline}
 \label{ssc:outline}
@@ -143,11 +159,12 @@ This work consists of three sections. In \hyperref[sec:cocartesian_fibrations_be
 
 In \hyperref[ssc:cocartesian_fibrations]{Section~\ref*{ssc:cocartesian_fibrations}}, we define the notion of a cocartesian morphism via a condition on left horn filling of $2$-simplices, and define a cocartesian fibration between complete Segal spaces to be a Reedy fibration admitting cocartesian lifts. We show that this implies all higher left horn filling conditions, and use this to show that any cocartesian fibration between complete segal spaces yields a cocartesian fibration (in the sense of quasicategories) between first rows.
 
-In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove the theorem of Barwick mentioned above, originally published in \cite[Thm.~12.2]{spectralmackeyfunctors1}. The proof leverages the fact, proven in \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}} that, when checking that a morphism in a Segal space is cocartesian relative to some Reedy fibration, it suffices to check that the lowest lifting problem $\Lambda^{2}_{1} \hookrightarrow \Delta^{2}$ has a contractible space of solutions, which is combinatorially tractible.
+In \hyperref[sec:segal_spaces_of_spans]{Section~\ref*{sec:segal_spaces_of_spans}}, we use these results to prove the theorem of Barwick mentioned above, originally published in \cite[Thm.~12.2]{spectralmackeyfunctors1}. The proof leverages the fact, proven in \hyperref[sec:cocartesian_fibrations_between_complete_segal_spaces]{Section~\ref*{sec:cocartesian_fibrations_between_complete_segal_spaces}} that, when checking that a morphism in a Segal space is cocartesian relative to some Reedy fibration, it suffices to check that the lowest lifting problem $\Lambda^{2}_{1} \hookrightarrow \Delta^{2}$ has a contractible space of solutions, which in the setting of categories of spans is combinatorially tractible.
 
-%\subsection{Acknowledgements}
-%\label{ssc:acknowledgements}
-%
-%The author would like to thank Prof.\ Tobias Dyckerhoff for his patience and invaluable advice. We are also indebted to Merlin Christ for his helpful feedback on this document.
+
+\subsection{Acknowledgements}
+\label{ssc:acknowledgements}
+
+We would like to thank his advisor, Tobias Dyckerhoff, for his patience and guidance. We would also like to thank Fernando Abell{\'a}n Garc{\'i}a for many helpful conversations.
 
 \end{document}

@@ -163,6 +163,7 @@
       \strng{authorbibnamehash}{ef7be26de40244df94c067d8acda98cb}
       \strng{authornamehash}{ef7be26de40244df94c067d8acda98cb}
       \strng{authorfullhash}{ef7be26de40244df94c067d8acda98cb}
+      \field{extraname}{1}
       \field{sortinit}{R}
       \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
       \field{labelnamesource}{author}
@@ -180,6 +181,39 @@
       \verb 1711.03670
       \endverb
       \keyw{Mathematics - Category Theory,Mathematics - Algebraic Topology}
+    \endentry
+    \entry{2021arXiv210205192R}{article}{}
+      \name{author}{1}{}{%
+        {{hash=ef7be26de40244df94c067d8acda98cb}{%
+           family={{Rasekh}},
+           familyi={R\bibinitperiod},
+           given={Nima},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{fullhash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{bibnamehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{authorbibnamehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{authornamehash}{ef7be26de40244df94c067d8acda98cb}
+      \strng{authorfullhash}{ef7be26de40244df94c067d8acda98cb}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eid}{arXiv:2102.05192}
+      \field{eprintclass}{math.CT}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{arXiv e-prints}
+      \field{month}{2}
+      \field{title}{{Quasi-Categories vs. Segal Spaces: Cartesian Edition}}
+      \field{year}{2021}
+      \field{pages}{arXiv:2102.05192}
+      \range{pages}{-1}
+      \verb{eprint}
+      \verb 2102.05192
+      \endverb
+      \keyw{Mathematics - Category Theory,Mathematics - Algebraic Topology,18N60,18N40,18N45,18N55}
     \endentry
     \entry{rezk2001model}{article}{}
       \name{author}{1}{}{%

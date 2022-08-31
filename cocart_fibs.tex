@@ -5,6 +5,39 @@
 \section{Cocartesian fibrations between Segal spaces}
 \label{sec:cocartesian_fibrations_between_complete_segal_spaces}
 
+The classical Grothendieck construction allows us to repackage the data of a pseudofunctor $r\colon \category{D} \to \Cat$ into a so-called \emph{cocartesian fibration} $p\colon \category{R} \to \category{D}$. The values of $r$ are encoded in the fibers of $p$ over $\category{D}$. The functoriality is encoded by certain morphisms in the total space $\category{R}$, called \emph{cocartesian morphisms.} These morphisms have the following property: \emph{given a commuting triangle in $\category{D}$, and a left horn lying over it in $\category{R}$ whose first edge is cocartesian, there is a unique filling of the horn to a full simplex lying over the triangle.}
+\begin{equation*}
+  \label{eq:cocartesian_def}
+  \begin{tikzcd}[row sep=tiny]
+    & r'
+    \arrow[ddd, bend right, dotted, no head]
+    \arrow[ddr, dashed, "\exists!"]
+    \\
+    &&& \text{in $\category{R}$,}
+    \\
+    r
+    \arrow[uur, "\text{cocartesian}"]
+    \arrow[rr]
+    \arrow[ddd, bend right, dotted, no head]
+    && r''
+    \arrow[ddd, bend right, dotted, no head]
+    \\
+    & d'
+    \arrow[ddr]
+    \\
+    &&& \text{in $\category{D}$.}
+    \\
+    d
+    \arrow[uur]
+    \arrow[rr]
+    && d''
+  \end{tikzcd}
+\end{equation*}
+
+We can also define cocartesian morphisms in an $\infty$-categorical context. Here, rather than demanding that such fillings should be unique, we should demand that the space of such fillings be contractible. In quasicategories, one does not have easy access to a space of such fillings. The reason for this is that a quasicategory consists of a \emph{set} of 0-simplices, a \emph{set} of 1-simplices, etc., and any homotopical data contained in the quasicategory has to be expressed as a mixing of simplices of various dimensions. For this reason, the most common definition of a cocartesian morphism involves an infinite family of such conditions demanding the existence of horn fillers of ever-increasing dimension.
+
+However one can also model $\infty$-categories as Segal spaces, which one thinks of has having a \emph{space} of 0-simplices, a \emph{space} of 1-simplices, etc. It is then comparably easy to say what one means by the space of diagrams of a specific form. Our definition of a cocartesian edge in a Segal space will then be exactly what we had expected in the $\infty$-categorical case: we will simply replace the \emph{uniqueness} condition on the filler above by a \emph{contractibility} condition.
+
 \subsection{A review of bisimplicial sets}
 \label{ssc:a_review_of_bisimplicial_sets}
 
@@ -16,7 +49,7 @@ Bisimplicial sets can be defined in two equivalent ways:
 
   \item As functors $(\D\op)^{2} \to \Set$.
 \end{itemize}
-In the former case, we think of a bisimplicial set $X$ as an $\N$-indexed collection of simplicial sets $X_{n}$; in the latter, we think of a bisimplicial set as an $\N \times \N$-indexed collection of sets $X_{mn}$. Both points of view are useful, and we will rely on both of them. For this reason, we fix the following convention: with the second point of view in mind, we imagine a bisimplicial set $X$ as a collection of sets, each located at an integer lattice point of the first quadrant, where the first coordinate increases in the $x$-direction and the second coordinate increases in the $y$-direction.
+In the former case, we think of a bisimplicial set $X$ as an $\NN$-indexed collection of simplicial sets $X_{n}$; in the latter, we think of a bisimplicial set as an $\NN \times \NN$-indexed collection of sets $X_{mn}$. Both points of view are useful, and we will rely on both of them. For this reason, we fix the following convention: with the second point of view in mind, we imagine a bisimplicial set $X$ as a collection of sets, each located at an integer lattice point of the first quadrant, where the first coordinate increases in the $x$-direction and the second coordinate increases in the $y$-direction.
 \begin{equation*}
   \begin{tikzcd}[row sep=small, column sep=small]
     & \
@@ -49,7 +82,7 @@ In the former case, we think of a bisimplicial set $X$ as an $\N$-indexed collec
     & \
   \end{tikzcd}
 \end{equation*}
-Thus, the $n$th row of $X$ is the simplicial set $X_{\bullet n}$, and the $m$th column of $X$ is the simplicial set $X_{m \bullet}$. When we think of bisimplicial sets as $\N$-indexed collections of simplicial sets $X_{m}$, we mean by $X_{m}$ the $m$th \emph{column} of $X$; that is, $X_{m} = X_{m, \bullet}$.
+Thus, the $n$th row of $X$ is the simplicial set $X_{\bullet n}$, and the $m$th column of $X$ is the simplicial set $X_{m \bullet}$. When we think of bisimplicial sets as $\NN$-indexed collections of simplicial sets $X_{m}$, we mean by $X_{m}$ the $m$th \emph{column} of $X$; that is, $X_{m} = X_{m, \bullet}$.
 
 If $X$ is Reedy fibrant (i.e.\ fibrant with respect to the Reedy model structure on $\SSSet$, see \hyperref[ssc:a_review_of_bisimplicial_sets]{Subsection~\ref*{ssc:a_review_of_bisimplicial_sets}}), then each simplicial set $X_{n}$ is a Kan complex. Later, when we are interested in Segal spaces, we will interpret $X_{n}$ as the space of $n$-simplices of $X$.
 
